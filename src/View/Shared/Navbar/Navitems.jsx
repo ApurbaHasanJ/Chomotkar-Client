@@ -1,10 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Search from "./Search/Search";
 
-
 const NavItems = () => {
-
-
   return (
     <>
       <li>
@@ -26,7 +23,7 @@ const NavItems = () => {
         <NavLink
           to="/about"
           className={({ isActive }) => (isActive ? "active" : "default")}>
-          ABOUT US
+          ABOUT
         </NavLink>
       </li>
       <li>
@@ -37,13 +34,10 @@ const NavItems = () => {
         </NavLink>
       </li>
       <li className="lg:hidden block">
-      <Search/>
+        <Search />
       </li>
 
-      
-      
-        
-        {/* <>
+      {/* <>
           <li>
             <NavLink
               to="/register"
@@ -59,7 +53,6 @@ const NavItems = () => {
             </NavLink>
           </li>
         </> */}
-      
     </>
   );
 };

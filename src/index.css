@@ -12,7 +12,7 @@
 }
 
 .btn-dark {
-  @apply duration-700 bg-[#E8E8E8] hover:bg-[#1F2937] text-[#1F2937] hover:text-white border-[#1F2937] rounded-lg  hover:border-[#1F2937] border-0  border-b-[3px];
+  @apply duration-700 bg-[#1F2937] md:py-3 md:px-4 px-3 py-2 text-xs md:text-base hover:bg-[#1F2937] text-white hover:text-rose-500 border-[#1F2937] rounded-full  hover:border-[#1F2937] border-0  border-b-[3px];
 }
 
 .btn-white {
@@ -28,11 +28,11 @@
 }
 
 .active {
-  @apply font-semibold text-xs tracking-wide text-rose-500  transition-colors duration-300;
+  @apply font-semibold text-base tracking-wide text-rose-500  transition-colors duration-300;
 }
 
 .default {
-  @apply font-semibold text-xs tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300;
+  @apply font-semibold text-base tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300;
 }
 
 .dashActive {
@@ -65,7 +65,7 @@
 
 /* Style the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 159, 177);
+  background-color: darkslategrey;
   border-radius: 3.5px; /* Half of the width to make it rounded */
 }
 

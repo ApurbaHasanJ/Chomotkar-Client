@@ -84,7 +84,7 @@ const ShopByCategory = () => {
                 In Fashion
               </h3>
               <p className="text-white font-medium text-base">
-              Unleash your inner fashionista <br /> with Rosyz.
+              Unleash your inner fashionista <br /> with Chomotkar.
               </p>
             </div>
             <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">

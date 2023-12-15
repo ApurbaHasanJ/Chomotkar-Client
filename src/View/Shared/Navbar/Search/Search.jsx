@@ -2,7 +2,7 @@
 
 const Search = () => {
   return (
-    <form>
+    <form className="lg:mr-6">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium  text-white sr-only dark:text-gray-900">
