@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Search from "./Search/Search";
 
 
 const NavItems = () => {
@@ -34,6 +35,9 @@ const NavItems = () => {
           className={({ isActive }) => (isActive ? "active" : "default")}>
           CONTACT
         </NavLink>
+      </li>
+      <li className="lg:hidden block">
+      <Search/>
       </li>
 
       

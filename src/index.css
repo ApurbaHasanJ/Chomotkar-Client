@@ -43,6 +43,15 @@
   @apply font-semibold tracking-wide text-[#151515] hover:text-gray-500 transition-colors duration-300;
 }
 
+.font-cinzel{
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-mono{
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+
 /* Scroll bar */
 /* For WebKit based browsers (Chrome, Safari) */
 /* Set the width and track background color */
@@ -56,7 +65,7 @@
 
 /* Style the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: #d1a054;
+  background-color: rgb(255, 159, 177);
   border-radius: 3.5px; /* Half of the width to make it rounded */
 }
 

@@ -4,7 +4,6 @@ import Cart from "../Cart/Cart";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import Search from "./Search/Search";
 
 const UserDropdown = () => {
   const { loading, user, logOut } = useContext(AuthContext);
@@ -50,9 +49,9 @@ const UserDropdown = () => {
   };
   return (
     <>
-      <ul className="ml-auto flex items-center justify-center gap-3">
+      <ul className="ml-auto z-50 flex items-center justify-center gap-3">
         <li className="relative">
-          <div onClick={handleShowDropDown} className=" z-50 rounded-full">
+          <div onClick={handleShowDropDown} className=" z-50 items-center flex flex-col duration-500 hover:text-rose-400 rounded-full">
             {user?.photoURL ? (
               <img
                 src={user.photoURL}
@@ -60,13 +59,14 @@ const UserDropdown = () => {
                 alt={user?.displayName}
               />
             ) : (
-              <div className="hover:text-rose-400">
+              <div className="hover:text-rose-400 border-[2px] rounded-full border-gray-500 ">
                 <FaUserCircle
-                  className="text-[25px]  md:mx-0 border-[2px] border-gray-500 hover:border-rose-400 rounded-full p-[1.5px] mx-auto"
+                  className="text-[25px]  md:mx-0  rounded-full p-[1.5px] mx-auto"
                   title={user?.displayName}
                 />
               </div>
             )}
+            <p>Account</p>
           </div>
           {showDropDown && (
             <div
@@ -110,7 +110,6 @@ const UserDropdown = () => {
                     Sign out
                   </Link>
                 </li>
-                <Search/>
               </ul>
             </div>
           )}
