@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .my-container {
-  @apply mx-auto p-3 md:p-6 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl;
+  @apply mx-auto px-3 md:px-6 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl;
 }
 
 .btn-card {
@@ -28,11 +28,11 @@
 }
 
 .active {
-  @apply font-semibold text-base tracking-wide text-rose-500  transition-colors duration-300;
+  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-rose-500  transition-colors duration-300;
 }
 
 .default {
-  @apply font-semibold text-base tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300;
+  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300;
 }
 
 .dashActive {

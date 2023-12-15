@@ -3,7 +3,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 
 const Main = () => {
   return (
-    <main className=" bg-rose-50">
+    <main >
       <div className="">
         <Navbar />
         <div className="min-h-screen">

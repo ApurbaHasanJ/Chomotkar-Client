@@ -1,4 +1,4 @@
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserLarge } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import { useContext, useEffect, useState } from "react";
@@ -50,23 +50,26 @@ const UserDropdown = () => {
   return (
     <>
       <ul className="ml-auto z-50 flex items-center justify-center gap-3">
+        
         <li className="relative">
-          <div onClick={handleShowDropDown} className=" z-50 items-center flex flex-col duration-500 hover:text-rose-400 rounded-full">
+          <div
+            onClick={handleShowDropDown}
+            className=" z-50 items-center flex gap-2 duration-300 text-slate-500 hover:text-rose-400 rounded-full">
             {user?.photoURL ? (
               <img
                 src={user.photoURL}
-                className="w-10 h-10 p-1 rounded-full ring-2 ring-rose-400 dark:ring-gray-500"
+                className="w-8 h-8 p-1 rounded-full ring-2 ring-rose-400 dark:ring-gray-500"
                 alt={user?.displayName}
               />
             ) : (
-              <div className="hover:text-rose-400 border-[2px] rounded-full border-gray-500 ">
-                <FaUserCircle
-                  className="text-[25px]  md:mx-0  rounded-full p-[1.5px] mx-auto"
+              <div className="  rounded-full ">
+                <FaUserLarge
+                  className="text-[25px] "
                   title={user?.displayName}
                 />
               </div>
             )}
-            <p>Account</p>
+            <p>Login/Join</p>
           </div>
           {showDropDown && (
             <div
@@ -113,15 +116,6 @@ const UserDropdown = () => {
               </ul>
             </div>
           )}
-        </li>
-        <li className="">
-          <NavLink
-            to="dashboard/my-cart"
-            className={({ isActive }) =>
-              isActive ? "active relative w-10" : "default relative w-10"
-            }>
-            <Cart />
-          </NavLink>
         </li>
       </ul>
     </>
