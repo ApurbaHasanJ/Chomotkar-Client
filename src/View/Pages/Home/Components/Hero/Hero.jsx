@@ -21,9 +21,9 @@ const Hero = () => {
           waitForTransition:Animation,
         }}
         modules={[Pagination, FreeMode, Autoplay]}
-        className="mySwiper lg:h-[calc(100vh-85px)] h-96">
+        className="mySwiper lg:h-[calc(100vh-85px)] h-96 md:mt-0 mt-[96px]">
       
-        <SwiperSlide className="swiper-slide">
+        <SwiperSlide className="swiper-slide ">
           <div className=" px-10 flex gap-8 md:items-start items-center justify-between">
             <div className="absolute flex flex-col md:justify-start justify-center md:items-start items-center md:ml-0 ml-5 text-black z-20 max-w-[700px] w-full md:right-16 right-1/2 top-1/2 md:text-left text-center  transform md:translate-x-0 translate-x-1/2 -translate-y-1/2">
               <p data-aos="fade-up" className="text-mono text-rose-500 text-base">

@@ -64,7 +64,7 @@ const UserDropdown = () => {
             ) : (
               <div className="  rounded-full ">
                 <FaUserLarge
-                  className="text-[25px] "
+                  className="text-[22px] "
                   title={user?.displayName}
                 />
               </div>

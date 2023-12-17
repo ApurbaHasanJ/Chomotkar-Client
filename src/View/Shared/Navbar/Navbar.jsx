@@ -4,7 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 
 import Search from "./Search/Search";
 import UserDropdown from "./UserDropdown";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import Call from "./Call";
 import LogoName from "./LogoName";
@@ -18,16 +18,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="   z-10 bg-white text-slate ">
+    <nav className="  z-50 shadow-xl bg-white  text-slate-600 ">
       {/* top navbar for MD and Long devices */}
-      <div className="md:block hidden ">
-        <div className="flex my-container   items-center justify-between">
-          <LogoName />
-          <div className="  hidden  lg:flex">
-            <ul className="flex items-center gap-4 menu-horizontal px-1">
-              <Search />
-            </ul>
+      <div className="md:block hidden my-container mx-10">
+        <div className="flex my-container py-2  items-center justify-between">
+          <div className="  hidden  md:flex">
+            <Search />
           </div>
+          <LogoName />
           {/* cart and profile */}
           <div className="flex items-center gap-4">
             {/* small device */}
@@ -45,8 +43,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <hr className="h-px mt-2 my-container bg-gray-200 border-[1px] dark:bg-gray-700" />
-        <div className="  hidden font-mono lg:flex pt-2 pb-1 justify-center items-center">
+        <hr className="h-px my-container bg-gray-200 border-[1px] dark:bg-gray-700" />
+        <div className="  hidden font-mono z-50 md:flex pt-2 pb-1 justify-center items-center">
           <ul className="flex justify-center items-center gap-4 menu-horizontal">
             <NavItems />
           </ul>
@@ -54,17 +52,17 @@ const Navbar = () => {
       </div>
 
       {/* Top navbar for small devices */}
-      <div className="flex fixed top-0 z-50 bg-white drop-shadow-2xl my-container py-2 md:hidden justify-between items-center">
+      <nav className="flex fixed top-0 z-50 bg-white shadow-xl my-container py-2 md:hidden justify-between items-center">
         {/* NavItems */}
         <div className=" z-40   lg:hidden block">
           <div className="dropdown" onClick={handleShowNavbar}>
             {showNavbar ? (
-              <RxCross2 className="h-10 w-10 hover:text-rose-500" />
+              <RxCross2 className="h-8 w-8 hover:text-rose-500" />
             ) : (
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 hover:text-rose-500"
+                  className="h-8 w-8 hover:text-rose-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor">
@@ -88,14 +86,18 @@ const Navbar = () => {
         <div className="w-full border-x-[2px] border-gray-300 grid justify-center mx-5">
           <LogoName />
         </div>
-        <div className="">
+        {/* Facebook Link */}
+        <Link to="/">
           <img
-            className="w-8"
+            className="w-9"
             src="https://i.ibb.co/txZVsTt/facebook.png"
-            alt=""
+            alt="Visit Facebook"
           />
-        </div>
-      </div>
+        </Link>
+      </nav>
+
+      {/* bottom nav for small devices */}
+      
     </nav>
   );
 };
