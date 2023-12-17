@@ -5,8 +5,8 @@ import { FaBagShopping, FaUser } from "react-icons/fa6";
 
 const BottomNavbar = () => {
   return (
-    <nav className="flex fixed w-full  bottom-0 z-50 bg-white  my-container py-2 md:hidden justify-between items-center">
-      <ul className="flex px-10 justify-between items-center w-full gap-4 menu-horizontal">
+    <nav className="flex fixed w-full px-10 bottom-0 z-50 bg-white  shadow-xl py-2 md:hidden justify-between items-center">
+      <ul className="flex my-container justify-between items-center w-full gap-4 menu-horizontal">
         <li>
           <NavLink
             to="/"

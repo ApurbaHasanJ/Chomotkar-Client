@@ -10,10 +10,7 @@ const Main = () => {
           <Outlet />
         </div>
         {/* bottom bar for only small devices */}
-      <div className="">
         <BottomNavbar/>
-        
-      </div>
     </main>
   );
 };

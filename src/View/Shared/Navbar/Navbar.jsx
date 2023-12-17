@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="  z-50 shadow-xl bg-white  text-slate-600 ">
+    <nav className=" w-full z-50 shadow-xl bg-white  text-slate-600 ">
       {/* top navbar for MD and Long devices */}
       <div className="md:block hidden my-container mx-10">
         <div className="flex my-container py-2  items-center justify-between">
@@ -52,7 +52,8 @@ const Navbar = () => {
       </div>
 
       {/* Top navbar for small devices */}
-      <nav className="flex fixed top-0 z-50 bg-white shadow-xl my-container py-2 md:hidden justify-between items-center">
+      <div className="w-full bg-white  fixed top-0 shadow-xl right-0 left-0 z-50">
+      <nav className="flex   my-container py-2 md:hidden justify-between items-center">
         {/* NavItems */}
         <div className=" z-40   lg:hidden block">
           <div className="dropdown" onClick={handleShowNavbar}>
@@ -95,6 +96,7 @@ const Navbar = () => {
           />
         </Link>
       </nav>
+      </div>
 
       {/* bottom nav for small devices */}
       

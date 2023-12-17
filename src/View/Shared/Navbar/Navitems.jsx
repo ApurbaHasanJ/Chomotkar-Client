@@ -79,7 +79,7 @@ const NavItems = () => {
             </Link>
             <hr />
             <Link to="#" className="hover:text-rose-300">
-              Panjabi
+              Luxury Panjabi
             </Link>
             <hr />
             <Link to="#" className="hover:text-rose-300">
