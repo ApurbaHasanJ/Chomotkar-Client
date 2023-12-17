@@ -53,53 +53,50 @@ const Navbar = () => {
 
       {/* Top navbar for small devices */}
       <div className="w-full bg-white  fixed top-0 shadow-xl right-0 left-0 z-50">
-      <nav className="flex   my-container py-2 md:hidden justify-between items-center">
-        {/* NavItems */}
-        <div className=" z-40   lg:hidden block">
-          <div className="dropdown" onClick={handleShowNavbar}>
-            {showNavbar ? (
-              <RxCross2 className="h-8 w-8 hover:text-rose-500" />
-            ) : (
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 hover:text-rose-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
+        <nav className="flex   my-container py-2 md:hidden justify-between items-center">
+          {/* NavItems */}
+          <div className=" z-40   lg:hidden block">
+            <div className="dropdown" onClick={handleShowNavbar}>
+              {showNavbar ? (
+                <RxCross2 className="h-8 w-8 hover:text-rose-500" />
+              ) : (
+                <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 hover:text-rose-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                  </svg>
+                </label>
+              )}
+            </div>
+            {showNavbar && (
+              <ul className="absolute grid justify-start items-start gap-3 left-0 z-40 top-16 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
+                <NavItems />
+              </ul>
             )}
           </div>
-          {showNavbar && (
-            <ul className="absolute grid justify-start items-start gap-3 left-0 z-40 top-16 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
-              <NavItems />
-            </ul>
-          )}
-        </div>
-        {/* Name and logo */}
-        <div className="w-full border-x-[2px] border-gray-300 grid justify-center mx-5">
-          <LogoName />
-        </div>
-        {/* Facebook Link */}
-        <Link to="/">
-          <img
-            className="w-9"
-            src="https://i.ibb.co/txZVsTt/facebook.png"
-            alt="Visit Facebook"
-          />
-        </Link>
-      </nav>
+          {/* Name and logo */}
+          <div className="w-full border-x-[2px] border-gray-300 grid justify-center mx-5">
+            <LogoName />
+          </div>
+          {/* Facebook Link */}
+          <Link to="/">
+            <img
+              className="w-9"
+              src="https://i.ibb.co/txZVsTt/facebook.png"
+              alt="Visit Facebook"
+            />
+          </Link>
+        </nav>
       </div>
-
-      {/* bottom nav for small devices */}
-      
     </nav>
   );
 };
