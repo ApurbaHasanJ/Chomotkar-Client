@@ -6,6 +6,7 @@ import NewArrivalProducts from "../Components/NewArrivalProducts/NewArrivalProdu
 import PanjabiCollection from "../Components/PanjabiCollection/PanjabiCollection";
 import ShopByCategory from "../Components/ShopByCategory/ShopByCategory";
 import SubBanner from "../Components/SubBanner/SubBanner";
+import WhyUs from "../Components/WhyUs/WhyUs";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <NewArrivalProducts />
       <SubBanner />
       <PanjabiCollection />
+      <WhyUs />
     </div>
   );
 };
