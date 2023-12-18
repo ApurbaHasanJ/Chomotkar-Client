@@ -9,7 +9,7 @@ const ShopByCategory = () => {
         title={"Shop By Categories"}
       />
       {/* categories card */}
-      <div className="grid grid-cols-5 gap-5 items-center justify-between mt-10">
+      <div className="grid sm:grid-cols-5 grid-cols-4 gap-5 items-center justify-between mt-10">
         {/* card 1 */}
         <Link to="#">
           <div className=" rounded-full transition-all overflow-hidden">
@@ -18,7 +18,7 @@ const ShopByCategory = () => {
               src="https://i.ibb.co/RS6Kwk7/handsome-young-man-with-curly-hair-sitting-chair-white-wall.jpg"
             />
           </div>
-          <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
+          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
             Men
           </p>
         </Link>
@@ -27,22 +27,22 @@ const ShopByCategory = () => {
           <div className=" rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/nBNPcRd/fashionable-woman-brown-coat-beige-hat-posing.jpg"
+              src="https://i.ibb.co/KxHPwHH/studio-close-up-portrait-young-fresh-blonde-woman-brown-straw-poncho-wool-black-trendy-hat-round-gla.jpg"
             />
           </div>
-          <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
+          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
             Women
           </p>
         </Link>
         {/* card 3 */}
-        <Link to="#">
-          <div className=" rounded-full transition-all overflow-hidden">
+        <Link to="#" className="sm:block hidden">
+          <div className="  rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/KxHPwHH/studio-close-up-portrait-young-fresh-blonde-woman-brown-straw-poncho-wool-black-trendy-hat-round-gla.jpg"
+              src="https://i.ibb.co/m0VNqSZ/fashionable-woman-brown-coat-beige-hat-posing.jpg"
             />
           </div>
-          <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
+          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
             Outfits
           </p>
         </Link>
@@ -54,7 +54,7 @@ const ShopByCategory = () => {
               src="https://i.ibb.co/QJZy0YH/panjabi.png"
             />
           </div>
-          <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
+          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
             Panjabi
           </p>
         </Link>
@@ -66,7 +66,7 @@ const ShopByCategory = () => {
               src="https://i.ibb.co/Tk2NTt0/modern-stationary-collection-arrangement.jpg"
             />
           </div>
-          <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
+          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
             Electronics
           </p>
         </Link>

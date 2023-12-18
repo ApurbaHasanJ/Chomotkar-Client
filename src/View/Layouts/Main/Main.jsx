@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 import BottomNavbar from "../../Shared/Navbar/BottomNavbar";
+import Footer from "../../Shared/Footer/Footer";
 
 const Main = () => {
   return (
@@ -10,7 +11,9 @@ const Main = () => {
           <Outlet />
         </div>
         {/* bottom bar for only small devices */}
+        <Footer/>
         <BottomNavbar/>
+        
     </main>
   );
 };

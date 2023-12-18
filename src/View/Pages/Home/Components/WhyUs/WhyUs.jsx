@@ -7,7 +7,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 
 const WhyUs = () => {
   return (
-    <section className="md:my-32 mt-20 my-container">
+    <section className="md:mt-32 mt-20 my-container">
       <SectionTitle
         title={"The Benefits of Choosing Us"}
         subtitle={"Beyond Fashion: What Sets Us Apart"}
