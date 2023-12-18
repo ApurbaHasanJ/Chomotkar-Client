@@ -1,3 +1,4 @@
+import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
 import ConsumerFavor from "../Components/ConsumerFavor";
 import Hero from "../Components/Hero/Hero";
 import LovedCategories from "../Components/LovedCategories/LovedCategories";
@@ -9,6 +10,7 @@ const Home = () => {
       <Hero />
       <ConsumerFavor/>
       <LovedCategories/>
+      <BestSellingProduct/>
       <ShopByCategory />
       
     </div>
