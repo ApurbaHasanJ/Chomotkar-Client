@@ -52,6 +52,68 @@
 }
 
 
+/* swiper js css */
+:root {
+  --swiper-navigation-size: 20px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after  {
+  background: white;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  color: black;
+  font-size: 20px !important;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.214);
+  width: 30px;
+  height: 30px;
+}
+
+/* {
+  background: white;
+  border-radius: 50%;
+  font-size: 20px !important;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.214);
+  width: 30px;
+  height: 30px;
+} */
+
+/* .swiper-button-next:hover,
+.swiper-button-prev:hover {
+  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.415);
+} */
+
+/* .swiper-pagination {
+  padding-top: 40px !important;
+} */
+
+/* .swiper-pagination-bullet-active {
+  background-color: rgb(244 63 94) !important;
+  margin: 8px !important;
+  border: 1px solid red !important;
+  border-radius: 50% !important;
+}
+
+.swiper-pagination-current {
+  color: rgb(244 63 94);
+} */
+
+
+/*--------------------- swiper css end ---------------*/
+
+
 /* Scroll bar */
 /* For WebKit based browsers (Chrome, Safari) */
 /* Set the width and track background color */

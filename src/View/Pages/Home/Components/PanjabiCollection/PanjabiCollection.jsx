@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../../../../Shared/SectionTitle";
 import { FaRegHeart } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
-import "./BestSellingProduct.css";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 
-const BestSellingProduct = () => {
+const PanjabiCollection = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("best-selling-product.json")
+    fetch("panjabi-collection.json")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -22,8 +21,8 @@ const BestSellingProduct = () => {
   return (
     <section className="md:mt-32 mt-20 my-container">
       <SectionTitle
-        title={"BEST SELLING PRODUCTS"}
-        subtitle={"Top Picks For Fashion-Forward Shoppers"}
+        title={"Panjabi Collection"}
+        subtitle={"All Time Favorite"}
       />
       <div>
         <Swiper
@@ -100,4 +99,4 @@ const BestSellingProduct = () => {
   );
 };
 
-export default BestSellingProduct;
+export default PanjabiCollection;

@@ -27,7 +27,7 @@ const ShopByCategory = () => {
           <div className=" rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/KxHPwHH/studio-close-up-portrait-young-fresh-blonde-woman-brown-straw-poncho-wool-black-trendy-hat-round-gla.jpg"
+              src="https://i.ibb.co/nBNPcRd/fashionable-woman-brown-coat-beige-hat-posing.jpg"
             />
           </div>
           <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
@@ -39,7 +39,7 @@ const ShopByCategory = () => {
           <div className=" rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/nBNPcRd/fashionable-woman-brown-coat-beige-hat-posing.jpg"
+              src="https://i.ibb.co/KxHPwHH/studio-close-up-portrait-young-fresh-blonde-woman-brown-straw-poncho-wool-black-trendy-hat-round-gla.jpg"
             />
           </div>
           <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
@@ -51,11 +51,11 @@ const ShopByCategory = () => {
           <div className=" rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/xjzq5wG/child-wearing-jeans-white-sneakers.jpg"
+              src="https://i.ibb.co/QJZy0YH/panjabi.png"
             />
           </div>
           <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
-            Shoe
+            Panjabi
           </p>
         </Link>
         {/* Card 5 */}
@@ -63,17 +63,17 @@ const ShopByCategory = () => {
           <div className=" rounded-full transition-all overflow-hidden">
             <img
               className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/BVcNqLW/portrait-handsome-confident-stylish-hipster-lambersexual-model.jpg"
+              src="https://i.ibb.co/Tk2NTt0/modern-stationary-collection-arrangement.jpg"
             />
           </div>
           <p className="text-center text-slate-700 text-sm sm:text-base md:text-xl mt-3 font-semibold">
-            Glasses
+            Electronics
           </p>
         </Link>
       </div>
 
       {/* seasonal cards */}
-      <div className="font-mono md:grid grid-cols-2 gap-6 mt-28">
+      <div className="font-mono md:grid grid-cols-2 gap-6 my-28">
         <div className="bg-[#63cdda]  w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4">
           {/* texts */}
           <div className="z-10 text-end ">
@@ -84,7 +84,7 @@ const ShopByCategory = () => {
                 In Fashion
               </h3>
               <p className="text-white font-medium text-base">
-              Unleash your inner fashionista <br /> with Chomotkar.
+                Unleash your inner fashionista <br /> with Chomotkar.
               </p>
             </div>
             <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">
@@ -105,7 +105,7 @@ const ShopByCategory = () => {
             <div className="">
               <p className="font-medium text-base">SEASONAL STYLE SENSATIONS</p>
               <h3 className="font-cinzel md:text-3xl text-2xl font-semibold md:my-6 my-4 leading-normal">
-                Unwrap The Hottest <br /> Trends Of The Yea
+                Unwrap The Hottest <br /> Trends Of The Year
               </h3>
               <p className="text-white font-medium text-base">
                 Get ready for a wardrobe makeover <br /> like no other.
