@@ -8,6 +8,7 @@ const ProductCard = ({ product }) => {
       <div className="relative overflow-hidden">
         <img
           className="scale-100 hover:scale-110 transform duration-500"
+          loading="lazy"
           src={product?.img}
           alt={product.title}
         />

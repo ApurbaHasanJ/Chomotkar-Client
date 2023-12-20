@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const ColorContext = createContext(null);
 
-export const ColorProvider = ({ children }) => {
+const ColorProvider = ({ children }) => {
   const [selectedColor, setSelectedColor] = useState("");
 
   const updateColor = (color) => {

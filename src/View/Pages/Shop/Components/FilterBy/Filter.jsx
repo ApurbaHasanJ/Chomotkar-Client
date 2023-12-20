@@ -8,8 +8,8 @@ const Filter = () => {
         FILTER BY
       </button>
       <div className="grid gap-10">
-        <ColorFilter />
         <CategoryFilter />
+        <ColorFilter />
       </div>
     </div>
   );
