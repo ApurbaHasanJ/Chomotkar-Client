@@ -1,5 +1,4 @@
 import { FaBagShopping } from "react-icons/fa6";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Cart = () => {
   return (

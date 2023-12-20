@@ -52,7 +52,7 @@ const Navbar = () => {
       </div>
 
       {/* Top navbar for small devices */}
-      <div className="w-full bg-white  fixed top-0 shadow-xl right-0 left-0 z-50">
+      <div className="w-full bg-white  fixed top-0 right-0 left-0 z-50">
         <nav className="flex   my-container py-2 md:hidden justify-between items-center">
           {/* NavItems */}
           <div className=" z-40   lg:hidden block">
