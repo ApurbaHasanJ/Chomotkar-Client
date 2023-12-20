@@ -1,13 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import Search from "./Search/Search";
 import { MdKeyboardArrowDown, MdMan, MdWoman } from "react-icons/md";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { HiHome } from "react-icons/hi2";
 import { FaHeadphonesSimple } from "react-icons/fa6";
+import { CategoryContext } from "../../Providers/CategoryProvider";
 
 const NavItems = () => {
   const [womenItems, setWomenItems] = useState(false);
   const [menItems, setMenItems] = useState(false);
+  // take category context
+  const { updateCategory } = useContext(CategoryContext);
   // const [electronicsItems, setElectronicsItems] = useState(false);
 
   // Men collection
@@ -36,6 +39,11 @@ const NavItems = () => {
   //   setElectronicsItems(false);
   // };
 
+  // category selection function
+  const handleSelectCategory = (category) => {
+    updateCategory(category);
+  };
+
   return (
     <>
       {/* Home route */}
@@ -44,8 +52,8 @@ const NavItems = () => {
           to="/"
           className={({ isActive }) => (isActive ? "active" : "default")}>
           <div className="flex items-center gap-1">
-          <HiHome className="text-lg" />
-          <span>HOME</span>
+            <HiHome className="text-lg" />
+            <span>HOME</span>
           </div>
         </NavLink>
       </li>
@@ -59,8 +67,8 @@ const NavItems = () => {
             to="/collection/men"
             className={({ isActive }) => (isActive ? "active" : "default")}>
             <div className="flex items-center">
-            <MdMan className="text-xl"/>
-            <p>MEN</p>
+              <MdMan className="text-xl" />
+              <p>MEN</p>
             </div>
           </NavLink>
           <MdKeyboardArrowDown className="text-xl text-slate-500 hover:text-rose-400" />
@@ -70,19 +78,31 @@ const NavItems = () => {
             onMouseEnter={openMenCollection}
             onMouseLeave={closeMenCollection}
             className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/men"
+              onClick={() => handleSelectCategory("t-shirt")}
+              className="hover:text-rose-300">
               Premium T-Shirt
             </Link>
             <hr />
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/men"
+              onClick={() => handleSelectCategory("polo-shirt")}
+              className="hover:text-rose-300">
               Polo Shirt
             </Link>
             <hr />
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/men"
+              onClick={() => handleSelectCategory("panjabi")}
+              className="hover:text-rose-300">
               Luxury Panjabi
             </Link>
             <hr />
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/men"
+              onClick={() => handleSelectCategory("joggers")}
+              className="hover:text-rose-300">
               Joggers
             </Link>
           </div>
@@ -98,8 +118,8 @@ const NavItems = () => {
             to="/collection/women"
             className={({ isActive }) => (isActive ? "active" : "default")}>
             <div className="flex items-center">
-            <MdWoman className="text-xl"/>
-            <p>Women</p>
+              <MdWoman className="text-xl" />
+              <p>Women</p>
             </div>
           </NavLink>
           <MdKeyboardArrowDown className="text-xl text-slate-500 hover:text-rose-400" />
@@ -109,15 +129,24 @@ const NavItems = () => {
             onMouseEnter={openWomenCollection}
             onMouseLeave={closeWomenCollection}
             className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/women"
+              onClick={() => handleSelectCategory("sari")}
+              className="hover:text-rose-300">
               Sari
             </Link>
             <hr />
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/women"
+              onClick={() => handleSelectCategory("combo-pack")}
+              className="hover:text-rose-300">
               Compo Pack
             </Link>
             <hr />
-            <Link to="#" className="hover:text-rose-300">
+            <Link
+              to="/collection/women"
+              onClick={() => handleSelectCategory("three-pieces")}
+              className="hover:text-rose-300">
               Three Pieces
             </Link>
           </div>
@@ -128,10 +157,9 @@ const NavItems = () => {
           to="/collections/electronics"
           className={({ isActive }) => (isActive ? "active" : "default")}>
           <div className="flex items-center gap-1">
-          <FaHeadphonesSimple className="text-lg"/>
-          <span>Electronics</span>
+            <FaHeadphonesSimple className="text-lg" />
+            <span>Electronics</span>
           </div>
-          
         </NavLink>
       </li>
 

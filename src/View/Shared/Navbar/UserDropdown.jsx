@@ -1,6 +1,6 @@
 import { FaUserLarge } from "react-icons/fa6";
-import { Link, NavLink } from "react-router-dom";
-import Cart from "../Cart/Cart";
+import { Link, } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -50,7 +50,6 @@ const UserDropdown = () => {
   return (
     <>
       <ul className="ml-auto z-50 flex items-center justify-center gap-3">
-        
         <li className="relative">
           <div
             onClick={handleShowDropDown}
@@ -62,12 +61,12 @@ const UserDropdown = () => {
                 alt={user?.displayName}
               />
             ) : (
-              <div className="  rounded-full ">
+              <Link to="/login" className="">
                 <FaUserLarge
                   className="text-[22px] "
                   title={user?.displayName}
                 />
-              </div>
+              </Link>
             )}
             <p>Login/Join</p>
           </div>
@@ -75,45 +74,62 @@ const UserDropdown = () => {
             <div
               id="user-dropdown-card"
               className="absolute grid justify-start items-start right-0 z-40 top-12 font-semibold drop-shadow-2xl  p-2 rounded-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
-              <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900 dark:text-white">
-                  Bonnie Green
-                </span>
-                <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                  name@flowbite.com
-                </span>
-              </div>
-              <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
+              {user ? (
+                <>
+                  <div className="px-4 py-3">
+                    <span className="block text-sm text-gray-900 dark:text-white">
+                      Bonnie Green
+                    </span>
+                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                      name@flowbite.com
+                    </span>
+                  </div>
+                  <ul className="py-2" aria-labelledby="user-menu-button">
+                    <li>
+                      <Link
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        Settings
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        Earnings
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#"
+                        onClick={handleLogout}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        Sign out
+                      </Link>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <ul>
                   <Link
-                    href="#"
+                    to="/login"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Dashboard
+                    Login
                   </Link>
-                </li>
-                <li>
                   <Link
-                    href="#"
+                    to="/register"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Settings
+                    Register
                   </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Earnings
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    onClick={handleLogout}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Sign out
-                  </Link>
-                </li>
-              </ul>
+                </ul>
+              )}
             </div>
           )}
         </li>
