@@ -1,12 +1,12 @@
 import { FaUserLarge } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const UserDropdown = () => {
-  const { loading, user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
 
   const handleToggleDropDown = () => {
@@ -57,7 +57,11 @@ const UserDropdown = () => {
                 />
               </Link>
             )}
-            <p>Login/Join</p>
+            <span>
+              {
+                !user && <p>Login/Join</p>
+              }
+            </span>
           </div>
           {showDropDown && (
             <div

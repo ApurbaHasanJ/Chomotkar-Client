@@ -4,6 +4,9 @@ import Home from "../Pages/Home/LandingPage/Home";
 import Shop from "../Pages/Shop/Shop";
 import SignUp from "../Pages/Register/SignUp";
 import Login from "../Pages/Login/Login";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
+import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
+import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +28,20 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "dashboard/",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "admin-home",
+        element: <AdminHome />,
+      },
+      {
+        path: "add-products",
+        element: <AddProducts />,
       },
     ],
   },
