@@ -4,7 +4,6 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-// import { AuthContext } from "../Providers/AuthProvider";
 
 const SocialLogin = () => {
   const { continueWithGoogle } = useContext(AuthContext);
@@ -68,7 +67,6 @@ const SocialLogin = () => {
       });
   };
 
-  // continue with github
 
   // Continue with facebook login
   //   const handleFacebookSignIn = () => {

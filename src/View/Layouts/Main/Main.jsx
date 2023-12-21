@@ -6,16 +6,13 @@ import WhatsApp from "../../Shared/Whatsapp/WhatsApp";
 
 const Main = () => {
   return (
-    <main >
+    <main>
       <Navbar />
-        <div className="min-h-screen">
-          <Outlet />
-        </div>
-        <WhatsApp/>
-        <Footer/>
-        {/* bottom bar for only small devices */}
-        <BottomNavbar/>
-        
+      <Outlet />
+      <WhatsApp />
+      <Footer />
+      {/* bottom bar for only small devices */}
+      <BottomNavbar />
     </main>
   );
 };

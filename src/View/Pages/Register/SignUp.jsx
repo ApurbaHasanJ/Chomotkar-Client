@@ -97,7 +97,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="py-20 mx-6 bg-transparent z-20">
+    <div className="pt-20 mx-6 bg-transparent z-20">
       <div className="my-container shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Register
@@ -196,8 +196,8 @@ const SignUp = () => {
               <input
                 // disabled={disabled}
                 type="submit"
-                value="Sign in"
-                className="btn p-3 duration-500 rounded-md border-none text-white bg-slate-500 hover:bg-rose-400"
+                value="CREATE"
+                className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
               />
             </div>
           </form>

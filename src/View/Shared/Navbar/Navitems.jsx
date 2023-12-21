@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import Search from "./Search/Search";
+
 import { MdKeyboardArrowDown, MdMan, MdWoman } from "react-icons/md";
 import { useContext, useState } from "react";
 import { HiHome } from "react-icons/hi2";
@@ -188,9 +188,7 @@ const NavItems = () => {
         )}
       </li> */}
 
-      <li className="md:hidden block">
-        <Search />
-      </li>
+      
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { FaUserLarge } from "react-icons/fa6";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -9,22 +9,11 @@ const UserDropdown = () => {
   const { loading, user, logOut } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
 
-  const handleShowDropDown = () => {
+  const handleToggleDropDown = () => {
     setShowDropDown(!showDropDown); // Toggle the state
   };
 
-  // Handle click outside the dropdown
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        !showDropDown ||
-        event.target.contains(document.getElementById("user-dropdown-card"))
-      )
-        return setShowDropDown(false); // Close dropdown on click outside
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [showDropDown]); // Re-run on state change
+  
 
   // Handle Logout
   const handleLogout = () => {
@@ -52,12 +41,12 @@ const UserDropdown = () => {
       <ul className="ml-auto z-50 flex items-center justify-center gap-3">
         <li className="relative">
           <div
-            onClick={handleShowDropDown}
+            onClick={handleToggleDropDown}
             className=" z-50 items-center flex gap-2 duration-300 text-slate-500 hover:text-rose-400 rounded-full">
             {user?.photoURL ? (
               <img
-                src={user.photoURL}
-                className="w-8 h-8 p-1 rounded-full ring-2 ring-rose-400 dark:ring-gray-500"
+                src={user?.photoURL}
+                className="w-8 h-8 rounded-full ring ring-rose-400 dark:ring-gray-500"
                 alt={user?.displayName}
               />
             ) : (
@@ -119,11 +108,13 @@ const UserDropdown = () => {
               ) : (
                 <ul>
                   <Link
+                    onClick={handleToggleDropDown}
                     to="/login"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                     Login
                   </Link>
                   <Link
+                    onClick={handleToggleDropDown}
                     to="/register"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                     Register

@@ -4,7 +4,7 @@ const Search = () => {
   return (
     <form className="">
       <label
-        htmlFor="default-search"
+        htmlFor="search"
         className="mb-2 text-sm font-medium  text-white sr-only dark:text-gray-900">
         Search
       </label>
@@ -27,7 +27,7 @@ const Search = () => {
         </div>
         <input
           type="search"
-          id="default-search"
+          id="search"
           className="block w-full p-4 ps-14 text-sm  placeholder:text-base text-rose-400 placeholder:focus:text-rose-400  border-white  focus:border-white  focus:ring-white f  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search for products..."
           required

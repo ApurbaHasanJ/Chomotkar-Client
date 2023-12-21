@@ -21,7 +21,7 @@ const Login = () => {
 
   const from = location?.state?.from?.pathname || "/";
 
-  const [disabled, setDisabled] = useState(true);
+//   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
 
@@ -29,10 +29,10 @@ const Login = () => {
   const [show, setShow] = useState(false);
 
   // On change re captcha
-  const onChange = (value) => {
-    console.log("Captcha value", value);
-    setDisabled(!disabled);
-  };
+//   const onChange = (value) => {
+//     console.log("Captcha value", value);
+//     setDisabled(!disabled);
+//   };
 
   // login controls
   const onSubmit = (data) => {
@@ -66,7 +66,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="py-20 mx-6 bg-transparent z-20">
+    <div className="pt-20 mx-6 bg-transparent z-20">
       <div className="my-container shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Login
@@ -87,6 +87,7 @@ const Login = () => {
                   {...register("email", {
                     required: "Email Address is required",
                   })}
+                  required
                   placeholder="Your email"
                   className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                   aria-invalid={errors.email ? "true" : "false"}
@@ -104,6 +105,7 @@ const Login = () => {
                 <input
                   type={show ? "text" : "password"}
                   id="password"
+                  required
                   name="password"
                   {...register("password", {
                     required: "Password is required",
@@ -147,10 +149,10 @@ const Login = () => {
 
               <div className="grid mt-5">
                 <input
-                  disabled={disabled}
+                //   disabled={disabled}
                   type="submit"
-                  value="Sign in"
-                  className="btn p-3 duration-500 rounded-md border-none text-white bg-slate-500 hover:bg-rose-400"
+                  value="LOGIN"
+                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
                 />
               </div>
             </form>

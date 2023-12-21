@@ -13,8 +13,8 @@ import {
 import { useEffect } from "react";
 import { app } from "../Firebase/firebase.config";
 
-export const AuthContext = createContext(null);
 const auth = getAuth(app);
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
   // continue with Facebook
   const continueWithFacebook = () => {
     setLoading(true);
-    signInWithPopup(auth, facebookProvider);
+    return signInWithPopup(auth, facebookProvider);
   };
 
   // refresh user profile
