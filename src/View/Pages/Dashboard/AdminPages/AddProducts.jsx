@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import SectionTitle from "../../../Shared/SectionTitle";
 import Uploading from "../../../Shared/Loader/Uploading";
+import { UploadPhotos } from "../../../Shared/UploadCloudinary/UploadPhotos";
 
 // product sizes
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -10,98 +11,102 @@ const sizes = ["S", "M", "L", "XL", "XXL"];
 const AddProducts = () => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
+  const [imgLinks, setImgLinks] = useState([]);
+
+  const onSubmit = async (data) => {
     console.log(data);
-    setLoading(true);
-    console.log(data);
-    const { img, title, productBy, price, category, subCategory, color, sizes, description } = data;
-    //  remove string from price
-    const recipePrice = parseInt(price);
 
-  //   if (!photos || !photos.length) {
-  //     // Handle the case where no photos are selected
-  //     console.error("No photos selected");
-  //     setLoading(false);
-  //     return;
-  //   }
+    const {
+      photos,
+      title,
+      productBy,
+      productPrice,
+      category,
+      subCategory,
+      color,
+      sizes,
+      description,
+    } = data;
 
-  //   const photo = photos[0];
+    // Remove string from price
+    const price = parseInt(productPrice);
 
-  //   const newFromData = new FormData();
-  //   newFromData.append("file", photo);
-  //   newFromData.append("upload_preset", "bistro_boss");
-  //   newFromData.append("cloud_name", "dxixdugif");
-  //   newFromData.append("folder", "bistro-boss"); // Specify the folder name here
-  //   console.log(photo);
-
-  //   fetch("https://api.cloudinary.com/v1_1/dxixdugif/image/upload", {
-  //     method: "POST",
-
-  //     body: newFromData,
-  //   })
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         throw new Error(`File upload failed: ${res.statusText}`);
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       const menuData = {
-  //         name,
-  //         recipe: recipeDetails,
-  //         image: data.url,
-  //         category,
-  //         price: recipePrice,
-  //       };
-  //       console.log(menuData);
-  //       if (data.url) {
-  //         fetch("http://localhost:5000/menus", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(menuData),
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data) => {
-  //             if (data.insertedId) {
-  //               setLoading(false);
-  //               reset();
-  //               Swal.fire({
-  //                 position: "top-end",
-  //                 icon: "success",
-  //                 title: "Menu Updated Successfully",
-  //                 showConfirmButton: false,
-  //                 timer: 1500,
-  //               });
-  //             }
-  //           })
-  //           .catch((err) => {
-  //             setLoading(false);
-  //             console.log(err);
-  //             Swal.fire({
-  //               position: "top-end",
-  //               icon: "error",
-  //               title: `${err.message}`,
-  //               showConfirmButton: false,
-  //               timer: 1500,
-  //             });
-  //           });
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       setLoading(false);
-  //       console.log(err);
-  //       Swal.fire({
-  //         position: "top-end",
-  //         icon: "error",
-  //         title: `${err.message}`,
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //     });
+    try {
+      let photosUrl = [];
+      setLoading(true);
+  
+      for (let i = 0; i < photos.length; i++) {
+        const data = await UploadPhotos(photos[i]);
+        photosUrl.push(data);
+      }
+  
+      console.log(photosUrl);
+  
+      // Set the state after the loop has completed
+      setImgLinks(photosUrl);
+  
+      if (photosUrl.length > 0) {
+        const productData = {
+          photos: photosUrl,
+          title,
+          productBy,
+          price,
+          category,
+          subCategory,
+          color,
+          sizes,
+          description,
+        };
+  
+        fetch("http://localhost:5000/products", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data?.insertedId) {
+              setLoading(false);
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Product Added Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+            console.log(err);
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${err.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      }
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `${error.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
+
+  console.log(imgLinks);
+
   return (
     <section className="min-h-screen  mt-12">
       <SectionTitle title={"ADD YOUR PRODUCT"} subtitle={"What's new?"} />
@@ -136,10 +141,8 @@ const AddProducts = () => {
                   </label>
                   <input
                     type="number"
-                    id="price"
                     min={0}
-                    name="price"
-                    {...register("price")}
+                    {...register("productPrice")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                     required
                     placeholder="Product Price"
@@ -166,13 +169,11 @@ const AddProducts = () => {
                 <div className="grid mb-4 ">
                   <label className="label justify-start text-base font-medium text-slate-900 ">
                     <span className="label-text">Sub Category</span>
-                    <span className="text-red-600 text-xl">*</span>
                   </label>
                   <select
                     {...register("subCategory")}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
-                    required>
-                    <option value="none">None</option>
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
+                    <option>None</option>
                     <option value="t-shirt">Premium T-Shirt</option>
                     <option value="polo-shirt">Polo Shirt</option>
                     <option value="panjabi">Luxury Panjabi</option>
@@ -245,10 +246,9 @@ const AddProducts = () => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <textarea
-                  name="Product Details"
                   {...register("description")}
                   required
-                  placeholder="Your Product Details"
+                  placeholder="Your Product Details..."
                   className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                   rows="8"
                 />
@@ -260,10 +260,11 @@ const AddProducts = () => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
-                required
+                  required
+                  multiple={true}
                   className="  file-input hover:shadow-md border rounded-lg  border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  w-full max-w-xs"
                   type="file"
-                  {...register("img", { required: true })}
+                  {...register("photos", { required: true })}
                 />
               </div>
 
