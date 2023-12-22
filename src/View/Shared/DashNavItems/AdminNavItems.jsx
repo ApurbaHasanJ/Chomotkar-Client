@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 
 const AdminNavItems = () => {
   return (
-    <nav className="w-full font-[Cinzel]">
-      <ul className="md:grid flex md:gap-6 ">
+    <nav className="w-full font-g-mono">
+      <ul className="flex flex-col justify-start items-start md:gap-6 gap-3">
         <li>
           <NavLink
             to="/dashboard/admin-home"
@@ -16,7 +16,7 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="ADMIN HOME" />
-            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               ADMIN HOME
             </span>
           </NavLink>
@@ -33,7 +33,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="ADD PRODUCTS"
             />
-            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               ADD PRODUCTS
             </span>
           </NavLink>
@@ -50,7 +50,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE PRODUCTS"
             />
-            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               MANAGE PRODUCTS
             </span>
           </NavLink>
@@ -67,7 +67,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE ORDERS"
             />
-            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               MANAGE ORDERS
             </span>
           </NavLink>
@@ -81,7 +81,7 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaUsers className="w-14 h-6 md:mx-0 mx-auto" title="ALL USERS" />
-            <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               ALL USERS
             </span>
           </NavLink>

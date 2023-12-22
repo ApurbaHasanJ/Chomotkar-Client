@@ -8,15 +8,15 @@ import GeneralNavItems from "../../Shared/DashNavItems/GeneralNavItems";
 import LogoName from "../../Shared/Navbar/LogoName";
 
 const Dashboard = () => {
-  let [showTopNav, setShowTopNav] = useState(false);
+  let [showDashboard, setShowDashboard] = useState(false);
   const admin = true;
 
-  const handleShowTopNav = () => {
-    setShowTopNav(!showTopNav);
+  const handleToggleDashboard = () => {
+    setShowDashboard(!showDashboard);
   };
 
   return (
-    <div className=" md:flex ">
+    <div className={` md:flex ${showDashboard ? "bg-gray-50" : ""} `}>
       {/* Dashboard */}
 
       {/* sidebar for lg and md */}
@@ -33,7 +33,7 @@ const Dashboard = () => {
           </div>
           {/* logo for smaller device */}
           <div className="w-14 h-14 ml-3 lg:hidden block drop-shadow-2xl  rounded-2xl bg-white p-2">
-           <LogoName/>
+            <LogoName />
           </div>
           {/* Nav items for lg and md  */}
           <div className="mt-16  md:ml-2 w-full">
@@ -45,7 +45,7 @@ const Dashboard = () => {
       </div>
 
       {/* Top bar for */}
-      <nav className="bg-[#D1A054] py-4 md:hidden block ">
+      <nav className="bg-[#ff7675] sticky top-0 z-50  py-4 md:hidden block ">
         {/* title for sm device */}
         <div className="flex justify-between items-center">
           <div className="block md:hidden md:ml-4 mx-6">
@@ -56,17 +56,20 @@ const Dashboard = () => {
               Fashion
             </p>
           </div>
-          <button onClick={handleShowTopNav}>
+          <button onClick={handleToggleDashboard}>
             <HiOutlineMenu className="w-14 h-7 md:mx-0 ml-auto" title="MENU" />
           </button>
         </div>
-        {showTopNav && (
-          <div className="flex justify-end">
-            <div className="md: pt-5 ">
-              {admin ? <AdminNavItems /> : <UserNavItems />}
-            </div>
+        <div
+          className={`fixed bg-[#ff7675] h-full pb-4 pr-2 ${
+            showDashboard ? "left-0" : "-left-[400px]"
+          } transform duration-700 shadow-2xl top-[85px] `}>
+          <div className="md: pt-5 ">
+            {admin ? <AdminNavItems /> : <UserNavItems />}
+            <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />
+            <GeneralNavItems />
           </div>
-        )}
+        </div>
       </nav>
 
       {/* all pages here */}

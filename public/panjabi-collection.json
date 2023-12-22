@@ -1,6 +1,10 @@
 [
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825656/chomotkar-fashion/Alien_dd7lpb.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825656/chomotkar-fashion/Alien_dd7lpb.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -12,7 +16,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825643/chomotkar-fashion/Punky_Baba_srnf9l.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825643/chomotkar-fashion/Punky_Baba_srnf9l.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -23,7 +31,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825641/chomotkar-fashion/Smoking_Skull_lcmddb.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825641/chomotkar-fashion/Smoking_Skull_lcmddb.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -34,7 +46,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825641/chomotkar-fashion/Sceter_lo33e8.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825641/chomotkar-fashion/Sceter_lo33e8.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -46,7 +62,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825615/chomotkar-fashion/Untitled-1_xlack4.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825615/chomotkar-fashion/Untitled-1_xlack4.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -58,7 +78,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825629/chomotkar-fashion/Mesa_krug4j.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825629/chomotkar-fashion/Mesa_krug4j.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -69,7 +93,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825605/chomotkar-fashion/Untitled-2_lo8pwi.jpg",
+    "photos": [
+      {
+        "img": "https://res.cloudinary.com/dxixdugif/image/upload/v1702825605/chomotkar-fashion/Untitled-2_lo8pwi.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -81,7 +109,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/2sF8JT7/indian-male-dressed-red-shirt-isolated-grey-background.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/2sF8JT7/indian-male-dressed-red-shirt-isolated-grey-background.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -93,7 +125,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/wwDBdb7/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/wwDBdb7/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -104,7 +140,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/D7yn1y7/young-man-posing-casually-white-wall.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/D7yn1y7/young-man-posing-casually-white-wall.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -115,7 +155,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/2sF8JT7/indian-male-dressed-red-shirt-isolated-grey-background.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/2sF8JT7/indian-male-dressed-red-shirt-isolated-grey-background.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -127,7 +171,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/QJZy0YH/panjabi.png",
+    "photos": [{ "img": "https://i.ibb.co/QJZy0YH/panjabi.png" }],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -139,7 +183,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/wwDBdb7/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/wwDBdb7/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,
@@ -150,7 +198,11 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adip. lorem tempus et just eu et ullamcorper"
   },
   {
-    "img": "https://i.ibb.co/D7yn1y7/young-man-posing-casually-white-wall.jpg",
+    "photos": [
+      {
+        "img": "https://i.ibb.co/D7yn1y7/young-man-posing-casually-white-wall.jpg"
+      }
+    ],
     "title": "Cashmere Knit Cardigan",
     "productBy": "Calvin Klein",
     "price": 780,

@@ -11,10 +11,12 @@ const sizes = ["S", "M", "L", "XL", "XXL"];
 const AddProducts = () => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
-  const [imgLinks, setImgLinks] = useState([]);
 
   const onSubmit = async (data) => {
     console.log(data);
+    // photos url here
+    let photoUrls = [];
+    console.log(photoUrls);
 
     const {
       photos,
@@ -32,22 +34,20 @@ const AddProducts = () => {
     const price = parseInt(productPrice);
 
     try {
-      let photosUrl = [];
       setLoading(true);
-  
+
       for (let i = 0; i < photos.length; i++) {
         const data = await UploadPhotos(photos[i]);
-        photosUrl.push(data);
+        photoUrls.push(data);
       }
-  
-      console.log(photosUrl);
-  
+
+      console.log(photoUrls);
+
       // Set the state after the loop has completed
-      setImgLinks(photosUrl);
-  
-      if (photosUrl.length > 0) {
+
+      if (photoUrls.length > 0) {
         const productData = {
-          photos: photosUrl,
+          photos: photoUrls,
           title,
           productBy,
           price,
@@ -57,7 +57,7 @@ const AddProducts = () => {
           sizes,
           description,
         };
-  
+
         fetch("http://localhost:5000/products", {
           method: "POST",
           headers: {
@@ -104,8 +104,6 @@ const AddProducts = () => {
       });
     }
   };
-
-  console.log(imgLinks);
 
   return (
     <section className="min-h-screen  mt-12">
@@ -222,7 +220,7 @@ const AddProducts = () => {
                 <label className="label justify-start text-base font-medium text-slate-900">
                   <span className="label-text">Fashion Product Sizes</span>
                 </label>
-                <div className="flex space-x-6">
+                <div className="sm:flex grid grid-cols-3 items-center justify-start sm:space-x-6 sm:space-y-0 space-y-3">
                   {sizes.map((size) => (
                     <div key={size} className="flex items-center">
                       <input

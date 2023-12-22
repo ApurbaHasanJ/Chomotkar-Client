@@ -7,6 +7,8 @@ import Login from "../Pages/Login/Login";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
+import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
+import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
         path: "add-products",
         element: <AddProducts />,
       },
+      {
+        path: "manage-products",
+        element: <ManageProducts />,
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers/>
+      }
     ],
   },
 ]);

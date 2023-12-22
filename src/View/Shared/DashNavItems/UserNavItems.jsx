@@ -12,8 +12,8 @@ import {
   const UserNavItems = () => {
     // const [carts]= useCart()
     return (
-      <nav className="w-full font-[Cinzel]">
-        <ul className="md:grid flex md:gap-6 ">
+      <nav className="w-full font-g-mono">
+        <ul className="flex flex-col justify-start items-start md:gap-6 gap-3 ">
           <li>
             <NavLink
               to="/dashboard/user-home"
@@ -23,7 +23,7 @@ import {
                   : "dashDefault flex items-center justify-start gap-4"
               }>
               <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="USER HOME" />
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 USER HOME
               </span>
             </NavLink>
@@ -40,7 +40,7 @@ import {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="RESERVATION"
               />
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 RESERVATION
               </span>
             </NavLink>
@@ -57,7 +57,7 @@ import {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="PAYMENT HISTORY"
               />
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 PAYMENT HISTORY
               </span>
             </NavLink>
@@ -79,7 +79,7 @@ import {
                 {/* {carts?.length || 0} */}0
               </span>
               </div>
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 MY CART
               </span>
               
@@ -97,7 +97,7 @@ import {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="MY BOOKINGS"
               />
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 MY BOOKINGS
               </span>
             </NavLink>
@@ -114,7 +114,7 @@ import {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="ADD REVIEWS"
               />
-              <span className="text-base font-semibold lg:block hidden whitespace-nowrap">
+              <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
                 ADD REVIEWS
               </span>
             </NavLink>
