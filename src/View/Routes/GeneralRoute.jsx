@@ -9,12 +9,13 @@ import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
-import UpdateProduct from "../Pages/Dashboard/AdminPages/UpdateProduct";
+import ErrorPage from "../Pages/Error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
   {
     path: "dashboard/",
     element: <Dashboard />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "admin-home",

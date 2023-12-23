@@ -48,7 +48,7 @@ const Footer = () => {
           {/* 2nd col */}
           <div className="">
             <h1 className="text-rose-500 font-bold text-xl uppercase">
-              Information
+            Categories
             </h1>
             <div className="mt-11 grid gap-3">
               <Link
@@ -76,7 +76,7 @@ const Footer = () => {
           {/* 3rd col */}
           <div className=" mr-10">
             <h1 className="text-rose-500 font-bold text-xl uppercase">
-              Categories
+            Information
             </h1>
             <div className="mt-11 grid gap-3">
               <Link

@@ -5,9 +5,9 @@ import { RxCross2 } from "react-icons/rx";
 import Search from "./Search/Search";
 import UserDropdown from "./UserDropdown";
 import { Link, NavLink } from "react-router-dom";
-import Cart from "../Cart/Cart";
 import Call from "./Call";
 import LogoName from "./LogoName";
+import WishCount from "../WishCount/WishCount";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -33,11 +33,11 @@ const Navbar = () => {
             <div className="flex items-center md:gap-8 gap-5 justify-end">
               <Call />
               <NavLink
-                to="dashboard/my-cart"
+                to="dashboard/wishlist"
                 className={({ isActive }) =>
                   isActive ? "active relative w-10" : "default relative w-10"
                 }>
-                <Cart />
+                <WishCount />
               </NavLink>
               <UserDropdown />
             </div>
@@ -77,11 +77,13 @@ const Navbar = () => {
                 </label>
               )}
             </div>
-            {showNavbar && (
-              <ul className="absolute grid justify-start items-start gap-3 left-0 z-40 top-16 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap">
-                <NavItems />
-              </ul>
-            )}
+
+            <ul
+              className={`absolute ${
+                showNavbar ? "left-0" : "-left-96"
+              } transform duration-500 top-20 grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
+              <NavItems />
+            </ul>
           </div>
           {/* Name and logo */}
           <div className="w-full border-x-[2px] border-gray-300 grid justify-center mx-5">
