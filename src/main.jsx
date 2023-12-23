@@ -7,6 +7,8 @@ import { router } from "./View/Routes/GeneralRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ColorProvider from "./View/Providers/ColorProvider";
 import CategoryProvider from "./View/Providers/CategoryProvider";
+import { Toaster } from "react-hot-toast";
+import WishlistProvider from "./View/Providers/WishlistProvider";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +18,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <CategoryProvider>
         <ColorProvider>
           <AuthProvider>
-            <RouterProvider router={router} />
+            <WishlistProvider>
+              <Toaster position="top-right" reverseOrder={false} />
+              <RouterProvider router={router} />
+            </WishlistProvider>
           </AuthProvider>
         </ColorProvider>
       </CategoryProvider>

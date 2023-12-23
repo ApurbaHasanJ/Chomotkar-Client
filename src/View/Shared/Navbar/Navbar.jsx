@@ -7,7 +7,7 @@ import UserDropdown from "./UserDropdown";
 import { Link, NavLink } from "react-router-dom";
 import Call from "./Call";
 import LogoName from "./LogoName";
-import WishCount from "../WishCount/WishCount";
+import WishCount from "../WishList/WishCount";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);

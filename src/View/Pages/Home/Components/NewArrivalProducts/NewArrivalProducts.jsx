@@ -34,7 +34,7 @@ const NewArrivalProducts = () => {
           }}
           autoplay={{
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
             waitForTransition: Animation,
           }}
           freeMode={true}

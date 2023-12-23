@@ -22,21 +22,6 @@ const Products = () => {
   const { selectedCategory } = useContext(CategoryContext);
   console.log(products);
 
-  // // category filter
-  // const categoryFilter = selectedCategory
-  //   ? products.filter((product) => product.subCategory === selectedCategory)
-  //   : products;
-
-  // // color filter
-  // const colorFilter = selectedColor
-  //   ? products.filter((product) => product.color === selectedColor)
-  //   : products;
-
-  // // total filter
-  // const filteredProducts = colorFilter
-  //   ? categoryFilter.filter((product) => product.color === selectedColor)
-  //   : categoryFilter;
-
   // total filter
   const filteredProducts = products.filter((product) => {
     const colorMatch = !selectedColor || product.color === selectedColor;
