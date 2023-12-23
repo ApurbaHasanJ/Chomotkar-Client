@@ -5,15 +5,51 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import Loader from "../../../Shared/Loader/Loader";
 import { useState } from "react";
 import UpdateProduct from "./UpdateProduct";
+import Swal from "sweetalert2";
 
 const ManageProducts = () => {
   const [products, productsLoading, refetch] = useProducts();
   const [productId, setProductId] = useState("");
+  const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
 
   const handleToggleModal = () => {
     setModal(!modal);
     refetch();
+  };
+
+  const handleDeleteProduct = (deleteId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#ff7675",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLoading(true);
+        fetch(`http://localhost:5000/products/${deleteId}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data?.deletedCount) {
+              setLoading(false);
+              refetch();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Product Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -59,7 +95,7 @@ const ManageProducts = () => {
                 </tr>
               </thead>
               <tbody>
-                {productsLoading ? (
+                {loading || productsLoading ? (
                   <tr className="h-96">
                     <td className="">
                       <Loader />
@@ -116,7 +152,10 @@ const ManageProducts = () => {
                         />
                       </td>
                       <td scope="row" className=" px-6 py-4">
-                        <MdDeleteForever className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
+                        <MdDeleteForever
+                          onClick={() => handleDeleteProduct(product?._id)}
+                          className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
+                        />
                       </td>
                     </tr>
                   ))
