@@ -9,6 +9,7 @@ import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
+import UpdateProduct from "../Pages/Dashboard/AdminPages/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -46,13 +47,14 @@ export const router = createBrowserRouter([
         element: <AddProducts />,
       },
       {
-        path: "manage-products",
+        path: "manage-products/",
         element: <ManageProducts />,
       },
+
       {
         path: "manage-users",
-        element: <ManageUsers/>
-      }
+        element: <ManageUsers />,
+      },
     ],
   },
 ]);

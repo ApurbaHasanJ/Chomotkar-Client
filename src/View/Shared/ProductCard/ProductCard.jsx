@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
         <img
           className="scale-100 max-w-[390.663px] max-h-[390.663px] h-full w-full hover:scale-110 transform duration-500"
           loading="lazy"
-          src={product?.img}
+          src={product?.photos[0]?.img}
           alt={product.title}
         />
 

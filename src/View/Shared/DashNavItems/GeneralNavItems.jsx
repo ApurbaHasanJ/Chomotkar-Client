@@ -25,7 +25,7 @@ const GeneralNavItems = () => {
 
         <li>
           <NavLink
-            to="/shop"
+            to="/collection/men"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"

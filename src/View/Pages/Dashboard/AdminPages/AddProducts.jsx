@@ -56,6 +56,7 @@ const AddProducts = () => {
           color,
           sizes,
           description,
+          "createdAt": new Date()
         };
 
         fetch("http://localhost:5000/products", {
@@ -158,7 +159,7 @@ const AddProducts = () => {
                     {...register("category")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                     required>
-                    <option value="none">None</option>
+                    <option >None</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
                     <option value="electronics">Electronics</option>
@@ -211,7 +212,7 @@ const AddProducts = () => {
                     {...register("color")}
                     required
                     placeholder="Product Color"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                   />
                 </div>
               </div>
@@ -269,7 +270,7 @@ const AddProducts = () => {
               <div className="grid mt-5">
                 <input
                   type="submit"
-                  value="Add NOW"
+                  value="ADD NOW"
                   className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
                 />
               </div>
