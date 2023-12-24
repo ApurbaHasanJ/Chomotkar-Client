@@ -10,6 +10,7 @@ import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
+import Wishlist from "../Pages/Wishlist/Wishlist";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />,
       },
     ],
   },

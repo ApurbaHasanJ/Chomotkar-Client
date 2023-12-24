@@ -47,6 +47,24 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
+  // remove id from wishlist
+  const removeFormWishlist = (productId) => {
+    let currentWishlist =
+      JSON.parse(localStorage.getItem("ChomotkarFashionWishlist")) || [];
+
+    const updatedWishlist = currentWishlist.filter(
+      (wishlistProductId) => wishlistProductId != productId
+    );
+
+    localStorage.setItem(
+      "ChomotkarFashionWishlist",
+      JSON.stringify(updatedWishlist)
+    );
+
+    setWishlist(updatedWishlist);
+    toast.success("Product removed from wishlist!");
+  };
+
   const getWishlist = () => {
     const wishCount =
       JSON.parse(localStorage.getItem("ChomotkarFashionWishlist")) || [];
@@ -54,7 +72,7 @@ const WishlistProvider = ({ children }) => {
   };
 
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFormWishlist }}>
       {children}
     </WishlistContext.Provider>
   );
