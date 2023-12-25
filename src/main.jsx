@@ -10,24 +10,27 @@ import CategoryProvider from "./View/Providers/CategoryProvider";
 import { Toaster } from "react-hot-toast";
 import WishlistProvider from "./View/Providers/WishlistProvider";
 import CollectionProvider from "./View/Providers/CollectionProvider";
+import CartProvider from "./View/Providers/CartProvider";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <CollectionProvider>
-        <CategoryProvider>
-          <ColorProvider>
-            <AuthProvider>
-              <WishlistProvider>
-                <Toaster position="top-right" reverseOrder={false} />
-                <RouterProvider router={router} />
-              </WishlistProvider>
-            </AuthProvider>
-          </ColorProvider>
-        </CategoryProvider>
-      </CollectionProvider>
+      <CartProvider>
+        <CollectionProvider>
+          <CategoryProvider>
+            <ColorProvider>
+              <AuthProvider>
+                <WishlistProvider>
+                  <Toaster position="top-right" reverseOrder={false} />
+                  <RouterProvider router={router} />
+                </WishlistProvider>
+              </AuthProvider>
+            </ColorProvider>
+          </CategoryProvider>
+        </CollectionProvider>
+      </CartProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

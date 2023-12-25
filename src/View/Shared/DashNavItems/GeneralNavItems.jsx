@@ -2,10 +2,14 @@ import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { MdEmail, MdShoppingBag } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
-
+import { useContext } from "react";
+import { CollectionContext } from "../../Providers/CollectionProvider";
 
 const GeneralNavItems = () => {
+  const { handleSelectCollection } = useContext(CollectionContext);
+
   
+
   return (
     <nav className="w-full font-g-mono">
       <ul className="flex flex-col justify-start items-start md:gap-6  gap-3">
@@ -27,6 +31,7 @@ const GeneralNavItems = () => {
         <li>
           <NavLink
             to="/collection/men"
+            onClick={() => handleSelectCollection("men")}
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
@@ -60,7 +65,10 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaInfoCircle className="w-14 h-6 md:mx-0 mx-auto" title="About Us" />
+            <FaInfoCircle
+              className="w-14 h-6 md:mx-0 mx-auto"
+              title="About Us"
+            />
             <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
               ABOUT US
             </span>

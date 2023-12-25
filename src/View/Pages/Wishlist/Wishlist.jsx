@@ -6,14 +6,20 @@ import Loader from "../../Shared/Loader/Loader";
 import SectionTitle from "../../Shared/SectionTitle";
 import { FaCartPlus } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { CartContext } from "../../Providers/CartProvider";
 
 const Wishlist = () => {
   const { wishlist, removeFormWishlist } = useContext(WishlistContext);
   const [products, productsLoading, refetch] = useProducts();
+  const {carts, handleAddCart}= useContext(CartContext)
+  console.log(carts);
 
   const filterWishProducts = products.filter((product) =>
     wishlist.includes(product?._id)
   );
+
+  // add to cart
+  // const handleAddToCart = (quantity, productId)
 
   const handleDeleteFromWishlist = (productId) => {
     Swal.fire({
@@ -122,9 +128,9 @@ const Wishlist = () => {
                     </td>
                     <td scope="row" className="px-6 py-4">
                       <FaCartPlus
-                        // onClick={() => {
-                        //   setProductId(product?._id);
-                        // }}
+                        onClick={() => {
+                          handleAddCart(1, product?._id)
+                        }}
                         className="text-[#ff7675] hover:text-[#f15e5e] rounded-md text-[32px]"
                       />
                     </td>

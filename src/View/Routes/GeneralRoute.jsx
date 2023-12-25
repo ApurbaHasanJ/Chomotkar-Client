@@ -15,6 +15,7 @@ import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import AddReview from "../Shared/DashNavItems/AddReview";
+import MyCart from "../Shared/DashNavItems/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -76,11 +77,11 @@ export const router = createBrowserRouter([
       },
       // {
       //   path: "my-carts",
-      //   element: < />,
+      //   element: <MyCart />,
       // },
       {
         path: "add-review",
-        element: <AddReview/>
+        element: <AddReview />,
       },
       {
         path: "payment-history",
