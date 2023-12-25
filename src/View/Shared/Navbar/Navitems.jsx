@@ -5,10 +5,12 @@ import { useContext, useState } from "react";
 import { HiHome } from "react-icons/hi2";
 import { FaHeadphonesSimple } from "react-icons/fa6";
 import { CategoryContext } from "../../Providers/CategoryProvider";
+import { CollectionContext } from "../../Providers/CollectionProvider";
 
 const NavItems = () => {
   const [womenItems, setWomenItems] = useState(false);
   const [menItems, setMenItems] = useState(false);
+  const { handleSelectCollection } = useContext(CollectionContext);
   // take category context
   const { updateCategory } = useContext(CategoryContext);
   // const [electronicsItems, setElectronicsItems] = useState(false);
@@ -39,6 +41,11 @@ const NavItems = () => {
   //   setElectronicsItems(false);
   // };
 
+  // set collection function
+  const handleCollection = (collection) => {
+    handleSelectCollection(collection);
+  };
+
   // category selection function
   const handleSelectCategory = (category) => {
     updateCategory(category);
@@ -65,6 +72,10 @@ const NavItems = () => {
         <div className="flex items-center gap-1 hover:text-rose-400">
           <NavLink
             to="/collection/men"
+            onClick={() => {
+              handleCollection("men");
+              handleSelectCategory("");
+            }}
             className={({ isActive }) => (isActive ? "active" : "default")}>
             <div className="flex items-center">
               <MdMan className="text-xl" />
@@ -116,6 +127,9 @@ const NavItems = () => {
         <div className="flex items-center gap-1 hover:text-rose-400">
           <NavLink
             to="/collection/women"
+            onClick={() => {
+              handleCollection("women"), handleSelectCategory("");
+            }}
             className={({ isActive }) => (isActive ? "active" : "default")}>
             <div className="flex items-center">
               <MdWoman className="text-xl" />
@@ -154,11 +168,14 @@ const NavItems = () => {
       </li>
       <li>
         <NavLink
-          to="/collections/electronics"
+          to="/collection/gadget"
+          onClick={() => {
+            handleCollection("gadget"), handleSelectCategory("");
+          }}
           className={({ isActive }) => (isActive ? "active" : "default")}>
           <div className="flex items-center gap-1">
             <FaHeadphonesSimple className="text-lg" />
-            <span>Electronics</span>
+            <span>Gadgets</span>
           </div>
         </NavLink>
       </li>
@@ -187,8 +204,6 @@ const NavItems = () => {
           </div>
         )}
       </li> */}
-
-      
     </>
   );
 };

@@ -11,9 +11,13 @@ import { ColorContext } from "../../../Providers/ColorProvider";
 import { CategoryContext } from "../../../Providers/CategoryProvider";
 import { FaFilter } from "react-icons/fa6";
 import Filter from "./FilterBy/Filter";
+import { CollectionContext } from "../../../Providers/CollectionProvider";
 
 const Products = () => {
   const [products] = useProducts();
+  // takes params:-------------
+  const params = useParams().route;
+
   const [toggleFilters, setToggleFilters] = useState(false);
   // take color context-------------------
   const { selectedColor } = useContext(ColorContext);
@@ -22,18 +26,19 @@ const Products = () => {
   const { selectedCategory } = useContext(CategoryContext);
   console.log(products);
 
+  // take collection context
+  const { collection } = useContext(CollectionContext);
+
   // total filter
   const filteredProducts = products.filter((product) => {
+    const collectionMatch = !collection || product?.category === collection;
     const colorMatch = !selectedColor || product.color === selectedColor;
     const categoryMatch =
       !selectedCategory || product.subCategory === selectedCategory;
-    return colorMatch && categoryMatch;
+    return collectionMatch && colorMatch && categoryMatch;
   });
 
   console.log(filteredProducts);
-
-  // takes params
-  const params = useParams().route;
 
   // console.log(params);
 
@@ -50,12 +55,17 @@ const Products = () => {
       />
       {/* filter button */}
       <div className="block md:hidden mt-8">
-        <button onClick={handleToggleFilter} className="text-lg flex hover:text-rose-500 items-center gap-4 font-bold underline underline-offset-4">
+        <button
+          onClick={handleToggleFilter}
+          className="text-lg flex hover:text-rose-500 items-center gap-4 font-bold underline underline-offset-4">
           <span>FILTER</span>
           <FaFilter />
         </button>
         <div className="fixed top-[96px] left-0 z-50">
-        <Filter toggleFilters={toggleFilters} handleToggleFilters={handleToggleFilter}/>
+          <Filter
+            toggleFilters={toggleFilters}
+            handleToggleFilters={handleToggleFilter}
+          />
         </div>
       </div>
       {filteredProducts.length > 0 ? (
