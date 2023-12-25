@@ -5,6 +5,7 @@ import { FaInfoCircle } from "react-icons/fa";
 
 
 const GeneralNavItems = () => {
+  
   return (
     <nav className="w-full font-g-mono">
       <ul className="flex flex-col justify-start items-start md:gap-6  gap-3">

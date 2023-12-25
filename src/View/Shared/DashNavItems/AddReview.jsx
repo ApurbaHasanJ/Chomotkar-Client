@@ -21,9 +21,9 @@ const AddReview = () => {
         subtitle={"---Sharing is Caring!!!---"}
       />
 
-      <div className="py-20 ">
+      <div className=" ">
         <div
-          className="my-container shadow-xl"
+          className="my-container py-10 my-20 shadow-xl"
           style={{
             backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
           }}>
@@ -47,25 +47,25 @@ const AddReview = () => {
             <div className=" px-10 mx-3 lg:mx-0 rounded-lg">
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* recipe name */}
-                <div className="form-control ">
+                <div className="grid mb-4 ">
                   <label className="label justify-start text-base font-medium text-slate-900 ">
                     <span className="label-text">
-                      Which recipe you liked most?
+                      Which product you liked most?
                     </span>
                     <span className="text-red-600 text-xl">*</span>
                   </label>
                   <input
                     type="text"
-                    name="recipeName"
-                    {...register("recipeName")}
+                    name="productName"
+                    {...register("productName")}
                     required
-                    placeholder="Recipe you liked most"
-                    className="input py-7 hover:shadow-md "
+                    placeholder="Godzilla X Kong T-Shirt"
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                   />
                 </div>
 
                 {/* recipe price */}
-                <div className="form-control mb-3">
+                <div className="grid mb-4 ">
                   <label className="label justify-start text-base font-medium text-slate-900 ">
                     <span className="label-text">
                       Do you have any suggestion for us?
@@ -73,17 +73,17 @@ const AddReview = () => {
                     <span className="text-red-600 text-xl">*</span>
                   </label>
                   <input
-                    id="price"
-                    name="price"
+                    id="suggestion"
+                    name="suggestion"
                     {...register("suggestion")}
-                    className="input py-7 hover:shadow-md "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                     required
                     placeholder="Suggestion"
                   />
                 </div>
 
                 {/* Recipe details */}
-                <div className="form-control mb-3">
+                <div className="grid mb-4 ">
                   <label className="label justify-start text-base font-medium text-slate-900 ">
                     <span className="label-text">
                       Kindly express your care in a short way.
@@ -91,23 +91,25 @@ const AddReview = () => {
                     <span className="text-red-600 text-xl">*</span>
                   </label>
                   <textarea
-                    name="recipe details"
-                    {...register("recipeDetails")}
+                    name="reviewDetails"
+                    {...register("reviewDetails")}
                     required
                     placeholder="Review in detail..."
-                    className="textarea py-3 hover:shadow-md "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                     rows="8"
                   />
                 </div>
 
                 <div
                   onSubmit={handleSubmit}
-                  className="flex justify-start mt-7 ">
+                  className="flex flex-col justify-start mt-7 ">
+                  <p className="text-red-500 font-mono">Please Rate the Star</p>
                   <button
+                    disabled={rating === 0}
                     type="submit"
                     {...register("submit")}
                     // disabled={disabled}
-                    className="  border-none bg-gradient-to-r from-[#835D23] hover:from-[#a57224] hover:to-[#d28209] to-[#c87f12] flex justify-center items-center gap-3 p-4 px-5 text-white bg-[#d1a054b3] hover:bg-[#ec9f2db3]">
+                    className="btn p-3 px-4 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400 flex items-center justify-center gap-2">
                     <span className="text-xl font-semibold">Send Review</span>
                     <MdRocketLaunch className=" text-2xl md:mx-0 mx-auto" />
                   </button>

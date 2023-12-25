@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-// react google recaptcha
-import ReCAPTCHA from "react-google-recaptcha";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -98,7 +96,7 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <div className="grid">
+              <div className="grid mb-4">
                 <label className="label text-base font-medium text-slate-900 ">
                   <span className="label-text">Password</span>
                 </label>
@@ -123,7 +121,7 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <div className="grid  my-3">
+              <div className="grid my-3">
                 <div className="flex items-center  mb-6">
                   <input
                     id="showPassword"
