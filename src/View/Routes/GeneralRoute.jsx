@@ -12,6 +12,9 @@ import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
+import UserHome from "../Pages/Dashboard/UserPages/UserHome";
+import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
+import AddReview from "../Shared/DashNavItems/AddReview";
 
 export const router = createBrowserRouter([
   {
@@ -58,14 +61,30 @@ export const router = createBrowserRouter([
         path: "manage-products/",
         element: <ManageProducts />,
       },
-
       {
         path: "manage-users",
         element: <ManageUsers />,
       },
+      // user board
+      {
+        path: "user-home",
+        element: <UserHome />,
+      },
       {
         path: "wishlist",
         element: <Wishlist />,
+      },
+      // {
+      //   path: "my-carts",
+      //   element: < />,
+      // },
+      {
+        path: "add-review",
+        element: <AddReview/>
+      },
+      {
+        path: "payment-history",
+        element: <PaymentHistory />,
       },
     ],
   },

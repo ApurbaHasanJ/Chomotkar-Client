@@ -9,7 +9,7 @@ import LogoName from "../../Shared/Navbar/LogoName";
 
 const Dashboard = () => {
   let [showDashboard, setShowDashboard] = useState(false);
-  const admin = true;
+  const admin = false;
 
   const handleToggleDashboard = () => {
     setShowDashboard(!showDashboard);
