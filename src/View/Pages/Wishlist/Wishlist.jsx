@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { WishlistContext } from "../../Providers/WishlistProvider";
 import useProducts from "../../Hooks/useProducts";
 import { MdDeleteForever } from "react-icons/md";
-import { TbEdit } from "react-icons/tb";
 import Loader from "../../Shared/Loader/Loader";
 import SectionTitle from "../../Shared/SectionTitle";
 import { FaCartPlus } from "react-icons/fa6";

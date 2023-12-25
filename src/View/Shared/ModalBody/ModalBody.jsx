@@ -18,16 +18,17 @@ const ModalBody = ({ demos, banner, category }) => {
         />
       </div>
       <div className="flex md:max-h-[calc(100vh-80px)] flex-wrap gap-4   ">
-        {demos.map((demo, index) => (
-          <div key={index} className="">
-            <img
-              onClick={() => handleDemos(demo)}
-              className="w-28 object-cover hover:border-2 hover:border-blue-500 h-20"
-              src={demo}
-              alt={category}
-            />
-          </div>
-        ))}
+        {demos &&
+          demos.map((demo, index) => (
+            <div key={index} className="">
+              <img
+                onClick={() => handleDemos(demo)}
+                className="w-28 object-cover hover:border-2 hover:border-blue-500 h-20"
+                src={demo}
+                alt={category}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -1,15 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { WishlistContext } from "../../Providers/WishlistProvider";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { addToWishlist } = useContext(WishlistContext);
+  const [showModal, setShowModal] = useState(false);
 
   // Adding a product to wishlist
   const handleAddWishlist = () => {
     const productId = product?._id;
     addToWishlist(productId);
+  };
+
+  const handleToggleModal = () => {
+    setShowModal(!showModal);
   };
 
   return (
@@ -30,10 +36,13 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Quick shop button */}
-        <div className="flex text-xs sm:text-sm md:text-base font-medium  shadow-2xl absolute bottom-4 left-1/2 transform -translate-x-1/2 items-center justify-center gap-1 rounded-full hover:text-white bg-white px-8 py-1 md:px-12 md:py-2 duration-500 hover:bg-rose-400">
+        <Link
+          to={`/quick-shop/${product?._id}`}
+          onClick={handleToggleModal}
+          className="flex text-xs sm:text-sm md:text-base font-medium  shadow-2xl absolute bottom-4 left-1/2 transform -translate-x-1/2 items-center justify-center gap-1 rounded-full hover:text-white bg-white px-8 py-1 md:px-12 md:py-2 duration-500 hover:bg-rose-400">
           <FiPlus />
           <span className="uppercase">QuickShop</span>
-        </div>
+        </Link>
       </div>
 
       {/* title & price */}

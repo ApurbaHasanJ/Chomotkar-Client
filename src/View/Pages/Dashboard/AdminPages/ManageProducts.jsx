@@ -53,7 +53,7 @@ const ManageProducts = () => {
   };
 
   return (
-    <div className="pt-12  min-h-screen relative ">
+    <section className="pt-12  min-h-screen relative ">
       <div className={`${modal ? "hidden" : "block"}`}>
         <SectionTitle
           title={"MANAGE ALL products"}
@@ -174,7 +174,7 @@ const ManageProducts = () => {
           />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

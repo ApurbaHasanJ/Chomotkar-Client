@@ -11,6 +11,7 @@ import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Wishlist from "../Pages/Wishlist/Wishlist";
+import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/collection/:route",
         element: <Shop />,
+      },
+      {
+        path: "quick-shop/:id",
+        element: <QuickShop />,
       },
       {
         path: "/register",

@@ -56,7 +56,7 @@ const AddProducts = () => {
           color,
           sizes,
           description,
-          "createdAt": new Date()
+          createdAt: new Date(),
         };
 
         fetch("http://localhost:5000/products", {
@@ -159,7 +159,7 @@ const AddProducts = () => {
                     {...register("category")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                     required>
-                    <option >None</option>
+                    <option value="">None</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
                     <option value="electronics">Electronics</option>
@@ -172,7 +172,7 @@ const AddProducts = () => {
                   <select
                     {...register("subCategory")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
-                    <option>None</option>
+                    <option value="">None</option>
                     <option value="t-shirt">Premium T-Shirt</option>
                     <option value="polo-shirt">Polo Shirt</option>
                     <option value="panjabi">Luxury Panjabi</option>
