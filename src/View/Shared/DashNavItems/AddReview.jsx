@@ -103,7 +103,6 @@ const AddReview = () => {
                 <div
                   onSubmit={handleSubmit}
                   className="flex flex-col justify-start mt-7 ">
-                  <p className="text-red-500 font-mono">Please Rate the Star</p>
                   <button
                     disabled={rating === 0}
                     type="submit"

@@ -4,10 +4,11 @@ import { FaBagShopping } from "react-icons/fa6";
 import { MdReviews } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { WishlistContext } from "../../Providers/WishlistProvider";
+import { CartContext } from "../../Providers/CartProvider";
 //   import useCart from "../../../hooks/useCart";
 
 const UserNavItems = () => {
-  // const [carts]= useCart()
+  const { totalQuantity } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
   return (
     <nav className="w-full font-g-mono">
@@ -47,7 +48,7 @@ const UserNavItems = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/my-cart"
+            to="/dashboard/my-carts"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
@@ -59,7 +60,7 @@ const UserNavItems = () => {
                 title="MY CART"
               />
               <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
-                {/* {carts?.length || 0} */}0
+                {totalQuantity || 0}
               </span>
             </div>
             <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">

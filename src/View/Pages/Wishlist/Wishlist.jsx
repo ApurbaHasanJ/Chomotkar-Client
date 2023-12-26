@@ -10,7 +10,7 @@ import { CartContext } from "../../Providers/CartProvider";
 
 const Wishlist = () => {
   const { wishlist, removeFormWishlist } = useContext(WishlistContext);
-  const [products, productsLoading, refetch] = useProducts();
+  const [products, productsLoading] = useProducts();
   const {carts, handleAddCart}= useContext(CartContext)
   console.log(carts);
 

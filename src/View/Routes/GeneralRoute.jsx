@@ -75,10 +75,10 @@ export const router = createBrowserRouter([
         path: "wishlist",
         element: <Wishlist />,
       },
-      // {
-      //   path: "my-carts",
-      //   element: <MyCart />,
-      // },
+      {
+        path: "my-carts",
+        element: <MyCart />,
+      },
       {
         path: "add-review",
         element: <AddReview />,

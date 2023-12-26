@@ -1,4 +1,3 @@
-import Cart from "../../../Shared/Cart/Cart";
 import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
 import ConsumerFavor from "../Components/ConsumerFavor";
 import Hero from "../Components/Hero/Hero";
@@ -17,9 +16,6 @@ const Home = () => {
       <ShopByCategory />
       <LovedCategories />
       <BestSellingProduct />
-      <div className="border shadow-xl p-3 fixed z-[100] right-0 top-1/2 transform -translate-y-1/2">
-      <Cart />
-      </div>
       <NewArrivalProducts />
       <SubBanner />
       <PanjabiCollection />
