@@ -17,6 +17,7 @@ import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import AddReview from "../Pages/Dashboard/UserPages/AddReview";
 import MyCart from "../Pages/Dashboard/UserPages/MyCart";
 import Checkout from "../Pages/Dashboard/UserPages/Checkout";
+import ManageCoupon from "../Pages/Dashboard/AdminPages/ManageCoupon";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "manage-coupons",
+        element: <ManageCoupon />,
       },
       // user board
       {

@@ -3,9 +3,11 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import useCoupon from "../../../Hooks/useCoupon";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   // State for total price, delivery charge, and coupon discount
+  const [coupons] = useCoupon();
   const [subTotal, setSubTotal] = useState(0);
   const [deliveryCharge, setDeliveryCharge] = useState(0);
   const [discountedPercentage, setDiscountedPercentage] = useState(0);
@@ -20,17 +22,6 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     formState: { errors },
   } = useForm();
 
-  const couponCodes = [
-    {
-      code: "Z40",
-      discount: 40,
-    },
-    {
-      code: "Z20",
-      discount: 20,
-    },
-  ];
-
   useEffect(() => {
     // Calculate total product price
     const productPrice = payCarts.newPrice ? payCarts.newPrice : payCarts.price;
@@ -42,7 +33,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
   const handleApplyCoupon = () => {
     // Find the entered coupon in the array
-    const matchedCoupon = couponCodes.find(
+    const matchedCoupon = coupons.find(
       (coupon) => coupon.code === enteredCouponCode
     );
 
