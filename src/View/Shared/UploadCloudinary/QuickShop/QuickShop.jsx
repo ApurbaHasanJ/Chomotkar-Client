@@ -108,7 +108,7 @@ const QuickShop = () => {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
-              <button className="bg-[#ff7675] hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
+              <button className="bg-[#D1A054] hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
                 <FaCartPlus
                   // onClick={() => {
                   //   setProductId(product?._id);
@@ -117,7 +117,7 @@ const QuickShop = () => {
                 />
                 <span>Add To Cart</span>
               </button>
-              <button className="bg-[#ff7675]  hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
+              <button className="bg-[#D1A054]  hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
                 <FaBagShopping
                   // onClick={() => {
                   //   setProductId(product?._id);

@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { WishlistContext } from "../../Providers/WishlistProvider";
-import useProducts from "../../Hooks/useProducts";
+import { WishlistContext } from "../../../Providers/WishlistProvider";
+import useProducts from "../../../Hooks/useProducts";
 import { MdDeleteForever } from "react-icons/md";
-import Loader from "../../Shared/Loader/Loader";
-import SectionTitle from "../../Shared/SectionTitle";
+import Loader from "../../../Shared/Loader/Loader";
+import SectionTitle from "../../../Shared/SectionTitle";
 import { FaCartPlus } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { CartContext } from "../../Providers/CartProvider";
+import { CartContext } from "../../../Providers/CartProvider";
 
 const Wishlist = () => {
   const { wishlist, removeFormWishlist } = useContext(WishlistContext);
@@ -52,7 +52,7 @@ const Wishlist = () => {
 
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-            <thead className="text-xs  text-white uppercase bg-[#ff7675]  ">
+            <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
               <tr>
                 <th scope="col" className="p-8 font-semibold">
                   #

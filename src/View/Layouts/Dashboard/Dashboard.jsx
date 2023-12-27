@@ -9,7 +9,7 @@ import LogoName from "../../Shared/Navbar/LogoName";
 
 const Dashboard = () => {
   let [showDashboard, setShowDashboard] = useState(false);
-  const admin = false;
+  const admin = true;
 
   const handleToggleDashboard = () => {
     setShowDashboard(!showDashboard);
@@ -20,7 +20,7 @@ const Dashboard = () => {
       {/* Dashboard */}
 
       {/* sidebar for lg and md */}
-      <div className="bg-[#ff7675] md:block hidden pr-2 bg-fixed relative max-w-xs lg:min-w-[260px] w-[90px] h-auto mx-auto overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14 ">
+      <div className="bg-[#D1A054] md:block hidden pr-2 bg-fixed relative max-w-xs lg:min-w-[260px] w-[90px] h-auto mx-auto overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14 ">
         <div className=" fixed">
           {/* title for large device */}
           <div className=" lg:block hidden md:ml-4 mx-auto">
@@ -45,7 +45,7 @@ const Dashboard = () => {
       </div>
 
       {/* Top bar for */}
-      <nav className="bg-[#ff7675] sticky top-0 z-50  py-4 md:hidden block ">
+      <nav className="bg-[#D1A054] sticky top-0 z-50  py-4 md:hidden block ">
         {/* title for sm device */}
         <div className="flex justify-between items-center">
           <div className="block md:hidden md:ml-4 mx-6">
@@ -61,7 +61,7 @@ const Dashboard = () => {
           </button>
         </div>
         <div
-          className={`fixed bg-[#ff7675] h-full pb-4 pr-2 ${
+          className={`fixed bg-[#D1A054] h-full pb-4 pr-2 ${
             showDashboard ? "left-0" : "-left-[400px]"
           } transform duration-700 shadow-2xl top-[85px] `}>
           <div className="md: pt-5 ">

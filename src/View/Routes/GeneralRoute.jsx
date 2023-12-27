@@ -10,12 +10,13 @@ import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
-import Wishlist from "../Pages/Wishlist/Wishlist";
+import Wishlist from "../Pages/Dashboard/UserPages/Wishlist";
 import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
-import AddReview from "../Shared/DashNavItems/AddReview";
-import MyCart from "../Shared/DashNavItems/MyCart";
+import AddReview from "../Pages/Dashboard/UserPages/AddReview";
+import MyCart from "../Pages/Dashboard/UserPages/MyCart";
+import Checkout from "../Pages/Dashboard/UserPages/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "my-carts",
         element: <MyCart />,
+      },
+      {
+        path: "checkout/:id",
+        element: <Checkout />,
       },
       {
         path: "add-review",

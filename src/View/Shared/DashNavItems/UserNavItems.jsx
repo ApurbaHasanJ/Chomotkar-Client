@@ -37,7 +37,7 @@ const UserNavItems = () => {
             }>
             <div className="relative whitespace-nowrap">
               <FaHeart className="w-14 h-6 md:mx-0 mx-auto" title="WISHLIST" />
-              <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
+              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
                 {wishlist?.length || 0}
               </span>
             </div>
@@ -59,7 +59,7 @@ const UserNavItems = () => {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="MY CART"
               />
-              <span className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
+              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
                 {totalQuantity || 0}
               </span>
             </div>
@@ -88,7 +88,7 @@ const UserNavItems = () => {
 
         <li>
           <NavLink
-            to="/dashboard/my-bookings"
+            to="/dashboard/pending-orders"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
@@ -96,10 +96,10 @@ const UserNavItems = () => {
             }>
             <FaCalendarCheck
               className="w-14 h-6 md:mx-0 mx-auto"
-              title="MY BOOKINGS"
+              title="PENDING ORDERS"
             />
             <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
-              MY BOOKINGS
+              PENDING ORDERS
             </span>
           </NavLink>
         </li>

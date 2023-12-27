@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdRocketLaunch } from "react-icons/md";
 import StarRatings from "react-star-ratings";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../../../Shared/SectionTitle";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);

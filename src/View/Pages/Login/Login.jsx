@@ -19,7 +19,7 @@ const Login = () => {
 
   const from = location?.state?.from?.pathname || "/";
 
-//   const [disabled, setDisabled] = useState(true);
+  //   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
 
@@ -27,10 +27,10 @@ const Login = () => {
   const [show, setShow] = useState(false);
 
   // On change re captcha
-//   const onChange = (value) => {
-//     console.log("Captcha value", value);
-//     setDisabled(!disabled);
-//   };
+  //   const onChange = (value) => {
+  //     console.log("Captcha value", value);
+  //     setDisabled(!disabled);
+  //   };
 
   // login controls
   const onSubmit = (data) => {
@@ -64,15 +64,17 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="pt-20 mx-6 bg-transparent z-20">
-      <div className="my-container shadow-xl">
+    <div className="pt-20 px-6  bg-transparent z-20">
+      <div className="my-container bg-[#e7c99c] pt-6 shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Login
         </h3>
-        <p className="text-center text-slate-500">Please enter your e-mail and password:</p>
+        <p className="text-center text-slate-500">
+          Please enter your e-mail and password:
+        </p>
         <div className=" grid max-w-xl mx-auto  my-7 mt-0 lg:my-16 items-center">
           {/* Login Img */}
-          
+
           <div className=" px-10 pb-10 mx-3 lg:mx-0 rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid mb-4">
@@ -137,17 +139,15 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="grid justify-end">
-                  {/* <ReCAPTCHA
-                    sitekey={import.meta.env.VITE_RECAP}
-                    onChange={onChange}
-                  /> */}
-                  <p className="text-xs font-slate-500 underline underline-offset-2 hover:text-rose-400">Forgot your Password?</p>
+                  <p className="text-xs font-slate-500 underline underline-offset-2 hover:text-rose-400">
+                    Forgot your Password?
+                  </p>
                 </div>
               </div>
 
               <div className="grid mt-5">
                 <input
-                //   disabled={disabled}
+                  //   disabled={disabled}
                   type="submit"
                   value="LOGIN"
                   className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
