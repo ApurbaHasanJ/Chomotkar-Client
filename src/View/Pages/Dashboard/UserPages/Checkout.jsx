@@ -13,6 +13,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [discountedPercentage, setDiscountedPercentage] = useState(0);
   const [discountedPrice, setDiscountedPrice] = useState(0);
 
+  console.log(payCarts);
+
   // Assuming the user entered coupon code
   const [enteredCouponCode, setEnteredCouponCode] = useState("");
 
@@ -62,7 +64,9 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     }
   };
 
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    
+  };
 
   return (
     <section className="my-container relative pt-12 ">

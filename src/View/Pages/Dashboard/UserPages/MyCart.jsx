@@ -81,13 +81,6 @@ const MyCart = () => {
                 <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold  whitespace-nowrap">
                   total price: TK.{totalPrice}
                 </h2>
-                {/* <button
-                  onClick={() => {
-                    handleToggleModal(), setPayCarts(filteredProducts);
-                  }}
-                  className="bg-[#D1A054] hover:bg-[#b97c20] text-white shadow-lg hover:shadow-2xl mb-3 py-3 px-5 rounded-lg text-lg font-semibold ">
-                  PAY ALL
-                </button> */}
               </div>
               <div className="relative  overflow-x-auto shadow-md   rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">

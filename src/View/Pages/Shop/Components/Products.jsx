@@ -57,11 +57,14 @@ const Products = () => {
       <div className="block md:hidden mt-8">
         <button
           onClick={handleToggleFilter}
-          className="text-lg flex hover:text-rose-500 items-center gap-4 font-bold underline underline-offset-4">
+          className="text-lg border p-2 px-3 border-black bg-black text-white hover:text-black transition-colors duration-1000 hover:bg-white flex items-center gap-4 font-bold underline underline-offset-4">
           <span>FILTER</span>
           <FaFilter />
         </button>
-        <div className="fixed top-[96px] left-0 z-50">
+        <div
+          className={`fixed top-[96px] ${
+            toggleFilters ? "left-0" : "-left-[1000px]"
+          } transition-all duration-1000 z-50`}>
           <Filter
             toggleFilters={toggleFilters}
             handleToggleFilters={handleToggleFilter}
@@ -78,7 +81,10 @@ const Products = () => {
         </div>
       ) : (
         <div className="text-center md:text-xl text-base shadow-xl bg-rose-100 py-5 mt-28">
-          <p>No products available for the selected criteria.</p>
+          <p>
+            No products are available for the selected criteria. Please change
+            the route at the top.
+          </p>
         </div>
       )}
     </section>
