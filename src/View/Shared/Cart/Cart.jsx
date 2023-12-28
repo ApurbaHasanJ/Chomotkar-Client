@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <Link to="dashboard/my-carts" className="text-lg duration-300 text-slate-500 hover:text-rose-400 relative flex justify-center items-center gap-1">
       <FaBagShopping className="text-2xl " />
-      <span className="absolute rounded-full text-sm -left-2 bottom-0 text-white h-5 w-5 text-center bg-rose-300">
+      <span className="absolute rounded-full text-sm -left-5 -top-1 px-1 py-[.5px] text-white text-center bg-rose-300">
         {totalQuantity || 0}
       </span>
     </Link>

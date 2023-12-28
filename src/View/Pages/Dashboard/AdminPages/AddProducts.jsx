@@ -159,17 +159,18 @@ const AddProducts = () => {
                     {...register("category")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                     required>
-                    <option value="">None</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
-                    <option value="electronics">Electronics</option>
+                    <option value="gadgets">Gadget</option>
                   </select>
                 </div>
                 <div className="grid mb-4 ">
                   <label className="label justify-start text-base font-medium text-slate-900 ">
                     <span className="label-text">Sub Category</span>
+                    <span className="text-red-600 text-xl">*</span>
                   </label>
                   <select
+                    required
                     {...register("subCategory")}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
                     <option value="">None</option>
@@ -178,8 +179,9 @@ const AddProducts = () => {
                     <option value="panjabi">Luxury Panjabi</option>
                     <option value="joggers">Joggers</option>
                     <option value="sari">Sari</option>
-                    <option value="combo-pack">Combo-Pack</option>
-                    <option value="three-pieces">Three-Pieces</option>
+                    <option value="combo-pack">Combo Pack</option>
+                    <option value="three-pieces">Three Pieces</option>
+                    <option value="gadgets">Gadgets</option>
                   </select>
                 </div>
               </div>

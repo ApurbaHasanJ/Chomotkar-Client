@@ -168,9 +168,9 @@ const NavItems = () => {
       </li>
       <li>
         <NavLink
-          to="/collection/gadget"
+          to="/collection/gadgets"
           onClick={() => {
-            handleCollection("gadget"), handleSelectCategory("");
+            handleCollection("gadgets"), handleSelectCategory("");
           }}
           className={({ isActive }) => (isActive ? "active" : "default")}>
           <div className="flex items-center gap-1">

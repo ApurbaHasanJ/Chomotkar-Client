@@ -5,15 +5,21 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../Providers/CartProvider";
 import useProducts from "../../../Hooks/useProducts";
 import Checkout from "./Checkout";
+import toast from "react-hot-toast";
 
 const MyCart = () => {
   const { carts, totalQuantity, handleRemoveCart } = useContext(CartContext);
   const [products] = useProducts();
-  const [payCarts, setPayCarts] = useState([]);
+  const [payCarts, setPayCarts] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedSize, setSelectedSize] = useState({
+    id: "",
+    size: "",
+  });
   const [toggleModal, setToggleModal] = useState(false);
 
   console.log(payCarts);
+  console.log(selectedSize);
 
   // filter the cart products
   useEffect(() => {
@@ -33,6 +39,8 @@ const MyCart = () => {
     setFilteredProducts(updatedProducts);
   }, [carts, products]);
 
+  console.log(filteredProducts);
+
   // calculating total product price
   const totalPrice = filteredProducts.reduce((acc, product) => {
     const productPrice = product.newPrice ? product.newPrice : product.price;
@@ -43,6 +51,7 @@ const MyCart = () => {
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
+    setSelectedSize({ id: "", size: "" });
   };
 
   // handle delete from cart
@@ -96,6 +105,9 @@ const MyCart = () => {
                         NAME
                       </th>
                       <th scope="col" className="px-6 py-3">
+                        Size
+                      </th>
+                      <th scope="col" className="px-6 py-3">
                         PRICE
                       </th>
                       <th scope="col" className="px-6 py-3">
@@ -133,6 +145,36 @@ const MyCart = () => {
                           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                           {cart?.title}
                         </th>
+                        <td scope="row" className="px-6 py-4">
+                          <select
+                            name="selectedSize"
+                            // value={selectedSize}
+                            defaultValue="none"
+                            onChange={(e) =>
+                              setSelectedSize({
+                                id: cart._id,
+                                size: e.target.value,
+                              })
+                            }
+                            className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400"
+                            required>
+                            {!cart?.sizes ? (
+                              <option value={""}>none</option>
+                            ) : (
+                              <>
+                                <option value="">Select</option>
+                                {cart.sizes.map((size, index) => (
+                                  <option
+                                    key={index}
+                                    defaultValue="none"
+                                    value={size}>
+                                    {size}
+                                  </option>
+                                ))}
+                              </>
+                            )}
+                          </select>
+                        </td>
 
                         <td scope="row" className="px-6 py-4">
                           {cart?.newPrice ? (
@@ -175,7 +217,23 @@ const MyCart = () => {
                           <button
                             type="button"
                             onClick={() => {
-                              handleToggleModal(), setPayCarts(cart);
+                              if (
+                                cart?.sizes &&
+                                (!selectedSize || cart._id !== selectedSize.id)
+                              ) {
+                                // Show a warning message or handle it as per your requirement
+                                toast.error(
+                                  "Please select a size before buying!"
+                                );
+                                return;
+                              }
+
+                              setPayCarts({
+                                ...cart,
+                                quantity: cart?.quantity,
+                                size: !cart?.sizes ? "" : selectedSize?.size,
+                              });
+                              handleToggleModal();
                             }}
                             className="bg-[#D1A054] hover:bg-[#b97c20] text-white shadow-lg hover:shadow-2xl py-2 px-4 rounded-lg text-base font-semibold font-g-mono">
                             PAY

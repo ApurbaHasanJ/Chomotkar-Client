@@ -8,6 +8,8 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { CartContext } from "../../../Providers/CartProvider";
 import Checkout from "../../../Pages/Dashboard/UserPages/Checkout";
 
+import toast from "react-hot-toast";
+
 const QuickShop = () => {
   const params = useParams();
   const [products] = useProducts();
@@ -15,6 +17,9 @@ const QuickShop = () => {
   const [quantity, setQuantity] = useState(1);
   const [payCarts, setPayCarts] = useState([]);
   const [toggleModal, setToggleModal] = useState(false);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [error, setError] = useState(false);
+  console.log(selectedSize);
 
   console.log(quantity);
   console.log(payCarts);
@@ -28,6 +33,10 @@ const QuickShop = () => {
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
+  };
+
+  const handleSelectSize = (size) => {
+    setSelectedSize(selectedSize === size ? null : size);
   };
 
   return (
@@ -106,20 +115,41 @@ const QuickShop = () => {
                     <span className="capitalize">({product?.color})</span>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium text-lg">
-                      Available Sizes:
-                    </span>
-                    <div className="flex gap-3">
-                      {product?.sizes.map((size, index) => (
-                        <span
-                          key={index}
-                          className="border border-slate-300 p-1 px-3">
-                          {size}
-                        </span>
-                      ))}
+                  {product?.sizes && (
+                    <div className="flex justify-start gap-3">
+                      <span className="font-medium text-lg">
+                        Available Sizes:
+                      </span>
+                      <div className="flex flex-col gap-3">
+                        <div className="flex gap-3">
+                          {product?.sizes.map((size, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-center gap-3">
+                              <input
+                                checked={selectedSize === size}
+                                onChange={() => {
+                                  setError(false), handleSelectSize(size);
+                                }}
+                                type="checkbox"
+                                className="w-4 h-4 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                                name={size}
+                                id={size}
+                              />
+                              <span className="border relative border-slate-300 p-1 px-3">
+                                {size}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        {error && (
+                          <p className="text-red-500">
+                            Please select size from here.
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className="mt-5 flex md:flex-row flex-col justify-start  gap-3">
                   <div className="bg-black rounded-lg flex items-center justify-start w-fit">
@@ -143,9 +173,17 @@ const QuickShop = () => {
                     <span>Add To Cart</span>
                   </button>
                   <button
+                    // disabled={!selectedSize}
                     onClick={() => {
-                      setPayCarts({ ...product, quantity }),
-                        handleToggleModal();
+                      if (product?.sizes && !selectedSize) {
+                        // Show a warning message or handle it as per your requirement
+                        setError(true);
+                        toast.error("Please select a size before buying!");
+                        return;
+                      }
+
+                      setPayCarts({ ...product, quantity, size: selectedSize });
+                      handleToggleModal();
                     }}
                     className="bg-[#D1A054]  hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
                     <FaBagShopping className="text-xl" />
