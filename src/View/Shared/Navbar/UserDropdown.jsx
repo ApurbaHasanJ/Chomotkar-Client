@@ -13,8 +13,6 @@ const UserDropdown = () => {
     setShowDropDown(!showDropDown);
   };
 
-  
-
   // Handle Logout
   const handleLogout = () => {
     logOut()
@@ -50,18 +48,14 @@ const UserDropdown = () => {
                 alt={user?.displayName}
               />
             ) : (
-              <Link to="/login" className="">
+              <div className="">
                 <FaUserLarge
                   className="text-[22px] "
                   title={user?.displayName}
                 />
-              </Link>
+              </div>
             )}
-            <span>
-              {
-                !user && <p>Login/Join</p>
-              }
-            </span>
+            <span>{!user && <p>Login/Join</p>}</span>
           </div>
           {showDropDown && (
             <div
