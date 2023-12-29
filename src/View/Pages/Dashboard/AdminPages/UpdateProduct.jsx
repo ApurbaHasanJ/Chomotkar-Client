@@ -8,6 +8,7 @@ import { UploadPhotos } from "../../../Shared/UploadCloudinary/UploadPhotos";
 import { RxCross2 } from "react-icons/rx";
 import useProducts from "../../../Hooks/useProducts";
 import Loader from "../../../Shared/Loader/Loader";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 // product sizes
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -15,6 +16,8 @@ const sizes = ["S", "M", "L", "XL", "XXL"];
 const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
+
+  const [axiosSecure] = useAxiosSecure();
 
   const [products, productsLoading] = useProducts();
 
@@ -80,20 +83,18 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           createdAt: new Date(),
         };
 
-        fetch(`http://localhost:5000/products/${productId}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(productData),
-        })
-          .then((res) => res.json())
+        axiosSecure
+          .patch(`/products/${productId}`, productData, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => res.data)
           .then((data) => {
             console.log(data);
             if (data?.modifiedCount) {
               setLoading(false);
               handleToggleModal(!modal);
-              // reset();
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -197,7 +198,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         defaultValue={updateProduct?.category}
                         className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                         required>
-                        <option defaultValue={updateProduct?.category}>
+                        <option value="">
                           None
                         </option>
                         <option value="men">Men</option>
@@ -212,6 +213,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       </label>
                       <select
                         required
+                        defaultValue={updateProduct?.subCategory}
                         {...register("subCategory")}
                         className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
                         <option value="">None</option>

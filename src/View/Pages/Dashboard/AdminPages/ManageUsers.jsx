@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import useUsers from "../../../Hooks/useUsers";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { useState } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageUsers = () => {
   const [users, , refetch] = useUsers();
   const [userId, setUserId] = useState(null);
+  const [axiosSecure] = useAxiosSecure();
 
   const handleUsersRole = (user, role) => {
     Swal.fire({
@@ -21,19 +23,13 @@ const ManageUsers = () => {
       confirmButtonText: "Change!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user?._id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        axiosSecure
+          .patch(`/users/${user?._id}`, {
             role: role,
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.modifiedCount) {
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount) {
               setUserId("");
               refetch();
               Swal.fire({
@@ -64,15 +60,12 @@ const ManageUsers = () => {
       confirmButtonText: "Delete!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user?._id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.acknowledged) {
+        axiosSecure
+          .delete(`/users/${user?._id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.acknowledged) {
               refetch();
-
               Swal.fire({
                 position: "top-end",
                 icon: "success",

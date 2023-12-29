@@ -4,10 +4,11 @@ import useCoupon from "../../../Hooks/useCoupon";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { useForm } from "react-hook-form";
 import Loader from "../../../Shared/Loader/Loader";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageCoupon = () => {
   const [coupons, couponsLoading, refetch] = useCoupon();
-
+  const [axiosSecure] = useAxiosSecure();
   // hook form
   const {
     register,
@@ -25,16 +26,11 @@ const ManageCoupon = () => {
       discount: discountPercentage,
     };
 
-    fetch("http://localhost:5000/coupons", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(couponCodes),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
+    axiosSecure
+      .post("/coupons", couponCodes) // Use axiosSecure.post for creating a new coupon
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
           reset();
           refetch();
           Swal.fire({
@@ -58,7 +54,7 @@ const ManageCoupon = () => {
       });
   };
 
-  // delete user
+  // delete coupon
   const handleDeleteCoupon = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -70,13 +66,11 @@ const ManageCoupon = () => {
       confirmButtonText: "Delete!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:5000/coupons/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.acknowledged) {
+        axiosSecure
+          .delete(`/coupons/${id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.acknowledged) {
               refetch();
               Swal.fire({
                 position: "top-end",
@@ -89,10 +83,19 @@ const ManageCoupon = () => {
           })
           .catch((err) => {
             console.log(err);
+            // Handle errors and possibly show a notification
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${err.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           });
       }
     });
   };
+
   return (
     <section className=" pt-12 mb-10 min-h-screen bg-[#F6F6F6]">
       <SectionTitle

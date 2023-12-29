@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
       // jwt get and set
       if (currentUser) {
         axios
@@ -94,11 +94,13 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             // console.log(res.data.token);
             localStorage.setItem("access-token", res.data.token);
+
+            setLoading(false);
           });
       } else {
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
-      // setLoading(false);
     });
 
     return () => unsubscribe();

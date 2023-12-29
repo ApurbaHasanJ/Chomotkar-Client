@@ -4,6 +4,7 @@ import { useState } from "react";
 import SectionTitle from "../../../Shared/SectionTitle";
 import Uploading from "../../../Shared/Loader/Uploading";
 import { UploadPhotos } from "../../../Shared/UploadCloudinary/UploadPhotos";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 // product sizes
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -11,6 +12,7 @@ const sizes = ["S", "M", "L", "XL", "XXL"];
 const AddProducts = () => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const [axiosSecure] = useAxiosSecure();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -59,14 +61,13 @@ const AddProducts = () => {
           createdAt: new Date(),
         };
 
-        fetch("http://localhost:5000/products", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(productData),
-        })
-          .then((res) => res.json())
+        axiosSecure
+          .post(`/products`, productData, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => res.data)
           .then((data) => {
             console.log(data);
             if (data?.insertedId) {

@@ -16,7 +16,7 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="ADMIN HOME" />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               ADMIN HOME
             </span>
           </NavLink>
@@ -33,7 +33,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="ADD PRODUCTS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               ADD PRODUCTS
             </span>
           </NavLink>
@@ -50,7 +50,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE PRODUCTS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               MANAGE PRODUCTS
             </span>
           </NavLink>
@@ -67,7 +67,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE ORDERS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               MANAGE ORDERS
             </span>
           </NavLink>
@@ -84,7 +84,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE USERS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               MANAGE USERS
             </span>
           </NavLink>
@@ -101,7 +101,7 @@ const AdminNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="MANAGE COUPON"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap">
               MANAGE COUPON
             </span>
           </NavLink>

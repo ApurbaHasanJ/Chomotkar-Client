@@ -18,6 +18,8 @@ import AddReview from "../Pages/Dashboard/UserPages/AddReview";
 import MyCart from "../Pages/Dashboard/UserPages/MyCart";
 import Checkout from "../Pages/Dashboard/UserPages/Checkout";
 import ManageCoupon from "../Pages/Dashboard/AdminPages/ManageCoupon";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,28 +56,52 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "admin-home",
-        element: <AdminHome />,
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
       },
       {
         path: "add-products",
-        element: <AddProducts />,
+        element: (
+          <AdminRoute>
+            <AddProducts />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-products/",
-        element: <ManageProducts />,
+        element: (
+          <AdminRoute>
+            <ManageProducts />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-coupons",
-        element: <ManageCoupon />,
+        element: (
+          <AdminRoute>
+            <ManageCoupon />
+          </AdminRoute>
+        ),
       },
       // user board
       {
         path: "user-home",
-        element: <UserHome />,
+        element: (
+          <PrivateRoute>
+            <UserHome />
+          </PrivateRoute>
+        ),
       },
       {
         path: "wishlist",
@@ -95,7 +121,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "payment-history",
-        element: <PaymentHistory />,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory />
+          </PrivateRoute>
+        ),
       },
     ],
   },

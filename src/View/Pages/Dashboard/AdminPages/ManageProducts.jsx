@@ -6,12 +6,14 @@ import Loader from "../../../Shared/Loader/Loader";
 import { useState } from "react";
 import UpdateProduct from "./UpdateProduct";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageProducts = () => {
   const [products, productsLoading, refetch] = useProducts();
   const [productId, setProductId] = useState("");
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [axiosSecure] = useAxiosSecure();
 
   const handleToggleModal = () => {
     setModal(!modal);
@@ -30,13 +32,11 @@ const ManageProducts = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        fetch(`http://localhost:5000/products/${deleteId}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data?.deletedCount) {
+        axiosSecure
+          .delete(`/products/${deleteId}`) // Use axiosSecure.delete for deleting a product
+          .then((res) => {
+            console.log(res.data);
+            if (res.data?.deletedCount) {
               setLoading(false);
               refetch();
               Swal.fire({
@@ -47,6 +47,17 @@ const ManageProducts = () => {
                 timer: 1500,
               });
             }
+          })
+          .catch((err) => {
+            console.log(err);
+            // Handle errors and possibly show a notification
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${err.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           });
       }
     });

@@ -22,7 +22,7 @@ const UserNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="USER HOME" />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               USER HOME
             </span>
           </NavLink>
@@ -41,7 +41,7 @@ const UserNavItems = () => {
                 {wishlist?.length || 0}
               </span>
             </div>
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               WISHLIST
             </span>
           </NavLink>
@@ -63,7 +63,7 @@ const UserNavItems = () => {
                 {totalQuantity || 0}
               </span>
             </div>
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               MY CART
             </span>
           </NavLink>
@@ -80,7 +80,7 @@ const UserNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="PAYMENT HISTORY"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               PAYMENT HISTORY
             </span>
           </NavLink>
@@ -98,7 +98,7 @@ const UserNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="PENDING ORDERS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               PENDING ORDERS
             </span>
           </NavLink>
@@ -115,7 +115,7 @@ const UserNavItems = () => {
               className="w-14 h-6 md:mx-0 mx-auto"
               title="ADD REVIEWS"
             />
-            <span className="text-base font-semibold lg:block md:hidden block whitespace-nowrap">
+            <span className="text-base font-semibold block whitespace-nowrap">
               ADD REVIEWS
             </span>
           </NavLink>

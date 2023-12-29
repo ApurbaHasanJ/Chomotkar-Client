@@ -11,7 +11,7 @@ const useUsers = () => {
     data: users = [],
   } = useQuery({
     queryKey: ["users"],
-    queryFn: () => axiosSecure("/users").then((res) => {
+    queryFn: () => axiosSecure.get("/users").then((res) => {
       // console.log(res);
       return res.data
     }),

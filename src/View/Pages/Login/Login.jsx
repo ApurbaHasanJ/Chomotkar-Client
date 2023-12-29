@@ -91,6 +91,7 @@ const Login = () => {
                   placeholder="Your email"
                   className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                   aria-invalid={errors.email ? "true" : "false"}
+                  autoComplete="username"
                 />
                 {errors.email && (
                   <p role="alert" className="text-red-500 mt-2">
@@ -110,18 +111,12 @@ const Login = () => {
                   {...register("password", {
                     required: "Password is required",
                     minLength: 6,
-                    pattern: /^(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.*[A-Z]).{6,}$/i,
                   })}
                   className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                   aria-invalid={errors.password ? "true" : "false"}
                   placeholder="Password"
+                  autoComplete="current-password"
                 />
-                {errors.password && (
-                  <p role="alert" className="text-red-500 mt-2">
-                    {errors.password?.message ||
-                      "Password must be at least 6 characters long, contain at least one number, one special character, and one uppercase letter."}
-                  </p>
-                )}
               </div>
               <div className="grid my-3">
                 <div className="flex items-center  mb-6">
