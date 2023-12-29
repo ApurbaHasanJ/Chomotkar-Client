@@ -40,7 +40,7 @@ const QuickShop = () => {
   };
 
   return (
-    <section className="py-8 pb-20  min-h-screen ">
+    <section className="pt-8   lg:min-h-screen ">
       {toggleModal ? (
         <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
       ) : (
@@ -50,10 +50,10 @@ const QuickShop = () => {
             subtitle={"---Order Now!---"}
           />
 
-          <div className="my-container my-20">
+          <div className="my-container mt-20">
             <div className="flex md:flex-row flex-col gap-10">
               <div className="flex md:flex-row flex-col-reverse gap-7 md:w-7/12 w-full">
-                <div className="flex flex-col gap-3">
+                <div className="flex md:flex-col gap-3">
                   {/* photos */}
                   {product?.photos.map((photo, index) => (
                     <img
@@ -151,7 +151,7 @@ const QuickShop = () => {
                     </div>
                   )}
                 </div>
-                <div className="mt-5 flex md:flex-row flex-col justify-start  gap-3">
+                <div className="mt-5 flex lg:flex-row flex-col justify-start  gap-3">
                   <div className="bg-black rounded-lg flex items-center justify-start w-fit">
                     <span className="text-white px-5 font-semibold">
                       Quantity
