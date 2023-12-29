@@ -78,114 +78,109 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-6xl text-5xl ml-auto hover:bg-rose-100 p-2"
       />
       <div className="grid  bg-white shadow-md md:px-10 px-5 py-10 mx-3 lg:mx-0 rounded-lg my-7 mt-0 lg:my-8 items-center">
-        <form onSubmit={handleSubmit(onSubmit)} className="md:flex gap-7 relative">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="lg:flex gap-7 relative">
           {/* 1st col */}
           <div className="w-full">
             {/* 1st row */}
-            <div className="grid md:gap-4">
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Name</span>
-                  <span className="text-red-600 text-xl">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  {...register("name", {
-                    required: "Name is required",
-                    pattern: /^[A-Za-z\s]+$/i,
-                  })}
-                  placeholder="Your name"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
-                  aria-invalid={errors.name ? "true" : "false"}
-                />
-              </div>
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Phone</span>
-                  <span className="text-red-600 text-xl">*</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  {...register("phone")}
-                  required
-                  placeholder="Your phone"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
-                />
-              </div>
+            <div className="grid mb-4">
+              <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">Name</span>
+                <span className="text-red-600 text-xl">*</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                {...register("name", {
+                  required: "Name is required",
+                  pattern: /^[A-Za-z\s]+$/i,
+                })}
+                placeholder="Your name"
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                aria-invalid={errors.name ? "true" : "false"}
+              />
             </div>
+            <div className="grid mb-4">
+              <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">Phone</span>
+                <span className="text-red-600 text-xl">*</span>
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                {...register("phone")}
+                required
+                placeholder="Your phone"
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+              />
+            </div>
+
             {/* 2nd row */}
-            <div className="grid md:gap-4">
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Email</span>
-                  <span className="text-gray-600 text-xs">(optional)</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  {...register("email", {
-                    required: "Email Address is required",
-                  })}
-                  placeholder="Your email"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
-                  aria-invalid={errors.email ? "true" : "false"}
-                />
-              </div>
-              <div className="grid mb-4 ">
-                <label className="flex items-center gap-1 justify-start text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
-                    Location
-                  </span>
-                  <span className="text-red-600 text-xl">*</span>
-                </label>
-                <select
-                  {...register("subCategory")}
-                  required
-                  onChange={(e) => handleDeliveryCharge(e.target.value)}
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
-                  <option value="">None</option>
-                  <option value="insideDhaka">Inside Dhaka</option>
-                  <option value="outsideDhaka">Outside Dhaka</option>
-                </select>
-              </div>
+            <div className="grid mb-4">
+              <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">Email</span>
+                <span className="text-gray-600 text-xs">(optional)</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                placeholder="Your email"
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                aria-invalid={errors.email ? "true" : "false"}
+              />
+            </div>
+            <div className="grid mb-4 ">
+              <label className="flex items-center gap-1 justify-start text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">
+                  Location
+                </span>
+                <span className="text-red-600 text-xl">*</span>
+              </label>
+              <select
+                {...register("subCategory")}
+                required
+                onChange={(e) => handleDeliveryCharge(e.target.value)}
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
+                <option value="">None</option>
+                <option value="insideDhaka">Inside Dhaka</option>
+                <option value="outsideDhaka">Outside Dhaka</option>
+              </select>
             </div>
             {/* 3rd row */}
-            <div className="grid md:gap-4">
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
-                    address
-                  </span>
-                  <span className="text-red-600 text-xl">*</span>
-                </label>
-                <input
-                  type="address"
-                  name="address"
-                  {...register("address", {
-                    required: "Name is required",
-                  })}
-                  placeholder="Type your full address..."
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
-                />
-              </div>
+            <div className="grid mb-4">
+              <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">address</span>
+                <span className="text-red-600 text-xl">*</span>
+              </label>
+              <input
+                type="address"
+                name="address"
+                {...register("address", {
+                  required: "Name is required",
+                })}
+                placeholder="Type your full address..."
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+              />
+            </div>
 
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
-                    Order Note
-                  </span>
-                  <span className="text-gray-600 text-xs">(optional)</span>
-                </label>
-                <input
-                  type="orderNote"
-                  name="orderNote"
-                  {...register("orderNote")}
-                  placeholder="Additional information"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
-                />
-              </div>
+            <div className="grid mb-4">
+              <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
+                <span className="uppercase font-medium text-base">
+                  Order Note
+                </span>
+                <span className="text-gray-600 text-xs">(optional)</span>
+              </label>
+              <input
+                type="orderNote"
+                name="orderNote"
+                {...register("orderNote")}
+                placeholder="Additional information"
+                className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+              />
             </div>
             {/* payment method */}
             <div>
@@ -217,7 +212,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
             </div>
             {/* order button */}
-            <div className="grid justify-end mt-5">
+            <div className=" lg:grid hidden justify-end mt-5">
               <input
                 type="submit"
                 value="PLACE ORDER"
@@ -290,7 +285,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
             </div>
             {/* Coupon code input */}
-            <div className="flex justify-end gap-4">
+            <div className="flex justify-end gap-4 w-full">
               <input
                 className="hover:shadow-md border border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  w-full max-w-xs"
                 type="text"
@@ -306,6 +301,13 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 APPLY COUPON
               </button>
             </div>
+          </div>
+          <div className="lg:hidden  mt-10">
+            <input
+              type="submit"
+              value="PLACE ORDER"
+              className="btn p-3 px-5 duration-500 w-full rounded-full border-none text-white bg-[#D1A054] hover:bg-rose-400"
+            />
           </div>
         </form>
       </div>
