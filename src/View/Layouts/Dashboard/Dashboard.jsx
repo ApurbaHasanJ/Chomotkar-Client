@@ -5,7 +5,6 @@ import { useState } from "react";
 import AdminNavItems from "../../Shared/DashNavItems/AdminNavitems";
 import UserNavItems from "../../Shared/DashNavItems/UserNavItems";
 import GeneralNavItems from "../../Shared/DashNavItems/GeneralNavItems";
-import LogoName from "../../Shared/Navbar/LogoName";
 import useAdmin from "../../Hooks/useAdmin";
 import Loader from "../../Shared/Loader/Loader";
 

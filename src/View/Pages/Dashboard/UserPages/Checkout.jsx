@@ -64,9 +64,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     }
   };
 
-  const onSubmit = (data) => {
-    
-  };
+  const onSubmit = (data) => {};
 
   return (
     <section className="my-container relative pt-12 ">
@@ -80,11 +78,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-6xl text-5xl ml-auto hover:bg-rose-100 p-2"
       />
       <div className="grid  bg-white shadow-md md:px-10 px-5 py-10 mx-3 lg:mx-0 rounded-lg my-7 mt-0 lg:my-8 items-center">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="md:flex gap-7 relative">
           {/* 1st col */}
-          <div>
+          <div className="w-full">
             {/* 1st row */}
-            <div className="grid md:grid-cols-2 md:gap-4">
+            <div className="grid md:gap-4">
               <div className="grid mb-4">
                 <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
                   <span className="uppercase font-medium text-base">Name</span>
@@ -118,7 +116,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
             </div>
             {/* 2nd row */}
-            <div className="grid md:grid-cols-2 md:gap-4">
+            <div className="grid md:gap-4">
               <div className="grid mb-4">
                 <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
                   <span className="uppercase font-medium text-base">Email</span>
@@ -154,7 +152,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
             </div>
             {/* 3rd row */}
-            <div className="grid md:grid-cols-2 md:gap-4">
+            <div className="grid md:gap-4">
               <div className="grid mb-4">
                 <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
                   <span className="uppercase font-medium text-base">
@@ -189,6 +187,46 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 />
               </div>
             </div>
+            {/* payment method */}
+            <div>
+              <h2 className="text-gray-700 font-semibold text-2xl">
+                PAYMENT METHOD
+              </h2>
+              <div className="grid md:gap-4 border-t-2 border-gray-600 pt-3 mt-3">
+                <label
+                  className="flex items-center gap-3"
+                  htmlFor="cashOnDelivery">
+                  <input
+                    type="radio"
+                    className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                    name="paymentMethod"
+                    id="cashOnDelivery"
+                  />
+                  <span>Cash on Delivery</span>
+                </label>
+
+                <label className="flex items-center gap-3" htmlFor="payOnline">
+                  <input
+                    type="radio"
+                    className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                    name="paymentMethod"
+                    id="payOnline"
+                  />
+                  <span>Pay Online</span>
+                </label>
+              </div>
+            </div>
+            {/* order button */}
+            <div className="grid justify-end mt-5">
+              <input
+                type="submit"
+                value="PLACE ORDER"
+                className="btn p-3 px-5 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+              />
+            </div>
+          </div>
+          {/* col 2 */}
+          <div className="w-full sticky top-0 right-0">
             {/* product details */}
             <div className="p-4 bg-slate-100 my-4">
               {/* price */}
@@ -267,43 +305,6 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 className="border-black border-2 px-5 py-3 text-xs text-white hover:text-black transition-all duration-1000 bg-black hover:bg-white">
                 APPLY COUPON
               </button>
-            </div>
-            {/* payment method */}
-            <div>
-              <h2 className="text-gray-700 font-semibold text-2xl">
-                PAYMENT METHOD
-              </h2>
-              <div className="grid md:grid-cols-2 md:gap-4 border-t-2 border-gray-600 pt-3 mt-3">
-                <label
-                  className="flex items-center gap-3"
-                  htmlFor="cashOnDelivery">
-                  <input
-                    type="radio"
-                    className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
-                    name="paymentMethod"
-                    id="cashOnDelivery"
-                  />
-                  <span>Cash on Delivery</span>
-                </label>
-
-                <label className="flex items-center gap-3" htmlFor="payOnline">
-                  <input
-                    type="radio"
-                    className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
-                    name="paymentMethod"
-                    id="payOnline"
-                  />
-                  <span>Pay Online</span>
-                </label>
-              </div>
-            </div>
-            {/* order button */}
-            <div className="grid justify-end mt-5">
-              <input
-                type="submit"
-                value="PLACE ORDER"
-                className="btn p-3 px-5 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
-              />
             </div>
           </div>
         </form>
