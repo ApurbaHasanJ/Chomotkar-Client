@@ -10,4 +10,5 @@ export const UploadPhotos = async (file) => {
     formData
   );
   return { img: data?.secure_url };
+  
 };
