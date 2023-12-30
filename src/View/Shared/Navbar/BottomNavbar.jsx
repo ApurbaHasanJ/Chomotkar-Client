@@ -2,11 +2,16 @@ import { HiHome } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { FaBagShopping, FaUser } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SideSearchBar from "./Search/SideSearchBar";
+import { CartContext } from "../../Providers/CartProvider";
+import useAdmin from "../../Hooks/useAdmin";
 
 const BottomNavbar = () => {
+  const [isAdmin, adminLoading] = useAdmin();
   const [sideSearchBar, setSideSearchBar] = useState(false);
+
+  const { totalQuantity } = useContext(CartContext);
 
   const handleSideSearchBar = () => {
     setSideSearchBar(!sideSearchBar);
@@ -37,7 +42,13 @@ const BottomNavbar = () => {
           </li>
           <li>
             <NavLink
-              to="/account"
+              to={`/dashboard/${
+                adminLoading
+                  ? "loading..."
+                  : isAdmin
+                  ? "admin-home"
+                  : "user-home"
+              }`}
               className={({ isActive }) => (isActive ? "active" : "default")}>
               <div className="flex flex-col gap-1 items-center">
                 <FaUser className="text-xl" />
@@ -52,8 +63,8 @@ const BottomNavbar = () => {
               <div className="flex flex-col gap-1 relative items-center">
                 <FaBagShopping className="text-xl" />
                 <span className="text-xs">Cart</span>
-                <span className="absolute rounded-full text-sm -right-2 top-0 text-white h-5 w-5 text-center bg-rose-300">
-                  0
+                <span className="absolute rounded-full text-sm -right-4 -top-1 px-1 py-[.5px] text-white text-center bg-rose-300">
+                  {totalQuantity || 0}
                 </span>
               </div>
             </NavLink>

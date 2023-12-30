@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
 
 const UserDropdown = () => {
+  const [isAdmin, adminLoading] = useAdmin();
+
   const { user, logOut } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
 
@@ -74,7 +77,13 @@ const UserDropdown = () => {
                   <ul className="py-2" aria-labelledby="user-menu-button">
                     <li>
                       <Link
-                        to="/dashboard/admin-home"
+                        to={`/dashboard/${
+                          adminLoading
+                            ? "loading..."
+                            : isAdmin
+                            ? "admin-home"
+                            : "user-home"
+                        }`}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                         Dashboard
                       </Link>
