@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 import BottomNavbar from "../../Shared/Navbar/BottomNavbar";
 import Footer from "../../Shared/Footer/Footer";
@@ -13,6 +13,11 @@ import Popup from "../../Shared/Popups/Popup";
 const Main = () => {
   const { loading } = useContext(AuthContext);
   const [, productsLoading] = useProducts();
+  const location = useLocation();
+
+  // Check if the current path is login or signup
+  const isLoginOrRegister = location.pathname.includes("/login") || location.pathname.includes("/register");
+
   return (
     <main>
       {loading || productsLoading ? (
@@ -20,7 +25,7 @@ const Main = () => {
       ) : (
         <>
           <Navbar />
-          <Popup />
+          {isLoginOrRegister || <Popup />} 
           <Outlet />
           <div className="border shadow-xl p-3 fixed z-[100] right-0 top-1/2 transform -translate-y-1/2">
             <Cart />

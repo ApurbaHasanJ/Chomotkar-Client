@@ -9,7 +9,13 @@ const Popup = () => {
   useEffect(() => {
     // Check if there are items in the cart
     if (totalQuantity > 0) {
-      setShowPopup(true);
+      // Show the popup after 3000 milliseconds (3 seconds)
+      const timeoutId = setTimeout(() => {
+        setShowPopup(true);
+      }, 2000);
+
+      // Clear the timeout when the component unmounts or when totalQuantity changes
+      return () => clearTimeout(timeoutId);
     }
   }, [totalQuantity]);
 

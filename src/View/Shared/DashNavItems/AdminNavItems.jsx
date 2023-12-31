@@ -1,6 +1,6 @@
 import { FaBook, FaHome, FaUsers } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
-import { MdAddBox, MdDiscount } from "react-icons/md";
+import { MdAddBox, MdDiscount, MdReviews } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const AdminNavItems = () => {
@@ -99,10 +99,27 @@ const AdminNavItems = () => {
             }>
             <MdDiscount
               className="w-14 h-6 md:mx-0 mx-auto"
-              title="MANAGE COUPON"
+              title="MANAGE COUPONS"
             />
             <span className="text-base font-semibold whitespace-nowrap">
-              MANAGE COUPON
+              MANAGE COUPONS
+            </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/dashboard/manage-reviews"
+            className={({ isActive }) =>
+              isActive
+                ? "dashActive flex items-center justify-start gap-4"
+                : "dashDefault flex items-center justify-start gap-4"
+            }>
+            <MdReviews
+              className="w-14 h-6 md:mx-0 mx-auto"
+              title="MANAGE REVIEWS"
+            />
+            <span className="text-base font-semibold whitespace-nowrap">
+              MANAGE REVIEWS
             </span>
           </NavLink>
         </li>

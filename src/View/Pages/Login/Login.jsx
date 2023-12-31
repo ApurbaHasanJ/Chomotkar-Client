@@ -21,7 +21,7 @@ const Login = () => {
 
   //   const [disabled, setDisabled] = useState(true);
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn,setLoading } = useContext(AuthContext);
 
   // show password
   const [show, setShow] = useState(false);
@@ -51,6 +51,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false)
         Swal.fire({
           icon: "error",
           title: "Error login user",

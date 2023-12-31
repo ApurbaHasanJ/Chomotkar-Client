@@ -44,18 +44,21 @@ const AddReview = () => {
     setImg(view);
   };
 
+  // photo upload function
   const submitImage = async () => {
     try {
       const data = await UploadPhotos(img);
-      console.log(data);
+      // console.log(data);
+      toast.success("photo uploaded successfully");
       setReviewerPhoto(data.img);
     } catch (error) {
-      console.error("Error uploading photo:", error);
+      toast.error("Error uploading photo:", error);
     }
   };
   const {
     register,
     handleSubmit,
+    reset,
     // formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -64,11 +67,14 @@ const AddReview = () => {
     const reviewData = {
       reviewerPhoto: reviewerPhoto || user?.photoURL,
       reviewerName,
+      add: false,
       rating: rating,
       productName,
       suggestion,
       reviewDetails,
+      createdAt: new Date(),
     };
+    console.log(reviewData);
     if (rating > 0) {
       fetch("http://localhost:5000/reviews", {
         method: "POST",
@@ -80,6 +86,9 @@ const AddReview = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          setRating(0);
+          setReviewerPhoto("");
+          reset();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -131,20 +140,30 @@ const AddReview = () => {
                   <div className="z-0 w-full h-full rounded-full">
                     {user ? (
                       <>
-                        {user?.photoURL ? (
+                        {user?.photoURL || reviewerPhoto ? (
                           <img
                             className="w-full h-full rounded-full"
-                            src={user?.photoURL}
+                            src={reviewerPhoto || user?.photoURL}
                             alt={user?.displayName}
                           />
                         ) : (
-                          <div className="font-bold text-5xl">
+                          <div className="font-semibold text-slate-500 text-center flex justify-center items-center md:text-5xl -mb-2 text-3xl">
                             {user?.displayName[0].charAt(0).toUpperCase()}
                           </div>
                         )}
                       </>
                     ) : (
-                      <FaCircleUser className="w-full h-full text-slate-500" />
+                      <>
+                        {reviewerPhoto ? (
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={reviewerPhoto}
+                            alt="Your Photo"
+                          />
+                        ) : (
+                          <FaCircleUser className="w-full h-full text-slate-500" />
+                        )}
+                      </>
                     )}
                   </div>
 
@@ -191,7 +210,10 @@ const AddReview = () => {
                           {/* modal footer */}
                           <div className="flex justify-center">
                             <button
-                              onClick={submitImage}
+                              type="button"
+                              onClick={() => {
+                                submitImage(), handleToggleModal();
+                              }}
                               className="bg-[#D1A054] hover:bg-[#ebaf54] hover:shadow-2xl px-3 py-2">
                               Update
                             </button>

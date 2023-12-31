@@ -84,7 +84,7 @@ const ManageUsers = () => {
 
   console.log(users);
   return (
-    <section className=" pt-12 min-h-screen bg-[#F6F6F6]">
+    <section className=" py-12 min-h-screen bg-[#F6F6F6]">
       <SectionTitle title={"MANAGE ALL USERS"} subtitle={"---How Many!?---"} />
 
       {/* table */}

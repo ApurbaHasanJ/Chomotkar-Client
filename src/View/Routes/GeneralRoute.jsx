@@ -20,6 +20,7 @@ import Checkout from "../Pages/Dashboard/UserPages/Checkout";
 import ManageCoupon from "../Pages/Dashboard/AdminPages/ManageCoupon";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import ManageReviews from "../Pages/Dashboard/AdminPages/ManageReviews";
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "manage-products/",
+        path: "manage-products",
         element: (
           <AdminRoute>
             <ManageProducts />
@@ -91,6 +92,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageCoupon />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-reviews",
+        element: (
+          <AdminRoute>
+            <ManageReviews />
           </AdminRoute>
         ),
       },
