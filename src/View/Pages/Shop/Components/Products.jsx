@@ -19,23 +19,22 @@ const Products = () => {
   const params = useParams().route;
 
   const [toggleFilters, setToggleFilters] = useState(false);
-  // take color context-------------------
-  const { selectedColor } = useContext(ColorContext);
+
 
   // take category context-------------------
   const { selectedCategory } = useContext(CategoryContext);
   console.log(products);
 
-  // take collection context
-  const { collection } = useContext(CollectionContext);
+  // take selectedCollection context
+  const { selectedCollection } = useContext(CollectionContext);
 
   // total filter
   const filteredProducts = products.filter((product) => {
-    const collectionMatch = !collection || product?.category === collection;
-    const colorMatch = !selectedColor || product.color === selectedColor;
+    const collectionMatch = !selectedCollection || product?.category === selectedCollection;
+    // const colorMatch = !selectedColor || product.color === selectedColor;
     const categoryMatch =
       !selectedCategory || product.subCategory === selectedCategory;
-    return collectionMatch && colorMatch && categoryMatch;
+    return collectionMatch && categoryMatch;
   });
 
   console.log(filteredProducts);

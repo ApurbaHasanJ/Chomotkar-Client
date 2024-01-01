@@ -2,6 +2,7 @@ import { FaFilter } from "react-icons/fa6";
 import CategoryFilter from "./CategoryFilter";
 import ColorFilter from "./ColorFilter";
 import { RxCross2 } from "react-icons/rx";
+import CollectionFilter from "./CollectionFilter";
 
 const Filter = ({ toggleFilters, handleToggleFilters }) => {
   // console.log(toggleFilters);
@@ -13,8 +14,9 @@ const Filter = ({ toggleFilters, handleToggleFilters }) => {
           <FaFilter />
         </button>
         <div className=" md:grid  hidden gap-10 ">
+          <CollectionFilter />
           <CategoryFilter />
-          <ColorFilter />
+          {/* <ColorFilter /> */}
         </div>
       </div>
       {/* for small device */}
