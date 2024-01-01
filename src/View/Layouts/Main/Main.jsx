@@ -16,7 +16,7 @@ const Main = () => {
   const location = useLocation();
 
   // Check if the current path is login or signup
-  const isLoginOrRegister = location.pathname.includes("/login") || location.pathname.includes("/register");
+  const isLoginOrRegister = location.pathname.includes("/login") || location.pathname.includes("/register") 
 
   return (
     <main>

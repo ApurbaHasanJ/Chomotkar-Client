@@ -63,6 +63,25 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
         console.log(photoUrls);
       }
 
+      // Get the current date and time of the server
+      const currentServerDateTime = DateTime.utc();
+
+      // Set the locale to English
+      const enDateTime = currentServerDateTime.setLocale("en");
+
+      // Format the date and time in English language
+      const formattedEnDateTime = enDateTime.toLocaleString({
+        locale: "en",
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZone: "Asia/Dhaka", // You can adjust the timeZone as needed
+      });
+
       if (photoUrls.length > 0 || photos.length === 0) {
         console.log("updating database");
         const productData = {
@@ -80,7 +99,6 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           color,
           sizes,
           description,
-          createdAt: new Date(),
         };
 
         axiosSecure
@@ -198,9 +216,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         defaultValue={updateProduct?.category}
                         className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                         required>
-                        <option value="">
-                          None
-                        </option>
+                        <option value="">None</option>
                         <option value="men">Men</option>
                         <option value="women">Women</option>
                         <option value="gadgets">Gadget</option>

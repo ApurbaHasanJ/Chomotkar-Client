@@ -11,7 +11,7 @@ const useAdmin = () => {
     queryFn: () => {
       if (user?.email) {
         return axiosSecure.get(`/users/admin/${user?.email}`).then((res) => {
-          console.log(res);
+          // console.log(res);
           return res.data.admin;
         });
       } else {

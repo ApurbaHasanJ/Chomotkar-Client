@@ -21,6 +21,9 @@ import ManageCoupon from "../Pages/Dashboard/AdminPages/ManageCoupon";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import ManageReviews from "../Pages/Dashboard/AdminPages/ManageReviews";
+import PaymentSuccess from "../Pages/PaymentPages/PaymentSuccess";
+import PaymentError from "../Pages/PaymentPages/PaymentError";
+import ManageOrders from "../Pages/Dashboard/AdminPages/ManageOrders";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +50,14 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "payment/success/:tranId",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/failed/:tranId",
+        element: <PaymentError />,
       },
     ],
   },
@@ -76,6 +87,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageProducts />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-orders",
+        element: (
+          <AdminRoute>
+            <ManageOrders />
           </AdminRoute>
         ),
       },

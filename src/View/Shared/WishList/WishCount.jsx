@@ -5,7 +5,7 @@ import { WishlistContext } from "../../Providers/WishlistProvider";
 const WishCount = () => {
   const { wishlist } = useContext(WishlistContext);
 
-  console.log(wishlist);
+  // console.log(wishlist);
   return (
     <div className="text-lg duration-300 text-slate-500 hover:text-rose-400 relative flex justify-center items-center gap-1">
       <FaHeart className="text-2xl " />

@@ -5,6 +5,7 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import Uploading from "../../../Shared/Loader/Uploading";
 import { UploadPhotos } from "../../../Shared/UploadCloudinary/UploadPhotos";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { DateTime } from "luxon";
 
 // product sizes
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -45,8 +46,26 @@ const AddProducts = () => {
 
       console.log(photoUrls);
 
-      // Set the state after the loop has completed
+      // Get the current date and time of the server
+      const currentServerDateTime = DateTime.utc();
 
+      // Set the locale to English
+      const enDateTime = currentServerDateTime.setLocale("en");
+
+      // Format the date and time in English language
+      const formattedEnDateTime = enDateTime.toLocaleString({
+        locale: "en",
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZone: "Asia/Dhaka", // You can adjust the timeZone as needed
+      });
+
+      // Set the state after the loop has completed
       if (photoUrls.length > 0) {
         const productData = {
           photos: photoUrls,
@@ -58,7 +77,7 @@ const AddProducts = () => {
           color,
           sizes,
           description,
-          createdAt: new Date(),
+          createdAt: formattedEnDateTime,
         };
 
         axiosSecure

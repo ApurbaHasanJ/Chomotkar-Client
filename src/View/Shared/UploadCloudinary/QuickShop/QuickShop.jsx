@@ -19,10 +19,10 @@ const QuickShop = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState(false);
-  console.log(selectedSize);
+  // console.log(selectedSize);
 
-  console.log(quantity);
-  console.log(payCarts);
+  // console.log(quantity);
+  // console.log(payCarts);
   // filter product
   const filterProduct = products.filter(
     (product) => product?._id === params?.id
