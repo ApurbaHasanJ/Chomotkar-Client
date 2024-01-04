@@ -91,28 +91,28 @@ const NavItems = () => {
             className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
             <Link
               to="/collection/men"
-              onClick={() => handleSelectCategory("t-shirt")}
+              onClick={() => {handleSelectCategory("t-shirt"), handleCollection("men")}}
               className="hover:text-rose-300">
               Premium T-Shirt
             </Link>
             <hr />
             <Link
               to="/collection/men"
-              onClick={() => handleSelectCategory("polo-shirt")}
+              onClick={() => {handleSelectCategory("polo-shirt"), handleCollection("men")}}
               className="hover:text-rose-300">
               Polo Shirt
             </Link>
             <hr />
             <Link
               to="/collection/men"
-              onClick={() => handleSelectCategory("panjabi")}
+              onClick={() => {handleSelectCategory("panjabi"), handleCollection("men")}}
               className="hover:text-rose-300">
               Luxury Panjabi
             </Link>
             <hr />
             <Link
               to="/collection/men"
-              onClick={() => handleSelectCategory("joggers")}
+              onClick={() => {handleSelectCategory("joggers"), handleCollection("men")}}
               className="hover:text-rose-300">
               Joggers
             </Link>
@@ -145,21 +145,21 @@ const NavItems = () => {
             className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
             <Link
               to="/collection/women"
-              onClick={() => handleSelectCategory("sari")}
+              onClick={() => {handleSelectCategory("sari"), handleCollection("women")}}
               className="hover:text-rose-300">
               Sari
             </Link>
             <hr />
             <Link
               to="/collection/women"
-              onClick={() => handleSelectCategory("combo-pack")}
+              onClick={() => {handleSelectCategory("combo-pack"), handleCollection("women")}}
               className="hover:text-rose-300">
               Compo Pack
             </Link>
             <hr />
             <Link
               to="/collection/women"
-              onClick={() => handleSelectCategory("three-pieces")}
+              onClick={() => {handleSelectCategory("three-pieces"), handleCollection("women")}}
               className="hover:text-rose-300">
               Three Pieces
             </Link>

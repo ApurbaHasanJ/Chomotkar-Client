@@ -41,7 +41,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
       productPrice,
       category,
       subCategory,
-      color,
+      colors,
       sizes,
       description,
     } = data;
@@ -49,6 +49,9 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
 
     // Remove string from price
     const price = parseInt(productPrice);
+
+    // Split the colors string into an array and remove leading/trailing spaces
+    const colorArray = colors.split(",").map((color) => color.trim());
 
     try {
       setLoading(true);
@@ -62,25 +65,6 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
 
         console.log(photoUrls);
       }
-
-      // Get the current date and time of the server
-      const currentServerDateTime = DateTime.utc();
-
-      // Set the locale to English
-      const enDateTime = currentServerDateTime.setLocale("en");
-
-      // Format the date and time in English language
-      const formattedEnDateTime = enDateTime.toLocaleString({
-        locale: "en",
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-        timeZone: "Asia/Dhaka", // You can adjust the timeZone as needed
-      });
 
       if (photoUrls.length > 0 || photos.length === 0) {
         console.log("updating database");
@@ -96,7 +80,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           newPrice: price,
           category,
           subCategory,
-          color,
+          colors: colorArray,
           sizes,
           description,
         };
@@ -204,18 +188,18 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       />
                     </div>
                   </div>
+
                   <div className="grid sm:grid-cols-2 gap-3 mb-3">
                     {/* Category */}
-                    <div className="grid mb-4 ">
-                      <label className="label justify-start text-base font-medium text-slate-900 ">
+                    <div className="grid mb-4">
+                      <label className="label justify-start text-base font-medium text-slate-900">
                         <span className="label-text">Category</span>
                         <span className="text-red-600 text-xl">*</span>
                       </label>
                       <select
-                        {...register("category")}
+                        {...register("category", { required: true })}
                         defaultValue={updateProduct?.category}
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
-                        required>
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400">
                         <option value="">None</option>
                         <option value="men">Men</option>
                         <option value="women">Women</option>
@@ -228,9 +212,8 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         <span className="text-red-600 text-xl">*</span>
                       </label>
                       <select
-                        required
+                        {...register("subCategory", { required: true })}
                         defaultValue={updateProduct?.subCategory}
-                        {...register("subCategory")}
                         className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
                         <option value="">None</option>
                         <option value="t-shirt">Premium T-Shirt</option>
@@ -271,8 +254,8 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       <input
                         type="text"
                         name="color"
-                        defaultValue={updateProduct?.color}
-                        {...register("color")}
+                        defaultValue={updateProduct?.colors}
+                        {...register("colors")}
                         required
                         placeholder="Product Color"
                         className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
@@ -285,23 +268,25 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       <span className="label-text">Fashion Product Sizes</span>
                     </label>
                     <div className="sm:flex grid grid-cols-3 items-center justify-start sm:space-x-6 sm:space-y-0 space-y-3">
-                      {sizes.map((size) => (
-                        <div key={size} className="flex items-center">
-                          <input
-                            type="checkbox"
-                            id={size}
-                            value={size}
-                            defaultChecked={updateProduct?.sizes?.includes(
-                              size
-                            )}
-                            className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
-                            {...register("sizes")}
-                          />
-                          <label htmlFor={size} className="ml-2 text-lg">
-                            {size}
-                          </label>
-                        </div>
-                      ))}
+                      {sizes &&
+                        sizes.map((size) => (
+                          <div key={size} className="flex items-center">
+                            <input
+                              type="checkbox"
+                              id={size}
+                              value={size}
+                              defaultChecked={
+                                updateProduct?.sizes &&
+                                updateProduct?.sizes?.includes(size)
+                              }
+                              className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                              {...register("sizes")}
+                            />
+                            <label htmlFor={size} className="ml-2 text-lg">
+                              {size}
+                            </label>
+                          </div>
+                        ))}
                     </div>
                   </div>
                   {/* Recipe details */}

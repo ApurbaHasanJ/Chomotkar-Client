@@ -136,7 +136,19 @@ const ManageProducts = () => {
                       <th
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 capitalize whitespace-nowrap ">
-                        {product?.color}
+                        <div className="flex flex-col gap-[6px]">
+                          {product?.colors &&
+                            product?.colors.map((color, index) => (
+                              <ul
+                                key={index}
+                                className="flex gap-1 text-xs text-gray-400 items-center">
+                                <li
+                                  style={{ backgroundColor: color }}
+                                  className="w-4 h-4 rounded-full border-2 border-slate-400"></li>
+                                <li className="capitalize">{color}</li>
+                              </ul>
+                            ))}
+                        </div>
                       </th>
 
                       <td scope="row" className="px-6 py-4">

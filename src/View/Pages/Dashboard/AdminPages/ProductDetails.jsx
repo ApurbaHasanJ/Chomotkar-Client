@@ -1,6 +1,7 @@
 
 
 const ProductDetails = ({productDetails}) => {
+  console.log(productDetails);
     return (
         <div>
             <div>
@@ -71,11 +72,11 @@ const ProductDetails = ({productDetails}) => {
                     <span className="font-semibold">Color: </span>
                     <span
                       style={{
-                        backgroundColor: productDetails?.product?.color,
+                        backgroundColor: productDetails?.color,
                       }}
                       className="p-2 rounded-full border"></span>
                     <span className="capitalize">
-                      {productDetails?.product?.color}
+                      {productDetails?.color}
                     </span>
                   </div>
                   <div className="capitalize">

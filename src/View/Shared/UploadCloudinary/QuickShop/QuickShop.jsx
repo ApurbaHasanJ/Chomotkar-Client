@@ -18,7 +18,9 @@ const QuickShop = () => {
   const [payCarts, setPayCarts] = useState([]);
   const [toggleModal, setToggleModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState("");
-  const [error, setError] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [sizeError, setSizeError] = useState(false);
+  const [colorError, setColorError] = useState(false);
   // console.log(selectedSize);
 
   // console.log(quantity);
@@ -37,6 +39,9 @@ const QuickShop = () => {
 
   const handleSelectSize = (size) => {
     setSelectedSize(selectedSize === size ? null : size);
+  };
+  const handleSelectColor = (color) => {
+    setSelectedColor(selectedColor === color ? null : color);
   };
 
   return (
@@ -92,10 +97,10 @@ const QuickShop = () => {
                     <span className="">Product By:</span>
                     <span>{product?.productBy}</span>
                   </div>
-                  <div className="mb-6 mt-3 flex gap-3">
-                    <span className="font-medium text-lg">Price:</span>
+                  <div className="mb-6 flex gap-3">
+                    <span className="font-medium sm">Price:</span>
                     {product?.newPrice ? (
-                      <div className="flex flex-col justify-start items-start gap-1">
+                      <div className="flex justify-start items-start gap-1">
                         <span className="line-through text-gray-500">
                           TK.{product?.price}
                         </span>
@@ -107,19 +112,41 @@ const QuickShop = () => {
                       <span>TK.{product?.price}</span>
                     )}
                   </div>
-                  <div className="my-6 flex items-center gap-2">
-                    <span className="font-medium text-lg">Color:</span>
-                    <span
-                      style={{ backgroundColor: product?.color }}
-                      className="h-5 w-5 rounded-full border-2 border-slate-400"></span>
-                    <span className="capitalize">({product?.color})</span>
+                  <div className="my-6 flex flex-col items-start gap-2">
+                    <span className="font-medium text-sm">Color:</span>
+
+                    <div className="flex items-center gap-3">
+                      {product?.colors.map((color, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <input
+                            checked={selectedColor === color}
+                            onChange={() => {
+                              setColorError(false), handleSelectColor(color);
+                            }}
+                            type="checkbox"
+                            className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                            name={color}
+                            id={color}
+                          />
+                          <div className="flex flex-col  border p-2 text-xs text-gray-400 items-center">
+                            <span className="capitalize">{color}</span>
+                            <span
+                              style={{ backgroundColor: color }}
+                              className="w-5 h-5 rounded-full border-2 border-slate-400"></span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {colorError && (
+                      <p className="text-red-500">
+                        Please select a color from here.
+                      </p>
+                    )}
                   </div>
 
                   {product?.sizes && (
-                    <div className="flex justify-start gap-3">
-                      <span className="font-medium text-lg">
-                        Available Sizes:
-                      </span>
+                    <div className="flex flex-col justify-start gap-3">
+                      <span className="font-medium text-sm">Select Size:</span>
                       <div className="flex flex-col gap-3">
                         <div className="flex gap-3">
                           {product?.sizes.map((size, index) => (
@@ -129,7 +156,7 @@ const QuickShop = () => {
                               <input
                                 checked={selectedSize === size}
                                 onChange={() => {
-                                  setError(false), handleSelectSize(size);
+                                  setSizeError(false), handleSelectSize(size);
                                 }}
                                 type="checkbox"
                                 className="w-4 h-4 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
@@ -142,9 +169,9 @@ const QuickShop = () => {
                             </div>
                           ))}
                         </div>
-                        {error && (
+                        {sizeError && (
                           <p className="text-red-500">
-                            Please select size from here.
+                            Please select a size from here.
                           </p>
                         )}
                       </div>
@@ -175,14 +202,26 @@ const QuickShop = () => {
                   <button
                     // disabled={!selectedSize}
                     onClick={() => {
+                      if (product?.colors && !selectedColor) {
+                        // Show a warning message or handle it as per your requirement
+                        setColorError(true);
+                        toast.error("Please select a color before buying!");
+                        return;
+                      }
                       if (product?.sizes && !selectedSize) {
                         // Show a warning message or handle it as per your requirement
-                        setError(true);
+
+                        setSizeError(true);
                         toast.error("Please select a size before buying!");
                         return;
                       }
 
-                      setPayCarts({ ...product, quantity, size: selectedSize });
+                      setPayCarts({
+                        ...product,
+                        quantity,
+                        color: selectedColor,
+                        size: selectedSize,
+                      });
                       handleToggleModal();
                     }}
                     className="bg-[#D1A054]  hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">

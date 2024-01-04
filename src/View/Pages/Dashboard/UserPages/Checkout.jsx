@@ -14,6 +14,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [discountedPercentage, setDiscountedPercentage] = useState(0);
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [payOnline, setPayOnline] = useState(false);
+  const [cashOnDelivery, setCashOnDelivery] = useState(false);
 
   console.log(payCarts);
   console.log(coupons);
@@ -69,27 +71,43 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     }
   };
 
+  const handlePaymentMethodChange = (e) => {
+    const { id } = e.target;
+
+    // Set the corresponding state based on the selected payment method
+    if (id === "cashOnDelivery") {
+      setCashOnDelivery(true);
+      setPayOnline(false);
+    } else if (id === "payOnline") {
+      setPayOnline(true);
+      setCashOnDelivery(false);
+    }
+  };
+
   const onSubmit = (data) => {
     data.productId = payCarts._id;
-    data.size = payCarts.size;
-    data.quantity = payCarts.quantity;
+    data.color = payCarts?.color;
+    data.size = payCarts?.size;
+    data.quantity = payCarts?.quantity;
     data.couponCode = enteredCouponCode;
     setLoading(true);
-    fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setLoading(false);
-        if (data) {
-          window.location.replace(data.url);
-        }
-      });
+    if (payOnline) {
+      fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setLoading(false);
+          if (data) {
+            window.location.replace(data.url);
+          }
+        });
+    }
   };
 
   return (
@@ -221,29 +239,45 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <h2 className="text-gray-700 font-semibold text-2xl">
                   PAYMENT METHOD
                 </h2>
-                <div className="grid md:gap-4 border-t-2 border-gray-600 pt-3 mt-3">
+                <div className="grid grid-cols-2 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
                   <label
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                     htmlFor="cashOnDelivery">
                     <input
                       type="radio"
-                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
                       name="paymentMethod"
                       id="cashOnDelivery"
+                      checked={cashOnDelivery}
+                      onChange={handlePaymentMethodChange}
                     />
-                    <span>Cash on Delivery</span>
+                    <div className="flex flex-col items-start">
+                      <span className="font-medium">Cash on Delivery</span>
+                      <img
+                        className="mt-2"
+                        src="https://res.cloudinary.com/dxixdugif/image/upload/v1704215344/chomotkar-fashion/cash-on-delivery-png-17_ja3w9k.png"
+                        alt=""
+                      />
+                    </div>
                   </label>
 
-                  <label
-                    className="flex items-center gap-3"
-                    htmlFor="payOnline">
+                  <label className="flex items-start gap-3" htmlFor="payOnline">
                     <input
                       type="radio"
-                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
                       name="paymentMethod"
                       id="payOnline"
+                      checked={payOnline}
+                      onChange={handlePaymentMethodChange}
                     />
-                    <span>Pay Online</span>
+                    <div className="flex flex-col items-start">
+                      <span className="font-medium">Pay Online</span>
+                      <img
+                        className="mt-2"
+                        src="https://res.cloudinary.com/dxixdugif/image/upload/v1704216177/chomotkar-fashion/Payment-Brands_yhtrxt.jpg"
+                        alt=""
+                      />
+                    </div>
                   </label>
                 </div>
               </div>

@@ -17,6 +17,7 @@ const AddProducts = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
+
     // photos url here
     let photoUrls = [];
     console.log(photoUrls);
@@ -28,10 +29,16 @@ const AddProducts = () => {
       productPrice,
       category,
       subCategory,
-      color,
+      colors,
       sizes,
       description,
     } = data;
+
+
+    // Split the colors string into an array and remove leading/trailing spaces
+    const colorArray = colors.split(",").map((color) => color.trim());
+
+    // console.log("products:", productsArray);
 
     // Remove string from price
     const price = parseInt(productPrice);
@@ -72,9 +79,9 @@ const AddProducts = () => {
           title,
           productBy,
           price,
+          colors: colorArray,
           category,
           subCategory,
-          color,
           sizes,
           description,
           createdAt: formattedEnDateTime,
@@ -170,15 +177,15 @@ const AddProducts = () => {
               </div>
               <div className="grid sm:grid-cols-2 gap-3 mb-3">
                 {/* Category */}
-                <div className="grid mb-4 ">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                <div className="grid mb-4">
+                  <label className="label justify-start text-base font-medium text-slate-900">
                     <span className="label-text">Category</span>
                     <span className="text-red-600 text-xl">*</span>
                   </label>
                   <select
-                    {...register("category")}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
-                    required>
+                    {...register("category", { required: true })}
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400">
+                    <option value="">None</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
                     <option value="gadgets">Gadget</option>
@@ -190,8 +197,7 @@ const AddProducts = () => {
                     <span className="text-red-600 text-xl">*</span>
                   </label>
                   <select
-                    required
-                    {...register("subCategory")}
+                    {...register("subCategory", { required: true })}
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
                     <option value="">None</option>
                     <option value="t-shirt">Premium T-Shirt</option>
@@ -230,10 +236,10 @@ const AddProducts = () => {
                   </label>
                   <input
                     type="text"
-                    name="color"
-                    {...register("color")}
+                    name="colors"
+                    {...register("colors")}
                     required
-                    placeholder="Product Color"
+                    placeholder="Product Colors"
                     className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
                   />
                 </div>
