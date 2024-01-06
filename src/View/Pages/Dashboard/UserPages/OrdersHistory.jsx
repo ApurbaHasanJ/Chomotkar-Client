@@ -1,69 +1,92 @@
 import { MdPendingActions } from "react-icons/md";
 import SectionTitle from "../../../Shared/SectionTitle";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { OrdersHistoryContext } from "../../../Providers/OrdersHistoryProvider";
 import useProducts from "../../../Hooks/useProducts";
 import Loader from "../../../Shared/Loader/Loader";
 import { FaShippingFast } from "react-icons/fa";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { GiSkullCrossedBones } from "react-icons/gi";
-import Swal from "sweetalert2";
 
 const OrdersHistory = () => {
-  const { ordersHistory, handleDeleteOrder } = useContext(OrdersHistoryContext);
+  const { ordersHistory } = useContext(OrdersHistoryContext);
   console.log(ordersHistory);
   const [products, productsLoading] = useProducts();
+  const [userOrders, setUserOrders] = useState([]);
 
-  const orderStatus = "pending";
+  useEffect(() => {
+    fetch("http://localhost:5000/orders/user/")
+      .then((res) => res.json())
+      .then((data) => {
+        setUserOrders(data);
+      });
+  }, []);
+
+  console.log(userOrders);
+
+
 
   const orderedProducts = ordersHistory
     .map((order) => {
-      const matchingProduct = products.find(
-        (product) => product?._id === order.productId
+      const matchingOrders = userOrders.find(
+        (userOrder) => userOrder?.createdAt === order?.date
       );
-      if (matchingProduct) {
-        return {
-          ...order,
-          product: matchingProduct,
-        };
+
+      console.log(matchingOrders);
+     
+
+      
+      if (matchingOrders) {
+        const matchingProduct = products.find(
+          (product) => product?._id === order.productId
+        );
+        
+        if(matchingProduct){
+          return {
+            ...order,
+            userOrder: matchingOrders,
+            product: matchingProduct,
+          };
+        }
       }
       return null;
     })
     .filter(Boolean);
   console.log(orderedProducts);
 
-  const handleRejectOrder = (date) => {
-    const encodedDate = encodeURIComponent(date);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You want to reject this order!?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Reject!",
-    }).then((res) => {
-      if (res.isConfirmed) {
-        fetch(`http://localhost:5000/orders/user/reject/${encodedDate}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-              handleDeleteOrder(date);
-            }
-          })
+  // const handleRejectOrder = (date) => {
+  //   const encodedDate = encodeURIComponent(date);
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You want to reject this order!?",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Reject!",
+  //   }).then((res) => {
+  //     if (res.isConfirmed) {
+  //       fetch(`http://localhost:5000/orders/user/reject/${encodedDate}`, {
+  //         method: "GET",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //           setUserOrders(data)
+  //           if (data.deletedCount > 0) {
+  //             handleDeleteOrder(date);
+  //           }
+  //         })
 
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    });
-  };
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     }
+  //   });
+  // };
 
   return (
     <section className="pt-12  min-h-screen relative ">
@@ -168,25 +191,25 @@ const OrdersHistory = () => {
 
                               <td scope="row" className=" px-6 py-4">
                                 <div>
-                                  {(orderStatus === "pending" && (
+                                  {(order?.userOrder?.orderStatus === "pending" && (
                                     <MdPendingActions
                                       // onClick={() => handleDeleteProduct(order?._id)}
                                       className="bg-slate-400 hover:bg-slate-500  p-1 rounded-md text-white text-[32px]"
                                     />
                                   )) ||
-                                    (orderStatus === "shipping" && (
+                                    (order?.userOrder?.orderStatus === "shipping" && (
                                       <FaShippingFast
                                         // onClick={() => handleDeleteProduct(order?._id)}
                                         className="bg-yellow-300 hover:bg-yellow-400  p-1 rounded-md text-white text-[32px]"
                                       />
                                     )) ||
-                                    (orderStatus === "confirmed" && (
+                                    (order?.userOrder?.orderStatus === "confirmed" && (
                                       <IoCheckmarkDoneCircle
                                         // onClick={() => handleDeleteProduct(order?._id)}
                                         className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]"
                                       />
                                     )) ||
-                                    (orderStatus === "rejected" && (
+                                    (order?.userOrder?.orderStatus === "rejected" && (
                                       <GiSkullCrossedBones
                                         // onClick={() => handleDeleteProduct(order?._id)}
                                         className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
@@ -195,10 +218,13 @@ const OrdersHistory = () => {
                                 </div>
                               </td>
                               <td scope="row" className="px-6 py-4 font-bold">
-                                <GiSkullCrossedBones
-                                  onClick={() => handleRejectOrder(order?.date)}
-                                  className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
-                                />
+                                <button
+                                  className="bg-[#D1A054] hover:bg-[#b97c20]
+                                  text-white shadow-lg hover:shadow-2xl py-2
+                                  px-4 rounded-lg text-base font-semibold
+                                  font-g-mono">
+                                  PAY
+                                </button>
                               </td>
                             </tr>
                           ))}
