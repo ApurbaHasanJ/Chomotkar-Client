@@ -6,6 +6,7 @@ import useUsers from "../../../Hooks/useUsers";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { RxCross2 } from "react-icons/rx";
 
 const ManageUsers = () => {
   const [users, , refetch] = useUsers();
@@ -150,7 +151,12 @@ const ManageUsers = () => {
                       )}
                       <div className="absolute right-0 -top-3 z-10">
                         {userId === user._id && (
-                          <div className="flex flex-col text-base w-40 p-3 bg-white shadow-md border rounded-md">
+                          <div className="flex relative flex-col text-base  p-3 bg-white shadow-md border rounded-md">
+                            <RxCross2
+                                      onClick={() => setUserId("")}
+                                      className="absolute -right-2 -top-2 text-red-600 bg-red-100 shadow-md text-xl rounded-full"
+                                    />
+                            
                             <button
                               type="button"
                               onClick={() => {
@@ -163,7 +169,7 @@ const ManageUsers = () => {
                                   : "hover:bg-gray-50"
                               } `}>
                               <FaUser />
-                              <span>Make User</span>
+                              <span className="text-xs whitespace-nowrap">Make User</span>
                             </button>
                             <hr />
                             <button
@@ -177,8 +183,8 @@ const ManageUsers = () => {
                                   ? "bg-red-50"
                                   : "hover:bg-gray-50"
                               } `}>
-                              <FaUserShield />
-                              <span>Make Admin</span>
+                              <FaUserShield className="text-lg"/>
+                              <span className="text-xs whitespace-nowrap">Make Admin</span>
                             </button>
                           </div>
                         )}
