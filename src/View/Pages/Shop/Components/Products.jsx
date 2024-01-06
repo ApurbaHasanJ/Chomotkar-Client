@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../../Shared/ProductCard/ProductCard";
 import { useContext, useState } from "react";
-import { ColorContext } from "../../../Providers/ColorProvider";
 import { CategoryContext } from "../../../Providers/CategoryProvider";
 import { FaFilter } from "react-icons/fa6";
 import Filter from "./FilterBy/Filter";

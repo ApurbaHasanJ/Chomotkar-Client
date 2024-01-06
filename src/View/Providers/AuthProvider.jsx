@@ -6,6 +6,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPhoneNumber,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -24,6 +25,7 @@ const AuthProvider = ({ children }) => {
   // providers
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
+ 
 
   // create new user
   const createUser = (email, password) => {
@@ -37,10 +39,35 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // signInWithPhone
+  const signInWithPhone = async(phoneNumber) => {
+    setLoading(true);
+  
+    try {
+      // Send verification code to the provided phone number
+      const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber);
+  
+      // SMS sent. Prompt user to type the code from the message,
+      // then sign the user in with confirmationResult.confirm(code).
+      window.confirmationResult = confirmationResult;
+      setLoading(false);
+    } catch (error) {
+      console.error("Error:", error.message);
+      setLoading(false);
+      // Handle errors, e.g., display an error message to the user
+    }
+  };
+
   // Update user info
   const userProfile = (displayName, photoURL) => {
     const user = auth.currentUser;
     return updateProfile(user, { displayName, photoURL });
+  };
+
+  const updateAddress = (address) => {
+    const currentUser = auth.currentUser;
+    // Assume you have a field 'address' in your user profile
+    return updateProfile(currentUser, { address });
   };
 
   // user logout
@@ -111,8 +138,10 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     createUser,
+    signInWithPhone,
     signIn,
     userProfile,
+    updateAddress,
     logOut,
     continueWithGoogle,
     continueWithFacebook,

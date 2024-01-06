@@ -9,15 +9,18 @@ import { FaInfoCircle, FaShippingFast } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import ProductDetails from "./ProductDetails";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageOrders = () => {
   const [orders, ordersLoading, refetch] = useOrders();
   const [products, productsLoading] = useProducts();
   const [modal, setModal] = useState(false);
   const [productDetails, setProductDetails] = useState();
-  console.log(productDetails);
+  const [orderId, setOrderId] = useState(null);
 
-  const orderStatus = "pending";
+  const [axiosSecure] = useAxiosSecure();
+  console.log(productDetails);
 
   // finding product from products using productId
   const orderedProducts = orders
@@ -35,6 +38,43 @@ const ManageOrders = () => {
     })
     .filter(Boolean);
   console.log(orderedProducts);
+
+  const handleOrderStatus = (id, status) => {
+    // const encodedDate = encodeURIComponent(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to change order status!?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Change!",
+    }).then((res) => {
+      if (res.isConfirmed) {
+        axiosSecure
+          .patch(`/orders/admin/${id}`, {
+            orderStatus: status,
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.data.modifiedCount) {
+              refetch();
+              setOrderId("");
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `The order is now ${status}!`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
 
   return (
     <section className="pt-12  min-d-screen relative ">
@@ -63,17 +103,16 @@ const ManageOrders = () => {
                         #
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        ITEM IMAGE
+                        PRODUCT
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        ITEM NAME
+                        USER
                       </th>
-
                       <th scope="col" className="px-6 py-3">
                         PRICE
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        ACTION
+                        DETAILS
                       </th>
                       <th scope="col" className="px-6 py-3">
                         ACTION
@@ -124,31 +163,115 @@ const ManageOrders = () => {
                             />
                           </td>
                           <td scope="row" className=" px-6 py-4">
-                            <div>
-                              {(orderStatus === "pending" && (
-                                <MdPendingActions
-                                  // onClick={() => handleDeleteProduct(order?._id)}
-                                  className="bg-slate-400 hover:bg-slate-500  p-1 rounded-md text-white text-[32px]"
-                                />
-                              )) ||
-                                (orderStatus === "shipping" && (
-                                  <FaShippingFast
-                                    // onClick={() => handleDeleteProduct(order?._id)}
-                                    className="bg-yellow-300 hover:bg-yellow-400  p-1 rounded-md text-white text-[32px]"
-                                  />
+                            <div className="relative">
+                              <div
+                                onClick={() => {
+                                  setOrderId(order?._id);
+                                }}>
+                                {(order?.orderStatus === "pending" && (
+                                  <MdPendingActions className="bg-slate-400 hover:bg-slate-500  p-1 rounded-md text-white text-[32px]" />
                                 )) ||
-                                (orderStatus === "confirmed" && (
-                                  <IoCheckmarkDoneCircle
-                                    // onClick={() => handleDeleteProduct(order?._id)}
-                                    className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]"
-                                  />
-                                )) ||
-                                (orderStatus === "rejected" && (
-                                  <GiSkullCrossedBones
-                                    // onClick={() => handleDeleteProduct(order?._id)}
-                                    className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
-                                  />
-                                ))}
+                                  (order?.orderStatus === "shipping" && (
+                                    <FaShippingFast className="bg-yellow-300 hover:bg-yellow-400  p-1 rounded-md text-white text-[32px]" />
+                                  )) ||
+                                  (order?.orderStatus === "confirmed" && (
+                                    <IoCheckmarkDoneCircle className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
+                                  )) ||
+                                  (order?.orderStatus === "rejected" && (
+                                    <GiSkullCrossedBones className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
+                                  ))}
+                              </div>
+                              <div className="absolute z-10 right-4 top-4 rounded-md shadow-md">
+                                {orderId === order?._id && (
+                                  <div className="grid relative gap-2  p-3 bg-white border">
+                                    <RxCross2
+                                      onClick={() => setOrderId("")}
+                                      className="absolute -right-2 -top-2 text-red-600 bg-red-100 shadow-md text-xl rounded-full"
+                                    />
+                                    {/* pending */}
+                                    <button
+                                    type="button"
+                                    disabled={order?.orderStatus=== "pending"}
+                                      onClick={() =>
+                                        handleOrderStatus(order?._id, "pending")
+                                      }
+                                      className={`flex gap-2 hover:bg-red-50 border-b pb-2 items-center`}>
+                                      <MdPendingActions className="bg-slate-400 hover:bg-slate-500  p-1 rounded-md text-white text-[32px]" />
+                                      <span
+                                        className={`${
+                                          order?.orderStatus === "pending"
+                                            ? "bg-red-200"
+                                            : ""
+                                        } rounded-full px-1`}>
+                                        Pending
+                                      </span>
+                                    </button>
+                                    {/* shipping */}
+                                    <button
+                                    type="button"
+                                    disabled={order?.orderStatus=== "shipping"}
+                                      onClick={() =>
+                                        handleOrderStatus(
+                                          order?._id,
+                                          "shipping"
+                                        )
+                                      }
+                                      className={`flex gap-2 hover:bg-red-50 border-b pb-2 items-center`}>
+                                      <FaShippingFast className="bg-yellow-300 hover:bg-yellow-400  p-1 rounded-md text-white text-[32px]" />
+                                      <span
+                                        className={`${
+                                          order?.orderStatus === "shipping"
+                                            ? "bg-red-200"
+                                            : ""
+                                        } rounded-full px-1`}>
+                                        Shipping
+                                      </span>
+                                    </button>
+                                    {/* confirmed */}
+                                    <button
+                                    type="button"
+                                    disabled={order?.orderStatus=== "confirmed"}
+                                      onClick={() =>
+                                        handleOrderStatus(
+                                          order?._id,
+                                          "confirmed"
+                                        )
+                                      }
+                                      className={`flex gap-2 hover:bg-red-50 border-b pb-2 items-center`}>
+                                      <IoCheckmarkDoneCircle className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
+                                      <span
+                                        className={`${
+                                          order?.orderStatus === "confirmed"
+                                            ? "bg-red-200"
+                                            : ""
+                                        } rounded-full px-1`}>
+                                        Confirmed
+                                      </span>
+                                    </button>
+                                    {/* rejected */}
+                                    <button
+                                    type="button"
+                                    disabled={order?.orderStatus=== "rejected"}
+                                      onClick={() =>
+                                        handleOrderStatus(
+                                          order?._id,
+                                          "rejected"
+                                        )
+                                      }
+                                      className="flex gap-2 hover:bg-red-50  items-center">
+                                      <GiSkullCrossedBones className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
+                                      <span
+                                        className={`${
+                                          order?.orderStatus === "rejected"
+                                            ? "bg-red-200"
+                                            : ""
+                                        } rounded-full px-1`}>
+                                        Rejected
+                                      </span>
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
                             </div>
                           </td>
                         </tr>

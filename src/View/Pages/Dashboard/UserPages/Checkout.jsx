@@ -1,12 +1,17 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { RxCross2 } from "react-icons/rx";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useCoupon from "../../../Hooks/useCoupon";
 import Loader from "../../../Shared/Loader/Loader";
+import { OrdersHistoryContext } from "../../../Providers/OrdersHistoryProvider";
+import { useNavigate } from "react-router-dom";
+import { DateTime } from "luxon";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
+  const { handleAddToOrdersHistory } = useContext(OrdersHistoryContext);
+
   // State for total price, delivery charge, and coupon discount
   const [coupons] = useCoupon();
   const [subTotal, setSubTotal] = useState(0);
@@ -16,6 +21,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [loading, setLoading] = useState(false);
   const [payOnline, setPayOnline] = useState(false);
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
+  const navigate = useNavigate();
 
   console.log(payCarts);
   console.log(coupons);
@@ -84,30 +90,78 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     }
   };
 
+  // Get the current date and time of the server
+  const currentServerDateTime = DateTime.utc();
+
+  // Set the locale to English
+  const enDateTime = currentServerDateTime.setLocale("en");
+
+  // Format the date and time in English language
+  const formattedEnDateTime = enDateTime.toLocaleString({
+    locale: "en",
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: "Asia/Dhaka", // You can adjust the timeZone as needed
+  });
+
   const onSubmit = (data) => {
+    if (!payOnline && !cashOnDelivery) {
+      toast.error("please select a payment method");
+      return;
+    }
+    const order = {
+      productId: payCarts._id,
+      date: formattedEnDateTime,
+      color: payCarts?.color || "none",
+      size: payCarts?.size || "none",
+      discount: discountedPercentage,
+      quantity: payCarts?.quantity,
+      price: discountedPrice
+        ? discountedPrice + deliveryCharge
+        : subTotal + deliveryCharge,
+    };
+
     data.productId = payCarts._id;
     data.color = payCarts?.color;
     data.size = payCarts?.size;
     data.quantity = payCarts?.quantity;
     data.couponCode = enteredCouponCode;
+    data.date = formattedEnDateTime;
+
+    // Add to order history for both cash on delivery and online payment
+    handleAddToOrdersHistory(order);
     setLoading(true);
-    if (payOnline) {
-      fetch("http://localhost:5000/order", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setLoading(false);
-          if (data) {
-            window.location.replace(data.url);
-          }
-        });
-    }
+    // Set the payOnline property in the data object based on the payOnline condition
+    data.payOnline = payOnline;
+
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((responseData) => {
+        console.log(responseData);
+        console.log(responseData);
+        setLoading(false);
+
+        // Redirect based on the payment method
+        if (payOnline && responseData && responseData.url) {
+          // Redirect to the provided URL for online payment
+          window.location.replace(responseData.url);
+        } else {
+          // Redirect for cash on delivery
+          // Adjust the URL as needed
+          navigate("/dashboard/orders-history");
+        }
+      });
   };
 
   return (

@@ -12,10 +12,15 @@ const MyCart = () => {
   const [products] = useProducts();
   const [payCarts, setPayCarts] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedColor, setSelectedColor] = useState({
+    id: "",
+    color: "",
+  });
   const [selectedSize, setSelectedSize] = useState({
     id: "",
     size: "",
   });
+
   const [toggleModal, setToggleModal] = useState(false);
 
   console.log(payCarts);
@@ -99,10 +104,10 @@ const MyCart = () => {
                         #
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        IMAGE
+                        PRODUCT
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        NAME
+                        COLOR
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Size
@@ -133,17 +138,51 @@ const MyCart = () => {
                         <td className="w-4 p-8">{index + 1}</td>
                         <th
                           scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                          className="px-6 py-4 grid items-center font-medium text-gray-900 whitespace-nowrap ">
                           <img
-                            className="md:w-32 md:h-full object-cover h-16 w-24"
+                            className="md:w-24 h-full object-cover w-16"
                             src={cart?.photos[0]?.img}
                             alt={cart?.title}
+                            title={cart?.title}
                           />
+                          <span className="font-medium text-gray-900 whitespace-nowrap ">
+                            {cart?.title}
+                          </span>
                         </th>
                         <th
                           scope="row"
                           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                          {cart?.title}
+                          <div className="grid items-start">
+                            {cart?.colors.map((color, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center gap-3">
+                                <input
+                                  checked={
+                                    selectedColor.id === cart?._id &&
+                                    selectedColor.color === color
+                                  }
+                                  onChange={() => {
+                                    setSelectedColor({
+                                      id: cart?._id,
+                                      color: color,
+                                    });
+                                  }}
+                                  type="checkbox"
+                                  className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                                  name={color}
+                                  id={color}
+                                />
+
+                                <div className="flex gap-1 p-2 text-xs text-gray-400 items-center">
+                                  <span
+                                    style={{ backgroundColor: color }}
+                                    className="w-5 h-5 rounded-full border-2 border-slate-400"></span>
+                                  <span className="capitalize">{color}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </th>
                         <td scope="row" className="px-6 py-4">
                           <select
@@ -218,6 +257,18 @@ const MyCart = () => {
                             type="button"
                             onClick={() => {
                               if (
+                                cart?.colors &&
+                                (!selectedColor ||
+                                  cart._id !== selectedColor.id)
+                              ) {
+                                // Show a warning message or handle it as per your requirement
+
+                                toast.error(
+                                  "Please select a color before buying!"
+                                );
+                                return;
+                              }
+                              if (
                                 cart?.sizes &&
                                 (!selectedSize || cart._id !== selectedSize.id)
                               ) {
@@ -231,6 +282,9 @@ const MyCart = () => {
                               setPayCarts({
                                 ...cart,
                                 quantity: cart?.quantity,
+                                color: !cart?.colors
+                                  ? ""
+                                  : selectedColor?.color,
                                 size: !cart?.sizes ? "" : selectedSize?.size,
                               });
                               handleToggleModal();

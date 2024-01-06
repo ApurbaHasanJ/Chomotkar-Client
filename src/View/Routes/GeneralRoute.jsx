@@ -24,6 +24,7 @@ import ManageReviews from "../Pages/Dashboard/AdminPages/ManageReviews";
 import PaymentSuccess from "../Pages/PaymentPages/PaymentSuccess";
 import PaymentError from "../Pages/PaymentPages/PaymentError";
 import ManageOrders from "../Pages/Dashboard/AdminPages/ManageOrders";
+import OrdersHistory from "../Pages/Dashboard/UserPages/OrdersHistory";
 
 export const router = createBrowserRouter([
   {
@@ -146,6 +147,10 @@ export const router = createBrowserRouter([
       {
         path: "add-review",
         element: <AddReview />,
+      },
+      {
+        path: "orders-history",
+        element: <OrdersHistory />,
       },
       {
         path: "payment-history",

@@ -130,6 +130,7 @@ const ManageUsers = () => {
                       {user?.email}
                     </th>
                     <td className="px-6 py-4 ">
+                      <div className="relative">
                       {user?.role === "user" ? (
                         <FaUserEdit
                           title={user?.role}
@@ -147,39 +148,42 @@ const ManageUsers = () => {
                           } p-1 rounded-md text-white text-[32px]`}
                         />
                       )}
-                      {userId === user._id && (
-                        <div className="flex flex-col text-base w-40 p-3 bg-white shadow-md border rounded-md">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              handleUsersRole(user, "user");
-                            }}
-                            disabled={user?.role === "user"}
-                            className={`flex items-center gap-1 p-2 ${
-                              user?.role === "user"
-                                ? "bg-red-50"
-                                : "hover:bg-gray-50"
-                            } `}>
-                            <FaUser />
-                            <span>Make User</span>
-                          </button>
-                          <hr />
-                          <button
-                            type="button"
-                            onClick={() => {
-                              handleUsersRole(user, "admin");
-                            }}
-                            disabled={user?.role === "admin"}
-                            className={`flex items-center gap-1 p-2 ${
-                              user?.role === "admin"
-                                ? "bg-red-50"
-                                : "hover:bg-gray-50"
-                            } `}>
-                            <FaUserShield />
-                            <span>Make Admin</span>
-                          </button>
-                        </div>
-                      )}
+                      <div className="absolute right-0 -top-3 z-10">
+                        {userId === user._id && (
+                          <div className="flex flex-col text-base w-40 p-3 bg-white shadow-md border rounded-md">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                handleUsersRole(user, "user");
+                              }}
+                              disabled={user?.role === "user"}
+                              className={`flex items-center gap-1 p-2 ${
+                                user?.role === "user"
+                                  ? "bg-red-50"
+                                  : "hover:bg-gray-50"
+                              } `}>
+                              <FaUser />
+                              <span>Make User</span>
+                            </button>
+                            <hr />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                handleUsersRole(user, "admin");
+                              }}
+                              disabled={user?.role === "admin"}
+                              className={`flex items-center gap-1 p-2 ${
+                                user?.role === "admin"
+                                  ? "bg-red-50"
+                                  : "hover:bg-gray-50"
+                              } `}>
+                              <FaUserShield />
+                              <span>Make Admin</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      </div>
                     </td>
                     <td className=" px-6 py-4">
                       <MdDeleteForever
