@@ -219,11 +219,15 @@ const OrdersHistory = () => {
                               </td>
                               <td scope="row" className="px-6 py-4 font-bold">
                                 <button
-                                  className="bg-[#D1A054] hover:bg-[#b97c20]
-                                  text-white shadow-lg hover:shadow-2xl py-2
+                                type="button"
+                                disabled={ order?.userOrder?.paidStatus === true}
+                                  className={`
+                                  text-white  py-2
                                   px-4 rounded-lg text-base font-semibold
-                                  font-g-mono">
-                                  PAY
+                                  font-g-mono ${ order?.userOrder?.paidStatus === true ||order?.userOrder?.orderStatus === "rejected" ? "bg-[#e1b470] cursor-not-allowed":"bg-[#D1A054] shadow-lg hover:shadow-2xl hover:bg-[#b97c20]"}`}>
+                                  {
+                                    order?.userOrder?.paidStatus === true ? "PAID": "PAY"
+                                  }
                                 </button>
                               </td>
                             </tr>

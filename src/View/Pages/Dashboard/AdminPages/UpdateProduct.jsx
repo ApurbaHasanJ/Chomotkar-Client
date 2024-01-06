@@ -217,13 +217,22 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
                         <option value="">None</option>
                         <option value="t-shirt">Premium T-Shirt</option>
-                        <option value="polo-shirt">Polo Shirt</option>
+                        <option value="polo shirt">Polo Shirt</option>
                         <option value="panjabi">Luxury Panjabi</option>
                         <option value="joggers">Joggers</option>
                         <option value="sari">Sari</option>
                         <option value="combo-pack">Combo Pack</option>
                         <option value="three-pieces">Three Pieces</option>
-                        <option value="gadgets">Gadgets</option>
+                        <option value="audio">Audio</option>
+                        <option value="charger & cables">
+                          Charger & Cables
+                        </option>
+                        <option value="power bank">Power Bank</option>
+                        <option value="mobile accessories">
+                          Mobile Accessories
+                        </option>
+                        <option value="multi hub">Multi Hub</option>
+                        <option value="storage">Storage</option>
                       </select>
                     </div>
                   </div>
