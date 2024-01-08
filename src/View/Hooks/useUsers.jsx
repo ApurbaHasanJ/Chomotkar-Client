@@ -16,7 +16,7 @@ const useUsers = () => {
       return res.data
     }),
     // queryFn: () =>
-    //   fetch("http://localhost:5000/users",{headers:{
+    //   fetch("https://chomotkar-server-iota.vercel.app/users",{headers:{
     //     authorization: `Bearer ${token}`
     //   }}).then((res) => res.json()),
   });

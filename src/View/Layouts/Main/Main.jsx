@@ -16,16 +16,20 @@ const Main = () => {
   const location = useLocation();
 
   // Check if the current path is login or signup
-  const isLoginOrRegister = location.pathname.includes("/login") || location.pathname.includes("/register") 
+  const isLoginOrRegister =
+    location.pathname.includes("/login") ||
+    location.pathname.includes("/register");
 
   return (
     <main>
       {loading || productsLoading ? (
-        <Loader />
+        <div className="h-screen grid justify-center items-center">
+          <Loader />
+        </div>
       ) : (
         <>
           <Navbar />
-          {isLoginOrRegister || <Popup />} 
+          {isLoginOrRegister || <Popup />}
           <Outlet />
           <div className="border shadow-xl p-3 fixed z-[100] right-0 top-1/2 transform -translate-y-1/2">
             <Cart />

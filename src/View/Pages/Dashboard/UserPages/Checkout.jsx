@@ -132,6 +132,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     data.quantity = payCarts?.quantity;
     data.couponCode = enteredCouponCode;
     data.date = formattedEnDateTime;
+    data.totalAmount = payCarts?.userOrder?.totalAmount;
 
     // Add to order history for both cash on delivery and online payment
     handleAddToOrdersHistory(order);
@@ -139,7 +140,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     // Set the payOnline property in the data object based on the payOnline condition
     data.payOnline = payOnline;
 
-    fetch("http://localhost:5000/order", {
+    fetch("https://chomotkar-server-iota.vercel.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -193,6 +194,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
+                  defaultValue={payCarts?.userOrder?.cusName || ""}
                   type="text"
                   name="name"
                   {...register("name", {
@@ -210,6 +212,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
+                  defaultValue={payCarts?.userOrder?.cusPhone || ""}
                   type="tel"
                   name="phone"
                   {...register("phone", {
@@ -230,6 +233,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-gray-600 text-xs">(optional)</span>
                 </label>
                 <input
+                  defaultValue={payCarts?.userOrder?.cusEmail || ""}
                   type="email"
                   name="email"
                   {...register("email")}
@@ -245,6 +249,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <select
+                  defaultValue={payCarts?.userOrder?.cusLocation || ""}
                   {...register("location")}
                   required
                   onChange={(e) => handleDeliveryCharge(e.target.value)}
@@ -263,6 +268,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
+                  defaultValue={payCarts?.userOrder?.cusAdd || ""}
                   type="address"
                   name="address"
                   {...register("address", {
@@ -348,61 +354,68 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
             <div className="w-full ">
               {/* product details */}
               <div className="p-4 bg-slate-100 my-4">
-                {/* price */}
-                <div className="font-medium capitalize text-lg flex items-center justify-between">
-                  <span className="">Price:</span>
-                  {payCarts?.newPrice ? (
-                    <div className="flex justify-start items-start gap-2">
-                      <span className="line-through">TK.{payCarts?.price}</span>
+                <div className={`${payCarts}`}>
+                  {/* price */}
+                  <div className="font-medium capitalize text-lg flex items-center justify-between">
+                    <span className="">Price:</span>
+                    {payCarts?.newPrice ? (
+                      <div className="flex justify-start items-start gap-2">
+                        <span className="line-through">
+                          TK.{payCarts?.price}
+                        </span>
+                        <span className="font-semibold">
+                          TK.{payCarts?.newPrice}
+                        </span>
+                      </div>
+                    ) : (
                       <span className="font-semibold">
-                        TK.{payCarts?.newPrice}
+                        Tk.{payCarts?.price}
                       </span>
-                    </div>
-                  ) : (
-                    <span className="font-semibold">Tk.{payCarts?.price}</span>
-                  )}
-                </div>
-                <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
-                  <span className="">Quantity:</span>
-                  <span>{payCarts?.quantity}</span>
-                </div>
-                {/* sub total */}
-
-                <div className="font-medium capitalize text-lg flex items-center justify-between">
-                  <span className="">Sub Total:</span>
-                  {payCarts?.newPrice ? (
-                    <div className="flex whitespace-nowrap justify-start items-start ml-4 gap-2">
-                      <span className="line-through">
+                    )}
+                  </div>
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                    <span className="">Quantity:</span>
+                    <span>{payCarts?.quantity}</span>
+                  </div>
+                  {/* sub total */}
+                  <div className="font-medium capitalize text-lg flex items-center justify-between">
+                    <span className="">Sub Total:</span>
+                    {payCarts?.newPrice ? (
+                      <div className="flex whitespace-nowrap justify-start items-start ml-4 gap-2">
+                        <span className="line-through">
+                          Tk.{payCarts?.price * payCarts?.quantity}
+                        </span>
+                        <span className="font-semibold">
+                          Tk.{payCarts?.newPrice * payCarts?.quantity}
+                        </span>
+                      </div>
+                    ) : (
+                      <span className="font-semibold ml-4">
                         Tk.{payCarts?.price * payCarts?.quantity}
                       </span>
-                      <span className="font-semibold">
-                        Tk.{payCarts?.newPrice * payCarts?.quantity}
-                      </span>
-                    </div>
-                  ) : (
-                    <span className="font-semibold ml-4">
-                      Tk.{payCarts?.price * payCarts?.quantity}
-                    </span>
-                  )}
-                </div>
-                <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
-                  <span className="">Discount Percentage:</span>
-                  <span>-{discountedPercentage || 0}%</span>
-                </div>
-                <div className="font-medium capitalize pb-2 text-lg flex items-center justify-between">
-                  <span className="">Discounted Price:</span>
-                  <span>{discountedPrice}</span>
-                </div>
-                <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
-                  <span className="">Delivery Charge</span>
-                  <span>+{deliveryCharge}</span>
+                    )}
+                  </div>
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                    <span className="">Discount Percentage:</span>
+                    <span>-{discountedPercentage || 0}%</span>
+                  </div>
+                  <div className="font-medium capitalize pb-2 text-lg flex items-center justify-between">
+                    <span className="">Discounted Price:</span>
+                    <span>{discountedPrice}</span>
+                  </div>
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                    <span className="">Delivery Charge</span>
+                    <span>+{deliveryCharge}</span>
+                  </div>
                 </div>
 
                 <div className="font-medium capitalize py-2 border-b border-gray-400 text-lg flex items-center justify-between">
                   <span className="">Total Amount:</span>
                   <span className="underline underline-offset-4">
                     Tk.
-                    {discountedPrice
+                    {payCarts?.userOrder?.totalAmount
+                      ? payCarts?.userOrder?.totalAmount
+                      : discountedPrice
                       ? discountedPrice + deliveryCharge
                       : subTotal + deliveryCharge}
                   </span>

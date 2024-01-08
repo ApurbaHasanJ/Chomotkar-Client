@@ -9,7 +9,7 @@ const useReviews = () => {
   } = useQuery({
     queryKey: ["reviews"],
     queryFn: () =>
-      fetch("http://localhost:5000/reviews").then((res) => res.json()),
+      fetch("https://chomotkar-server-iota.vercel.app/reviews").then((res) => res.json()),
   });
 
   if (error) {

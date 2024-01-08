@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className="relative">
       <Hero />
-      <ConsumerFavor />
+      {/* <ConsumerFavor /> */}
       <ShopByCategory />
       <LovedCategories />
       <BestSellingProduct />

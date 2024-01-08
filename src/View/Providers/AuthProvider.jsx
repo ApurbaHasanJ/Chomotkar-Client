@@ -115,7 +115,7 @@ const AuthProvider = ({ children }) => {
       // jwt get and set
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://chomotkar-server-iota.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((res) => {

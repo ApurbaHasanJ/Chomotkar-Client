@@ -1,0 +1,22 @@
+[
+    {
+      "reviewerPhoto": "https://res.cloudinary.com/dxixdugif/image/upload/v1703961071/chomotka…",
+      "reviewerName": "Apurba Hasan J",
+      "rating": 4,
+      "productName": "Red kong T-Shirt",
+      "suggestion": "Yeah, Please add more details about your product. so that user can understand it better.",
+      "reviewDetails": "First, thank you guys, you guys are rocks, and you provide us with the...",
+      "createdAt": "2023-12-30T18:31:31.219Z",
+      "add": false
+    },
+    {
+      "reviewerName": "Apurba Hasan J",
+      "rating": 5,
+      "productName": "Red Kong T-Shirt",
+      "suggestion": "Yeah, Please add more details about your product. so that user can understand it better.",
+      "reviewDetails": "First, thank you guys, you guys are rocks, and you provide us with the...",
+      "createdAt": "2023-12-30T18:32:20.285Z",
+      "add": false
+    }
+  ]
+  

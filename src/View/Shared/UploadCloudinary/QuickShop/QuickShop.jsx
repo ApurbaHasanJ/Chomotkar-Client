@@ -218,7 +218,7 @@ const QuickShop = () => {
 
                       setPayCarts({
                         ...product,
-                        quantity,
+                        quantity: quantity,
                         color: selectedColor,
                         size: selectedSize,
                       });

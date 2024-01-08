@@ -17,16 +17,28 @@ const SubBanner = () => {
         }}
         modules={[FreeMode, Navigation, Autoplay]}>
         <SwiperSlide>
-          <img
-            src="https://i.ibb.co/nzFRb7y/tp195-389-393-audi-facebookad-01.jpg"
+          <img className="w-full h-auto"
+            src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721690/Chomotkar/SubBanner/Small-Website-electric-banner-2_wadylk.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/58bLxXg/6572315.jpg" alt="" />
+          <img className="w-full h-auto"
+            src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721690/Chomotkar/SubBanner/Small-Website-electric-banner-3_amr0q4.jpg"
+            alt=""
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/jvF025C/8296573.jpg" alt="" />
+          <img className="w-full h-auto"
+            src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721688/Chomotkar/SubBanner/Small-Website-electric-banner-4_xagye7.jpg"
+            alt=""
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-full h-auto"
+            src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721687/Chomotkar/SubBanner/Small-Website-Tshirt-banner-1_arl7mu.jpg"
+            alt=""
+          />
         </SwiperSlide>
       </Swiper>
     </section>

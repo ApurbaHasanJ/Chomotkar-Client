@@ -9,7 +9,7 @@ const useProducts = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch("http://localhost:5000/products").then((res) => res.json()),
+      fetch("https://chomotkar-server-iota.vercel.app/products").then((res) => res.json()),
   });
 
   if(error){

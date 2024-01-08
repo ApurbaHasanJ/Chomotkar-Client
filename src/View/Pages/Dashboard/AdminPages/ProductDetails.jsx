@@ -48,6 +48,10 @@ const ProductDetails = ({productDetails}) => {
                     <span className="font-semibold">Order Time: </span>
                     <span>{productDetails?.createdAt || "None"}</span>
                   </div>
+                  <div className="">
+                    <span className="font-semibold">Order Note: </span>
+                    <span>{productDetails?.orderNote || "None"}</span>
+                  </div>
                 </div>
                 <hr className="mt-2 border-b border-gray-400" />
                 <div className="mt-3">

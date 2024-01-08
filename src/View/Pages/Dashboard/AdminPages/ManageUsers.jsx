@@ -64,7 +64,7 @@ const ManageUsers = () => {
         axiosSecure
           .delete(`/users/${user?._id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.acknowledged) {
               refetch();
               Swal.fire({
@@ -83,7 +83,7 @@ const ManageUsers = () => {
     });
   };
 
-  console.log(users);
+  // console.log(users);
   return (
     <section className=" py-12 min-h-screen bg-[#F6F6F6]">
       <SectionTitle title={"MANAGE ALL USERS"} subtitle={"---How Many!?---"} />
@@ -132,63 +132,67 @@ const ManageUsers = () => {
                     </th>
                     <td className="px-6 py-4 ">
                       <div className="relative">
-                      {user?.role === "user" ? (
-                        <FaUserEdit
-                          title={user?.role}
-                          onClick={() => setUserId(user?._id)}
-                          className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
-                            userId === user._id ? "hidden" : "block"
-                          } p-1 rounded-md text-white text-[32px]`}
-                        />
-                      ) : (
-                        <MdAdminPanelSettings
-                          onClick={() => setUserId(user?._id)}
-                          title={user?.role}
-                          className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
-                            userId === user._id ? "hidden" : "block"
-                          } p-1 rounded-md text-white text-[32px]`}
-                        />
-                      )}
-                      <div className="absolute right-0 -top-3 z-10">
-                        {userId === user._id && (
-                          <div className="flex relative flex-col text-base  p-3 bg-white shadow-md border rounded-md">
-                            <RxCross2
-                                      onClick={() => setUserId("")}
-                                      className="absolute -right-2 -top-2 text-red-600 bg-red-100 shadow-md text-xl rounded-full"
-                                    />
-                            
-                            <button
-                              type="button"
-                              onClick={() => {
-                                handleUsersRole(user, "user");
-                              }}
-                              disabled={user?.role === "user"}
-                              className={`flex items-center gap-1 p-2 ${
-                                user?.role === "user"
-                                  ? "bg-red-50"
-                                  : "hover:bg-gray-50"
-                              } `}>
-                              <FaUser />
-                              <span className="text-xs whitespace-nowrap">Make User</span>
-                            </button>
-                            <hr />
-                            <button
-                              type="button"
-                              onClick={() => {
-                                handleUsersRole(user, "admin");
-                              }}
-                              disabled={user?.role === "admin"}
-                              className={`flex items-center gap-1 p-2 ${
-                                user?.role === "admin"
-                                  ? "bg-red-50"
-                                  : "hover:bg-gray-50"
-                              } `}>
-                              <FaUserShield className="text-lg"/>
-                              <span className="text-xs whitespace-nowrap">Make Admin</span>
-                            </button>
-                          </div>
+                        {user?.role === "user" ? (
+                          <FaUserEdit
+                            title={user?.role}
+                            onClick={() => setUserId(user?._id)}
+                            className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
+                              userId === user._id ? "hidden" : "block"
+                            } p-1 rounded-md text-white text-[32px]`}
+                          />
+                        ) : (
+                          <MdAdminPanelSettings
+                            onClick={() => setUserId(user?._id)}
+                            title={user?.role}
+                            className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
+                              userId === user._id ? "hidden" : "block"
+                            } p-1 rounded-md text-white text-[32px]`}
+                          />
                         )}
-                      </div>
+                        <div className="absolute right-0 -top-3 z-10">
+                          {userId === user._id && (
+                            <div className="flex relative flex-col text-base  p-3 bg-white shadow-md border rounded-md">
+                              <RxCross2
+                                onClick={() => setUserId("")}
+                                className="absolute -right-2 -top-2 text-red-600 bg-red-100 shadow-md text-xl rounded-full"
+                              />
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  handleUsersRole(user, "user");
+                                }}
+                                disabled={user?.role === "user"}
+                                className={`flex items-center gap-1 p-2 ${
+                                  user?.role === "user"
+                                    ? "bg-red-50"
+                                    : "hover:bg-gray-50"
+                                } `}>
+                                <FaUser />
+                                <span className="text-xs whitespace-nowrap">
+                                  Make User
+                                </span>
+                              </button>
+                              <hr />
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  handleUsersRole(user, "admin");
+                                }}
+                                disabled={user?.role === "admin"}
+                                className={`flex items-center gap-1 p-2 ${
+                                  user?.role === "admin"
+                                    ? "bg-red-50"
+                                    : "hover:bg-gray-50"
+                                } `}>
+                                <FaUserShield className="text-lg" />
+                                <span className="text-xs whitespace-nowrap">
+                                  Make Admin
+                                </span>
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </td>
                     <td className=" px-6 py-4">

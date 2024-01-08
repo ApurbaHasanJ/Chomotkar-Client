@@ -76,7 +76,7 @@ const AddReview = () => {
     };
     console.log(reviewData);
     if (rating > 0) {
-      fetch("http://localhost:5000/reviews", {
+      fetch("https://chomotkar-server-iota.vercel.app/reviews", {
         method: "POST",
         headers: {
           "content-type": "application/json",

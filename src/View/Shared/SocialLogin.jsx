@@ -27,7 +27,7 @@ const SocialLogin = () => {
           emailVerified: loggedUser?.emailVerified,
           metadata: { ...loggedUser?.metadata },
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://chomotkar-server-iota.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

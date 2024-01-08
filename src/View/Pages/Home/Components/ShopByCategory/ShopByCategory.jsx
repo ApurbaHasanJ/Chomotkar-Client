@@ -73,10 +73,10 @@ const ShopByCategory = () => {
       </div>
 
       {/* seasonal cards */}
-      <div className="font-mono md:grid grid-cols-2 gap-6 my-28">
-        <div className="bg-[#63cdda]  w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4">
+      {/* <div className="font-mono md:grid grid-cols-2 gap-6 my-28"> */}
+        {/* <div className="bg-[#63cdda]  w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4"> */}
           {/* texts */}
-          <div className="z-10 text-end ">
+          {/* <div className="z-10 text-end ">
             <div className="">
               <p className="font-medium text-base">SEASONAL STYLE SENSATIONS</p>
               <h3 className="font-cinzel md:text-3xl text-2xl font-semibold md:my-6 my-4 leading-normal">
@@ -90,18 +90,18 @@ const ShopByCategory = () => {
             <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">
               VIEW MORE
             </button>
-          </div>
+          </div> */}
           {/* photo */}
-          <img
+          {/* <img
             className="md:h-[400px] h-80 drop-shadow-2xl absolute bottom-0 left-0 "
             src="https://i.ibb.co/znn9W1y/portrait-handsome-fashion-stylish-businessman-model-dressed-elegant-light-pink-suit-posing-metrosexu.png"
             alt=""
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         {/* cart 2 */}
-        <div className="bg-[#63cdda] transition-all md:mt-0 mt-16 overflow w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4">
+        {/* <div className="bg-[#63cdda] transition-all md:mt-0 mt-16 overflow w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4"> */}
           {/* texts */}
-          <div className="z-10 text-end ">
+          {/* <div className="z-10 text-end ">
             <div className="">
               <p className="font-medium text-base">SEASONAL STYLE SENSATIONS</p>
               <h3 className="font-cinzel md:text-3xl text-2xl font-semibold md:my-6 my-4 leading-normal">
@@ -114,15 +114,15 @@ const ShopByCategory = () => {
             <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">
               VIEW MORE
             </button>
-          </div>
+          </div> */}
           {/* photo */}
-          <img
+          {/* <img
             className="md:h-[400px] h-80  drop-shadow-2xl absolute bottom-0 left-0 "
             src="https://i.ibb.co/NTMXXd7/portrait-young-stylish-girl-model-casual-summer-clothes-brown-hat-with-natural-makeup-glasses-isolat.png"
             alt=""
-          />
-        </div>
-      </div>
+          /> */}
+        {/* </div> */}
+      {/* </div> */}
     </section>
   );
 };

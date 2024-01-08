@@ -9,7 +9,7 @@ const useCoupon = () => {
   } = useQuery({
     queryKey: ["coupons"],
     queryFn: () =>
-      fetch("http://localhost:5000/coupons").then((res) => res.json()),
+      fetch("https://chomotkar-server-iota.vercel.app/coupons").then((res) => res.json()),
   });
 
   if (error) {
