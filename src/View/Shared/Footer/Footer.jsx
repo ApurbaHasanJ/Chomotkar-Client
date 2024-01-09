@@ -31,20 +31,33 @@ const Footer = () => {
         {/* 1 card */}
         <div className="lg:w-4/12 w-full">
           <div>
-            <h2 className="md:text-3xl  text-2xl font-black font-cinzel">
+            <img
+              className="md:w-72 w-60 h-14 md:-ml-11 -ml-9 drop-shadow-2xl object-cover"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_Golden_jla5u9.png"
+              alt=""
+            />
+
+            {/* <h2 className="md:text-3xl mt-3 text-2xl font-black font-cinzel">
               Chomotkar
-            </h2>
-            <p className="font-cinzel text-xs font-bold tracking-[5px] md:tracking-[9.12px]">
-              Fashion.
-            </p>
+            </h2> */}
           </div>
           <p className="font-mono mt-6 font-base ">
             Chomotkar Fashion is a dynamic and innovative online retail platform
             that offers a wide range of products to customers countrywide.
           </p>
           <div className="flex justify-start items-center gap-4 mt-5">
-            <FaSquareFacebook className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
-            <RiInstagramFill className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
+            <a
+              href="https://www.facebook.com/Chomotkar"
+              target="_blank"
+              rel="noopener noreferrer">
+              <FaSquareFacebook className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
+            </a>
+            <a
+              href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer">
+              <RiInstagramFill className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
+            </a>
           </div>
         </div>
 
@@ -198,9 +211,11 @@ const Footer = () => {
               to="https://apurbahasanj.netlify.app/"
               target="_blank"
               title="click here!">
-              <p>
+              <p className="whitespace-nowrap">
                 Technical Support by{" "}
-                <span className="text-red-600">Apurba Hasan J</span>
+                <span className="text-red-600 whitespace-nowrap">
+                  Apurba Hasan J
+                </span>
               </p>
             </Link>
           </div>

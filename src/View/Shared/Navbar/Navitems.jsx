@@ -162,7 +162,7 @@ const NavItems = () => {
             <Link
               to="/collection/women"
               onClick={() => {
-                handleSelectCategory("combo-pack"), handleCollection("women");
+                handleSelectCategory("combo pack"), handleCollection("women");
               }}
               className="hover:text-rose-300">
               Compo Pack
@@ -171,7 +171,7 @@ const NavItems = () => {
             <Link
               to="/collection/women"
               onClick={() => {
-                handleSelectCategory("three-pieces"), handleCollection("women");
+                handleSelectCategory("three pieces"), handleCollection("women");
               }}
               className="hover:text-rose-300">
               Three Pieces

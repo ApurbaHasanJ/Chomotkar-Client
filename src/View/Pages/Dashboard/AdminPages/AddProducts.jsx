@@ -204,8 +204,8 @@ const AddProducts = () => {
                     <option value="panjabi">Luxury Panjabi</option>
                     <option value="pants">Pants</option>
                     <option value="sari">Sari</option>
-                    <option value="combo-pack">Combo Pack</option>
-                    <option value="three-pieces">Three Pieces</option>
+                    <option value="combo pack">Combo Pack</option>
+                    <option value="three pieces">Three Pieces</option>
                     <option value="audio">Audio</option>
                     <option value="charger & cables">Charger & Cables</option>
                     <option value="power bank">Power Bank</option>

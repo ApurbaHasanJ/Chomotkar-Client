@@ -6,19 +6,22 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../../Shared/ProductCard/ProductCard";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../../../Providers/CategoryProvider";
 import { FaFilter } from "react-icons/fa6";
 import Filter from "./FilterBy/Filter";
 import { CollectionContext } from "../../../Providers/CollectionProvider";
 
 const Products = () => {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
   const [products] = useProducts();
   // takes params:-------------
   const params = useParams().route;
 
   const [toggleFilters, setToggleFilters] = useState(false);
-
 
   // take category context-------------------
   const { selectedCategory } = useContext(CategoryContext);
@@ -29,7 +32,8 @@ const Products = () => {
 
   // total filter
   const filteredProducts = products.filter((product) => {
-    const collectionMatch = !selectedCollection || product?.category === selectedCollection;
+    const collectionMatch =
+      !selectedCollection || product?.category === selectedCollection;
     // const colorMatch = !selectedColor || product.color === selectedColor;
     const categoryMatch =
       !selectedCategory || product.subCategory === selectedCategory;

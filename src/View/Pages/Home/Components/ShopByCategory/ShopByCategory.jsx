@@ -1,7 +1,69 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../Shared/SectionTitle";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, FreeMode, Navigation } from "swiper/modules";
+import { useContext } from "react";
+import { CollectionContext } from "../../../../Providers/CollectionProvider";
+import { CategoryContext } from "../../../../Providers/CategoryProvider";
+
+const categories = [
+  {
+    title: "men",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809691/Chomotkar/ShopByCategory/men_mhlpig.jpg",
+    category: "men",
+    subCategory: "",
+  },
+  {
+    title: "women",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809692/Chomotkar/ShopByCategory/women_fmtlqs.jpg",
+    category: "women",
+    subCategory: "",
+  },
+  {
+    title: "gadgets",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704808811/Chomotkar/ShopByCategory/modern-stationary-collection-arrangement_orpsab.jpg",
+    category: "gadgets",
+    subCategory: "",
+  },
+  {
+    title: "combo pack",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809691/Chomotkar/ShopByCategory/combo_p02au2.jpg",
+    category: "women",
+    subCategory: "combo pack",
+  },
+  {
+    title: "sari",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704814077/Chomotkar/ShopByCategory/beautiful-young-woman-wearing-sari_mtbwjt.jpg",
+    category: "women",
+    subCategory: "sari",
+  },
+  {
+    title: "audio",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815624/Chomotkar/ShopByCategory/black-headphones-digital-device_caf4kq.jpg",
+    category: "gadgets",
+    subCategory: "audio",
+  },
+  {
+    title: "power bank",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815619/Chomotkar/ShopByCategory/2210.q803.009.S.m012.c12.mobile_phone_smartphone_charging_composition_tjyvoc.jpg",
+    category: "gadgets",
+    subCategory: "power bank",
+  },
+  {
+    title: "mobile accessories",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815620/Chomotkar/ShopByCategory/top-view-dvd-music-set_cbsi7h.jpg",
+    category: "gadgets",
+    subCategory: "mobile accessories",
+  },
+];
 
 const ShopByCategory = () => {
+  const { handleSelectCollection } = useContext(CollectionContext);
+  // take category context
+  const { updateCategory } = useContext(CategoryContext);
+
   return (
     <section className="mt-20 font-cinzel my-container">
       <SectionTitle
@@ -9,120 +71,53 @@ const ShopByCategory = () => {
         title={"Shop By Categories"}
       />
       {/* categories card */}
-      <div className="grid sm:grid-cols-5 grid-cols-4 gap-5 items-center justify-between mt-10">
-        {/* card 1 */}
-        <Link to="#">
-          <div className=" rounded-full transition-all overflow-hidden">
-            <img
-              className="w-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-rose-200"
-              src="https://i.ibb.co/RS6Kwk7/handsome-young-man-with-curly-hair-sitting-chair-white-wall.jpg"
-            />
-          </div>
-          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
-            Men
-          </p>
-        </Link>
-        {/* card 2 */}
-        <Link to="#">
-          <div className=" rounded-full transition-all overflow-hidden">
-            <img
-              className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/KxHPwHH/studio-close-up-portrait-young-fresh-blonde-woman-brown-straw-poncho-wool-black-trendy-hat-round-gla.jpg"
-            />
-          </div>
-          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
-            Women
-          </p>
-        </Link>
-        {/* card 3 */}
-        <Link to="#" className="sm:block hidden">
-          <div className="  rounded-full transition-all overflow-hidden">
-            <img
-              className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/m0VNqSZ/fashionable-woman-brown-coat-beige-hat-posing.jpg"
-            />
-          </div>
-          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
-            Outfits
-          </p>
-        </Link>
-        {/* card 4 */}
-        <Link to="#">
-          <div className=" rounded-full transition-all overflow-hidden">
-            <img
-              className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/QJZy0YH/panjabi.png"
-            />
-          </div>
-          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
-            Panjabi
-          </p>
-        </Link>
-        {/* Card 5 */}
-        <Link to="#">
-          <div className=" rounded-full transition-all overflow-hidden">
-            <img
-              className="w-full rounded-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 border border-rose-200"
-              src="https://i.ibb.co/Tk2NTt0/modern-stationary-collection-arrangement.jpg"
-            />
-          </div>
-          <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
-            Gadgets
-          </p>
-        </Link>
+      <div>
+        <Swiper
+          navigation={true}
+          loop={true}
+          slidesPerView={5}
+          spaceBetween={10}
+          breakpoints={{
+            200: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1280: {
+              slidesPerView: 5,
+              spaceBetween: 30,
+            },
+          }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: true,
+            waitForTransition: Animation,
+          }}
+          freeMode={true}
+          modules={[FreeMode, Navigation, Autoplay]}
+          className="grid sm:grid-cols-5 grid-cols-4 gap-5 items-center justify-between mt-10">
+          {categories &&
+            categories.map((category, index) => (
+              <SwiperSlide key={index} className="">
+                <Link
+                  to={`collection/${category?.category}`}
+                  onClick={() => {
+                    handleSelectCollection(category?.category),
+                      updateCategory(category?.subCategory);
+                  }}>
+                  <div className=" rounded-full transition-all overflow-hidden">
+                    <img
+                      className="w-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-rose-200"
+                      src={category?.img}
+                    />
+                  </div>
+                  <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
+                    {category?.title}
+                  </p>
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
-
-      {/* seasonal cards */}
-      {/* <div className="font-mono md:grid grid-cols-2 gap-6 my-28"> */}
-      {/* <div className="bg-[#63cdda]  w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4"> */}
-      {/* texts */}
-      {/* <div className="z-10 text-end ">
-            <div className="">
-              <p className="font-medium text-base">SEASONAL STYLE SENSATIONS</p>
-              <h3 className="font-cinzel md:text-3xl text-2xl font-semibold md:my-6 my-4 leading-normal">
-                Discover The Latest <br />
-                In Fashion
-              </h3>
-              <p className="text-white font-medium text-base">
-                Unleash your inner fashionista <br /> with Chomotkar.
-              </p>
-            </div>
-            <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">
-              VIEW MORE
-            </button>
-          </div> */}
-      {/* photo */}
-      {/* <img
-            className="md:h-[400px] h-80 drop-shadow-2xl absolute bottom-0 left-0 "
-            src="https://i.ibb.co/znn9W1y/portrait-handsome-fashion-stylish-businessman-model-dressed-elegant-light-pink-suit-posing-metrosexu.png"
-            alt=""
-          /> */}
-      {/* </div> */}
-      {/* cart 2 */}
-      {/* <div className="bg-[#63cdda] transition-all md:mt-0 mt-16 overflow w-full ml-auto relative flex justify-end rounded-md md:py-12 py-8 md:px-6 px-4"> */}
-      {/* texts */}
-      {/* <div className="z-10 text-end ">
-            <div className="">
-              <p className="font-medium text-base">SEASONAL STYLE SENSATIONS</p>
-              <h3 className="font-cinzel md:text-3xl text-2xl font-semibold md:my-6 my-4 leading-normal">
-                Unwrap The Hottest <br /> Trends Of The Year
-              </h3>
-              <p className="text-white font-medium text-base">
-                Get ready for a wardrobe makeover <br /> like no other.
-              </p>
-            </div>
-            <button className="text-white font-medium md:mt-10 mt-6 border-b-2 border-white hover:border-rose-400 transition-all duration-500">
-              VIEW MORE
-            </button>
-          </div> */}
-      {/* photo */}
-      {/* <img
-            className="md:h-[400px] h-80  drop-shadow-2xl absolute bottom-0 left-0 "
-            src="https://i.ibb.co/NTMXXd7/portrait-young-stylish-girl-model-casual-summer-clothes-brown-hat-with-natural-makeup-glasses-isolat.png"
-            alt=""
-          /> */}
-      {/* </div> */}
-      {/* </div> */}
     </section>
   );
 };
