@@ -1,5 +1,5 @@
-import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
-import ConsumerFavor from "../Components/ConsumerFavor";
+// import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
+// import ConsumerFavor from "../Components/ConsumerFavor";
 import Hero from "../Components/Hero/Hero";
 import LovedCategories from "../Components/LovedCategories/LovedCategories";
 import NewArrivalProducts from "../Components/NewArrivalProducts/NewArrivalProducts";
@@ -15,7 +15,7 @@ const Home = () => {
       {/* <ConsumerFavor /> */}
       <ShopByCategory />
       <LovedCategories />
-      <BestSellingProduct />
+      {/* <BestSellingProduct /> */}
       <NewArrivalProducts />
       <SubBanner />
       <PanjabiCollection />

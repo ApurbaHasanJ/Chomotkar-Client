@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
       {/* title & price */}
       <div className="text-center">
         <p className="text-slate-400 hover:text-black duration-300 text-sm md:text-base mt-4">
-          {product?.productBy}
+          Brand: {product?.productBy}
         </p>
         <p className="my-2  hover:text-rose-400 duration-300 md:text-lg font-mono">
           {product?.title}

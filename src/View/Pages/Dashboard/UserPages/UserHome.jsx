@@ -53,9 +53,8 @@ const UserHome = () => {
 
   const submitImage = async () => {
     try {
-      const data = await UploadPhotos(img);
+      const data = await UploadPhotos(img, "Users");
       // console.log(data);
-      toast.success("Photo uploaded successfully");
 
       if (data.img && user) {
         console.log(data);
@@ -63,13 +62,7 @@ const UserHome = () => {
           await userProfile(user.displayName, data.img);
           refreshUserProfile();
 
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Profile Updated Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Photo uploaded successfully");
 
           setModal(false);
         } catch (error) {
@@ -215,11 +208,11 @@ const UserHome = () => {
             <ul className="mt-8 flex flex-col gap-2">
               <li className="flex items-center gap-3 text-[#0088FE]">
                 <FaBagShopping className="text-2xl" />
-                <span className="text-xl font-semibold">Orders: 6</span>
+                <span className="text-xl font-semibold">Orders: 0</span>
               </li>
               <li className="flex items-center gap-3 text-[#00C4A1]">
                 <FaStar className="text-2xl" />
-                <span className="text-xl font-semibold">Reviews: 2</span>
+                <span className="text-xl font-semibold">Reviews: 0</span>
               </li>
               <li className="flex items-center gap-3 text-[#FFBB28]">
                 <FaHeart className="text-2xl" />
@@ -229,7 +222,7 @@ const UserHome = () => {
               </li>
               <li className="flex items-center gap-3 text-[#FF8042]">
                 <FaWallet className="text-2xl" />
-                <span className="text-xl font-semibold">Payment: 3</span>
+                <span className="text-xl font-semibold">Payment: 0</span>
               </li>
             </ul>
           </div>

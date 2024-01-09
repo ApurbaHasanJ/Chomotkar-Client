@@ -47,7 +47,7 @@ const AddReview = () => {
   // photo upload function
   const submitImage = async () => {
     try {
-      const data = await UploadPhotos(img);
+      const data = await UploadPhotos(img, "Users");
       // console.log(data);
       toast.success("photo uploaded successfully");
       setReviewerPhoto(data.img);

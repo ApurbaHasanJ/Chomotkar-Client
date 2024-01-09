@@ -59,7 +59,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
 
       if (photos) {
         for (let i = 0; i < photos.length; i++) {
-          const data = await UploadPhotos(photos[i]);
+          const data = await UploadPhotos(photos[i], "Products");
           photoUrls.push(data);
         }
 

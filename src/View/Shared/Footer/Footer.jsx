@@ -3,11 +3,16 @@ import { RiInstagramFill } from "react-icons/ri";
 import { MdCall, MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { CollectionContext } from "../../Providers/CollectionProvider";
+import { CategoryContext } from "../../Providers/CategoryProvider";
 
 const Footer = () => {
   const controls = useAnimation();
+  const { handleSelectCollection } = useContext(CollectionContext);
+  // take category context
+  const { updateCategory } = useContext(CategoryContext);
 
   useEffect(() => {
     controls.start({
@@ -46,37 +51,62 @@ const Footer = () => {
         {/* collapse 2nd and 3rd card */}
         <div className="lg:w-5/12 w-full flex  justify-between md:gap-20 lg:gap-32">
           {/* 2nd col */}
-          <div className="">
+          <div className="lg:ml-12">
             <h1 className="text-rose-500 font-bold text-xl uppercase">
-            Categories
+              Categories
             </h1>
             <div className="mt-11 grid gap-3">
               <Link
-                to="/men"
+                to="/collection/men"
+                onClick={() => {
+                  handleSelectCollection("men");
+                  updateCategory("");
+                }}
                 className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
                 Men
               </Link>
               <Link
-                to="/women"
+                to="/collection/men"
+                onClick={() => {
+                  handleSelectCollection("men");
+                  updateCategory("t-shirt");
+                }}
+                className="hover:text-rose-500 font-mono duration-500 hover:underline whitespace-nowrap underline-offset-4">
+                Premium T-Shirt
+              </Link>
+              <Link
+                to="/collection/women"
+                onClick={() => {
+                  handleSelectCollection("women");
+                  updateCategory("");
+                }}
                 className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
                 Women
               </Link>
               <Link
-                to="/women/combo"
+                to="/collection/gadgets"
+                onClick={() => {
+                  handleSelectCollection("gadgets");
+                  updateCategory("");
+                }}
                 className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
-                Combo
+                Gadgets
               </Link>
               <Link
-                to="/electronics"
+                to="/collection/gadgets"
+                onClick={() => {
+                  handleSelectCollection("men");
+                  updateCategory("audio");
+                }}
                 className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
-                Electronics
+                audio
               </Link>
             </div>
           </div>
           {/* 3rd col */}
           <div className=" mr-10">
             <h1 className="text-rose-500 font-bold text-xl uppercase">
-            Information
+              Information
             </h1>
             <div className="mt-11 grid gap-3">
               <Link
