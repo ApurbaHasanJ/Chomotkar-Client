@@ -202,7 +202,7 @@ const AddProducts = () => {
                     <option value="t-shirt">Premium T-Shirt</option>
                     <option value="polo shirt">Polo Shirt</option>
                     <option value="panjabi">Luxury Panjabi</option>
-                    <option value="joggers">Joggers</option>
+                    <option value="pants">Pants</option>
                     <option value="sari">Sari</option>
                     <option value="combo-pack">Combo Pack</option>
                     <option value="three-pieces">Three Pieces</option>

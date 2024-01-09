@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { GoArrowRight } from "react-icons/go";
+// import { GoArrowRight } from "react-icons/go";
 
 // Import Swiper styles
 import "swiper/css";

@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-
 import { HiOutlineMenu } from "react-icons/hi";
 import { useState } from "react";
 import AdminNavItems from "../../Shared/DashNavItems/AdminNavitems";
@@ -7,7 +6,6 @@ import UserNavItems from "../../Shared/DashNavItems/UserNavItems";
 import GeneralNavItems from "../../Shared/DashNavItems/GeneralNavItems";
 import useAdmin from "../../Hooks/useAdmin";
 import Loader from "../../Shared/Loader/Loader";
-import LogoName from "../../Shared/Navbar/LogoName";
 
 const Dashboard = () => {
   let [showDashboard, setShowDashboard] = useState(false);

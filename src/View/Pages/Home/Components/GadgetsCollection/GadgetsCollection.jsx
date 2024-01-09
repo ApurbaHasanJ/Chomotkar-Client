@@ -8,16 +8,16 @@ import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import useProducts from "../../../../Hooks/useProducts";
 import ProductCard from "../../../../Shared/ProductCard/ProductCard";
 
-const PanjabiCollection = () => {
+const GadgetsCollection = () => {
   const [products] = useProducts();
 
   const panjabiCollection =
-    products && products.filter((product) => product.subCategory === "panjabi");
+    products && products.filter((product) => product.category === "gadgets");
 
   return (
     <section className="md:mt-32 mt-20 my-container">
       <SectionTitle
-        title={"Panjabi Collection"}
+        title={"Gadgets Collection"}
         subtitle={"All Time Favorite"}
       />
       <div>
@@ -56,4 +56,4 @@ const PanjabiCollection = () => {
   );
 };
 
-export default PanjabiCollection;
+export default GadgetsCollection;

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../Shared/SectionTitle";
 
-const LovedCategories = () => {
+const Gallery = () => {
   return (
     <section className="my-container md:mt-32 mt-20 font-cinzel">
       <SectionTitle
-        title={"MOST LOVED CATEGORIES"}
-        subtitle={"Our Exclusive Collection"}
+        title={"Follow Us"}
+        subtitle={"Our Gallery"}
       />
       <div className="font-cinzel mt-10 grid md:grid-cols-4 grid-cols-2 gap-3  ">
         {/* Card 1 */}
@@ -105,4 +105,4 @@ const LovedCategories = () => {
   );
 };
 
-export default LovedCategories;
+export default Gallery;

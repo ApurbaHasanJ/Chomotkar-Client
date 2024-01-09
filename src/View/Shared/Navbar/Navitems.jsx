@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-
 import { MdKeyboardArrowDown, MdMan, MdWoman } from "react-icons/md";
 import { useContext, useState } from "react";
 import { HiHome } from "react-icons/hi2";
@@ -14,7 +13,6 @@ const NavItems = () => {
   const { handleSelectCollection } = useContext(CollectionContext);
   // take category context
   const { updateCategory } = useContext(CategoryContext);
-  // const [electronicsItems, setElectronicsItems] = useState(false);
 
   // Men collection
   const openMenCollection = () => {
@@ -102,7 +100,7 @@ const NavItems = () => {
             <Link
               to="/collection/men"
               onClick={() => {
-                handleSelectCategory("polo-shirt"), handleCollection("men");
+                handleSelectCategory("polo shirt"), handleCollection("men");
               }}
               className="hover:text-rose-300">
               Polo Shirt
@@ -120,10 +118,10 @@ const NavItems = () => {
             <Link
               to="/collection/men"
               onClick={() => {
-                handleSelectCategory("joggers"), handleCollection("men");
+                handleSelectCategory("pants"), handleCollection("men");
               }}
               className="hover:text-rose-300">
-              Joggers
+              Pants
             </Link>
           </div>
         )}
