@@ -87,7 +87,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openMenCollection}
             onMouseLeave={closeMenCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
             <Link
               to="/collection/men"
               onClick={() => {
@@ -149,7 +149,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openWomenCollection}
             onMouseLeave={closeWomenCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
             <Link
               to="/collection/women"
               onClick={() => {
@@ -201,7 +201,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openGadgetsCollection}
             onMouseLeave={closeGadgetsCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 left-0 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
             <Link
               to="/collection/gadgets"
               onClick={() => {

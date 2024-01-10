@@ -21,13 +21,14 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div className="relative overflow-hidden">
-        <img
-          className="scale-100 max-w-[390.663px] max-h-[390.663px] h-full w-full hover:scale-110 transform duration-500"
-          loading="lazy"
-          src={product?.photos[0]?.img}
-          alt={product.title}
-        />
-
+        <Link to={`/quick-shop/${product?._id}`} onClick={handleToggleModal}>
+          <img
+            className="scale-100 max-w-[390.663px] max-h-[390.663px] h-full w-full hover:scale-110 transform duration-500"
+            loading="lazy"
+            src={product?.photos[0]?.img}
+            alt={product.title}
+          />
+        </Link>
         {/* Add to Wishlist */}
         <div
           onClick={handleAddWishlist}

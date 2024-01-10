@@ -147,9 +147,7 @@ const AddReview = () => {
                             alt={user?.displayName}
                           />
                         ) : (
-                          <div className="font-semibold text-slate-500 text-center flex justify-center items-center md:text-5xl -mb-2 text-3xl">
-                            {user?.displayName[0].charAt(0).toUpperCase()}
-                          </div>
+                          <FaCircleUser className="w-full h-full text-slate-500" />
                         )}
                       </>
                     ) : (

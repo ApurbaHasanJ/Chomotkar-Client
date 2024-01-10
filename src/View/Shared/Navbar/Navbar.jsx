@@ -81,7 +81,7 @@ const Navbar = () => {
             <ul
               className={`absolute ${
                 showNavbar ? "left-0" : "-left-96"
-              } transform duration-500 top-20 grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
+              } transform duration-500 top-[72px] grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
               <NavItems />
             </ul>
           </div>

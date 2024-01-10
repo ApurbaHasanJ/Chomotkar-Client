@@ -5,7 +5,6 @@ import Shop from "../Pages/Shop/Shop";
 import SignUp from "../Pages/Register/SignUp";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
-import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome";
 import AddProducts from "../Pages/Dashboard/AdminPages/AddProducts";
 import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
@@ -25,6 +24,7 @@ import PaymentSuccess from "../Pages/PaymentPages/PaymentSuccess";
 import PaymentError from "../Pages/PaymentPages/PaymentError";
 import ManageOrders from "../Pages/Dashboard/AdminPages/ManageOrders";
 import OrdersHistory from "../Pages/Dashboard/UserPages/OrdersHistory";
+import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome/AdminHome";
 
 export const router = createBrowserRouter([
   {

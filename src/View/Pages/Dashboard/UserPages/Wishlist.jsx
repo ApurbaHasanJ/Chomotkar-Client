@@ -11,7 +11,7 @@ import { CartContext } from "../../../Providers/CartProvider";
 const Wishlist = () => {
   const { wishlist, removeFormWishlist } = useContext(WishlistContext);
   const [products, productsLoading] = useProducts();
-  const {carts, handleAddCart}= useContext(CartContext)
+  const { carts, handleAddCart } = useContext(CartContext);
   console.log(carts);
 
   const filterWishProducts = products.filter((product) =>
@@ -65,7 +65,7 @@ const Wishlist = () => {
                 </th>
 
                 <th scope="col" className="px-6 py-3">
-                  COLOR
+                  COLORS
                 </th>
                 <th scope="col" className="px-6 py-3">
                   PRICE
@@ -108,8 +108,19 @@ const Wishlist = () => {
                     </th>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 capitalize whitespace-nowrap ">
-                      {product?.color}
+                      className="px-6 py-1 font-medium text-gray-900 capitalize whitespace-nowrap ">
+                      {product?.colors
+                        ? product?.colors.map((color, index) => (
+                            <div
+                              key={index}
+                              className="flex gap-[2px] p-2 text-xs text-gray-400 items-center">
+                              <span
+                                style={{ backgroundColor: color }}
+                                className="w-5 h-5 rounded-full border-2 border-slate-400"></span>
+                              <span className="capitalize">{color}</span>
+                            </div>
+                          ))
+                        : "none"}
                     </th>
 
                     <td scope="row" className="px-6 py-4">
@@ -129,7 +140,7 @@ const Wishlist = () => {
                     <td scope="row" className="px-6 py-4">
                       <FaCartPlus
                         onClick={() => {
-                          handleAddCart(1, product?._id)
+                          handleAddCart(1, product?._id);
                         }}
                         className="text-[#ff7675] hover:text-[#f15e5e] rounded-md text-[32px]"
                       />

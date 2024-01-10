@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../Shared/SectionTitle";
+import { useContext } from "react";
+import { CollectionContext } from "../../../../Providers/CollectionProvider";
+import { CategoryContext } from "../../../../Providers/CategoryProvider";
 
 const Gallery = () => {
+  const { handleSelectCollection } = useContext(CollectionContext);
+  // take category context
+  const { updateCategory } = useContext(CategoryContext);
   return (
     <section className="my-container md:mt-32 mt-20 font-cinzel">
-      <SectionTitle
-        title={"Follow Us"}
-        subtitle={"Our Gallery"}
-      />
+      <SectionTitle title={"Follow Us"} subtitle={"Our Gallery"} />
       <div className="font-cinzel mt-10 grid md:grid-cols-4 grid-cols-2 gap-3  ">
         {/* Card 1 */}
         <div className="relative h-full object-cover overflow-hidden row-span-2">
-          <Link to="/new">
+          <Link
+            to="/collection/men"
+            onClick={() => {
+              handleSelectCollection("men"), updateCategory("");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/7z73qPd/young-man-sitting-small-stool-against-white-wall.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819019/Chomotkar/OurGallery/new_u9ll6u.jpg"
               alt="New Arrival"
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
@@ -24,23 +31,31 @@ const Gallery = () => {
         </div>
         {/* card 2 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/gadgets"
+            onClick={() => {
+              handleSelectCollection("gadgets"), updateCategory("audio");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/TPxPMkK/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg"
-              alt="Panjabi"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819845/Chomotkar/OurGallery/Screenshot_2024-01-09_225949_ywgtra.png"
+              alt="Headphone"
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
-              Luxury Panjabi
+              Headphone
             </span>
           </Link>
         </div>
         {/* card 3 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/men"
+            onClick={() => {
+              handleSelectCollection("men"), updateCategory("t-shirt");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/dpRWWpd/stylish-casual-indian-man-wear-blue-tshirt-posing-against-grey-wall.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819010/Chomotkar/OurGallery/shirt_ixyqka.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
@@ -50,33 +65,45 @@ const Gallery = () => {
         </div>
         {/* card 4 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/men"
+            onClick={() => {
+              handleSelectCollection("men"), updateCategory("polo shirt");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/L9X3z6G/front-view-male-courier-green-uniform-cape-holding-delivery-coffee-cup-smiling-pink-background-unifo.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819014/Chomotkar/OurGallery/polo_vpsq0q.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
-              Polo Shirt
+              Polo
             </span>
           </Link>
         </div>
         {/* card 5 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/women"
+            onClick={() => {
+              handleSelectCollection("women"), updateCategory("sari");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/TPxPMkK/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704820442/Chomotkar/OurGallery/medium-shot-woman-holding-smartphone_1_ogalqx.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
-              Joggers
+              Sari
             </span>
           </Link>
         </div>
         {/* card 6 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/women"
+            onClick={() => {
+              handleSelectCollection("women"), updateCategory("sari");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
               src="https://i.ibb.co/ngNpJks/young-indian-woman-wearing-sari.jpg"
@@ -89,14 +116,18 @@ const Gallery = () => {
         </div>
         {/* card 7 */}
         <div className="relative h-full object-cover overflow-hidden">
-          <Link to="/">
+          <Link
+            to="/collection/men"
+            onClick={() => {
+              handleSelectCollection("men"), updateCategory("polo");
+            }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/TPxPMkK/young-indian-man-traditional-wearing-showing-ok-sign-white-wall.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704820759/Chomotkar/OurGallery/Screenshot_2024-01-09_231801_dnkhj7.png"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-black px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
-              Three Pieces
+              Polo
             </span>
           </Link>
         </div>

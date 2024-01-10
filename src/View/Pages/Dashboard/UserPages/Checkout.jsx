@@ -19,7 +19,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [discountedPercentage, setDiscountedPercentage] = useState(0);
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [payOnline, setPayOnline] = useState(false);
+  const [payBkash, setPayBkash] = useState(false);
+  const [payNagad, setPayNagad] = useState(false);
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
   const navigate = useNavigate();
 
@@ -83,9 +84,15 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     // Set the corresponding state based on the selected payment method
     if (id === "cashOnDelivery") {
       setCashOnDelivery(true);
-      setPayOnline(false);
-    } else if (id === "payOnline") {
-      setPayOnline(true);
+      setPayBkash(false);
+      setPayNagad(false);
+    } else if (id === "payBkash") {
+      setPayBkash(true);
+      setPayNagad(false);
+      setCashOnDelivery(false);
+    } else if (id === "payNagad") {
+      setPayNagad(true);
+      setPayBkash(false);
       setCashOnDelivery(false);
     }
   };
@@ -110,7 +117,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   });
 
   const onSubmit = (data) => {
-    if (!payOnline && !cashOnDelivery) {
+    if (!payBkash && !payNagad && !cashOnDelivery) {
       toast.error("please select a payment method");
       return;
     }
@@ -133,12 +140,12 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     data.couponCode = enteredCouponCode;
     data.date = formattedEnDateTime;
     data.totalAmount = payCarts?.userOrder?.totalAmount;
+    // Set the payOnline property in the data object based on the payOnline condition
+    data.payOnline = (payBkash && "bkash") || (payNagad && "nagad");
 
     // Add to order history for both cash on delivery and online payment
     handleAddToOrdersHistory(order);
     setLoading(true);
-    // Set the payOnline property in the data object based on the payOnline condition
-    data.payOnline = payOnline;
 
     fetch("https://chomotkar-server-iota.vercel.app/order", {
       method: "POST",
@@ -154,7 +161,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         setLoading(false);
 
         // Redirect based on the payment method
-        if (payOnline && responseData && responseData.url) {
+        if ((payBkash || payNagad) && responseData && responseData.url) {
           // Redirect to the provided URL for online payment
           window.location.replace(responseData.url);
         } else {
@@ -299,7 +306,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <h2 className="text-gray-700 font-semibold text-2xl">
                   PAYMENT METHOD
                 </h2>
-                <div className="grid grid-cols-2 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
+                <div className="grid grid-cols-3 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
                   <label
                     className="flex items-start gap-3"
                     htmlFor="cashOnDelivery">
@@ -321,20 +328,38 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3" htmlFor="payOnline">
+                  <label className="flex items-start gap-3" htmlFor="payBkash">
                     <input
                       type="radio"
                       className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
                       name="paymentMethod"
-                      id="payOnline"
-                      checked={payOnline}
+                      id="payBkash"
+                      checked={payBkash}
                       onChange={handlePaymentMethodChange}
                     />
                     <div className="flex flex-col items-start">
-                      <span className="font-medium">Pay Online</span>
+                      <span className="font-medium">Pay With bKash</span>
                       <img
-                        className="mt-2"
-                        src="https://res.cloudinary.com/dxixdugif/image/upload/v1704216177/chomotkar-fashion/Payment-Brands_yhtrxt.jpg"
+                        className="mt-2 border rounded-lg "
+                        src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704898656/Chomotkar/PaymentImg/BKash-bKash2-Logo.wine_i3b6az.png"
+                        alt=""
+                      />
+                    </div>
+                  </label>
+                  <label className="flex items-start gap-3" htmlFor="payNagad">
+                    <input
+                      type="radio"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                      name="paymentMethod"
+                      id="payNagad"
+                      checked={payNagad}
+                      onChange={handlePaymentMethodChange}
+                    />
+                    <div className="flex flex-col items-start">
+                      <span className="font-medium">Pay With Nagad</span>
+                      <img
+                        className="mt-2 border rounded-lg "
+                        src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704898656/Chomotkar/PaymentImg/Nagad-Log_iudiof.png"
                         alt=""
                       />
                     </div>
@@ -342,7 +367,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 </div>
               </div>
               {/* order button */}
-              <div className=" lg:grid hidden justify-end mt-5">
+              <div className=" lg:grid hidden  mt-5">
                 <input
                   type="submit"
                   value="PLACE ORDER"

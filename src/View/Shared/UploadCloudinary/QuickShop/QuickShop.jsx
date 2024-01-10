@@ -93,14 +93,14 @@ const QuickShop = () => {
                   <h2 className="text-3xl font-normal capitalize">
                     {product?.title}
                   </h2>
-                  <div className="flex gap-2 mt-3 text-gray-500 font-medium text-base">
-                    <span className="">Product By:</span>
-                    <span>{product?.productBy}</span>
+                  <div className="flex gap-2 mt-3  font-medium text-base">
+                    <span className="">Brand:</span>
+                    <span className="text-gray-500">{product?.productBy}</span>
                   </div>
                   <div className="mb-6 flex gap-3">
                     <span className="font-medium sm">Price:</span>
                     {product?.newPrice ? (
-                      <div className="flex justify-start items-start gap-1">
+                      <div className="flex text-gray-500 justify-start items-start gap-1">
                         <span className="line-through text-gray-500">
                           TK.{product?.price}
                         </span>
@@ -109,7 +109,9 @@ const QuickShop = () => {
                         </span>
                       </div>
                     ) : (
-                      <span>TK.{product?.price}</span>
+                      <span className="text-gray-500 font-semibold">
+                        TK.{product?.price}
+                      </span>
                     )}
                   </div>
                   <div className="my-6 flex flex-col items-start gap-2">

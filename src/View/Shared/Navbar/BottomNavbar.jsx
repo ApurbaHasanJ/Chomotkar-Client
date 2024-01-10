@@ -58,7 +58,7 @@ const BottomNavbar = () => {
           </li>
           <li>
             <NavLink
-              to="/account"
+              to="/dashboard/my-carts"
               className={({ isActive }) => (isActive ? "active" : "default")}>
               <div className="flex flex-col gap-1 relative items-center">
                 <FaBagShopping className="text-xl" />

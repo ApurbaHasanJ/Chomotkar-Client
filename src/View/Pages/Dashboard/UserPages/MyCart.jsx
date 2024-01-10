@@ -107,7 +107,7 @@ const MyCart = () => {
                         PRODUCT
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        COLOR
+                        COLORS
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Size
