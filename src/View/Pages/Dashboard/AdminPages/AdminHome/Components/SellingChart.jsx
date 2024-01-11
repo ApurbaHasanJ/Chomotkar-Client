@@ -31,18 +31,22 @@ const SellingChart = () => {
   const [orders, ,] = useOrders();
   // console.log(orders);
 
-  // State to manage the selected month
-  const [selectedMonth, setSelectedMonth] = useState("all"); // Default: show data for all months
+  const filteredOrders = orders.filter(
+    (order) => order.paidStatus === true && order.orderStatus === "confirmed"
+  );
 
-  // Group orders by date and calculate total income for each date
-  const groupedOrders = orders.reduce((result, order) => {
+  // State to manage the selected month and year
+  const [selectedMonth, setSelectedMonth] = useState("all");
+  const [selectedYear, setSelectedYear] = useState("all");
+
+  // Group filteredOrders by date and calculate total income for each date
+  const groupedOrders = filteredOrders.reduce((result, order) => {
     const createdAt = new Date(
       order.createdAt.replace(/( at \d+:\d+:\d+ [APMapm]+)$/, "")
     );
-    const dayAndMonth = `${createdAt.getDate()} ${createdAt.toLocaleString(
-      "en-US",
-      { month: "short" }
-    )}`;
+    const year = createdAt.getFullYear();
+    const month = createdAt.toLocaleString("en-US", { month: "short" });
+    const dayAndMonth = `${month} ${createdAt.getDate()}, ${year}`;
 
     if (!result[dayAndMonth]) {
       result[dayAndMonth] = { dayAndMonth, income: 0 };
@@ -55,24 +59,32 @@ const SellingChart = () => {
   // Get the unique dayAndMonth values
   const uniqueDayAndMonth = Object.keys(groupedOrders);
 
-  // Filter data based on the selected month
+  // Filter data based on the selected month and year
   const filteredData =
     selectedMonth === "all"
-      ? uniqueDayAndMonth.map(
-          (dayAndMonth) =>
-            groupedOrders[dayAndMonth] || { dayAndMonth, income: 0 }
-        )
+      ? uniqueDayAndMonth
+          .filter((dayAndMonth) =>
+            selectedYear === "all" ? true : dayAndMonth.includes(selectedYear)
+          )
+          .map(
+            (dayAndMonth) =>
+              groupedOrders[dayAndMonth] || { dayAndMonth, income: 0 }
+          )
       : uniqueDayAndMonth
-          .filter((dayAndMonth) => dayAndMonth.includes(selectedMonth))
+          .filter(
+            (dayAndMonth) =>
+              dayAndMonth.includes(selectedMonth) &&
+              (selectedYear === "all" || dayAndMonth.includes(selectedYear))
+          )
           .map(
             (dayAndMonth) =>
               groupedOrders[dayAndMonth] || { dayAndMonth, income: 0 }
           );
 
-  // Sort filteredData based on the day of the month
+  // Sort filteredData based on the day of the month and year
   filteredData.sort((a, b) => {
-    const dateA = parseInt(a.dayAndMonth.split(" ")[0]);
-    const dateB = parseInt(b.dayAndMonth.split(" ")[0]);
+    const dateA = new Date(a.dayAndMonth);
+    const dateB = new Date(b.dayAndMonth);
     return dateA - dateB;
   });
 
@@ -80,16 +92,38 @@ const SellingChart = () => {
     setSelectedMonth(event.target.value);
   };
 
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
+
   return (
     <div className="mt-16 bg-white drop-shadow-2xl shadow-2xl p-10 rounded-2xl shadow-purple-200">
-      {/* Add a dropdown to select the month */}
+      {/* Add dropdowns to select the month and year */}
       <select
-        className="mb-6 focus:ring-rose-400 focus:border-white"
+        className="mb-6 focus:ring-purple-400 focus:border-white"
         value={selectedMonth}
         onChange={handleMonthChange}>
         {months.map((month, index) => (
           <option key={index} value={month?.date}>
             {month?.name}
+          </option>
+        ))}
+      </select>
+      <select
+        className="mb-6 ml-4 focus:ring-purple-400 focus:border-white"
+        value={selectedYear}
+        onChange={handleYearChange}>
+        <option value="all">All Years</option>
+        {/* Add options for each unique year in the data */}
+        {Array.from(
+          new Set(
+            Object.keys(groupedOrders).map((date) =>
+              new Date(date).getFullYear()
+            )
+          )
+        ).map((year, index) => (
+          <option key={index} value={year}>
+            {year}
           </option>
         ))}
       </select>

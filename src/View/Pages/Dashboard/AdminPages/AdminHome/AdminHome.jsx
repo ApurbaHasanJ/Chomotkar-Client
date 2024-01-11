@@ -1,4 +1,5 @@
 import BestSellingProducts from "./Components/BestSellingProducts";
+import LastMonthInfo from "./Components/LastMonthInfo";
 import SellingChart from "./Components/SellingChart";
 import TopInfo from "./Components/TopInfo";
 
@@ -11,7 +12,10 @@ const AdminHome = () => {
       {/* top info */}
       <TopInfo />
       <SellingChart />
-      <BestSellingProducts />
+      <div className="flex gap-8 my-14">
+        <BestSellingProducts />
+        <LastMonthInfo />
+      </div>
     </div>
   );
 };

@@ -4,14 +4,17 @@ import useProducts from "../../../../../Hooks/useProducts";
 const BestSellingProducts = () => {
   const [orders, ,] = useOrders();
   const [products] = useProducts();
-  console.log(orders);
-  console.log("allproducts", products);
+//   console.log(orders);
+const filteredOrders = orders.filter(
+    (order) => order.paidStatus === true && order.orderStatus === "confirmed"
+  );
 
+//   console.log(filteredOrders);
   // Create a map to store the quantity of each product
   const productQuantityMap = new Map();
 
   //   count quantity of each product
-  orders.forEach((order) => {
+  filteredOrders.forEach((order) => {
     const productId = order.productId;
     const quantity = order.quantity;
 
@@ -45,15 +48,15 @@ const BestSellingProducts = () => {
       quantity: topFive.find((top) => top.productId === product._id).quantity,
     }));
 
-  console.log(matchedProducts);
+//   console.log(matchedProducts);
   return (
-    <div className="bg-white shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10 my-14">
+    <div className="bg-white w-3/6 h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10">
       <h2 className="text-purple-600 font-semibold text-2xl drop-shadow-2xl">
         Best Selling Products
       </h2>
       <ul className="grid gap-4 mt-6">
-        {matchedProducts.map((product) => (
-          <li key={product.productId} className="flex gap-3">
+        {matchedProducts.map((product, index) => (
+          <li key={index} className="flex gap-3">
             <img className="w-16 h-16" src={product?.photos[0]?.img} alt="" />
             <div className="grid">
               <span>{product?.title}</span>

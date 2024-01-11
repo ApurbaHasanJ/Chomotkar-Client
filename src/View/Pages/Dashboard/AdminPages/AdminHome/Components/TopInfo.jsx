@@ -13,12 +13,11 @@ const TopInfo = () => {
   );
 
   const totalRevenue = completeOrders.reduce(
-    (acc, order) => acc + order.totalAmount, 
+    (acc, order) => acc + order.totalAmount,
     0
   );
 
-  
-  console.log(orders);
+  // console.log(orders);
   return (
     <div className="grid gap-5 md:grid-cols-4 grid-cols-2 justify-center text-white mt-6 items-center">
       <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
@@ -26,7 +25,7 @@ const TopInfo = () => {
 
         <div>
           <h1 className="text-3xl ">{totalRevenue}</h1>
-          <p className="text-xl">Revenue</p>
+          <p className="text-xl">Sales</p>
         </div>
       </div>
       <div className="from-[#D3A256] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
