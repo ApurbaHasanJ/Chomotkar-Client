@@ -29,7 +29,7 @@ const months = [
 
 const SellingChart = () => {
   const [orders, ,] = useOrders();
-  console.log(orders);
+  // console.log(orders);
 
   // State to manage the selected month
   const [selectedMonth, setSelectedMonth] = useState("all"); // Default: show data for all months
@@ -81,7 +81,7 @@ const SellingChart = () => {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 bg-white drop-shadow-2xl shadow-2xl p-10 rounded-2xl shadow-purple-200">
       {/* Add a dropdown to select the month */}
       <select
         className="mb-6 focus:ring-rose-400 focus:border-white"

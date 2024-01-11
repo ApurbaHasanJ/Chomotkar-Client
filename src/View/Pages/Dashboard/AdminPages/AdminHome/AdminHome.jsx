@@ -1,3 +1,4 @@
+import BestSellingProducts from "./Components/BestSellingProducts";
 import SellingChart from "./Components/SellingChart";
 import TopInfo from "./Components/TopInfo";
 
@@ -10,6 +11,7 @@ const AdminHome = () => {
       {/* top info */}
       <TopInfo />
       <SellingChart />
+      <BestSellingProducts />
     </div>
   );
 };
