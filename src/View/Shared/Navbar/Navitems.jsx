@@ -87,7 +87,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openMenCollection}
             onMouseLeave={closeMenCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className={`md:absolute md:top-6 ${menItems ? "md:left-0 left-32" :"" } md:drop-shadow-2xl z-50  grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2`}>
             <Link
               to="/collection/men"
               onClick={() => {
@@ -149,7 +149,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openWomenCollection}
             onMouseLeave={closeWomenCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className={`md:absolute md:top-6 ${womenItems ? "md:left-0 left-32" :"" } md:drop-shadow-2xl z-50  grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2`}>
             <Link
               to="/collection/women"
               onClick={() => {
@@ -182,7 +182,7 @@ const NavItems = () => {
       <li
         onMouseEnter={openGadgetsCollection}
         onMouseLeave={closeGadgetsCollection}
-        className="flex items-center relative gap-1 hover:text-rose-400">
+        className="relative hover:text-rose-400">
         <div className="flex items-center gap-1 hover:text-rose-400">
           <NavLink
             to="/collection/gadgetItems"
@@ -201,7 +201,7 @@ const NavItems = () => {
           <div
             onMouseEnter={openGadgetsCollection}
             onMouseLeave={closeGadgetsCollection}
-            className="absolute top-6 drop-shadow-2xl z-50 md:left-0 left-32 grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2">
+            className={`md:absolute md:top-6 ${gadgetItems ? "md:left-0 left-32" :"" } md:drop-shadow-2xl z-50  grid gap-[2px] text-xs whitespace-nowrap font-semibold  tracking-wide   transition-colors duration-300 bg-white text-slate-600 p-3 space-y-2`}>
             <Link
               to="/collection/gadgets"
               onClick={() => {
