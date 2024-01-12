@@ -18,8 +18,7 @@ const SocialLogin = () => {
     continueWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        // console.log(loggedUser);
-        // take data to database
+        // take data to the database
         const userData = {
           name: loggedUser?.displayName,
           email: loggedUser?.email,
@@ -27,6 +26,7 @@ const SocialLogin = () => {
           emailVerified: loggedUser?.emailVerified,
           metadata: { ...loggedUser?.metadata },
         };
+  
         fetch("https://chomotkar-server-iota.vercel.app/users", {
           method: "POST",
           headers: {
@@ -35,27 +35,25 @@ const SocialLogin = () => {
           body: JSON.stringify(userData),
         })
           .then((res) => res.json())
-          .then((data) => {
-            // console.log(data);
-            if (data.insertedId) {
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Sign in Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              navigate(from, { replace: true });
-            }
+          .then(() => {
+            // Common logic for a successful sign-in
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Sign in Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log(error);
+            Swal.fire({
+              icon: "error",
+              title: "Error login user",
+              text: "Please try again.",
+            });
           });
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Sign in Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +64,7 @@ const SocialLogin = () => {
         });
       });
   };
-
+  
 
   // Continue with facebook login
   //   const handleFacebookSignIn = () => {

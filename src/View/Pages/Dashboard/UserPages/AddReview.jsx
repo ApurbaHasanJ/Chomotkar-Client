@@ -62,11 +62,18 @@ const AddReview = () => {
     // formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const { reviewerName, productName, suggestion, reviewDetails } = data;
+    const {
+      reviewerName,
+      reviewerEmail,
+      productName,
+      suggestion,
+      reviewDetails,
+    } = data;
 
     const reviewData = {
       reviewerPhoto: reviewerPhoto || user?.photoURL,
       reviewerName,
+      reviewerEmail,
       add: false,
       rating: rating,
       productName,
@@ -129,6 +136,11 @@ const AddReview = () => {
               starDimension={"40px"}
               starSpacing={"4px"}
             />
+            {rating === 0 && (
+              <p className="text-red-500 text-center">
+                Please Rate Us From Here
+              </p>
+            )}
           </div>
           <div className="   my-7 mt-0 lg:my-16 items-center">
             <div className=" px-10 mx-3 lg:mx-0 rounded-lg mt-10">
@@ -245,6 +257,24 @@ const AddReview = () => {
                     required
                     defaultValue={user?.displayName}
                     placeholder="Your Name"
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  />
+                </div>
+                {/* Your name */}
+                <div className="grid mb-4 ">
+                  <label className="flex items-center text-center gap-1 text-base font-medium text-slate-900 ">
+                    <span className=" font-medium text-base">
+                      Please write here your email.
+                    </span>
+                    <span className="text-gray-600 text-xs">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="reviewerEmail"
+                    {...register("reviewerEmail")}
+                    required
+                    defaultValue={user?.email}
+                    placeholder="Your Email"
                     className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
                   />
                 </div>

@@ -11,7 +11,7 @@ import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Wishlist from "../Pages/Dashboard/UserPages/Wishlist";
 import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
-import UserHome from "../Pages/Dashboard/UserPages/UserHome";
+import UserHome from "../Pages/Dashboard/UserPages/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import AddReview from "../Pages/Dashboard/UserPages/AddReview";
 import MyCart from "../Pages/Dashboard/UserPages/MyCart";
@@ -145,7 +145,7 @@ export const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "add-review",
+        path: "feedback",
         element: <AddReview />,
       },
       {

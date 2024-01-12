@@ -74,7 +74,7 @@ const Dashboard = () => {
           </nav>
 
           {/* all pages here */}
-          <div className="w-full min-h-screen flex justify-center items-center">
+          <div className="w-full min-h-screen grid grid-cols-1 justify-center items-center">
             <Outlet />
           </div>
         </div>

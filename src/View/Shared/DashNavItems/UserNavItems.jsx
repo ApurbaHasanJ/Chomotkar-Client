@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FaCalendarCheck, FaHeart, FaHome, FaWallet } from "react-icons/fa";
+import { FaCalendarCheck, FaHeart, FaHome } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdReviews } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -68,7 +68,7 @@ const UserNavItems = () => {
             </span>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/dashboard/payment-history"
             className={({ isActive }) =>
@@ -84,7 +84,7 @@ const UserNavItems = () => {
               PAYMENT HISTORY
             </span>
           </NavLink>
-        </li>
+        </li> */}
 
         <li>
           <NavLink
@@ -96,16 +96,16 @@ const UserNavItems = () => {
             }>
             <FaCalendarCheck
               className="w-14 h-6 md:mx-0 mx-auto"
-              title="PENDING ORDERS"
+              title="ORDERS HISTORY"
             />
             <span className="text-base font-semibold block whitespace-nowrap">
-              PENDING ORDERS
+              ORDERS HISTORY
             </span>
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/dashboard/add-review"
+            to="/dashboard/feedback"
             className={({ isActive }) =>
               isActive
                 ? "dashActive flex items-center justify-start gap-4"
@@ -116,7 +116,7 @@ const UserNavItems = () => {
               title="ADD REVIEWS"
             />
             <span className="text-base font-semibold block whitespace-nowrap">
-              ADD REVIEWS
+              ADD REVIEW
             </span>
           </NavLink>
         </li>

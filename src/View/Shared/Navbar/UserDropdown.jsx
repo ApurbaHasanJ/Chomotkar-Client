@@ -90,18 +90,12 @@ const UserDropdown = () => {
                     </li>
                     <li>
                       <Link
-                        to="#"
+                        to="dashboard/feedback"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                        Settings
+                        Feedback
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        to="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                        Earnings
-                      </Link>
-                    </li>
+
                     <li>
                       <Link
                         to="#"
@@ -114,24 +108,38 @@ const UserDropdown = () => {
                 </>
               ) : (
                 <ul>
-                  <Link
-                    onClick={handleToggleDropDown}
-                    to="/dashboard/my-carts"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Dashboard
-                  </Link>
-                  <Link
-                    onClick={handleToggleDropDown}
-                    to="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Login
-                  </Link>
-                  <Link
-                    onClick={handleToggleDropDown}
-                    to="/register"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    Register
-                  </Link>
+                  <li>
+                    <Link
+                      onClick={handleToggleDropDown}
+                      to="/dashboard/my-carts"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                      Dashboard
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="dashboard/feedback"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                      Feedback
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={handleToggleDropDown}
+                      to="/login"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={handleToggleDropDown}
+                      to="/register"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                      Register
+                    </Link>
+                  </li>
                 </ul>
               )}
             </div>
