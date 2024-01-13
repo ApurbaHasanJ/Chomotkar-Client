@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 const PaymentSuccess = () => {
-  const { tranId } = useParams();
+  const { trxID } = useParams();
   return (
     <div className="lg:mt-8 mt-28 grid text-center text-gray-600 justify-center items-center font-semibold">
       <div>
@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
           Thank you for your purchase! Your payment has been successfully
           processed.
         </p>
-        <span className="text-lg font-medium">Transaction ID: {tranId}</span>
+        <span className="text-lg font-medium">Transaction ID: {trxID}</span>
       </div>
       <img
         className="max-w-lg mx-auto"

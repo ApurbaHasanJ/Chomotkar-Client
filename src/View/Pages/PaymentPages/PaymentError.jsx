@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
-
 const PaymentError = () => {
-  const { tranId } = useParams();
-
+  const searchData = new URLSearchParams(window.location.search);
+  const message = searchData.get("message");
   return (
     <div className="grid lg:mt-8 mt-28 text-center text-gray-600 justify-center items-center font-semibold">
       <div>
@@ -11,7 +9,7 @@ const PaymentError = () => {
           <br />
           Please check your payment details and try again.
         </p>
-        <span className="text-lg font-medium">Transaction ID: {tranId}</span>
+        <span className="text-lg font-medium">Payment Error: {message}</span>
       </div>
       <img
         className="max-w-lg mx-auto mt-4"

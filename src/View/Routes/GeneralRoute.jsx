@@ -53,11 +53,11 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "payment/success/:tranId",
+        path: "payment/success/:trxID",
         element: <PaymentSuccess />,
       },
       {
-        path: "payment/failed/:tranId",
+        path: "payment/error?",
         element: <PaymentError />,
       },
     ],

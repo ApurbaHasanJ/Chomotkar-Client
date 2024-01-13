@@ -57,6 +57,7 @@ const MyCart = () => {
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
     setSelectedSize({ id: "", size: "" });
+    setSelectedColor({ id: "", color: "" });
   };
 
   // handle delete from cart

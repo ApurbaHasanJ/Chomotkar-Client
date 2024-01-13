@@ -8,6 +8,7 @@ import Loader from "../../../Shared/Loader/Loader";
 import { OrdersHistoryContext } from "../../../Providers/OrdersHistoryProvider";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
+import axios from "axios";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const { handleAddToOrdersHistory } = useContext(OrdersHistoryContext);
@@ -116,11 +117,12 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     timeZone: "Asia/Dhaka", // You can adjust the timeZone as needed
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (!payBkash && !payNagad && !cashOnDelivery) {
       toast.error("please select a payment method");
       return;
     }
+  
     const order = {
       productId: payCarts._id,
       date: formattedEnDateTime,
@@ -132,7 +134,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         ? discountedPrice + deliveryCharge
         : subTotal + deliveryCharge,
     };
-
+  
     data.productId = payCarts._id;
     data.color = payCarts?.color;
     data.size = payCarts?.size;
@@ -140,37 +142,42 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     data.couponCode = enteredCouponCode;
     data.date = formattedEnDateTime;
     data.totalAmount = payCarts?.userOrder?.totalAmount;
+  
     // Set the payOnline property in the data object based on the payOnline condition
-    data.payOnline = (payBkash && "bkash") || (payNagad && "nagad");
-
+    data.paymentMethod =
+      (payBkash && "bkash") ||
+      (payNagad && "nagad") ||
+      (cashOnDelivery && "COD");
+  
     // Add to order history for both cash on delivery and online payment
     handleAddToOrdersHistory(order);
     setLoading(true);
-
-    fetch("https://chomotkar-server-iota.vercel.app/order", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((responseData) => {
-        console.log(responseData);
-        console.log(responseData);
-        setLoading(false);
-
-        // Redirect based on the payment method
-        if ((payBkash || payNagad) && responseData && responseData.url) {
-          // Redirect to the provided URL for online payment
-          window.location.replace(responseData.url);
-        } else {
-          // Redirect for cash on delivery
-          // Adjust the URL as needed
-          navigate("/dashboard/orders-history");
-        }
+  
+    try {
+      const axiosData = await axios.post("http://localhost:5000/payment", {
+        data,
       });
+  
+      // Log the response data within the then block
+      console.log(axiosData);
+  
+      setLoading(false);
+  
+      // Redirect based on the payment method
+      if ( axiosData && axiosData.data.bkashURL) {
+        // Redirect to the provided URL for online payment
+        window.location.replace(axiosData?.data?.bkashURL);
+      } else {
+        // Redirect for cash on delivery
+        // Adjust the URL as needed
+        navigate("/dashboard/orders-history");
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle the error as needed
+    }
   };
+  
 
   return (
     <section className="my-container relative pt-12 ">
