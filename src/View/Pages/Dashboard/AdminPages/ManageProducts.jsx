@@ -20,7 +20,7 @@ const ManageProducts = () => {
     refetch();
   };
 
-  const handleDeleteProduct = (deleteId) => {
+  const handleDeleteProduct = (deleteId, photos) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You want to delete this!",
@@ -29,36 +29,41 @@ const ManageProducts = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#ff7675",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        axiosSecure
-          .delete(`/products/${deleteId}`) // Use axiosSecure.delete for deleting a product
-          .then((res) => {
-            console.log(res.data);
-            if (res.data?.deletedCount) {
-              setLoading(false);
-              refetch();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Product Deleted Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            // Handle errors and possibly show a notification
+
+        try {
+          // Get photo urls from the photos array
+          const publicIds = photos.map((photo) => photo?.publicId);
+
+          // Now, delete the product from MongoDB also from cloud storage
+          const res = await axiosSecure.delete(
+            `/products?id=${deleteId}&publicIds=${JSON.stringify(publicIds)}`
+          );
+
+          if (res.data?.deletedCount) {
+            setLoading(false);
+            refetch();
             Swal.fire({
               position: "top-end",
-              icon: "error",
-              title: `${err.message}`,
+              icon: "success",
+              title: "Product Deleted Successfully",
               showConfirmButton: false,
               timer: 1500,
             });
+          }
+        } catch (err) {
+          console.log(err);
+          // Handle errors and possibly show a notification
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       }
     });
   };
@@ -78,42 +83,40 @@ const ManageProducts = () => {
           </h2>
 
           <div className="relative  overflow-x-auto shadow-md   rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-              <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
-                <tr>
-                  <th scope="col" className="p-8 font-semibold">
-                    #
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    ITEM IMAGE
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    ITEM NAME
-                  </th>
+            {loading || productsLoading ? (
+              <div className="py-10">
+                <Loader />
+              </div>
+            ) : (
+              <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
+                <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+                  <tr>
+                    <th scope="col" className="p-8 font-semibold">
+                      #
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      ITEM IMAGE
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      ITEM NAME
+                    </th>
 
-                  <th scope="col" className="px-6 py-3">
-                    COLOR
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    PRICE
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    ACTION
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    ACTION
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {loading || productsLoading ? (
-                  <tr className="h-96">
-                    <td className="">
-                      <Loader />
-                    </td>
+                    <th scope="col" className="px-6 py-3">
+                      COLOR
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      PRICE
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      ACTION
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      ACTION
+                    </th>
                   </tr>
-                ) : (
-                  products.map((product, index) => (
+                </thead>
+                <tbody>
+                  {products.map((product, index) => (
                     <tr
                       key={product?._id}
                       className="bg-white border-b py-10 hover:bg-gray-50 ">
@@ -176,15 +179,17 @@ const ManageProducts = () => {
                       </td>
                       <td scope="row" className=" px-6 py-4">
                         <MdDeleteForever
-                          onClick={() => handleDeleteProduct(product?._id)}
+                          onClick={() =>
+                            handleDeleteProduct(product?._id, product?.photos)
+                          }
                           className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
                         />
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>
