@@ -11,7 +11,7 @@ const Shop = () => {
   return (
     <main>
       {/* <ShopHero /> */}
-      <div className="flex gap-4 md:mt-32 mt-20 my-container relative overflow-visible">
+      <div className="flex md:gap-4 md:mt-32 mt-20 my-container relative overflow-visible">
         <Filter />
         <Products />
       </div>

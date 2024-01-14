@@ -40,14 +40,3 @@ const useAxiosSecure = () => {
 };
 
 export default useAxiosSecure;
-
-
-
-// fetch("https://chomotkar-server-iota.vercel.app/order", {
-//       method: "POST",
-//       headers: {
-//         "content-type": "application/json",
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((res) => res.json())

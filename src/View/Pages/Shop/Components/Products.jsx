@@ -66,7 +66,7 @@ const Products = () => {
         <div
           className={`fixed top-[96px] ${
             toggleFilters ? "left-0" : "-left-[1000px]"
-          } transition-all duration-1000 z-50`}>
+          } transition-all duration-700 z-50`}>
           <Filter
             toggleFilters={toggleFilters}
             handleToggleFilters={handleToggleFilter}

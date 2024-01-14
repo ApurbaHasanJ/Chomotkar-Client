@@ -39,10 +39,10 @@ const Hero = () => {
           waitForTransition: Animation,
         }}
         modules={[Pagination, FreeMode, Autoplay]}
-        className="mySwiper lg:h-[calc(100vh-123.200px)] md:mt-0 mt-[56px]">
+        className="mySwiper md:mt-0 mt-[56px]">
         {banners.map((banner, index) => (
           <SwiperSlide key={index} className="swiper-slide ">
-            <img className="w-full h-auto" src={banner.img} alt="" />
+            <img className="w-full h-full" src={banner.img} alt="" />
           </SwiperSlide>
         ))}
 
