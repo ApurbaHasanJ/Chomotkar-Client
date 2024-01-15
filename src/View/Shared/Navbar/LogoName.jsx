@@ -11,7 +11,7 @@ const LogoName = () => {
             Fashion
           </p> */}
         <img
-          className="md:w-72 drop-shadow-2xl w-[220px] h-10 object-cover"
+          className="md:w-72 md:h-12 drop-shadow-2xl w-[220px] h-10 object-cover"
           src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_Golden_jla5u9.png"
           alt=""
         />

@@ -8,6 +8,7 @@ import { FaShippingFast } from "react-icons/fa";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import Checkout from "./Checkout";
+import { HiReceiptRefund } from "react-icons/hi";
 
 const OrdersHistory = () => {
   const { ordersHistory } = useContext(OrdersHistoryContext);
@@ -52,7 +53,7 @@ const OrdersHistory = () => {
       return null;
     })
     .filter(Boolean);
-  // console.log(orderedProducts);
+  console.log(orderedProducts);
 
   // const handleRejectOrder = (date) => {
   //   const encodedDate = encodeURIComponent(date);
@@ -88,7 +89,6 @@ const OrdersHistory = () => {
   //   });
   // };
 
-
   const handleToggleModal = () => {
     setCheckoutModal(!checkoutModal);
   };
@@ -96,7 +96,7 @@ const OrdersHistory = () => {
   return (
     <section className="pt-12  min-h-screen relative ">
       {checkoutModal ? (
-        <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts}/>
+        <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
       ) : (
         <div className="">
           <SectionTitle
@@ -228,28 +228,38 @@ const OrdersHistory = () => {
                                           // onClick={() => handleDeleteProduct(order?._id)}
                                           className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
                                         />
+                                      )) ||
+                                      (order?.userOrder?.orderStatus ===
+                                        "refund" && (
+                                        <HiReceiptRefund
+                                          // onClick={() => handleDeleteProduct(order?._id)}
+                                          className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]"
+                                        />
                                       ))}
                                   </div>
                                 </td>
                                 <td scope="row" className="px-6 py-4 font-bold">
                                   <button
-                                  onClick={()=>{
-                                    setPayCarts({
-                                      ...order,
-                                      quantity: order?.quantity,
-                                      color: order?.color,
-                                      size: order?.size,
-                                    });
-                                    handleToggleModal()
-                                  }}
+                                    onClick={() => {
+                                      setPayCarts({
+                                        ...order,
+                                        quantity: order?.quantity,
+                                        color: order?.color,
+                                        size: order?.size,
+                                      });
+                                      handleToggleModal();
+                                    }}
                                     type="button"
                                     disabled={
+                                      order?.userOrder?.orderStatus ===
+                                        "refund" ||
                                       order?.userOrder?.paidStatus === true
                                     }
                                     className={`
                                 text-white  py-2
                                 px-4 rounded-lg text-base font-semibold
                                 font-g-mono ${
+                                  order?.userOrder?.orderStatus === "refund" ||
                                   order?.userOrder?.paidStatus === true ||
                                   order?.userOrder?.orderStatus === "rejected"
                                     ? "bg-[#e1b470] cursor-not-allowed"

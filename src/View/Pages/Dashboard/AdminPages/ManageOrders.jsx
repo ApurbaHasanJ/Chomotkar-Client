@@ -7,20 +7,21 @@ import useOrders from "../../../Hooks/useOrders";
 import useProducts from "../../../Hooks/useProducts";
 import { FaInfoCircle, FaShippingFast } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import ProductDetails from "./ProductDetails";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import OrderDetails from "./OrderDetails";
+import { HiReceiptRefund } from "react-icons/hi";
 
 const ManageOrders = () => {
   const [orders, ordersLoading, refetch] = useOrders();
   const [products, productsLoading] = useProducts();
   const [modal, setModal] = useState(false);
-  const [productDetails, setProductDetails] = useState();
+  const [orderDetails, setOrderDetails] = useState();
   const [orderId, setOrderId] = useState(null);
 
   const [axiosSecure] = useAxiosSecure();
-  console.log(productDetails);
+  // console.log(orderDetails);
 
   // finding product from products using productId
   const orderedProducts = orders
@@ -80,7 +81,7 @@ const ManageOrders = () => {
     <section className="pt-12  min-d-screen relative ">
       <div className="">
         <SectionTitle
-          title={"MANAGE ALL products"}
+          title={"MANAGE ALL orders"}
           subtitle={"---Hurry Up!---"}
         />
 
@@ -157,7 +158,7 @@ const ManageOrders = () => {
                           <td scope="row" className="px-6 py-4">
                             <FaInfoCircle
                               onClick={() => {
-                                setModal(!modal), setProductDetails(order);
+                                setModal(!modal), setOrderDetails(order);
                               }}
                               className="bg-[#D1A054] hover:bg-[#f15e5e] p-1 rounded-md text-white text-[32px]"
                             />
@@ -179,6 +180,9 @@ const ManageOrders = () => {
                                   )) ||
                                   (order?.orderStatus === "rejected" && (
                                     <GiSkullCrossedBones className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
+                                  )) ||
+                                  (order?.orderStatus === "refund" && (
+                                    <HiReceiptRefund className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
                                   ))}
                               </div>
                               <div className="absolute z-10 right-4 top-4 rounded-md shadow-md">
@@ -190,8 +194,10 @@ const ManageOrders = () => {
                                     />
                                     {/* pending */}
                                     <button
-                                    type="button"
-                                    disabled={order?.orderStatus=== "pending"}
+                                      type="button"
+                                      disabled={
+                                        order?.orderStatus === "pending"
+                                      }
                                       onClick={() =>
                                         handleOrderStatus(order?._id, "pending")
                                       }
@@ -208,8 +214,10 @@ const ManageOrders = () => {
                                     </button>
                                     {/* shipping */}
                                     <button
-                                    type="button"
-                                    disabled={order?.orderStatus=== "shipping"}
+                                      type="button"
+                                      disabled={
+                                        order?.orderStatus === "shipping"
+                                      }
                                       onClick={() =>
                                         handleOrderStatus(
                                           order?._id,
@@ -229,8 +237,10 @@ const ManageOrders = () => {
                                     </button>
                                     {/* confirmed */}
                                     <button
-                                    type="button"
-                                    disabled={order?.orderStatus=== "confirmed"}
+                                      type="button"
+                                      disabled={
+                                        order?.orderStatus === "confirmed"
+                                      }
                                       onClick={() =>
                                         handleOrderStatus(
                                           order?._id,
@@ -250,8 +260,10 @@ const ManageOrders = () => {
                                     </button>
                                     {/* rejected */}
                                     <button
-                                    type="button"
-                                    disabled={order?.orderStatus=== "rejected"}
+                                      type="button"
+                                      disabled={
+                                        order?.orderStatus === "rejected"
+                                      }
                                       onClick={() =>
                                         handleOrderStatus(
                                           order?._id,
@@ -280,13 +292,17 @@ const ManageOrders = () => {
                 </table>
               )}
               {modal && (
-                <div className="max-w-xl text-base bg-white overflow-y-scroll p-6 shadow-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-[500px] text-black">
+                <div className="max-w-2xl text-base bg-white overflow-y-scroll p-6 shadow-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-[550px] text-black">
                   <RxCross2
                     onClick={() => setModal(!modal)}
                     className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-2xl text-xl ml-auto hover:bg-rose-100 p-[.5]"
                   />
 
-                  <ProductDetails productDetails={productDetails} />
+                  <OrderDetails
+                    orderDetails={orderDetails}
+                    refetch={refetch}
+                    setModal={setModal}
+                  />
                 </div>
               )}
             </div>

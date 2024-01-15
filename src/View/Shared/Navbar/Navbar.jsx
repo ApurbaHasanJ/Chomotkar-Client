@@ -4,7 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 
 import Search from "./Search/Search";
 import UserDropdown from "./UserDropdown";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Call from "./Call";
 import LogoName from "./LogoName";
 import WishCount from "../WishList/WishCount";
@@ -90,13 +90,16 @@ const Navbar = () => {
             <LogoName />
           </div>
           {/* Facebook Link */}
-          <Link to="/">
+          <a
+            href="https://www.facebook.com/Chomotkar"
+            target="_blank"
+            rel="noopener noreferrer">
             <img
               className="w-9"
               src="https://i.ibb.co/txZVsTt/facebook.png"
               alt="Visit Facebook"
             />
-          </Link>
+          </a>
         </nav>
       </div>
     </nav>

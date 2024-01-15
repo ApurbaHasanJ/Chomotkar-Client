@@ -9,9 +9,11 @@ import { OrdersHistoryContext } from "../../../Providers/OrdersHistoryProvider";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 import axios from "axios";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const { handleAddToOrdersHistory } = useContext(OrdersHistoryContext);
+  const { user } = useContext(AuthContext);
 
   // State for total price, delivery charge, and coupon discount
   const [coupons] = useCoupon();
@@ -25,8 +27,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
   const navigate = useNavigate();
 
-  console.log(payCarts);
-  console.log(coupons);
+  console.log("payCarts", payCarts);
+  // console.log(coupons);
   // Assuming the user entered coupon code
   const [enteredCouponCode, setEnteredCouponCode] = useState("");
 
@@ -51,13 +53,15 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
       (coupon) => coupon.code === enteredCouponCode
     );
 
-    if (matchedCoupon) {
-      setDiscountedPercentage(matchedCoupon.discount);
-      // Calculate the discounted price
-      const discountPercentage = matchedCoupon?.discount / 100;
-      const discountedPrice = subTotal * (1 - discountPercentage);
-      setDiscountedPrice(discountedPrice);
-      toast.success(`You got ${matchedCoupon?.discount}% discount.`);
+    if (!payCarts?.userOrder) {
+      if (matchedCoupon) {
+        setDiscountedPercentage(matchedCoupon.discount);
+        // Calculate the discounted price
+        const discountPercentage = matchedCoupon?.discount / 100;
+        const discountedPrice = subTotal * (1 - discountPercentage);
+        setDiscountedPrice(discountedPrice);
+        toast.success(`You got ${matchedCoupon?.discount}% discount.`);
+      }
     } else {
       setDiscountedPercentage(0);
       // const discountedPrice = subTotal
@@ -122,7 +126,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
       toast.error("please select a payment method");
       return;
     }
-  
+
     const order = {
       productId: payCarts._id,
       date: formattedEnDateTime,
@@ -134,7 +138,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         ? discountedPrice + deliveryCharge
         : subTotal + deliveryCharge,
     };
-  
+
+    if (payCarts?.userOrder) {
+      data.orderINV = payCarts?.userOrder?.INV;
+      data.orderId = payCarts?.userOrder?._id;
+    }
     data.productId = payCarts._id;
     data.color = payCarts?.color;
     data.size = payCarts?.size;
@@ -142,32 +150,37 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
     data.couponCode = enteredCouponCode;
     data.date = formattedEnDateTime;
     data.totalAmount = payCarts?.userOrder?.totalAmount;
-  
+
     // Set the payOnline property in the data object based on the payOnline condition
     data.paymentMethod =
       (payBkash && "bkash") ||
       (payNagad && "nagad") ||
       (cashOnDelivery && "COD");
-  
+
     // Add to order history for both cash on delivery and online payment
-    handleAddToOrdersHistory(order);
+    if (!payCarts.userOrder) {
+      handleAddToOrdersHistory(order);
+    }
     setLoading(true);
-  
+
     try {
-      const axiosData = await axios.post("https://chomotkar-server-iota.vercel.app/payment", {
-        data,
-      });
-  
+      const axiosData = await axios.post(
+        "https://chomotkar-server-iota.vercel.app/payment",
+        {
+          data,
+        }
+      );
+
       // Log the response data within the then block
-      console.log(axiosData);
-  
+      console.log("axiosData", axiosData);
+
       setLoading(false);
-  
+
       // Redirect based on the payment method
-      if ( axiosData && axiosData.data.bkashURL) {
+      if (axiosData && axiosData.data.bkashURL) {
         // Redirect to the provided URL for online payment
         window.location.replace(axiosData?.data?.bkashURL);
-      } else {
+      } else if (axiosData && axiosData.data?.insertedId) {
         // Redirect for cash on delivery
         // Adjust the URL as needed
         navigate("/dashboard/orders-history");
@@ -177,7 +190,6 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
       // Handle the error as needed
     }
   };
-  
 
   return (
     <section className="my-container relative pt-12 ">
@@ -208,7 +220,9 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
-                  defaultValue={payCarts?.userOrder?.cusName || ""}
+                  defaultValue={
+                    payCarts?.userOrder?.cusName || user?.displayName || ""
+                  }
                   type="text"
                   name="name"
                   {...register("name", {
@@ -247,7 +261,9 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <span className="text-gray-600 text-xs">(optional)</span>
                 </label>
                 <input
-                  defaultValue={payCarts?.userOrder?.cusEmail || ""}
+                  defaultValue={
+                    payCarts?.userOrder?.cusEmail || user?.email || ""
+                  }
                   type="email"
                   name="email"
                   {...register("email")}
@@ -314,6 +330,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   PAYMENT METHOD
                 </h2>
                 <div className="grid grid-cols-3 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
+                  {/* cash on delivery */}
                   <label
                     className="flex items-start gap-3"
                     htmlFor="cashOnDelivery">
@@ -334,7 +351,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                       />
                     </div>
                   </label>
-
+                  {/* pay with bkash */}
                   <label className="flex items-start gap-3" htmlFor="payBkash">
                     <input
                       type="radio"
@@ -353,7 +370,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                       />
                     </div>
                   </label>
-                  <label className="flex items-start gap-3" htmlFor="payNagad">
+                  {/* pay with nagad */}
+                  {/* <label className="flex items-start gap-3" htmlFor="payNagad">
                     <input
                       type="radio"
                       className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
@@ -370,7 +388,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                         alt=""
                       />
                     </div>
-                  </label>
+                  </label> */}
                 </div>
               </div>
               {/* order button */}
@@ -418,12 +436,16 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                           Tk.{payCarts?.price * payCarts?.quantity}
                         </span>
                         <span className="font-semibold">
-                          Tk.{payCarts?.newPrice * payCarts?.quantity}
+                          Tk.
+                          {payCarts?.userOrder?.totalAmount ||
+                            payCarts?.newPrice * payCarts?.quantity}
                         </span>
                       </div>
                     ) : (
                       <span className="font-semibold ml-4">
-                        Tk.{payCarts?.price * payCarts?.quantity}
+                        Tk.
+                        {payCarts?.userOrder?.totalAmount ||
+                          payCarts?.price * payCarts?.quantity}
                       </span>
                     )}
                   </div>
