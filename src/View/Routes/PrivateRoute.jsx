@@ -27,7 +27,7 @@ const PrivateRoute = ({ children }) => {
       <div className="text-center md:text-xl text-base shadow-xl bg-rose-100 p-8 ">
         <p>You have to login first.</p>
         <button
-          className="btn p-3 px-5 duration-500 mt-4 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+          className="btn p-3 px-5 duration-500 mt-4 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
           onClick={handleLoginClick}>
           Login
         </button>

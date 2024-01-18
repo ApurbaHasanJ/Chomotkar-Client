@@ -98,7 +98,7 @@ const ManageOrders = () => {
                 </div>
               ) : (
                 <table className="w-full  text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-                  <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+                  <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                     <tr>
                       <th scope="col" className="p-8 font-semibold">
                         #
@@ -160,7 +160,7 @@ const ManageOrders = () => {
                               onClick={() => {
                                 setModal(!modal), setOrderDetails(order);
                               }}
-                              className="bg-[#D1A054] hover:bg-[#f15e5e] p-1 rounded-md text-white text-[32px]"
+                              className="bg-[#75934e] bg-opacity-60 hover:bg-[#f15e5e] p-1 rounded-md text-white text-[32px]"
                             />
                           </td>
                           <td scope="row" className=" px-6 py-4">
@@ -176,7 +176,7 @@ const ManageOrders = () => {
                                     <FaShippingFast className="bg-yellow-300 hover:bg-yellow-400  p-1 rounded-md text-white text-[32px]" />
                                   )) ||
                                   (order?.orderStatus === "confirmed" && (
-                                    <IoCheckmarkDoneCircle className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
+                                    <IoCheckmarkDoneCircle className="bg-[#75934e] hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
                                   )) ||
                                   (order?.orderStatus === "rejected" && (
                                     <GiSkullCrossedBones className="bg-red-600 hover:bg-red-700  p-1 rounded-md text-white text-[32px]" />
@@ -248,7 +248,7 @@ const ManageOrders = () => {
                                         )
                                       }
                                       className={`flex gap-2 hover:bg-red-50 border-b pb-2 items-center`}>
-                                      <IoCheckmarkDoneCircle className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
+                                      <IoCheckmarkDoneCircle className="bg-[#75934e] hover:bg-green-500  p-1 rounded-md text-white text-[32px]" />
                                       <span
                                         className={`${
                                           order?.orderStatus === "confirmed"

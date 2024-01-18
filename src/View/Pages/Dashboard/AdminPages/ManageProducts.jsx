@@ -69,7 +69,7 @@ const ManageProducts = () => {
   };
 
   return (
-    <section className="pt-12  min-h-screen relative ">
+    <section className="pt-12 min-h-screen relative ">
       <div className={`${modal ? "hidden" : "block"}`}>
         <SectionTitle
           title={"MANAGE ALL products"}
@@ -89,7 +89,7 @@ const ManageProducts = () => {
               </div>
             ) : (
               <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-                <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+                <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                   <tr>
                     <th scope="col" className="p-8 font-semibold">
                       #
@@ -174,7 +174,7 @@ const ManageProducts = () => {
                             handleToggleModal();
                             setProductId(product?._id);
                           }}
-                          className="bg-[#D1A054] hover:bg-[#f15e5e] p-1 rounded-md text-white text-[32px]"
+                          className="bg-[#75934e] bg-opacity-60 hover:bg-[#f15e5e] p-1 rounded-md text-white text-[32px]"
                         />
                       </td>
                       <td scope="row" className=" px-6 py-4">

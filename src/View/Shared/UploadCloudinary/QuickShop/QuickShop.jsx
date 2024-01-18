@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import useProducts from "../../../Hooks/useProducts";
 import SectionTitle from "../../SectionTitle";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaBagShopping, FaCartPlus } from "react-icons/fa6";
-import InnerImageZoom from "react-inner-image-zoom";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import Magnifier from "react-magnifier";
+
 import { CartContext } from "../../../Providers/CartProvider";
 import Checkout from "../../../Pages/Dashboard/UserPages/Checkout";
 
@@ -21,6 +21,7 @@ const QuickShop = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [sizeError, setSizeError] = useState(false);
   const [colorError, setColorError] = useState(false);
+  const [measurement, setMeasurement] = useState(false);
   // console.log(selectedSize);
 
   // console.log(quantity);
@@ -44,8 +45,26 @@ const QuickShop = () => {
     setSelectedColor(selectedColor === color ? null : color);
   };
 
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
+    // Disable scroll restoration when navigating away from this component
+    const handleScrollRestoration = () => {
+      window.history.scrollRestoration = "manual";
+    };
+
+    // Add event listener for scroll restoration
+    window.addEventListener("beforeunload", handleScrollRestoration);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleScrollRestoration);
+    };
+  }, []);
+
   return (
-    <section className="pt-8   lg:min-h-screen ">
+    <section className="pt-8 mb-16  lg:min-h-screen ">
       {toggleModal ? (
         <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
       ) : (
@@ -73,13 +92,13 @@ const QuickShop = () => {
                 {/* photo */}
 
                 {/* Image with zoom */}
-                <div className="max-w-lg relative">
-                  <InnerImageZoom
+                <div className="max-w-lg relative mx-auto">
+                  <Magnifier
                     src={img}
-                    zoomSrc={img}
-                    zoomType="hover"
-                    zoomScale={1}
-                    zoomPreload={true}></InnerImageZoom>
+                    width="100%"
+                    mgWidth={200}
+                    mgHeight={200}
+                  />
 
                   <span className="absolute right-0 top-0 bg-black bg-opacity-50 text-white p-[2px] text-base">
                     Hover Me
@@ -126,7 +145,7 @@ const QuickShop = () => {
                               setColorError(false), handleSelectColor(color);
                             }}
                             type="checkbox"
-                            className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                            className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                             name={color}
                             id={color}
                           />
@@ -161,7 +180,7 @@ const QuickShop = () => {
                                   setSizeError(false), handleSelectSize(size);
                                 }}
                                 type="checkbox"
-                                className="w-4 h-4 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                                className="w-4 h-4 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                                 name={size}
                                 id={size}
                               />
@@ -179,6 +198,26 @@ const QuickShop = () => {
                       </div>
                     </div>
                   )}
+                  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    {measurement && (
+                      <div className="relative">
+                        <span
+                          className="absolute top-0 right-2 text-white hover:text-rose-500 cursor-pointer text-3xl transition-all duration-300"
+                          onClick={() => setMeasurement(false)}>
+                          &times;
+                        </span>
+                        <img
+                          src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705558358/Chomotkar/measurementImg/measurement_n3jmmq.jpg"
+                          alt=""
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => setMeasurement(true)}
+                    className="font-g-mono mt-4 btn-measurement">
+                    View Measurements
+                  </button>
                 </div>
                 <div className="mt-5 flex lg:flex-row flex-col justify-start  gap-3">
                   <div className="bg-black rounded-lg flex items-center justify-start w-fit">
@@ -187,7 +226,7 @@ const QuickShop = () => {
                     </span>
                     <input
                       type="number"
-                      className="w-16 rounded-e-lg border-slate-400 hover:shadow-lg placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                      className="w-16 rounded-e-lg border-slate-400 hover:shadow-lg placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                       min={1}
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
@@ -197,7 +236,7 @@ const QuickShop = () => {
                     onClick={() => {
                       handleAddCart(1, product?._id);
                     }}
-                    className="bg-[#D1A054] hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
+                    className="bg-[#75934e] hover:bg-[#47720f] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
                     <FaCartPlus className="text-xl" />
                     <span>Add To Cart</span>
                   </button>
@@ -226,7 +265,7 @@ const QuickShop = () => {
                       });
                       handleToggleModal();
                     }}
-                    className="bg-[#D1A054]  hover:bg-[#f15e5e] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
+                    className="bg-[#75934e]  hover:bg-[#47720f] duration-500 justify-center p-1 px-3 gap-3 text-white flex items-center rounded-md text-lg">
                     <FaBagShopping className="text-xl" />
                     <span>Buy Now</span>
                   </button>

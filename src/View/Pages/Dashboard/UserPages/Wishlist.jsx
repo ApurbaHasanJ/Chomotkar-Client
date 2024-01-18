@@ -40,7 +40,7 @@ const Wishlist = () => {
   return (
     <section className="pt-12  min-h-screen relative ">
       <SectionTitle
-        title={"MANAGE your Wishlist"}
+        title={"Manage Your Wishlist"}
         subtitle={"---Hurry Up!---"}
       />
 
@@ -52,7 +52,7 @@ const Wishlist = () => {
 
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-            <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+            <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60 ">
               <tr>
                 <th scope="col" className="p-8 font-semibold">
                   #
@@ -142,7 +142,7 @@ const Wishlist = () => {
                         onClick={() => {
                           handleAddCart(1, product?._id);
                         }}
-                        className="text-[#ff7675] hover:text-[#f15e5e] rounded-md text-[32px]"
+                        className="text-[#75934e] hover:text-[#47720f] rounded-md text-[32px]"
                       />
                     </td>
                     <td scope="row" className=" px-6 py-4">

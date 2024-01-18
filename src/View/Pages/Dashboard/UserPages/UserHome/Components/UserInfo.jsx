@@ -56,12 +56,12 @@ const UserInfo = () => {
           {edit ? (
             <TiTick
               onClick={() => handleSubmit(onSubmit)()}
-              className="md:text-3xl hover:text-rose-400 text-2xl"
+              className="md:text-3xl hover:text-[#47720f] text-2xl"
             />
           ) : (
             <FaUserEdit
               onClick={() => setEdit(!edit)}
-              className="md:text-3xl hover:text-rose-400 text-2xl"
+              className="md:text-3xl hover:text-[#47720f] text-2xl"
             />
           )}
         </div>
@@ -88,7 +88,7 @@ const UserInfo = () => {
                 })}
                 placeholder="Your name"
                 defaultValue={currentUser?.name}
-                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
               />
             </div>
             <div className="grid mb-4">
@@ -97,8 +97,9 @@ const UserInfo = () => {
                 name="email"
                 {...register("email")}
                 placeholder="Your email"
-                defaultValue={currentUser?.email}
-                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                value={currentUser?.email}
+                // disabled
+                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 autoComplete="username"
               />
             </div>
@@ -115,7 +116,7 @@ const UserInfo = () => {
                 })}
                 placeholder="Phone Number"
                 defaultValue={currentUser?.phone}
-                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 autoComplete="phone"
               />
               {errors.phone && (
@@ -131,7 +132,7 @@ const UserInfo = () => {
                 {...register("address")}
                 placeholder="Address ..."
                 defaultValue={currentUser?.address}
-                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                className="input hover:shadow-md border-none rounded-lg px-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 autoComplete="address"
               />
             </div>

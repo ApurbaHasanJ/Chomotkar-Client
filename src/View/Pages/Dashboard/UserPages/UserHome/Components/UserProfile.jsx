@@ -112,7 +112,7 @@ const UserProfile = () => {
                   <button
                     onClick={handleToggleModal}
                     type="button"
-                    className="text-gray-400 bg-transparent hover:bg-[#D1A054] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
+                    className="text-gray-400 bg-transparent hover:bg-[#75934e] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
                     <FaX className="text-base" />
 
                     <span className="sr-only">Close modal</span>
@@ -136,7 +136,7 @@ const UserProfile = () => {
                     onClick={() => {
                       submitImage(), handleToggleModal();
                     }}
-                    className="bg-[#D1A054] hover:bg-[#ebaf54] hover:shadow-2xl px-3 py-2">
+                    className="bg-[#75934e] bg-opacity-60 hover:bg-[#517521] hover:shadow-2xl px-3 py-2">
                     Update
                   </button>
                 </div>

@@ -130,7 +130,7 @@ const AddReview = () => {
             <StarRatings
               rating={rating}
               changeRating={(newRating) => setRating(newRating)}
-              starRatedColor="gold"
+              starRatedColor="#75934e"
               required
               totalStars={5}
               starDimension={"40px"}
@@ -199,7 +199,7 @@ const AddReview = () => {
                             <button
                               onClick={handleToggleModal}
                               type="button"
-                              className="text-gray-400 bg-transparent hover:bg-[#D1A054] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
+                              className="text-gray-400 bg-transparent hover:text-[#75934e] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
                               <FaXmark className="text-base" />
 
                               <span className="sr-only">Close modal</span>
@@ -224,7 +224,7 @@ const AddReview = () => {
                               onClick={() => {
                                 submitImage(), handleToggleModal();
                               }}
-                              className="bg-[#D1A054] hover:bg-[#ebaf54] hover:shadow-2xl px-3 py-2">
+                              className="text-[#75934e] hover:bg-[#ebaf54] hover:shadow-2xl px-3 py-2">
                               Update
                             </button>
                           </div>
@@ -257,7 +257,7 @@ const AddReview = () => {
                     required
                     defaultValue={user?.displayName}
                     placeholder="Your Name"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
                 {/* Your name */}
@@ -275,7 +275,7 @@ const AddReview = () => {
                     required
                     defaultValue={user?.email}
                     placeholder="Your Email"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
                 {/* Product name */}
@@ -292,7 +292,7 @@ const AddReview = () => {
                     {...register("productName")}
                     required
                     placeholder="Godzilla X Kong T-Shirt"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
 
@@ -308,7 +308,7 @@ const AddReview = () => {
                     id="suggestion"
                     name="suggestion"
                     {...register("suggestion")}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                     required
                     placeholder="Suggestion"
                   />
@@ -327,7 +327,7 @@ const AddReview = () => {
                     {...register("reviewDetails")}
                     required
                     placeholder="Review in detail..."
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                     rows="8"
                   />
                 </div>
@@ -335,7 +335,7 @@ const AddReview = () => {
                 <div className="flex flex-col justify-start mt-7">
                   <button
                     type="submit"
-                    className="btn p-3 px-4 text-center duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400 flex items-center justify-center gap-2">
+                    className="btn p-3 px-4 text-center duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f] flex items-center justify-center gap-2">
                     <span className="text-xl font-semibold">Send Review</span>
                     <MdRocketLaunch className="text-2xl " />
                   </button>

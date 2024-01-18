@@ -5,7 +5,7 @@ const SearchResult = ({ product }) => {
     <>
       <img className="w-20" src={product?.photos[0].img} alt="" />
       <div>
-        <p className="my-2  hover:text-rose-400 duration-300 md:text-lg font-mono">
+        <p className="my-2  hover:text-[#47720f] duration-300 md:text-lg font-mono">
           {product?.title}
         </p>
         <div className="text-slate-800 flex justify-start items-center gap-2 text-base font-medium font-mono">

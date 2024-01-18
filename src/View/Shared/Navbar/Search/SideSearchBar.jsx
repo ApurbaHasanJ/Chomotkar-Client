@@ -14,7 +14,7 @@ const SideSearchBar = ({ handleSideSearchBar }) => {
       : item?.title?.toLocaleLowerCase().includes(query);
   });
   return (
-    <div className="relative">
+    <div className="relative z-[400]">
       <div className="flex justify-between mt-5">
         <p className="font-mono ps-4 text-gray-400 text-sm">
           What are you looking for?
@@ -33,7 +33,7 @@ const SideSearchBar = ({ handleSideSearchBar }) => {
         <div className="relative">
           <div className="absolute inset-y-0 end-0 flex items-center ps-3 pointer-events-none">
             <svg
-              className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:text-rose-400"
+              className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:text-[#47720f]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

@@ -136,8 +136,8 @@ const AddProducts = () => {
     <section className="min-h-screen  mt-12">
       <SectionTitle title={"ADD YOUR PRODUCT"} subtitle={"What's new?"} />
 
-      <div className="my-container my-8 md:my-16 pb-10">
-        <div className=" md:px-10 mx-3 lg:mx-0 rounded-lg">
+      <div className="my-container  my-8 md:my-16 ">
+        <div className=" md:px-10 px-4 mx-1 bg-[#75934e] bg-opacity-60 py-10 lg:mx-0 rounded-lg">
           {loading ? (
             <Uploading />
           ) : (
@@ -155,7 +155,7 @@ const AddProducts = () => {
                     {...register("title")}
                     required
                     placeholder="Product Name"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                   />
                 </div>
                 {/* recipe price */}
@@ -168,7 +168,7 @@ const AddProducts = () => {
                     type="number"
                     min={0}
                     {...register("productPrice")}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                     required
                     placeholder="Product Price"
                   />
@@ -183,7 +183,7 @@ const AddProducts = () => {
                   </label>
                   <select
                     {...register("category", { required: true })}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400">
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]">
                     <option value="">None</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
@@ -197,7 +197,7 @@ const AddProducts = () => {
                   </label>
                   <select
                     {...register("subCategory", { required: true })}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
                     <option value="">None</option>
                     <option value="t-shirt">Premium T-Shirt</option>
                     <option value="polo shirt">Polo Shirt</option>
@@ -231,7 +231,7 @@ const AddProducts = () => {
                     {...register("productBy")}
                     required
                     placeholder="Product By"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                   />
                 </div>
                 {/* Color */}
@@ -246,7 +246,7 @@ const AddProducts = () => {
                     {...register("colors")}
                     required
                     placeholder="Product Colors"
-                    className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                    className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                   />
                 </div>
               </div>
@@ -262,7 +262,7 @@ const AddProducts = () => {
                         type="checkbox"
                         id={size}
                         value={size}
-                        className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                        className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                         {...register("sizes")}
                       />
                       <label htmlFor={size} className="ml-2 text-lg">
@@ -282,7 +282,7 @@ const AddProducts = () => {
                   {...register("description")}
                   required
                   placeholder="Your Product Details..."
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                   rows="8"
                 />
               </div>
@@ -295,7 +295,7 @@ const AddProducts = () => {
                 <input
                   required
                   multiple={true}
-                  className="  file-input hover:shadow-md border rounded-lg  border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  w-full max-w-xs"
+                  className="  file-input hover:shadow-md border rounded-lg  border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
                   type="file"
                   {...register("photos", { required: true })}
                 />
@@ -305,7 +305,7 @@ const AddProducts = () => {
                 <input
                   type="submit"
                   value="ADD NOW"
-                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
                 />
               </div>
             </form>

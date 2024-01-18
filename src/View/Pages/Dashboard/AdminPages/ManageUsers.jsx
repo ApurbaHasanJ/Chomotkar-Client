@@ -95,7 +95,7 @@ const ManageUsers = () => {
         </h2>
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-            <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+            <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
               <tr>
                 <th scope="col" className="p-8"></th>
                 <th scope="col" className="px-6 py-3">
@@ -136,7 +136,7 @@ const ManageUsers = () => {
                           <FaUserEdit
                             title={user?.role}
                             onClick={() => setUserId(user?._id)}
-                            className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
+                            className={`bg-[#75934e]  hover:bg-[#517521] ${
                               userId === user._id ? "hidden" : "block"
                             } p-1 rounded-md text-white text-[32px]`}
                           />
@@ -144,7 +144,7 @@ const ManageUsers = () => {
                           <MdAdminPanelSettings
                             onClick={() => setUserId(user?._id)}
                             title={user?.role}
-                            className={`bg-[#D1A054] hover:bg-[#f15e5e] ${
+                            className={`bg-[#75934e]  hover:bg-[#517521] ${
                               userId === user._id ? "hidden" : "block"
                             } p-1 rounded-md text-white text-[32px]`}
                           />

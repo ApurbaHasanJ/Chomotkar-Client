@@ -119,7 +119,7 @@ const OrdersHistory = () => {
                   <>
                     {orderedProducts.length > 0 ? (
                       <table className="w-full  text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-                        <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+                        <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                           <tr>
                             <th scope="col" className="p-8 font-semibold">
                               #
@@ -219,7 +219,7 @@ const OrdersHistory = () => {
                                         "confirmed" && (
                                         <IoCheckmarkDoneCircle
                                           // onClick={() => handleDeleteProduct(order?._id)}
-                                          className="bg-green-400 hover:bg-green-500  p-1 rounded-md text-white text-[32px]"
+                                          className="bg-[#75934e] hover:bg-green-500  p-1 rounded-md text-white text-[32px]"
                                         />
                                       )) ||
                                       (order?.userOrder?.orderStatus ===
@@ -262,8 +262,8 @@ const OrdersHistory = () => {
                                   order?.userOrder?.orderStatus === "refund" ||
                                   order?.userOrder?.paidStatus === true ||
                                   order?.userOrder?.orderStatus === "rejected"
-                                    ? "bg-[#e1b470] cursor-not-allowed"
-                                    : "bg-[#D1A054] shadow-lg hover:shadow-2xl hover:bg-[#b97c20]"
+                                    ? "bg-[#75934e]  cursor-not-allowed"
+                                    : "bg-[#75934e] bg-opacity-60 shadow-lg hover:shadow-2xl hover:bg-[#517521]"
                                 }`}>
                                     {order?.userOrder?.paidStatus === true
                                       ? "PAID"

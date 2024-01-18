@@ -112,7 +112,7 @@ const ManageCoupon = () => {
           </h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-full bg-[#D1A054] p-10 text-sm text-left rtl:text-right rounded-lg text-gray-500">
+            className="w-full bg-[#75934e] bg-opacity-60 p-10 text-sm text-left rtl:text-right rounded-lg text-gray-500">
             <div className="grid mb-4">
               <label className="label text-base font-medium text-slate-900 ">
                 <span className="label-text">CODE</span>
@@ -123,7 +123,7 @@ const ManageCoupon = () => {
                 {...register("code")}
                 required
                 placeholder="Type coupon code"
-                className="input hover:shadow-md uppercase border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                className="input hover:shadow-md uppercase border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
               />
             </div>
             <div className="grid mb-4">
@@ -136,7 +136,7 @@ const ManageCoupon = () => {
                 {...register("discount")}
                 required
                 placeholder="Type discount percentage"
-                className="input hover:shadow-md uppercase border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                className="input hover:shadow-md uppercase border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
               />
             </div>
             <div className="flex justify-end">
@@ -155,7 +155,7 @@ const ManageCoupon = () => {
           </h2>
           <div className="relative  overflow-x-auto shadow-md   rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-              <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+              <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                 <tr>
                   <th scope="col" className="p-8">
                     #

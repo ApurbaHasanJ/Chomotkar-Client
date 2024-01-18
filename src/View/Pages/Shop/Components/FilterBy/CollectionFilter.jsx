@@ -41,7 +41,7 @@ console.log(selectedCollection);
                 checked={selectedCollection === collection}
                 onChange={() => handleCollection(collection)}
                 type="checkbox"
-                className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                 name={collection}
                 id={collection}
               />

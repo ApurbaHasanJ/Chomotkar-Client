@@ -22,15 +22,15 @@ const Dashboard = () => {
       <>
         {/* sidebar for lg and md */}
         <div
-          className={`bg-[#D1A054] ${
+          className={`bg-[#75934e] bg-opacity-60 ${
             adminLoading ? "-left-[400px]" : "left-0"
           } lg:block hidden pr-5 bg-fixed relative  w-[290px]  overflow-hidden transition-all shadow-2xl shadow-gray-500 pt-14 `}>
           <div className=" fixed">
             {/* title for large device */}
-            <div className=" lg:block hidden -ml-7">
+            <div className=" lg:block hidden w-full">
               <img
-                className="md:w-72 drop-shadow-2xl w-60 h-14 object-cover"
-                src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_black_v7lziu.png"
+                className="md:w-52 mx-auto drop-shadow-2xl w-44"
+                src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
                 alt=""
               />
             </div>
@@ -46,23 +46,23 @@ const Dashboard = () => {
         </div>
 
         {/* Top bar for */}
-        <div className="w-full">
-          <nav className="bg-[#D1A054]  sticky top-0 right-0 w-full z-50  py-4 lg:hidden  ">
+        <div className="w-full ">
+          <nav className="  sticky bg-[#75934e]  top-0 right-0 w-full z-50  py-4 lg:hidden  ">
             {/* title for sm device */}
             <div className="flex w-full justify-between items-center">
-              <div className="">
+              <div className=" mx-6">
                 <img
-                  className="w-64 drop-shadow-2xl h-14 object-cover"
-                  src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_black_v7lziu.png"
+                  className="md:w-52 drop-shadow-2xl w-44"
+                  src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
                   alt=""
                 />
               </div>
               <button onClick={handleToggleDashboard}>
-                <HiOutlineMenu className="w-14 h-7 ml-auto mr-6" title="MENU" />
+                <HiOutlineMenu className="w-14 h-7 ml-auto " title="MENU" />
               </button>
             </div>
             <div
-              className={`fixed bg-[#D1A054] h-full pb-4 pr-2 ${
+              className={`fixed bg-[#75934e] h-full pb-4 pr-2 ${
                 showDashboard ? "left-0" : "-left-[400px]"
               } transform duration-700 shadow-2xl top-[88px] `}>
               <div className="md: pt-5 ">

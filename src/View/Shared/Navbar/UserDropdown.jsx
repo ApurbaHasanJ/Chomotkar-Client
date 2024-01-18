@@ -43,11 +43,11 @@ const UserDropdown = () => {
         <li className="relative">
           <div
             onClick={handleToggleDropDown}
-            className=" z-50 items-center flex gap-2 duration-300 text-slate-500 hover:text-rose-400 rounded-full">
+            className=" z-50 items-center flex gap-2 duration-300 text-[#75934e] hover:text-[#47720f] rounded-full">
             {user?.photoURL ? (
               <img
                 src={user?.photoURL}
-                className="w-8 h-8 rounded-full ring ring-rose-400 dark:ring-gray-500"
+                className="w-8 h-8 rounded-full ring ring-[#47720f] dark:ring-gray-500"
                 alt={user?.displayName}
               />
             ) : (

@@ -85,7 +85,7 @@ const MyCart = () => {
         ) : (
           <>
             <SectionTitle
-              title={"WANNA ADD MORE?"}
+              title={"Wanna Add More?"}
               subtitle={"---My Cart!---"}
             />
             <div className="mt-20 my-container">
@@ -99,7 +99,7 @@ const MyCart = () => {
               </div>
               <div className="relative  overflow-x-auto shadow-md   rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-                  <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+                  <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                     <tr>
                       <th scope="col" className="p-8 text-base">
                         #
@@ -170,7 +170,7 @@ const MyCart = () => {
                                     });
                                   }}
                                   type="checkbox"
-                                  className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                                  className="w-4 h-4 border  border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-[#517521] focus:ring-orange-300"
                                   name={color}
                                   id={color}
                                 />
@@ -196,7 +196,7 @@ const MyCart = () => {
                                 size: e.target.value,
                               })
                             }
-                            className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400"
+                            className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#517521] focus:border-white focus:ring-[#517521]"
                             required>
                             {!cart?.sizes ? (
                               <option value={""}>none</option>
@@ -290,7 +290,7 @@ const MyCart = () => {
                               });
                               handleToggleModal();
                             }}
-                            className="bg-[#D1A054] hover:bg-[#b97c20] text-white shadow-lg hover:shadow-2xl py-2 px-4 rounded-lg text-base font-semibold font-g-mono">
+                            className="bg-[#75934e] bg-opacity-60 hover:bg-[#517521] text-white shadow-lg hover:shadow-2xl py-2 px-4 rounded-lg text-base font-semibold font-g-mono">
                             PAY
                           </button>
                         </td>

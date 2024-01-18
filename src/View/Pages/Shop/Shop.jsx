@@ -5,13 +5,27 @@ import Products from "./Components/Products";
 
 const Shop = () => {
   useEffect(() => {
-    window.history.scrollRestoration = "manual";
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
+    // Disable scroll restoration when navigating away from this component
+    const handleScrollRestoration = () => {
+      window.history.scrollRestoration = "manual";
+    };
+
+    // Add event listener for scroll restoration
+    window.addEventListener("beforeunload", handleScrollRestoration);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleScrollRestoration);
+    };
   }, []);
 
   return (
     <main>
       {/* <ShopHero /> */}
-      <div className="flex md:gap-4 md:mt-32 mt-20 my-container relative overflow-visible">
+      <div className="flex md:gap-4 md:mt-32 my-20 my-container relative overflow-visible">
         <Filter />
         <Products />
       </div>

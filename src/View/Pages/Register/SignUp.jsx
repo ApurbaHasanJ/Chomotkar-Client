@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin";
@@ -18,6 +18,11 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     const { name, email, password } = data;
@@ -48,6 +53,7 @@ const SignUp = () => {
               .then((data) => {
                 if (data.insertedId) {
                   reset();
+                  navigate(from, { replace: true });
                   Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -98,7 +104,7 @@ const SignUp = () => {
 
   return (
     <div className="pt-20 px-6  bg-transparent z-20">
-      <div className="my-container bg-[#e7c99c] pt-6 shadow-xl">
+      <div className="my-container bg-[#75934e] bg-opacity-60 pt-6 shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Register
         </h3>
@@ -121,7 +127,7 @@ const SignUp = () => {
                     pattern: /^[A-Za-z\s]+$/i,
                   })}
                   placeholder="Your name"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.name ? "true" : "false"}
                 />
                 {errors.name && (
@@ -142,7 +148,7 @@ const SignUp = () => {
                     required: "Email Address is required",
                   })}
                   placeholder="Your email"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.email ? "true" : "false"}
                   autoComplete="username"
                 />
@@ -165,7 +171,7 @@ const SignUp = () => {
                     minLength: 6,
                     pattern: /^(?=.*[0-9])(?=.*[A-Z]).{6,}$/,
                   })}
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400"
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]"
                   aria-invalid={errors.password ? "true" : "false"}
                   placeholder="Password"
                   autoComplete="current-password"
@@ -183,7 +189,7 @@ const SignUp = () => {
                     id="showPassword"
                     type="checkbox"
                     value={show}
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                     onChange={(e) => setShow(e.target.checked)}
                   />
                   <label
@@ -199,15 +205,15 @@ const SignUp = () => {
                   // disabled={disabled}
                   type="submit"
                   value="CREATE"
-                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
                 />
               </div>
             </form>
-            <h6 className="text-center my-4 text-rose-400">
+            <h6 className="text-center my-4 text-[#47720f]">
               New here?{" "}
               <Link to="/login" state={location.state}>
                 <span className="  font-semibold hover:underline">
-                  Create a New Account
+                  Already have an account
                 </span>
               </Link>
             </h6>

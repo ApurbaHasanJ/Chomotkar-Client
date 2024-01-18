@@ -65,7 +65,7 @@ const ShopByCategory = () => {
   const { updateCategory } = useContext(CategoryContext);
 
   return (
-    <section className="mt-20 font-cinzel my-container">
+    <section className="mt-20 font-exo my-container">
       <SectionTitle
         subtitle={"Trending Products"}
         title={"Shop By Categories"}
@@ -104,13 +104,13 @@ const ShopByCategory = () => {
                     handleSelectCollection(category?.category),
                       updateCategory(category?.subCategory);
                   }}>
-                  <div className=" rounded-full transition-all overflow-hidden">
+                  <div className=" rounded-full transition-all p-[1px] overflow-hidden">
                     <img
-                      className="w-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-rose-200"
+                      className="w-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521]"
                       src={category?.img}
                     />
                   </div>
-                  <p className="text-center text-slate-700 text-[10px] sm:text-base md:text-xl mt-3 font-semibold">
+                  <p className="text-center text-slate-700 text-[10px] capitalize sm:text-base md:text-xl mt-3 font-semibold">
                     {category?.title}
                   </p>
                 </Link>

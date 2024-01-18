@@ -19,11 +19,14 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <>
-      <div className="relative overflow-hidden">
-        <Link to={`/quick-shop/${product?._id}`} onClick={handleToggleModal}>
+    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[500px] h-80 rounded-2xl border-[#75934e]">
+      <div className="relative overflow-hidden ">
+        <Link
+          to={`/quick-shop/${product?._id}`}
+          className="overflow-hidden"
+          onClick={handleToggleModal}>
           <img
-            className="scale-100 max-w-[390.663px] max-h-[390.663px] h-full w-full hover:scale-110 transform duration-500"
+            className="scale-100  rounded-xl max-w-[390.663px] max-h-[390.663px] h-full w-full hover:scale-110 transform duration-500"
             loading="lazy"
             src={product?.photos[0]?.img}
             alt={product.title}
@@ -32,18 +35,9 @@ const ProductCard = ({ product }) => {
         {/* Add to Wishlist */}
         <div
           onClick={handleAddWishlist}
-          className="p-2 drop-shadow-2xl shadow-2xl duration-500 absolute top-3 bg-white rounded-full right-3 text-black hover:text-rose-400 font-semibold ">
+          className="p-2 drop-shadow-2xl shadow-2xl duration-500 absolute top-3 bg-white rounded-full right-3 text-black hover:text-[#75934e] font-semibold ">
           <FaRegHeart className="text-xl" />
         </div>
-
-        {/* Quick shop button */}
-        <Link
-          to={`/quick-shop/${product?._id}`}
-          onClick={handleToggleModal}
-          className="flex text-xs sm:text-sm md:text-base font-medium  shadow-2xl absolute bottom-4 left-1/2 transform -translate-x-1/2 items-center justify-center gap-1 rounded-full hover:text-white bg-white px-8 py-1 md:px-12 md:py-2 duration-500 hover:bg-rose-400">
-          <FiPlus />
-          <span className="uppercase">QuickShop</span>
-        </Link>
       </div>
 
       {/* title & price */}
@@ -51,7 +45,7 @@ const ProductCard = ({ product }) => {
         <p className="text-slate-400 hover:text-black duration-300 text-sm md:text-base mt-4">
           Brand: {product?.productBy}
         </p>
-        <p className="my-2  hover:text-rose-400 duration-300 md:text-lg font-mono">
+        <p className="my-2  hover:text-[#47720f] duration-300 md:text-lg font-mono">
           {product?.title}
         </p>
         <div className="text-slate-800 flex justify-center items-center gap-2 text-base font-medium font-mono">
@@ -65,7 +59,15 @@ const ProductCard = ({ product }) => {
           )}
         </div>
       </div>
-    </>
+      {/* Quick shop button */}
+      <Link
+        to={`/quick-shop/${product?._id}`}
+        onClick={handleToggleModal}
+        className="flex md:text-xs md:mx-10 mx-4 mb-3  text-[8px] font-medium  shadow-2xl  items-center justify-center gap-1 rounded-full  text-white bg-[#75934e] px-8 py-[6px] md:px-12 md:py-3 duration-500 hover:bg-[#47720f]">
+        <FiPlus />
+        <span className="uppercase ">QuickShop</span>
+      </Link>
+    </div>
   );
 };
 

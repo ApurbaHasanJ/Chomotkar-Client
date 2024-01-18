@@ -13,7 +13,7 @@ const PaymentHistory = () => {
         </h2>
         <div className="relative  overflow-x-auto shadow-md   rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-            <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+            <thead className="text-xs  text-white uppercase text-[#75934e]  ">
               <tr>
                 <th scope="col" className="p-8">
                   Email

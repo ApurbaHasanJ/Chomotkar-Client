@@ -67,8 +67,8 @@ const NavItems = () => {
       <li
         onMouseEnter={openMenCollection}
         onMouseLeave={closeMenCollection}
-        className="hover:text-rose-400 relative ">
-        <div className="flex items-center gap-1 hover:text-rose-400">
+        className="hover:text-[#47720f] relative ">
+        <div className="flex items-center gap-1 hover:text-[#47720f]">
           <NavLink
             to="/collection/men"
             onClick={() => {
@@ -81,7 +81,7 @@ const NavItems = () => {
               <p>MEN</p>
             </div>
           </NavLink>
-          <MdKeyboardArrowDown className="text-xl " />
+          <MdKeyboardArrowDown className="text-xl text-[#75934e] " />
         </div>
         {menItems && (
           <div
@@ -93,7 +93,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("t-shirt"), handleCollection("men");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Premium T-Shirt
             </Link>
             <hr />
@@ -102,7 +102,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("polo shirt"), handleCollection("men");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Polo Shirt
             </Link>
             <hr />
@@ -111,7 +111,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("panjabi"), handleCollection("men");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Luxury Panjabi
             </Link>
             <hr />
@@ -120,7 +120,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("pants"), handleCollection("men");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Pants
             </Link>
           </div>
@@ -130,8 +130,8 @@ const NavItems = () => {
       <li
         onMouseEnter={openWomenCollection}
         onMouseLeave={closeWomenCollection}
-        className="hover:text-rose-400 relative ">
-        <div className="flex items-center gap-1 hover:text-rose-400">
+        className="hover:text-[#47720f] relative ">
+        <div className="flex items-center gap-1 hover:text-[#47720f]">
           <NavLink
             to="/collection/women"
             onClick={() => {
@@ -143,7 +143,7 @@ const NavItems = () => {
               <p>Women</p>
             </div>
           </NavLink>
-          <MdKeyboardArrowDown className="text-xl " />
+          <MdKeyboardArrowDown className="text-xl text-[#75934e] " />
         </div>
         {womenItems && (
           <div
@@ -155,7 +155,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("sari"), handleCollection("women");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Sari
             </Link>
             <hr />
@@ -164,7 +164,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("combo pack"), handleCollection("women");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Compo Pack
             </Link>
             <hr />
@@ -173,7 +173,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("three pieces"), handleCollection("women");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Three Pieces
             </Link>
           </div>
@@ -182,8 +182,8 @@ const NavItems = () => {
       <li
         onMouseEnter={openGadgetsCollection}
         onMouseLeave={closeGadgetsCollection}
-        className="relative hover:text-rose-400">
-        <div className="flex items-center gap-1 hover:text-rose-400">
+        className="relative hover:text-[#47720f]">
+        <div className="flex items-center gap-1 hover:text-[#47720f]">
           <NavLink
             to="/collection/gadgetItems"
             onClick={() => {
@@ -195,7 +195,7 @@ const NavItems = () => {
               <span>Gadgets</span>
             </div>
           </NavLink>
-          <MdKeyboardArrowDown className="text-xl " />
+          <MdKeyboardArrowDown className="text-xl text-[#75934e] " />
         </div>
         {gadgetItems && (
           <div
@@ -207,7 +207,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("audio"), handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Audio
             </Link>
             <hr />
@@ -217,7 +217,7 @@ const NavItems = () => {
                 handleSelectCategory("charger & cables"),
                   handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Charger & Cables
             </Link>
             <hr />
@@ -226,7 +226,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("power bank"), handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Power Bank
             </Link>
             <hr />
@@ -236,7 +236,7 @@ const NavItems = () => {
                 handleSelectCategory("mobile accessories"),
                   handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Mobile Accessories
             </Link>
             <hr />
@@ -245,7 +245,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("multi hub"), handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Multi Hub
             </Link>
             <hr />
@@ -254,7 +254,7 @@ const NavItems = () => {
               onClick={() => {
                 handleSelectCategory("storage"), handleCollection("gadgets");
               }}
-              className="hover:text-rose-300">
+              className="hover:text-[#75934e]">
               Storage
             </Link>
           </div>

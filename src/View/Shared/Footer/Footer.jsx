@@ -26,37 +26,37 @@ const Footer = () => {
     });
   }, [controls]);
   return (
-    <section className="bg-[#222222] text-white md:mt-32 pt-16  mt-20">
+    <section className="bg-[#222222] bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705510546/Chomotkar/Logo/Website-Green-Banner-2_pbo2rk.jpg')] text-black pt-16">
       <div className="my-container  flex lg:flex-row flex-col w-full justify-between gap-3 gap-y-10">
         {/* 1 card */}
         <div className="lg:w-4/12 w-full">
           <div>
             <img
-              className="md:w-72 w-60 h-14 md:-ml-11 -ml-9 drop-shadow-2xl object-cover"
-              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_Golden_jla5u9.png"
+              className="md:w-52 drop-shadow-2xl w-44"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
               alt=""
             />
 
-            {/* <h2 className="md:text-3xl mt-3 text-2xl font-black font-cinzel">
+            {/* <h2 className="md:text-3xl mt-3 text-2xl font-black font-exo">
               Chomotkar
             </h2> */}
           </div>
           <p className="font-mono mt-6 font-base ">
-            Chomotkar Fashion is a dynamic and innovative online retail platform
-            that offers a wide range of products to customers countrywide.
+            Chomotkar is a dynamic and innovative online retail platform that
+            offers a wide range of products to customers countrywide.
           </p>
           <div className="flex justify-start items-center gap-4 mt-5">
             <a
               href="https://www.facebook.com/Chomotkar"
               target="_blank"
               rel="noopener noreferrer">
-              <FaSquareFacebook className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
+              <FaSquareFacebook className="bg-[#75934e] text-white p-[6px] duration-500 hover:bg-[#47720f] rounded-xl text-4xl" />
             </a>
             <a
               href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME"
               target="_blank"
               rel="noopener noreferrer">
-              <RiInstagramFill className="bg-black p-[6px] duration-500 hover:bg-rose-400 rounded-xl text-4xl" />
+              <RiInstagramFill className="bg-[#75934e] text-white p-[6px] duration-500 hover:bg-[#47720f] rounded-xl text-4xl" />
             </a>
           </div>
         </div>
@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="lg:w-5/12 w-full flex  justify-between md:gap-20 lg:gap-32">
           {/* 2nd col */}
           <div className="lg:ml-12">
-            <h1 className="text-rose-500 font-bold text-xl uppercase">
+            <h1 className="text-black font-bold text-xl uppercase">
               Categories
             </h1>
             <div className="mt-11 grid gap-3">
@@ -75,7 +75,7 @@ const Footer = () => {
                   handleSelectCollection("men");
                   updateCategory("");
                 }}
-                className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] font-mono duration-500 hover:underline underline-offset-4">
                 Men
               </Link>
               <Link
@@ -84,7 +84,7 @@ const Footer = () => {
                   handleSelectCollection("men");
                   updateCategory("t-shirt");
                 }}
-                className="hover:text-rose-500 font-mono duration-500 hover:underline whitespace-nowrap underline-offset-4">
+                className="hover:text-[#75934e] font-mono duration-500 hover:underline whitespace-nowrap underline-offset-4">
                 Premium T-Shirt
               </Link>
               <Link
@@ -93,7 +93,7 @@ const Footer = () => {
                   handleSelectCollection("women");
                   updateCategory("");
                 }}
-                className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] font-mono duration-500 hover:underline underline-offset-4">
                 Women
               </Link>
               <Link
@@ -102,7 +102,7 @@ const Footer = () => {
                   handleSelectCollection("gadgets");
                   updateCategory("");
                 }}
-                className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] font-mono duration-500 hover:underline underline-offset-4">
                 Gadgets
               </Link>
               <Link
@@ -111,40 +111,40 @@ const Footer = () => {
                   handleSelectCollection("men");
                   updateCategory("audio");
                 }}
-                className="hover:text-rose-500 font-mono duration-500 hover:underline underline-offset-4">
-                audio
+                className="hover:text-[#75934e] font-mono duration-500 hover:underline underline-offset-4">
+                Audio
               </Link>
             </div>
           </div>
           {/* 3rd col */}
           <div className=" mr-10">
-            <h1 className="text-rose-500 font-bold text-xl uppercase">
+            <h1 className="text-black font-bold text-xl uppercase">
               Information
             </h1>
             <div className="mt-11 grid gap-3">
               <Link
                 to="#"
-                className="hover:text-rose-500 whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
                 About Us
               </Link>
               <Link
                 to="#"
-                className="hover:text-rose-500 whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
                 Privacy Policy
               </Link>
               <Link
                 to="#"
-                className="hover:text-rose-500 whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
                 Returns Policy
               </Link>
               <Link
                 to="#"
-                className="hover:text-rose-500 whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
                 Shipping Policy
               </Link>
               <Link
                 to="#"
-                className="hover:text-rose-500 whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
+                className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
                 Terms & Conditions
               </Link>
             </div>
@@ -153,17 +153,17 @@ const Footer = () => {
 
         {/* 4th col */}
         <div className=" lg:w-3/12 w-full mr-0">
-          <h1 className="text-rose-500 font-bold text-xl uppercase">
+          <h1 className="text-black font-bold text-xl uppercase">
             GET IN TOUCH
           </h1>
           <div className="mt-11 font-mono">
             <div className="flex items-center gap-2">
               <MdCall />
-              <span>+88018800000</span>
+              <span>+8801886084422</span>
             </div>
             <div className="flex items-center gap-2">
               <MdEmail />
-              <span>apurbahasanj@gmail.com</span>
+              <span>chomotkarshop@gmail.com</span>
             </div>
           </div>
           <div className="flex items-baseline font-mono gap-2 mt-5">
@@ -175,9 +175,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-t bg-[#131313]  border-white mt-7 py-4 pb-20 md:pb-4">
+      <div className="border-t bg-[#75934e] bg-opacity-60 border-white mt-7 py-4 pb-20 md:pb-4">
         <div className=" sm:flex gap-[6px] grid justify-start my-container  ">
-          <p className="sm:mr-auto text-white font-semibold text-base">
+          <p className="sm:mr-auto text-black font-semibold text-base">
             Copyright &copy; 2024{" "}
             <span className="text-red-600">Chomotkar Fashion</span>. All rights
             reserved
@@ -195,7 +195,7 @@ const Footer = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="white"
+                    stroke="black"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -207,7 +207,7 @@ const Footer = () => {
             </Link>
 
             <Link
-              className=" text-white  font-semibold text-base  hover:underline"
+              className=" text-black  font-semibold text-base  hover:underline"
               to="https://apurbahasanj.netlify.app/"
               target="_blank"
               title="click here!">

@@ -18,13 +18,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" w-full z-50 shadow-xl bg-white  text-slate-600 ">
+    <nav className=" w-full sticky top-0 z-50 drop-shadow-sm bg-white  text-slate-600 ">
       {/* top navbar for MD and Long devices */}
       <div className="md:block hidden my-container mx-10">
         <div className="flex my-container py-2  items-center justify-between">
-          <div className="  hidden  md:flex">
-            <Search />
-          </div>
+          <Search />
           <LogoName />
           {/* cart and profile */}
           <div className="flex items-center gap-4">
@@ -45,25 +43,25 @@ const Navbar = () => {
         </div>
         <hr className="h-px my-container bg-gray-200 border-[1px] dark:bg-gray-700" />
         <div className="  hidden font-mono z-50 md:flex pt-2 pb-1 justify-center items-center">
-          <ul className="flex justify-center items-center gap-4 menu-horizontal">
+          <ul className="flex justify-center items-center gap-8 menu-horizontal">
             <NavItems />
           </ul>
         </div>
       </div>
 
       {/* Top navbar for small devices */}
-      <div className="w-full bg-white  fixed top-0 right-0 left-0 z-50">
-        <nav className="flex   my-container py-2 md:hidden justify-between items-center">
+      <div className="w-full bg-white z-50">
+        <nav className="flex my-container py-2 md:hidden justify-between items-center">
           {/* NavItems */}
           <div className=" z-40   lg:hidden block">
             <div className="dropdown" onClick={handleShowNavbar}>
               {showNavbar ? (
-                <RxCross2 className="h-8 w-8 hover:text-rose-500" />
+                <RxCross2 className="h-8 w-8 hover:text-[#75934e]" />
               ) : (
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 hover:text-rose-500"
+                    className="h-8 w-8 hover:text-[#75934e]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -81,7 +79,7 @@ const Navbar = () => {
             <ul
               className={`absolute ${
                 showNavbar ? "left-0" : "-left-96"
-              } transform duration-500 top-[72px] grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
+              } transform duration-500 top-[58px] grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
               <NavItems />
             </ul>
           </div>

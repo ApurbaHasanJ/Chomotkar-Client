@@ -14,7 +14,7 @@ const Call = () => {
 
   return (
     <div
-      className=" duration-300 text-slate-500 hover:text-rose-400 "
+      className=" duration-300 text-[#75934e] hover:text-[#47720f] "
       onClick={handleCallClick}>
       <FaPhone className="text-xl  " />
     </div>

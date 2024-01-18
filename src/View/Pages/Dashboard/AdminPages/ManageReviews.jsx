@@ -107,7 +107,7 @@ const ManageReviews = () => {
           </h2>
           <div className="relative  overflow-x-auto shadow-md   rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
-              <thead className="text-xs  text-white uppercase bg-[#D1A054]  ">
+              <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                 <tr>
                   <th scope="col" className="p-8"></th>
                   <th scope="col" className="px-6 py-3">
@@ -181,7 +181,7 @@ const ManageReviews = () => {
                       <td className=" px-6 py-4">
                         <FaCircleInfo
                           onClick={() => handleViewFullDetails(review)}
-                          className="text-[#D1A054] hover:text-rose-400  rounded-md  text-3xl"
+                          className="text-[#75934e] hover:text-[#507125]  rounded-md  text-3xl"
                         />
                       </td>
                       <td className=" px-6 py-4">
@@ -255,7 +255,7 @@ const ManageReviews = () => {
                         handleAddReview(review?._id, false),
                           setToggleModal(!toggleModal);
                       }}
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-[#D1A054]  rounded-lg hover:bg-rose-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-[#75934e] bg-opacity-60  rounded-lg hover:bg-rose-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       Remove Review
                     </button>
                   ) : (
@@ -265,7 +265,7 @@ const ManageReviews = () => {
                         handleAddReview(review?._id, true),
                           setToggleModal(!toggleModal);
                       }}
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-[#D1A054]  rounded-lg hover:bg-rose-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-[#75934e] bg-opacity-60  rounded-lg hover:bg-rose-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       Add Review
                     </button>
                   )}

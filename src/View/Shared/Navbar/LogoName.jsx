@@ -4,15 +4,15 @@ const LogoName = () => {
   return (
     <div className="">
       <Link to="/" className=" normal-case  h-auto">
-        {/* <h2 className="md:text-3xl  text-2xl font-black font-cinzel">
+        {/* <h2 className="md:text-3xl  text-2xl font-black font-exo">
             Chomotkar
           </h2>
-          <p className="font-cinzel text-xs font-bold tracking-[5px] md:tracking-[9.12px]">
+          <p className="font-exo text-xs font-bold tracking-[5px] md:tracking-[9.12px]">
             Fashion
           </p> */}
         <img
-          className="md:w-72 md:h-12 drop-shadow-2xl w-[220px] h-10 object-cover"
-          src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704721496/Chomotkar/Logo/logo-chomotkar-website-final_export_Golden_jla5u9.png"
+          className="md:w-52 drop-shadow-2xl w-44"
+          src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-1_epmglz.png"
           alt=""
         />
       </Link>

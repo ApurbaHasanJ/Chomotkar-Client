@@ -15,7 +15,7 @@ const Search = () => {
 
   return (
     <div className="relative">
-      <form className="mb-4">
+      <form className="">
         <label
           htmlFor="search"
           className="mb-2 text-sm font-medium text-white sr-only dark:text-gray-900">
@@ -24,7 +24,7 @@ const Search = () => {
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
-              className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:text-rose-400"
+              className="w-5 h-5 text-[#75934e] dark:text-gray-400 hover:text-[#47720f]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -41,7 +41,7 @@ const Search = () => {
           <input
             type="search"
             id="search"
-            className="block w-full p-4 ps-14 text-sm  placeholder:text-base text-rose-400 placeholder:focus:text-rose-400 focus:lowercase border-white focus:border-white focus:ring-white f dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block w-full p-4 ps-14 text-sm placeholder:text-[#75934e] placeholder:text-base text-[#75934e] placeholder:focus:text-[#75934e] focus:lowercase border-white focus:border-white focus:ring-white f dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search for products..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}

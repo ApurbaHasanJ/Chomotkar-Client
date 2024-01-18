@@ -164,7 +164,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         {...register("title")}
                         required
                         placeholder="Product Name"
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                       />
                     </div>
                     {/* recipe price */}
@@ -182,7 +182,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                             : updateProduct?.price
                         }
                         {...register("productPrice")}
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                         required
                         placeholder="Product Price"
                       />
@@ -199,7 +199,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       <select
                         {...register("category", { required: true })}
                         defaultValue={updateProduct?.category}
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400">
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]">
                         <option value="">None</option>
                         <option value="men">Men</option>
                         <option value="women">Women</option>
@@ -214,7 +214,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       <select
                         {...register("subCategory", { required: true })}
                         defaultValue={updateProduct?.subCategory}
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
                         <option value="">None</option>
                         <option value="t-shirt">Premium T-Shirt</option>
                         <option value="polo shirt">Polo Shirt</option>
@@ -251,7 +251,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         {...register("productBy")}
                         required
                         placeholder="Product By"
-                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                        className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                       />
                     </div>
                     {/* Color */}
@@ -267,7 +267,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                         {...register("colors")}
                         required
                         placeholder="Product Color"
-                        className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                        className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                       />
                     </div>
                   </div>
@@ -288,7 +288,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                                 updateProduct?.sizes &&
                                 updateProduct?.sizes?.includes(size)
                               }
-                              className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                              className="w-6 h-6 border border-gray-500 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                               {...register("sizes")}
                             />
                             <label htmlFor={size} className="ml-2 text-lg">
@@ -309,7 +309,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                       required
                       defaultValue={updateProduct?.description}
                       placeholder="Your Product Details..."
-                      className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  "
+                      className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                       rows="8"
                     />
                   </div>
@@ -340,7 +340,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                     </label>
                     <input
                       multiple={true}
-                      className="  file-input hover:shadow-md border rounded-lg  border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  w-full max-w-xs"
+                      className="  file-input hover:shadow-md border rounded-lg  border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
                       type="file"
                       {...register("photos")}
                     />
@@ -350,7 +350,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
                     <input
                       type="submit"
                       value="UPDATE NOW"
-                      className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+                      className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
                     />
                   </div>
                 </form>

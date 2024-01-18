@@ -66,7 +66,7 @@ const Login = () => {
 
   return (
     <div className="pt-20 px-6  bg-transparent z-20">
-      <div className="my-container bg-[#e7c99c] pt-6 shadow-xl">
+      <div className="my-container bg-[#75934e] bg-opacity-60 pt-6 shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Login
         </h3>
@@ -90,7 +90,7 @@ const Login = () => {
                   })}
                   required
                   placeholder="Your email"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.email ? "true" : "false"}
                   autoComplete="username"
                 />
@@ -113,19 +113,19 @@ const Login = () => {
                     required: "Password is required",
                     minLength: 6,
                   })}
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.password ? "true" : "false"}
                   placeholder="Password"
                   autoComplete="current-password"
                 />
               </div>
               <div className="grid my-3">
-                <div className="flex items-center  mb-6">
+                <div className="flex items-center  mb-4">
                   <input
                     id="showPassword"
                     type="checkbox"
                     value={show}
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2  checked:bg-rose-400 focus:ring-orange-300"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2  checked:bg-[#47720f] focus:ring-orange-300"
                     onChange={(e) => setShow(e.target.checked)}
                   />
                   <label
@@ -135,7 +135,7 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="grid justify-end">
-                  <p className="text-xs font-slate-500 underline underline-offset-2 hover:text-rose-400">
+                  <p className="text-xs font-slate-500 underline underline-offset-2 hover:text-[#47720f]">
                     Forgot your Password?
                   </p>
                 </div>
@@ -146,11 +146,11 @@ const Login = () => {
                   //   disabled={disabled}
                   type="submit"
                   value="LOGIN"
-                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+                  className="btn p-3 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
                 />
               </div>
             </form>
-            <h6 className="text-center my-4 text-rose-400">
+            <h6 className="text-center my-4 text-[#47720f]">
               New here?{" "}
               <Link to="/register" state={location.state}>
                 <span className="  font-semibold hover:underline">

@@ -230,7 +230,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     pattern: /^[A-Za-z\s]+$/i,
                   })}
                   placeholder="Your name"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.name ? "true" : "false"}
                 />
               </div>
@@ -250,7 +250,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   })}
                   required
                   placeholder="Your phone"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
 
@@ -268,7 +268,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   name="email"
                   {...register("email")}
                   placeholder="Your email"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
               <div className="grid mb-4 ">
@@ -283,7 +283,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   {...register("location")}
                   required
                   onChange={(e) => handleDeliveryCharge(e.target.value)}
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  ">
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
                   <option value="">None</option>
                   <option value="insideDhaka">Inside Dhaka</option>
                   <option value="outsideDhaka">Outside Dhaka</option>
@@ -305,7 +305,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     required: "Name is required",
                   })}
                   placeholder="Type your full address..."
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
 
@@ -321,7 +321,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   name="orderNote"
                   {...register("orderNote")}
                   placeholder="Additional information"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400 "
+                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
               {/* payment method */}
@@ -329,14 +329,14 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <h2 className="text-gray-700 font-semibold text-2xl">
                   PAYMENT METHOD
                 </h2>
-                <div className="grid grid-cols-3 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
+                <div className="grid md:grid-cols-3 grid-cols-2 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
                   {/* cash on delivery */}
                   <label
                     className="flex items-start gap-3"
                     htmlFor="cashOnDelivery">
                     <input
                       type="radio"
-                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-[#47720f] focus:ring-orange-300"
                       name="paymentMethod"
                       id="cashOnDelivery"
                       checked={cashOnDelivery}
@@ -355,7 +355,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   <label className="flex items-start gap-3" htmlFor="payBkash">
                     <input
                       type="radio"
-                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-[#47720f] focus:ring-orange-300"
                       name="paymentMethod"
                       id="payBkash"
                       checked={payBkash}
@@ -374,7 +374,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   {/* <label className="flex items-start gap-3" htmlFor="payNagad">
                     <input
                       type="radio"
-                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-rose-400 focus:ring-orange-300"
+                      className="w-5 h-5 border border-gray-500 rounded bg-gray-50 focus:ring-2 checked:bg-[#47720f] focus:ring-orange-300"
                       name="paymentMethod"
                       id="payNagad"
                       checked={payNagad}
@@ -396,7 +396,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <input
                   type="submit"
                   value="PLACE ORDER"
-                  className="btn p-3 px-5 duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-rose-400"
+                  className="btn p-3 px-5 duration-500 rounded-full border-none text-white bg-[#75934e] hover:bg-[#47720f]"
                 />
               </div>
             </div>
@@ -478,7 +478,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               {/* Coupon code input */}
               <div className="flex justify-end gap-4 w-full">
                 <input
-                  className="hover:shadow-md border border-slate-500 placeholder:focus:text-rose-400 focus:border-white focus:ring-rose-400  w-full max-w-xs"
+                  className="hover:shadow-md border border-[#75934e] placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
                   type="text"
                   name="couponCode"
                   value={enteredCouponCode}
@@ -488,7 +488,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <button
                   type="button"
                   onClick={() => handleApplyCoupon()}
-                  className="border-black border-2 px-5 py-3 text-xs text-white hover:text-black transition-all duration-1000 bg-black hover:bg-white">
+                  className="border-[#75934e]  border-2 px-5 py-3 text-xs text-white hover:text-[#75934e] transition-all duration-1000 bg-[#75934e] hover:bg-white">
                   APPLY COUPON
                 </button>
               </div>
@@ -497,7 +497,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               <input
                 type="submit"
                 value="PLACE ORDER"
-                className="btn p-3 px-5 duration-500 w-full rounded-full border-none text-white bg-[#D1A054] hover:bg-rose-400"
+                className="btn p-3 px-5 duration-500 w-full rounded-full border-none text-white bg-[#75934e] hover:bg-[#47720f]"
               />
             </div>
           </form>

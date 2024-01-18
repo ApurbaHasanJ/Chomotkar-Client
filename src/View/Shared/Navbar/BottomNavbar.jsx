@@ -17,8 +17,8 @@ const BottomNavbar = () => {
     setSideSearchBar(!sideSearchBar);
   };
   return (
-    <div>
-      <nav className="flex fixed w-full px-10 bottom-0 z-50 bg-white  shadow-xl py-2 md:hidden justify-between items-center">
+    <div className="">
+      <nav className="flex fixed bottom-0  w-full px-10 z-50 bg-white  shadow-xl py-2 md:hidden justify-between items-center">
         <ul className="flex my-container justify-between items-center w-full gap-4 menu-horizontal">
           <li>
             <NavLink
@@ -33,7 +33,7 @@ const BottomNavbar = () => {
           <li>
             <button
               onClick={handleSideSearchBar}
-              className="font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300">
+              className="font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-[#75934e] transition-colors duration-300">
               <div className="flex flex-col gap-1 items-center">
                 <FaSearch className="text-xl" />
                 <span className="text-xs">Search</span>
@@ -63,7 +63,7 @@ const BottomNavbar = () => {
               <div className="flex flex-col gap-1 relative items-center">
                 <FaBagShopping className="text-xl" />
                 <span className="text-xs">Cart</span>
-                <span className="absolute rounded-full text-sm -right-4 -top-1 px-1 py-[.5px] text-white text-center bg-rose-300">
+                <span className="absolute rounded-full text-sm -right-4 -top-1 px-1 py-[.5px] text-white text-center bg-[#426e0d]">
                   {totalQuantity || 0}
                 </span>
               </div>
@@ -74,7 +74,7 @@ const BottomNavbar = () => {
       <div
         className={`fixed bg-white h-full w-full max-w-[370px] pb-4 p-2 ${
           sideSearchBar ? "right-0" : "-right-[1700px]"
-        } transform duration-700 shadow-2xl top-0 z-[400]`}>
+        } transform duration-700 shadow-2xl top-[52px] z-[10000]`}>
         <SideSearchBar handleSideSearchBar={handleSideSearchBar} />
       </div>
     </div>

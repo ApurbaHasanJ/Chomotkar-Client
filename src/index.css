@@ -7,12 +7,12 @@
 }
 
 .btn-card {
-  @apply duration-700 bg-[#E8E8E8] hover:bg-[#1F2937] text-[#BB8506] border-[#BB8506] rounded-lg  hover:border-[#1F2937] border-0  border-b-[3px] 
-     /* inline-flex items-center capitalize lg:text-base text-xs lg:px-6 md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium text-white transition hover:drop-shadow-2xl rounded border-none shadow-md md:mb-0  bg-rose-400  hover:bg-rose-500 duration-700; */;
+  @apply duration-700 bg-[#E8E8E8] hover:bg-[#1F2937] text-[#75934e] border-[#75934e] rounded-lg  hover:border-[#1F2937] border-0  border-b-[3px] 
+     /* inline-flex items-center capitalize lg:text-base text-xs lg:px-6 md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium text-white transition hover:drop-shadow-2xl rounded border-none shadow-md md:mb-0  bg-[#47720f]  hover:bg-rose-500 duration-700; */;
 }
 
-.btn-dark {
-  @apply duration-700 bg-[#1F2937] md:py-3 md:px-4 px-3 py-2 text-xs md:text-base hover:bg-[#1F2937] text-white hover:text-rose-500 border-[#1F2937] rounded-full  hover:border-[#1F2937] border-0  border-b-[3px];
+.btn-measurement {
+  @apply duration-700 hover:underline underline-offset-2 text-xs md:text-base   text-[#75934e] hover:text-[#517521];
 }
 
 .btn-white {
@@ -20,7 +20,7 @@
 }
 
 /* .btn-sec {
-    @apply inline-flex items-center justify-center lg:text-base capitalize text-xs  lg:px-6 tracking-wide md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium transition rounded drop-shadow-2xl border border-rose-400 text-rose-400 hover:text-white hover:bg-rose-400 duration-700;
+    @apply inline-flex items-center justify-center lg:text-base capitalize text-xs  lg:px-6 tracking-wide md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium transition rounded drop-shadow-2xl border border-[#47720f] text-[#47720f] hover:text-white hover:bg-[#47720f] duration-700;
   } */
 
 .badge {
@@ -28,11 +28,11 @@
 }
 
 .active {
-  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-rose-500  transition-colors duration-300;
+  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-[#75934e]  transition-colors duration-300;
 }
 
 .default {
-  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-rose-500 transition-colors duration-300;
+  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-800 hover:text-[#75934e] transition-colors duration-300;
 }
 
 .dashActive {
@@ -40,29 +40,30 @@
 }
 
 .dashDefault {
-  @apply font-semibold tracking-wide text-[#151515] hover:text-gray-500 transition-colors duration-300;
+  @apply font-semibold tracking-wide text-slate-800 hover:text-[#4a6724]  transition-colors duration-300;
 }
 
-.font-cinzel{
-  font-family: 'Cinzel Decorative', serif;
+.font-exo {
+  /* font-family: 'Cinzel Decorative', serif; */
+  font-family: "Exo 2", sans-serif;
 }
 
-.font-g-mono{
-  font-family: 'IBM Plex Mono', monospace;
+.font-g-mono {
+  font-family: "IBM Plex Mono", monospace;
 }
-
 
 /* swiper js css */
 :root {
   --swiper-navigation-size: 20px;
 }
 
-.swiper-button-next:after, .swiper-button-prev:after  {
-  background: white;
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  background: #75934e;
   padding: 10px;
   border-radius: 50%;
   text-align: center;
-  color: black;
+  color: whitesmoke;
   font-size: 20px !important;
   font-weight: 600;
   display: flex;
@@ -110,9 +111,7 @@
   color: rgb(244 63 94);
 } */
 
-
 /*--------------------- swiper css end ---------------*/
-
 
 /* Scroll bar */
 /* For WebKit based browsers (Chrome, Safari) */
