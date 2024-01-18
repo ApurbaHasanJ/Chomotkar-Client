@@ -37,7 +37,7 @@ const UserNavItems = () => {
             }>
             <div className="relative whitespace-nowrap">
               <FaHeart className="w-14 h-6 md:mx-0 mx-auto" title="WISHLIST" />
-              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
+              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white text-center bg-[#426e0d] border border-white rounded-full -top-2 -end-1 ">
                 {wishlist?.length || 0}
               </span>
             </div>
@@ -59,7 +59,7 @@ const UserNavItems = () => {
                 className="w-14 h-6 md:mx-0 mx-auto"
                 title="MY CART"
               />
-              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white bg-red-600 border border-white rounded-full -top-2 -end-1 ">
+              <span className="absolute inline-flex items-center justify-center px-1 py-[.5px] text-xs font-bold text-white text-center bg-[#426e0d] border border-white rounded-full -top-2 -end-1 ">
                 {totalQuantity || 0}
               </span>
             </div>

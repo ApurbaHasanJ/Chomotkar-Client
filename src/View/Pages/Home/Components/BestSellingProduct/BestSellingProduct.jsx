@@ -24,7 +24,7 @@ const BestSellingProduct = () => {
           navigation={true}
           loop={true}
           slidesPerView={2}
-          spaceBetween={15}
+          spaceBetween={8}
           breakpoints={{
             640: {
               slidesPerView: 2,

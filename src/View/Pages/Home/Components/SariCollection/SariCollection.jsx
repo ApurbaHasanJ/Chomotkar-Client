@@ -24,8 +24,8 @@ const SariCollection = () => {
         <Swiper
           navigation={true}
           loop={true}
-          slidesPerView={3}
-          spaceBetween={15}
+          slidesPerView={2}
+          spaceBetween={8}
           breakpoints={{
             768: {
               slidesPerView: 4,
@@ -39,7 +39,7 @@ const SariCollection = () => {
           }}
           freeMode={true}
           modules={[FreeMode, Navigation, Autoplay]}
-          className="grid grid-cols-4 mt-10">
+          className="grid grid-cols-2 md:grid-cols-4 mt-10">
           {panjabiCollection &&
             panjabiCollection.map((product, index) => (
               <SwiperSlide key={index} className="">
