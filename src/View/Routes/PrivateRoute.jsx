@@ -24,10 +24,10 @@ const PrivateRoute = ({ children }) => {
   // If the user is not authenticated, render the login prompt
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="text-center md:text-xl text-base shadow-xl bg-rose-100 p-8 ">
+      <div className="text-center md:text-xl text-base shadow-xl bg-[#75934e] bg-opacity-60 p-8 ">
         <p>You have to login first.</p>
         <button
-          className="btn p-3 px-5 duration-500 mt-4 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
+          className="btn p-2 px-5 duration-500 mt-4 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f]"
           onClick={handleLoginClick}>
           Login
         </button>

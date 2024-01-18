@@ -199,7 +199,7 @@ const AddReview = () => {
                             <button
                               onClick={handleToggleModal}
                               type="button"
-                              className="text-gray-400 bg-transparent hover:text-[#75934e] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
+                              className="text-gray-400 bg-transparent hover:bg-[#75934e] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
                               <FaXmark className="text-base" />
 
                               <span className="sr-only">Close modal</span>

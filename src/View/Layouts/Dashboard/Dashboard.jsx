@@ -47,7 +47,7 @@ const Dashboard = () => {
 
         {/* Top bar for */}
         <div className="w-full ">
-          <nav className="  sticky bg-[#75934e]  top-0 right-0 w-full z-50  py-4 lg:hidden  ">
+          <nav className="  sticky bg-[#96bb65]  top-0 right-0 w-full z-50  py-4 lg:hidden  ">
             {/* title for sm device */}
             <div className="flex w-full justify-between items-center">
               <div className=" mx-6">
@@ -62,9 +62,9 @@ const Dashboard = () => {
               </button>
             </div>
             <div
-              className={`fixed bg-[#75934e] h-full pb-4 pr-2 ${
+              className={`fixed bg-[#96bb65] h-full pb-4 pr-2 ${
                 showDashboard ? "left-0" : "-left-[400px]"
-              } transform duration-700 shadow-2xl top-[88px] `}>
+              } transform duration-700 shadow-2xl top-[74px] `}>
               <div className="md: pt-5 ">
                 {isAdmin ? <AdminNavItems /> : <UserNavItems />}
                 <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />
