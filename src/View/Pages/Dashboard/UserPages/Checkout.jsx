@@ -411,7 +411,24 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
             </div>
             {/* col 2 */}
             <div className="w-full ">
-              {/* product details */}
+              {/* product photo with size and color */}
+              <div className="bg-slate-100 p-4">
+                  <div  className="flex items-center gap-4">
+                  <img className="w-20" src={payCarts?.photos[0]?.img} alt="" />
+                    <div className="flex flex-col ">
+                      <div className="flex gap-2">
+                        <span>Size:</span>
+                        <span className="uppercase">{payCarts?.size}</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <span>Color: </span>
+                        <span className="uppercase">{payCarts?.color}</span>
+                      </div>
+                    </div>
+                  </div>
+                    <h3>Name: {payCarts?.title}</h3>
+                </div>
+              {/* product pricing details */}
               <div className="p-4 bg-slate-100 my-4">
                 <div className={`${payCarts}`}>
                   {/* price */}
