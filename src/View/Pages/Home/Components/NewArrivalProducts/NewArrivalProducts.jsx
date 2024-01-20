@@ -34,7 +34,7 @@ const NewArrivalProducts = () => {
             waitForTransition: Animation,
           }}
           freeMode={true}
-        modules={[FreeMode, Navigation, Autoplay]}
+          modules={[FreeMode, Navigation, Autoplay]}
           className="grid grid-cols-2 md:grid-cols-4 mt-10">
           {newProducts &&
             newProducts.map((product, index) => (

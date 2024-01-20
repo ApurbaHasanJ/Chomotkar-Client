@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Filter from "./Components/FilterBy/Filter";
 import Products from "./Components/Products";
+import { Helmet } from "react-helmet-async";
 // import ShopHero from "./Components/ShopHero";
 
 const Shop = () => {
@@ -25,6 +26,9 @@ const Shop = () => {
   return (
     <main>
       {/* <ShopHero /> */}
+      <Helmet>
+        <title>Chomotkar | Collection</title>
+      </Helmet>
       <div className="flex md:gap-4 md:mt-32 my-20 my-container relative overflow-visible">
         <Filter />
         <Products />

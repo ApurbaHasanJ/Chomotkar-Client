@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[500px] h-[400px] rounded-2xl border-[#75934e]">
+    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[450px] h-[330px]  rounded-2xl border-[#75934e]">
   <div className="relative overflow-hidden aspect-w-1 aspect-h-1">
     <Link
       to={`/quick-shop/${product?._id}`}
@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
       onClick={handleToggleModal}
     >
       <img
-        className="rounded-xl object-contain w-full h-full hover:scale-110 transform duration-500"
+        className="rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500"
         loading="lazy"
         src={product?.photos[0]?.img}
         alt={product.title}
@@ -42,16 +42,16 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* title & price */}
-      <div className="text-center">
-        <p className="text-slate-400 hover:text-black duration-300 text-xs md:text-base mt-4">
+      <div className="text-center px-[2px]">
+        <p className="text-slate-400 hover:text-black duration-300 text-xs md:text-base mt-2">
           Brand: {product?.productBy}
         </p>
-        <p className="my-2  hover:text-[#47720f] duration-300 text-sm md:text-lg font-mono">
+        <p className="my-1  hover:text-[#47720f] duration-300 text-xs md:text-base font-mono">
           {product?.title}
         </p>
         <div className="text-slate-800 flex justify-center items-center gap-2 text-base font-medium font-mono">
           {product?.newPrice ? (
-            <div className="flex md:flex-row flex-col justify-center items-center md:gap-2">
+            <div className="flex flex-wrap justify-center items-center gap-2">
               <span className="line-through">TK.{product?.price}</span>
               <span className="font-semibold">TK.{product?.newPrice}</span>
             </div>

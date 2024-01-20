@@ -22,15 +22,15 @@ const UserTopInfo = () => {
 
   return (
     <div className="grid gap-5 lg:grid-cols-4 grid-cols-2 justify-center text-white mt-6 items-center">
-      <div className="from-[#D3A256] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
-        <FaHeart className="w-12 h-12 md:mx-0 mx-auto" title="Customers" />
+      <div className="from-[#D3A256] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
+        <FaHeart className="text-4xl md:text-5xl" title="Customers" />
         <div>
           <h1 className="text-3xl ">{wishlist?.length || 0}</h1>
           <p className="text-xl">Wishlist</p>
         </div>
       </div>
-      <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
-        <FaBagShopping className="w-12 h-12 md:mx-0 mx-auto" title="Orders" />
+      <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
+        <FaBagShopping className="text-4xl md:text-5xl" title="Orders" />
 
         <div>
           <h1 className="text-3xl ">{carts?.length}</h1>
@@ -38,9 +38,9 @@ const UserTopInfo = () => {
         </div>
       </div>
 
-      <div className="from-[#6AAEFF] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#B6F7FF]  rounded-lg">
+      <div className="from-[#6AAEFF] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#B6F7FF]  rounded-lg">
         <MdShoppingBasket
-          className="w-12 h-12 md:mx-0 mx-auto"
+          className="text-4xl md:text-5xl"
           title="Products"
         />
         <div>
@@ -48,8 +48,8 @@ const UserTopInfo = () => {
           <p className="text-xl">Products</p>
         </div>
       </div>
-      <div className="from-[#FE4880] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
-        <FaStar className="w-12 h-12 md:mx-0 mx-auto" title="Products" />
+      <div className="from-[#FE4880] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
+        <FaStar className="text-4xl md:text-5xl" title="Products" />
         <div>
           <h1 className="text-3xl ">{findReviews?.length || "00"}</h1>
           <p className="text-xl">Ratings</p>

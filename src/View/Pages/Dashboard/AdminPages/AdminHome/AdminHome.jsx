@@ -12,7 +12,7 @@ const AdminHome = () => {
       {/* top info */}
       <TopInfo />
       <SellingChart />
-      <div className="flex gap-8 my-14">
+      <div className="flex md:flex-row flex-col-reverse gap-8 my-14">
         <BestSellingProducts />
         <LastMonthInfo />
       </div>

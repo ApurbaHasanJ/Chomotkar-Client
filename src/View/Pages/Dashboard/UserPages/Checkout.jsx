@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 import axios from "axios";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const { handleAddToOrdersHistory } = useContext(OrdersHistoryContext);
@@ -176,6 +177,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
       setLoading(false);
 
+      if (data) {
+        console.log(data);
+        return;
+      }
+
       // Redirect based on the payment method
       if (axiosData && axiosData.data.bkashURL) {
         // Redirect to the provided URL for online payment
@@ -193,6 +199,9 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
   return (
     <section className="my-container relative pt-12 ">
+      <Helmet>
+        <title>Chomotkar | Checkout</title>
+      </Helmet>
       <SectionTitle
         title={"Delivery & Billing"}
         subtitle={"---Place Order---"}
@@ -478,11 +487,13 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               {/* Coupon code input */}
               <div className="flex justify-end gap-4 w-full">
                 <input
-                  className="hover:shadow-md border border-[#75934e] placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
+                  className="hover:shadow-md border uppercase border-[#75934e] placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
                   type="text"
                   name="couponCode"
                   value={enteredCouponCode}
-                  onChange={(e) => setEnteredCouponCode(e.target.value)}
+                  onChange={(e) =>
+                    setEnteredCouponCode(e.target.value.toUpperCase())
+                  }
                   placeholder="Coupon code"
                 />
                 <button

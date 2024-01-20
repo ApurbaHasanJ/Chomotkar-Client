@@ -12,6 +12,7 @@ import WishlistProvider from "./View/Providers/WishlistProvider";
 import CollectionProvider from "./View/Providers/CollectionProvider";
 import CartProvider from "./View/Providers/CartProvider";
 import OrdersHistoryProvider from "./View/Providers/OrdersHistoryProvider";
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
@@ -25,8 +26,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <ColorProvider>
                 <AuthProvider>
                   <WishlistProvider>
-                    <Toaster position="top-right" reverseOrder={false} />
-                    <RouterProvider router={router} />
+                    <HelmetProvider>
+                      <Toaster position="top-right" reverseOrder={false} />
+                      <RouterProvider router={router} />
+                    </HelmetProvider>
                   </WishlistProvider>
                 </AuthProvider>
               </ColorProvider>

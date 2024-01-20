@@ -20,24 +20,24 @@ const TopInfo = () => {
   // console.log(orders);
   return (
     <div className="grid gap-5 md:grid-cols-4 grid-cols-2 justify-center text-white mt-6 items-center">
-      <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
-        <FaWallet className="w-12 h-12 md:mx-0 mx-auto" title="Wallet" />
+      <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
+        <FaWallet className="text-4xl md:text-5xl " title="Wallet" />
 
         <div>
           <h1 className="text-3xl ">{totalRevenue}</h1>
           <p className="text-xl">Sales</p>
         </div>
       </div>
-      <div className="from-[#D3A256] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
-        <FaUsers className="w-12 h-12 md:mx-0 mx-auto" title="Customers" />
+      <div className="from-[#D3A256] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
+        <FaUsers className="text-4xl md:text-5xl " title="Customers" />
         <div>
           <h1 className="text-3xl ">{users?.length || "0000"}</h1>
           <p className="text-xl">Users</p>
         </div>
       </div>
-      <div className="from-[#FE4880] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
+      <div className="from-[#FE4880] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
         <MdShoppingBasket
-          className="w-12 h-12 md:mx-0 mx-auto"
+          className="text-4xl md:text-5xl "
           title="Products"
         />
         <div>
@@ -45,8 +45,8 @@ const TopInfo = () => {
           <p className="text-xl">Products</p>
         </div>
       </div>
-      <div className="from-[#6AAEFF] bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#B6F7FF]  rounded-lg">
-        <FaTruck className="w-12 h-12 md:mx-0 mx-auto" title="Orders" />
+      <div className="from-[#6AAEFF] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#B6F7FF]  rounded-lg">
+        <FaTruck className="text-4xl md:text-5xl " title="Orders" />
         <div>
           <h1 className="text-3xl ">{completeOrders.length}</h1>
           <p className="text-xl">Delivered</p>

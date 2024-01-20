@@ -5,6 +5,7 @@ import AdminNavItems from "../../Shared/DashNavItems/AdminNavitems";
 import UserNavItems from "../../Shared/DashNavItems/UserNavItems";
 import GeneralNavItems from "../../Shared/DashNavItems/GeneralNavItems";
 import useAdmin from "../../Hooks/useAdmin";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   let [showDashboard, setShowDashboard] = useState(false);
@@ -18,6 +19,9 @@ const Dashboard = () => {
 
   return (
     <div className={` md:flex ${showDashboard ? "bg-gray-50" : ""} `}>
+      <Helmet>
+        <title>Chomotkar | Dashboard</title>
+      </Helmet>
       {/* Dashboard */}
       <>
         {/* sidebar for lg and md */}

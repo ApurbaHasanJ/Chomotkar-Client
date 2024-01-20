@@ -27,7 +27,7 @@ const OrdersHistory = () => {
       });
   }, []);
 
-  // console.log(userOrders);
+  console.log(userOrders);
 
   const orderedProducts = ordersHistory
     .map((order) => {
@@ -93,6 +93,8 @@ const OrdersHistory = () => {
     setCheckoutModal(!checkoutModal);
   };
 
+  const newOrdersFirst = orderedProducts.slice().reverse();
+
   return (
     <section className="pt-12  min-h-screen relative ">
       {checkoutModal ? (
@@ -107,7 +109,7 @@ const OrdersHistory = () => {
           {/* table */}
           <div className="my-container my-20">
             <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
-              Total Orders: {orderedProducts?.length}
+              Total Orders: {newOrdersFirst?.length}
             </h2>
             <div className="relative w-full shadow-md ">
               <div className="overflow-x-auto w-full rounded-lg">
@@ -117,7 +119,7 @@ const OrdersHistory = () => {
                   </div>
                 ) : (
                   <>
-                    {orderedProducts.length > 0 ? (
+                    {newOrdersFirst.length > 0 ? (
                       <table className="w-full  text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
                         <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                           <tr>
@@ -146,8 +148,8 @@ const OrdersHistory = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {orderedProducts &&
-                            orderedProducts.map((order, index) => (
+                          {newOrdersFirst &&
+                            newOrdersFirst.map((order, index) => (
                               <tr
                                 key={order?.date}
                                 className="bg-white border-b py-10 hover:bg-gray-50 ">

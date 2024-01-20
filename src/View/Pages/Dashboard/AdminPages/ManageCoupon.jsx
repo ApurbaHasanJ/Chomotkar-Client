@@ -20,9 +20,10 @@ const ManageCoupon = () => {
   const onSubmit = (data) => {
     const { code, discount } = data;
     const discountPercentage = parseInt(discount);
+    const disCode = code.toUpperCase();
 
     const couponCodes = {
-      code,
+      code: disCode,
       discount: discountPercentage,
     };
 

@@ -1,5 +1,6 @@
 // import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
 // import ConsumerFavor from "../Components/ConsumerFavor";
+import { Helmet } from "react-helmet-async";
 import GadgetsCollection from "../Components/GadgetsCollection/GadgetsCollection";
 import Gallery from "../Components/Gallery/Gallery";
 import Hero from "../Components/Hero/Hero";
@@ -14,6 +15,9 @@ import WhyUs from "../Components/WhyUs/WhyUs";
 const Home = () => {
   return (
     <div className="relative">
+      <Helmet>
+        <title>Chomotkar</title>
+      </Helmet>
       <Hero />
       {/* <ConsumerFavor /> */}
       <ShopByCategory />

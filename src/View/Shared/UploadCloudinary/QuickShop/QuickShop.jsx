@@ -9,6 +9,7 @@ import { CartContext } from "../../../Providers/CartProvider";
 import Checkout from "../../../Pages/Dashboard/UserPages/Checkout";
 
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const QuickShop = () => {
   const params = useParams();
@@ -65,6 +66,9 @@ const QuickShop = () => {
 
   return (
     <section className="pt-8 mb-16  lg:min-h-screen ">
+      <Helmet>
+        <title>Chomotkar | Quickshop</title>
+      </Helmet>
       {toggleModal ? (
         <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
       ) : (

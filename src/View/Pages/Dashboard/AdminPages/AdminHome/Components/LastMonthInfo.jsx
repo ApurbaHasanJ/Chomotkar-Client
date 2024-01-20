@@ -43,21 +43,21 @@ const LastMonthInfo = () => {
 //   console.log("Total Sales Revenue Last Month:", totalSalesRevenueLastMonth);
 
   return (
-    <div className="bg-white w-3/6 h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10 ">
+    <div className="bg-white md:w-3/6 w-full h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10 ">
       <h2 className="text-purple-600 mb-6 font-semibold text-2xl drop-shadow-2xl">
         Last Month Sales Revenue & Total Reviews
       </h2>
       <div className="flex gap-4">
-        <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
-          <FaWallet className="w-12 h-12 md:mx-0 mx-auto" title="Wallet" />
+        <div className="from-[#BB34F5] text-white bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FCDBFF]  rounded-lg">
+          <FaWallet className="text-4xl md:text-5xl" title="Wallet" />
 
           <div>
             <h1 className="text-3xl ">{totalSalesRevenueLastMonth}</h1>
             <p className="text-xl">Revenue</p>
           </div>
         </div>
-        <div className="from-[#D3A256] text-white bg-gradient-to-r w-full h-[150px] px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
-          <FaStar className="w-12 h-12 md:mx-0 mx-auto" title="Customers" />
+        <div className="from-[#D3A256] text-white bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex gap-4 justify-center items-center to-[#FDE8C0]  rounded-lg">
+          <FaStar className="text-4xl md:text-5xl" title="Customers" />
           <div>
             <h1 className="text-3xl ">{reviews?.length}</h1>
             <p className="text-xl">Reviews</p>

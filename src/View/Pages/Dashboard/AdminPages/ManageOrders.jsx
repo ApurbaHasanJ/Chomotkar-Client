@@ -40,6 +40,8 @@ const ManageOrders = () => {
     .filter(Boolean);
   console.log(orderedProducts);
 
+  const getNewOrdersFirst = orderedProducts.slice().reverse();
+
   const handleOrderStatus = (id, status) => {
     // const encodedDate = encodeURIComponent(id);
     Swal.fire({
@@ -121,8 +123,8 @@ const ManageOrders = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {orderedProducts &&
-                      orderedProducts.map((order, index) => (
+                    {getNewOrdersFirst &&
+                      getNewOrdersFirst.map((order, index) => (
                         <tr
                           key={order?._id}
                           className="bg-white border-b py-10 hover:bg-gray-50 ">

@@ -50,7 +50,7 @@ const filteredOrders = orders.filter(
 
 //   console.log(matchedProducts);
   return (
-    <div className="bg-white w-3/6 h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10">
+    <div className="bg-white md:w-3/6 w-full h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10">
       <h2 className="text-purple-600 font-semibold text-2xl drop-shadow-2xl">
         Best Selling Products
       </h2>
