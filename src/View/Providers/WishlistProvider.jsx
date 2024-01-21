@@ -48,7 +48,7 @@ const WishlistProvider = ({ children }) => {
   };
 
   // remove id from wishlist
-  const removeFormWishlist = (productId) => {
+  const removeFromWishlist = (productId) => {
     let currentWishlist =
       JSON.parse(localStorage.getItem("ChomotkarFashionWishlist")) || [];
 
@@ -72,7 +72,7 @@ const WishlistProvider = ({ children }) => {
   };
 
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFormWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist }}>
       {children}
     </WishlistContext.Provider>
   );

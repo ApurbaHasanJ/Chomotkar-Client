@@ -10,9 +10,9 @@ import useCarts from "../../../Hooks/useCarts";
 const MyCart = () => {
   const { totalQuantity } = useContext(CartContext);
   // const [products] = useProducts();
-  const { filteredProducts, handleDeleteItem } = useCarts();
+  const { filteredCarts, handleDeleteItem } = useCarts();
   const [payCarts, setPayCarts] = useState({});
-  // const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredCarts, setFilteredProducts] = useState([]);
   const [selectedColor, setSelectedColor] = useState({
     id: "",
     color: "",
@@ -24,33 +24,8 @@ const MyCart = () => {
 
   const [toggleModal, setToggleModal] = useState(false);
 
-  // console.log(payCarts);
-  // console.log(selectedSize);
-
-  // filter the cart products
-  // useEffect(() => {
-  //   // Update the quantity in the products list based on the carts data
-  //   const updatedProducts = products
-  //     .filter((product) =>
-  //       carts.some((cart) => cart.productId === product?._id)
-  //     )
-  //     .map((product) => {
-  //       const cartItem = carts.find((cart) => cart.productId === product?._id);
-  //       return {
-  //         ...product,
-  //         quantity: cartItem ? cartItem.quantity : 1,
-  //         color: cartItem ? cartItem.color : "",
-  //         size: cartItem ? cartItem.size : "",
-  //       };
-  //     });
-
-  //   setFilteredProducts(updatedProducts);
-  // }, [carts, products]);
-
-  // console.log(filteredProducts);
-
   // calculating total product price
-  const totalPrice = filteredProducts.reduce((acc, product) => {
+  const totalPrice = filteredCarts.reduce((acc, product) => {
     const productPrice = product.newPrice ? product.newPrice : product.price;
     const totalProductPrice = productPrice * product.quantity;
 
@@ -120,7 +95,7 @@ const MyCart = () => {
                     </tr>
                   </thead>
                   <tbody className=" w-full ">
-                    {filteredProducts.map((cart, index) => (
+                    {filteredCarts.map((cart, index) => (
                       <tr
                         key={cart?._id}
                         className="bg-white border-b   py-10 hover:bg-gray-50 ">

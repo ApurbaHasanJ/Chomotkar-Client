@@ -10,9 +10,9 @@ const PhoneMyCarts = () => {
   const [payCarts, setPayCarts] = useState({});
 
   const [toggleModal, setToggleModal] = useState(false);
-  const { filteredProducts, handleDeleteItem } = useCarts();
+  const { filteredCarts, handleDeleteItem } = useCarts();
 
-  console.log(filteredProducts);
+  console.log(filteredCarts);
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
@@ -20,7 +20,7 @@ const PhoneMyCarts = () => {
   return (
     <>
       {toggleModal ? (
-        <div className="py-8 pb-20 overflow-scroll max-h-screen fixed top-[52px] z-[400] bg-[#F6F6F6]">
+        <div className="py-8 pb-20 overflow-scroll max-h-screen fixed top-[52px] z-[50] bg-[#F6F6F6]">
           <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
         </div>
       ) : (
@@ -39,10 +39,10 @@ const PhoneMyCarts = () => {
                 className="text-2xl bg-[#75934e] bg-opacity-60 transition-all duration-1000 text-white rounded-md hover:text-rose-500"
               />
             </div>
-            {filteredProducts.length > 0 ? (
+            {filteredCarts.length > 0 ? (
               <div className="grid grid-cols-1 gap-4 overflow-y-scroll max-h-[calc(100vh-52px)] pb-6">
-                {filteredProducts &&
-                  filteredProducts.map((product, index) => (
+                {filteredCarts &&
+                  filteredCarts.map((product, index) => (
                     <div
                       key={index}
                       className=" p-4 text-sm h-fit text-slate-800 bg-[#75934e] bg-opacity-30 rounded-md drop-shadow-md">
@@ -66,14 +66,26 @@ const PhoneMyCarts = () => {
                         <div className="flex flex-col ">
                           <div className="flex gap-2">
                             <span>Size:</span>
-                            <span className="uppercase">{product?.size}</span>
+                            {product?.size ? (
+                              <span className="uppercase">{product?.size}</span>
+                            ) : (
+                              "none"
+                            )}
                           </div>
                           <div className="flex items-center gap-2">
                             <span>Color: </span>
-                            <span
-                              style={{ backgroundColor: product?.color }}
-                              className="w-3 h-3 rounded-full border-2 border-slate-400"></span>
-                            <span className="capitalize">{product?.color}</span>
+                            {product?.color ? (
+                              <>
+                                <span
+                                  style={{ backgroundColor: product?.color }}
+                                  className="w-3 h-3 rounded-full border-2 border-slate-400"></span>
+                                <span className="capitalize">
+                                  {product?.color}
+                                </span>
+                              </>
+                            ) : (
+                              "none"
+                            )}
                           </div>
                           <div className="flex gap-2">
                             <span>Quantity: </span>

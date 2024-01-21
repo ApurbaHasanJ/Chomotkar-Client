@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const useCarts = () => {
   const { carts, handleRemoveCart } = useContext(CartContext);
   const [products] = useProducts();
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredCarts, setFilteredCarts] = useState([]);
 
   useEffect(() => {
     // Filter and enhance products based on cart data
@@ -27,7 +27,7 @@ const useCarts = () => {
 
     const newCartFirst = updatedProducts.slice().reverse();
 
-    setFilteredProducts(newCartFirst);
+    setFilteredCarts(newCartFirst);
   }, [carts, products]);
 
   const handleDeleteItem = (productId, color, size) => {
@@ -47,7 +47,7 @@ const useCarts = () => {
   };
 
   // Return the filtered products array
-  return { filteredProducts, handleDeleteItem };
+  return { filteredCarts, handleDeleteItem };
 };
 
 export default useCarts;

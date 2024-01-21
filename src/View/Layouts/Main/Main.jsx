@@ -10,6 +10,7 @@ import useProducts from "../../Hooks/useProducts";
 import Cart from "../../Shared/Cart/Cart";
 import Popup from "../../Shared/Popups/Popup";
 import PhoneMyCarts from "../../Pages/Dashboard/UserPages/PhoneMyCarts";
+import PhoneWishlist from "../../Pages/Dashboard/UserPages/PhoneWishlist";
 
 const Main = () => {
   const { loading } = useContext(AuthContext);
@@ -32,10 +33,11 @@ const Main = () => {
           <Navbar />
           {isLoginOrRegister || <Popup />}
           <Outlet />
-          <div className="border bg-[#75934e] shadow-xl p-3 fixed z-[100] right-0 top-1/2 transform -translate-y-1/2">
+          <div className="border bg-[#75934e] shadow-xl p-3 fixed z-[49] right-0 top-1/2 transform -translate-y-1/2">
             <Cart />
           </div>
           <PhoneMyCarts />
+          <PhoneWishlist />
           <WhatsApp />
           <Footer />
           {/* bottom bar for only small devices */}
