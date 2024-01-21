@@ -13,6 +13,7 @@ import CollectionProvider from "./View/Providers/CollectionProvider";
 import CartProvider from "./View/Providers/CartProvider";
 import OrdersHistoryProvider from "./View/Providers/OrdersHistoryProvider";
 import { HelmetProvider } from "react-helmet-async";
+import SideCartProvider from "./View/Providers/SideCartProvider";
 
 const queryClient = new QueryClient();
 
@@ -20,22 +21,24 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <OrdersHistoryProvider>
-        <CartProvider>
-          <CollectionProvider>
-            <CategoryProvider>
-              <ColorProvider>
-                <AuthProvider>
-                  <WishlistProvider>
-                    <HelmetProvider>
-                      <Toaster position="top-right" reverseOrder={false} />
-                      <RouterProvider router={router} />
-                    </HelmetProvider>
-                  </WishlistProvider>
-                </AuthProvider>
-              </ColorProvider>
-            </CategoryProvider>
-          </CollectionProvider>
-        </CartProvider>
+        <SideCartProvider>
+          <CartProvider>
+            <CollectionProvider>
+              <CategoryProvider>
+                <ColorProvider>
+                  <AuthProvider>
+                    <WishlistProvider>
+                      <HelmetProvider>
+                        <Toaster position="top-right" reverseOrder={false} />
+                        <RouterProvider router={router} />
+                      </HelmetProvider>
+                    </WishlistProvider>
+                  </AuthProvider>
+                </ColorProvider>
+              </CategoryProvider>
+            </CollectionProvider>
+          </CartProvider>
+        </SideCartProvider>
       </OrdersHistoryProvider>
     </QueryClientProvider>
   </React.StrictMode>

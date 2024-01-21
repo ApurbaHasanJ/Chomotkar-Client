@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const {
@@ -21,7 +22,7 @@ const Login = () => {
 
   //   const [disabled, setDisabled] = useState(true);
 
-  const { signIn,setLoading } = useContext(AuthContext);
+  const { signIn, setLoading } = useContext(AuthContext);
 
   // show password
   const [show, setShow] = useState(false);
@@ -51,7 +52,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        setLoading(false)
+        setLoading(false);
         Swal.fire({
           icon: "error",
           title: "Error login user",
@@ -66,6 +67,9 @@ const Login = () => {
 
   return (
     <div className="pt-20 px-6  bg-transparent z-20">
+      <Helmet>
+        <title>Login | Chomotkar</title>
+      </Helmet>
       <div className="my-container bg-[#75934e] bg-opacity-60 pt-6 shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Login

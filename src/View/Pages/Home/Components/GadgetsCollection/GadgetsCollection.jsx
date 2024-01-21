@@ -27,10 +27,9 @@ const GadgetsCollection = () => {
           slidesPerView={2}
           spaceBetween={8}
           breakpoints={{
-           
             768: {
               slidesPerView: 4,
-              spaceBetween: 20,
+              spaceBetween: 13,
             },
           }}
           autoplay={{

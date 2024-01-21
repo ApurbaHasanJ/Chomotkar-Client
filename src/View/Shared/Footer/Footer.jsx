@@ -73,9 +73,9 @@ const Footer = () => {
                 Shipping Policy
               </Link>
               <Link
-                to="#"
+                to="/contact-us"
                 className="hover:text-[#75934e] whitespace-nowrap font-mono duration-500 hover:underline underline-offset-4">
-                Terms & Conditions
+                Contact Us
               </Link>
             </div>
           </div>
@@ -94,7 +94,7 @@ const Footer = () => {
           <div className="md:mt-11 mt-4 font-mono">
             <div className="flex items-center gap-2">
               <MdCall className="text-base md:text-lg" />
-              <span>+8801886084422</span>
+              <span>+880 1886-084422</span>
             </div>
             <div className="flex items-center gap-2">
               <MdEmail className="text-base md:text-lg" />

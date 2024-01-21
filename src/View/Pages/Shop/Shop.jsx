@@ -27,7 +27,7 @@ const Shop = () => {
     <main>
       {/* <ShopHero /> */}
       <Helmet>
-        <title>Chomotkar | Collection</title>
+        <title>Collection | Chomotkar</title>
       </Helmet>
       <div className="flex md:gap-4 md:mt-32 my-20 my-container relative overflow-visible">
         <Filter />

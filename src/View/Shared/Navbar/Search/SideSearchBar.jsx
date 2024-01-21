@@ -50,15 +50,15 @@ const SideSearchBar = ({ handleSideSearchBar }) => {
           <input
             type="text"
             id="search"
-            className="block w-full p-4  text-2xl placeholder:text-slate-900 placeholder:text-2xl text-slate-900 focus:lowercase border-x-0 border-t-0 placeholder:focus:text-slate-900  focus:border-slate-500 focus:border-b  focus:ring-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block w-full p-4  text-2xl placeholder:text-slate-900 placeholder:text-2xl text-slate-900 border-x-0 border-t-0 placeholder:focus:text-slate-900  focus:border-slate-500 focus:border-b  focus:ring-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Products..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())}
           />
         </div>
       </form>
 
-      <div className="absolute top-[100px] z-[100000] bg-white w-[350px]  overflow-y-auto min-h-[600px] h-full max-h-[390px]">
+      <div className="absolute top-[100px] z-[100000] bg-white w-[350px]  overflow-y-auto h-[550px] ">
         <div className="w-full">
           {filteredProducts.map((product) => (
             <Link

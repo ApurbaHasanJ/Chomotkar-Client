@@ -53,7 +53,7 @@ const GeneralNavItems = () => {
             }>
             <MdEmail className="w-14 h-7 md:mx-0 mx-auto" title="CONTACT" />
             <span className="text-base font-semibold  block whitespace-nowrap">
-              CONTACT
+              CONTACT US
             </span>
           </NavLink>
         </li>

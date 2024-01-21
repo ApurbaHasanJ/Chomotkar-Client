@@ -25,6 +25,7 @@ import PaymentError from "../Pages/PaymentPages/PaymentError";
 import ManageOrders from "../Pages/Dashboard/AdminPages/ManageOrders";
 import OrdersHistory from "../Pages/Dashboard/UserPages/OrdersHistory";
 import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome/AdminHome";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "payment/error?",
         element: <PaymentError />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
       },
     ],
   },

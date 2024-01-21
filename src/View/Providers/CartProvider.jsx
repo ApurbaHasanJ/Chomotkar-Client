@@ -14,29 +14,30 @@ const CartProvider = ({ children }) => {
 
   //   get cart
   const getCart = () => {
-    const currentCart = JSON.parse(
-      localStorage.getItem("ChomotkarFashionCart")
-    );
-
-    setCarts(currentCart || []);
+    const currentCart =
+      JSON.parse(localStorage.getItem("ChomotkarFashionCart")) || [];
+    setCarts(currentCart);
     return currentCart || [];
   };
 
-  const handleAddCart = (quantity, productId) => {
+  // add to cart
+  const handleAddCart = (quantity, productId, color, size) => {
     const currentCart =
       JSON.parse(localStorage.getItem("ChomotkarFashionCart")) || [];
 
     const existingItemIndex = currentCart.findIndex(
-      (item) => item.productId === productId
+      (item) =>
+        item.productId === productId &&
+        item.color === color &&
+        item.size === size
     );
 
     // set item to the cart
     if (existingItemIndex < 0) {
-      const newItem = { productId, quantity };
+      const newItem = { productId, quantity: +quantity, color, size }; // Ensure quantity is a number
       currentCart.push(newItem);
     } else {
-      // updating quantity if exist
-      currentCart[existingItemIndex].quantity += quantity;
+      currentCart[existingItemIndex].quantity += +quantity; // Convert quantity to number before addition
     }
 
     // save to local storage
@@ -48,12 +49,15 @@ const CartProvider = ({ children }) => {
   };
 
   // remove product id from cart
-  const handleRemoveCart = (productId) => {
+  const handleRemoveCart = (productId, color, size) => {
     const currentCart =
       JSON.parse(localStorage.getItem("ChomotkarFashionCart")) || [];
 
     const updatedCart = currentCart.filter(
-      (item) => item.productId !== productId
+      (item) =>
+        item.productId !== productId ||
+        item.color !== color ||
+        item.size !== size 
     );
 
     // save to local storage
@@ -65,7 +69,8 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ carts, handleAddCart, handleRemoveCart, totalQuantity }}>
+    <CartContext.Provider
+      value={{ carts, handleAddCart, handleRemoveCart, totalQuantity }}>
       {children}
     </CartContext.Provider>
   );

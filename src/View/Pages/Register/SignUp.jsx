@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   // show password
@@ -104,6 +105,9 @@ const SignUp = () => {
 
   return (
     <div className="pt-20 px-6  bg-transparent z-20">
+      <Helmet>
+        <title>Register | Chomotkar</title>
+      </Helmet>
       <div className="my-container bg-[#75934e] bg-opacity-60 pt-6 shadow-xl">
         <h3 className="font-mono lg:text-4xl md:text-3xl text-2xl text-slate-900 text-center font-bold md:mt-0 mt-8 mb-5">
           Register

@@ -29,8 +29,8 @@ const Filter = ({ toggleFilters, handleToggleFilters }) => {
             />
           </button>
           <div className="grid gap-1 overflow-y-scroll max-h-[550px]">
-          <CollectionFilter />
-          <CategoryFilter />
+            <CollectionFilter />
+            <CategoryFilter />
           </div>
         </div>
       )}

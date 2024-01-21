@@ -1,17 +1,18 @@
 import { MdDeleteForever } from "react-icons/md";
-import Swal from "sweetalert2";
 import SectionTitle from "../../../Shared/SectionTitle";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../Providers/CartProvider";
-import useProducts from "../../../Hooks/useProducts";
+// import useProducts from "../../../Hooks/useProducts";
 import Checkout from "./Checkout";
 import toast from "react-hot-toast";
+import useCarts from "../../../Hooks/useCarts";
 
 const MyCart = () => {
-  const { carts, totalQuantity, handleRemoveCart } = useContext(CartContext);
-  const [products] = useProducts();
+  const { totalQuantity } = useContext(CartContext);
+  // const [products] = useProducts();
+  const { filteredProducts, handleDeleteItem } = useCarts();
   const [payCarts, setPayCarts] = useState({});
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedColor, setSelectedColor] = useState({
     id: "",
     color: "",
@@ -23,28 +24,30 @@ const MyCart = () => {
 
   const [toggleModal, setToggleModal] = useState(false);
 
-  console.log(payCarts);
-  console.log(selectedSize);
+  // console.log(payCarts);
+  // console.log(selectedSize);
 
   // filter the cart products
-  useEffect(() => {
-    // Update the quantity in the products list based on the carts data
-    const updatedProducts = products
-      .filter((product) =>
-        carts.some((cart) => cart.productId === product?._id)
-      )
-      .map((product) => {
-        const cartItem = carts.find((cart) => cart.productId === product?._id);
-        return {
-          ...product,
-          quantity: cartItem ? cartItem.quantity : 0,
-        };
-      });
+  // useEffect(() => {
+  //   // Update the quantity in the products list based on the carts data
+  //   const updatedProducts = products
+  //     .filter((product) =>
+  //       carts.some((cart) => cart.productId === product?._id)
+  //     )
+  //     .map((product) => {
+  //       const cartItem = carts.find((cart) => cart.productId === product?._id);
+  //       return {
+  //         ...product,
+  //         quantity: cartItem ? cartItem.quantity : 1,
+  //         color: cartItem ? cartItem.color : "",
+  //         size: cartItem ? cartItem.size : "",
+  //       };
+  //     });
 
-    setFilteredProducts(updatedProducts);
-  }, [carts, products]);
+  //   setFilteredProducts(updatedProducts);
+  // }, [carts, products]);
 
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   // calculating total product price
   const totalPrice = filteredProducts.reduce((acc, product) => {
@@ -61,21 +64,6 @@ const MyCart = () => {
   };
 
   // handle delete from cart
-  const handleDeleteItem = (cart) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You want to remove this?!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        handleRemoveCart(cart);
-      }
-    });
-  };
 
   return (
     <>
@@ -189,7 +177,7 @@ const MyCart = () => {
                           <select
                             name="selectedSize"
                             // value={selectedSize}
-                            defaultValue="none"
+                            // defaultValue={cart?.size || "none"}
                             onChange={(e) =>
                               setSelectedSize({
                                 id: cart._id,
@@ -297,7 +285,13 @@ const MyCart = () => {
 
                         <td className=" px-6 py-4 h-full">
                           <MdDeleteForever
-                            onClick={() => handleDeleteItem(cart?._id)}
+                            onClick={() =>
+                              handleDeleteItem(
+                                cart?._id,
+                                cart?.color,
+                                cart?.size
+                              )
+                            }
                             className="bg-red-600 hover:bg-red-700 text-center  p-1 rounded-md text-white text-[32px]"
                           />
                         </td>

@@ -6,6 +6,7 @@ import UserNavItems from "../../Shared/DashNavItems/UserNavItems";
 import GeneralNavItems from "../../Shared/DashNavItems/GeneralNavItems";
 import useAdmin from "../../Hooks/useAdmin";
 import { Helmet } from "react-helmet-async";
+import { RxCross2 } from "react-icons/rx";
 
 const Dashboard = () => {
   let [showDashboard, setShowDashboard] = useState(false);
@@ -20,7 +21,7 @@ const Dashboard = () => {
   return (
     <div className={` md:flex ${showDashboard ? "bg-gray-50" : ""} `}>
       <Helmet>
-        <title>Chomotkar | Dashboard</title>
+        <title>Dashboard | Chomotkar</title>
       </Helmet>
       {/* Dashboard */}
       <>
@@ -61,9 +62,15 @@ const Dashboard = () => {
                   alt=""
                 />
               </div>
-              <button onClick={handleToggleDashboard}>
-                <HiOutlineMenu className="w-14 h-7 ml-auto " title="MENU" />
-              </button>
+              {showDashboard ? (
+                <button onClick={handleToggleDashboard}>
+                  <RxCross2 className="w-14 h-7 ml-auto " title="MENU" />
+                </button>
+              ) : (
+                <button onClick={handleToggleDashboard}>
+                  <HiOutlineMenu className="w-14 h-7 ml-auto " title="MENU" />
+                </button>
+              )}
             </div>
             <div
               className={`fixed bg-[#96bb65] h-full pb-4 pr-2 ${

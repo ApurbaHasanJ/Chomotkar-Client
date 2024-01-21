@@ -28,10 +28,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
   const navigate = useNavigate();
 
-  console.log("payCarts", payCarts);
   // console.log(coupons);
   // Assuming the user entered coupon code
   const [enteredCouponCode, setEnteredCouponCode] = useState("");
+
+  console.log(payCarts);
 
   const {
     register,
@@ -173,14 +174,9 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
       );
 
       // Log the response data within the then block
-      console.log("axiosData", axiosData);
+      // console.log("axiosData", axiosData);
 
       setLoading(false);
-
-      if (data) {
-        console.log(data);
-        return;
-      }
 
       // Redirect based on the payment method
       if (axiosData && axiosData.data.bkashURL) {
@@ -200,7 +196,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   return (
     <section className="my-container relative pt-12 ">
       <Helmet>
-        <title>Chomotkar | Checkout</title>
+        <title>Checkout | Chomotkar</title>
       </Helmet>
       <SectionTitle
         title={"Delivery & Billing"}
@@ -209,14 +205,14 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
       <RxCross2
         onClick={() => handleToggleModal(!modal)}
-        className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-6xl text-5xl ml-auto hover:bg-rose-100 p-2"
+        className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-5xl text-4xl ml-auto hover:bg-rose-100 p-1 md:p-2"
       />
       {loading ? (
         <div className="max-h-screen">
           <Loader />
         </div>
       ) : (
-        <div className="grid  bg-white shadow-md md:px-10 px-5 py-10 mx-3 lg:mx-0 rounded-lg my-7 mt-0 lg:my-8 items-center">
+        <div className="grid  bg-white shadow-md md:px-10 px-5 py-10 mx-3 lg:mx-0 rounded-lg my-7  lg:my-8 items-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="lg:flex gap-7 relative">
@@ -410,24 +406,27 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
             </div>
             {/* col 2 */}
-            <div className="w-full ">
+            <div className="w-full my-4">
               {/* product photo with size and color */}
               <div className="bg-slate-100 p-4">
-                  <div  className="flex items-center gap-4">
+                <div className="flex items-center gap-4">
                   <img className="w-20" src={payCarts?.photos[0]?.img} alt="" />
-                    <div className="flex flex-col ">
-                      <div className="flex gap-2">
-                        <span>Size:</span>
-                        <span className="uppercase">{payCarts?.size}</span>
-                      </div>
-                      <div className="flex gap-2">
-                        <span>Color: </span>
-                        <span className="uppercase">{payCarts?.color}</span>
-                      </div>
+                  <div className="flex flex-col ">
+                    <div className="flex items-center gap-2">
+                      <span>Size:</span>
+                      <span className="uppercase">{payCarts?.size}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>Color: </span>
+                      <span
+                        style={{ backgroundColor: payCarts?.color }}
+                        className="w-3 h-3 rounded-full border-2 border-slate-400"></span>
+                      <span className="capitalize">{payCarts?.color}</span>
                     </div>
                   </div>
-                    <h3>Name: {payCarts?.title}</h3>
                 </div>
+                <h3>Name: {payCarts?.title}</h3>
+              </div>
               {/* product pricing details */}
               <div className="p-4 bg-slate-100 my-4">
                 <div className={`${payCarts}`}>

@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 const PaymentSuccess = () => {
   const { trxID } = useParams();
   return (
     <div className="lg:mt-8 mt-28 grid text-center text-gray-600 justify-center items-center font-semibold">
+      <Helmet>
+        <title>Payment Success | Chomotkar</title>
+      </Helmet>
       <div>
         <p className="text-lg  ">
           Thank you for your purchase! Your payment has been successfully
