@@ -185,7 +185,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
       } else if (axiosData && axiosData.data?.insertedId) {
         // Redirect for cash on delivery
         // Adjust the URL as needed
-        navigate("/dashboard/orders-history");
+        navigate("/order-received");
       }
     } catch (error) {
       console.error(error);

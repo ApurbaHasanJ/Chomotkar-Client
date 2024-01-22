@@ -59,7 +59,7 @@ const Products = () => {
       <div className="block md:hidden mt-8">
         <button
           onClick={handleToggleFilter}
-          className="text-lg border p-2 px-3 border-black bg-black text-white hover:text-black transition-colors duration-1000 hover:bg-white flex items-center gap-4 font-bold underline underline-offset-4">
+          className="text-base border p-1 px-2 border-[#75934e] bg-[#75934e] bg-opacity-80 hover:shadow-xl text-white hover:text-[#75934e] transition-colors duration-1000 hover:bg-white flex items-center gap-4 font-bold underline underline-offset-4">
           <span>FILTER</span>
           <FaFilter />
         </button>

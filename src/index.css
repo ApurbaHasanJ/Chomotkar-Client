@@ -32,7 +32,7 @@
 }
 
 .default {
-  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-800 hover:text-[#75934e] transition-colors duration-300;
+  @apply font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-[#75934e] transition-colors duration-300;
 }
 
 .dashActive {

@@ -49,16 +49,15 @@ const ProductCard = ({ product }) => {
 
       {/* title & price */}
       <div className="text-center px-[2px]">
-        <p className="text-slate-400 hover:text-black duration-300 text-xs md:text-base mt-2">
-          Brand: {product?.productBy}
-        </p>
         <p className="my-1  hover:text-[#47720f] duration-300 text-xs md:text-base font-mono">
           {product?.title}
         </p>
         <div className="text-slate-800 flex justify-center items-center gap-2 md:text-base text-xs font-medium font-mono">
           {product?.newPrice ? (
             <div className="flex flex-wrap justify-center items-center gap-2">
-              <span className="line-through text-gray-400">TK.{product?.price}</span>
+              <span className="line-through text-gray-400">
+                TK.{product?.price}
+              </span>
               <span className="font-semibold">TK.{product?.newPrice}</span>
             </div>
           ) : (

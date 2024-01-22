@@ -1,9 +1,8 @@
 import { HiHome } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaCalendarCheck } from "react-icons/fa";
 import { FaBagShopping, FaHeart, FaUser } from "react-icons/fa6";
-import { useContext, useState } from "react";
-import SideSearchBar from "./Search/SideSearchBar";
+import { useContext } from "react";
 import { CartContext } from "../../Providers/CartProvider";
 import useAdmin from "../../Hooks/useAdmin";
 import { SideCartContext } from "../../Providers/SideCartProvider";
@@ -12,16 +11,12 @@ import { SideWishlistContext } from "../../Providers/SideWishListProvider";
 
 const BottomNavbar = () => {
   const [isAdmin, adminLoading] = useAdmin();
-  const [sideSearchBar, setSideSearchBar] = useState(false);
   const { wishlist } = useContext(WishlistContext);
   const { sideCart, setSideCart } = useContext(SideCartContext);
   const { sideWishlist, setSideWishlist } = useContext(SideWishlistContext);
 
   const { totalQuantity } = useContext(CartContext);
 
-  const handleSideSearchBar = () => {
-    setSideSearchBar(!sideSearchBar);
-  };
   return (
     <div className="">
       <nav className="flex fixed bottom-0  w-full px-5 z-[49] bg-white  shadow-2xl shadow-green-300 drop-shadow-2xl py-2 md:hidden justify-between items-center">
@@ -37,14 +32,14 @@ const BottomNavbar = () => {
             </NavLink>
           </li>
           <li>
-            <button
-              onClick={handleSideSearchBar}
-              className="font-semibold text-base uppercase whitespace-nowrap tracking-wide text-slate-600 hover:text-[#75934e] transition-colors duration-300">
+            <NavLink
+              to="/dashboard/orders-history"
+              className={({ isActive }) => (isActive ? "active" : "default")}>
               <div className="flex flex-col gap-1 items-center">
-                <FaSearch className="text-xl" />
-                <span className="text-xs">Search</span>
+                <FaCalendarCheck className="text-xl" title="ORDERS HISTORY" />
+                <span className="text-xs">ORDERS</span>
               </div>
-            </button>
+            </NavLink>
           </li>
           <li>
             <NavLink
@@ -103,12 +98,6 @@ const BottomNavbar = () => {
           </li>
         </ul>
       </nav>
-      <div
-        className={`fixed bg-white h-full w-full max-w-[350px] pb-4 p-2 ${
-          sideSearchBar ? "right-0" : "-right-[1700px]"
-        } transform duration-700 shadow-2xl top-0 z-[10000]`}>
-        <SideSearchBar handleSideSearchBar={handleSideSearchBar} />
-      </div>
     </div>
   );
 };

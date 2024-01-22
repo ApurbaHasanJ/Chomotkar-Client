@@ -26,6 +26,7 @@ import ManageOrders from "../Pages/Dashboard/AdminPages/ManageOrders";
 import OrdersHistory from "../Pages/Dashboard/UserPages/OrdersHistory";
 import AdminHome from "../Pages/Dashboard/AdminPages/AdminHome/AdminHome";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import OrderReceived from "../Pages/OrderReceived/OrderReceived";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/order-received",
+        element: <OrderReceived />,
       },
       {
         path: "payment/success/:trxID",
