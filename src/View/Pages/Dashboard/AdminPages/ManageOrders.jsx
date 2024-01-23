@@ -38,9 +38,6 @@ const ManageOrders = () => {
       return null;
     })
     .filter(Boolean);
-  console.log(orderedProducts);
-
-  const getNewOrdersFirst = orderedProducts.slice().reverse();
 
   const handleOrderStatus = (id, status) => {
     // const encodedDate = encodeURIComponent(id);
@@ -123,8 +120,8 @@ const ManageOrders = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {getNewOrdersFirst &&
-                      getNewOrdersFirst.map((order, index) => (
+                    {orderedProducts &&
+                      orderedProducts.map((order, index) => (
                         <tr
                           key={order?._id}
                           className="bg-white border-b py-10 hover:bg-gray-50 ">

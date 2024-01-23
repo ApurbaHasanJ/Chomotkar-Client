@@ -66,7 +66,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="pt-20 px-6  bg-transparent z-20">
+    <div className="md:pt-20 pt-10 md:px-6 px-2 bg-transparent z-20">
       <Helmet>
         <title>Login | Chomotkar</title>
       </Helmet>
@@ -80,7 +80,7 @@ const Login = () => {
         <div className=" grid max-w-xl mx-auto  my-7 mt-0 lg:my-16 items-center">
           {/* Login Img */}
 
-          <div className=" px-10 pb-10 mx-3 lg:mx-0 rounded-lg">
+          <div className=" md:px-10 px-2 pb-10 md:mx-3 lg:mx-0 rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid mb-4">
                 <label className="label text-base font-medium text-slate-900 ">

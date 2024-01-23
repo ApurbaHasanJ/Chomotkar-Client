@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 
 const AdminNavItems = () => {
   return (
-    <nav className="w-full font-g-mono">
-      <ul className="flex flex-col justify-start items-start md:gap-6 gap-3">
+    <nav className="w-full font-g-mono mt-8 md:mt-0">
+      <ul className="flex flex-col justify-center ml-3 items-start md:gap-6 gap-3">
         <li>
           <NavLink
             to="/dashboard/admin-home"
@@ -15,8 +15,8 @@ const AdminNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="ADMIN HOME" />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <FaHome className="md:text-2xl text-lg md:mx-0 mx-auto" title="ADMIN HOME" />
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               ADMIN HOME
             </span>
           </NavLink>
@@ -30,10 +30,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <MdAddBox
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="ADD PRODUCTS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               ADD PRODUCTS
             </span>
           </NavLink>
@@ -47,10 +47,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaList
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="MANAGE PRODUCTS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               MANAGE PRODUCTS
             </span>
           </NavLink>
@@ -64,10 +64,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaBook
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="MANAGE ORDERS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               MANAGE ORDERS
             </span>
           </NavLink>
@@ -81,10 +81,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaUsers
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="MANAGE USERS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               MANAGE USERS
             </span>
           </NavLink>
@@ -98,10 +98,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <MdDiscount
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="MANAGE COUPONS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               MANAGE COUPONS
             </span>
           </NavLink>
@@ -115,10 +115,10 @@ const AdminNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <MdReviews
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="MANAGE REVIEWS"
             />
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold whitespace-nowrap">
               MANAGE REVIEWS
             </span>
           </NavLink>

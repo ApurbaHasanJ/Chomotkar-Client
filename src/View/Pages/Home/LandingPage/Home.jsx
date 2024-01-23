@@ -19,6 +19,7 @@ const Home = () => {
         <title>Chomotkar</title>
       </Helmet>
       <Hero />
+      
       {/* <ConsumerFavor /> */}
       <ShopByCategory />
       {/* <BestSellingProduct /> */}

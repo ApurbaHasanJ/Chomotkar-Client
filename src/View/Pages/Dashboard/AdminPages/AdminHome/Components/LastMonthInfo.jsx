@@ -30,17 +30,16 @@ const LastMonthInfo = () => {
     return (
       orderDate >= lastMonthStart &&
       orderDate <= lastMonthEnd &&
-      order.orderStatus === "confirmed" &&
-      order.paidStatus === true
+      order.orderStatus === "confirmed"
     );
   });
 
-//   console.log(filteredOrders);
+  //   console.log(filteredOrders);
 
   // Calculate total sales revenue for the last month
   const totalSalesRevenueLastMonth = calculateTotalSalesRevenue(filteredOrders);
 
-//   console.log("Total Sales Revenue Last Month:", totalSalesRevenueLastMonth);
+  //   console.log("Total Sales Revenue Last Month:", totalSalesRevenueLastMonth);
 
   return (
     <div className="bg-white md:w-3/6 w-full h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10 ">

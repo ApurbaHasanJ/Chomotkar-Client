@@ -20,13 +20,13 @@ const Footer = () => {
     });
   }, [controls]);
   return (
-    <section className="bg-[#222222] bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705510546/Chomotkar/Logo/Website-Green-Banner-2_pbo2rk.jpg')] text-black md:pt-16 pt-8">
+    <section className="bg-[#222222] md:text-base text-sm bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705510546/Chomotkar/Logo/Website-Green-Banner-2_pbo2rk.jpg')] text-black md:pt-16 pt-8">
       <div className="my-container  flex lg:flex-row flex-col w-full justify-between gap-3 gap-y-10">
         {/* 1 card */}
         <div className="lg:w-4/12 w-full ">
           <div className="flex md:justify-start justify-center">
             <img
-              className="md:w-52 drop-shadow-2xl w-44"
+              className="md:w-52 drop-shadow-2xl w-40"
               src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
               alt=""
             />
@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="lg:w-5/12 w-full flex  justify-between md:gap-20 gap-4 lg:gap-32">
           {/* 2nd col */}
           <div className=" md:mx-auto">
-            <h1 className="text-black font-bold text-xl uppercase">
+            <h1 className="text-black font-bold md:text-xl text-base uppercase">
               Information
             </h1>
             <div className="md:mt-11 mt-5 grid md:gap-3 gap-1">
@@ -88,7 +88,7 @@ const Footer = () => {
 
         {/* 4th col */}
         <div className=" lg:w-3/12 w-full mr-0">
-          <h1 className="text-black font-bold text-xl uppercase">
+          <h1 className="text-black font-bold md:text-xl text-base uppercase">
             GET IN TOUCH
           </h1>
           <div className="md:mt-11 mt-4 font-mono">

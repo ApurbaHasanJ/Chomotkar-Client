@@ -34,7 +34,7 @@ const Dashboard = () => {
             {/* title for large device */}
             <div className=" lg:block hidden w-full">
               <img
-                className="md:w-52 mx-auto drop-shadow-2xl w-44"
+                className="md:w-44 mx-auto drop-shadow-2xl w-32"
                 src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
                 alt=""
               />
@@ -54,28 +54,28 @@ const Dashboard = () => {
         <div className="w-full ">
           <nav className="  sticky bg-[#96bb65]  top-0 right-0 w-full z-50  py-4 lg:hidden  ">
             {/* title for sm device */}
-            <div className="flex w-full justify-between items-center">
-              <div className=" mx-6">
+            <div className="flex px-3 w-full justify-between items-center">
+              <div className="">
                 <img
-                  className="md:w-52 drop-shadow-2xl w-44"
+                  className="md:w-44 drop-shadow-2xl w-32"
                   src="https://res.cloudinary.com/dezmmga9k/image/upload/v1705569203/Chomotkar/Logo/Untitled-2_bcblaa.png"
                   alt=""
                 />
               </div>
               {showDashboard ? (
                 <button onClick={handleToggleDashboard}>
-                  <RxCross2 className="w-14 h-7 ml-auto " title="MENU" />
+                  <RxCross2 className="w-11 h-7 ml-auto " title="MENU" />
                 </button>
               ) : (
                 <button onClick={handleToggleDashboard}>
-                  <HiOutlineMenu className="w-14 h-7 ml-auto " title="MENU" />
+                  <HiOutlineMenu className="w-11 h-7 ml-auto " title="MENU" />
                 </button>
               )}
             </div>
             <div
               className={`fixed bg-[#96bb65] h-full pb-4 pr-2 ${
                 showDashboard ? "left-0" : "-left-[400px]"
-              } transform duration-700 shadow-2xl top-[74px] `}>
+              } transform duration-700 shadow-2xl top-[62px] `}>
               <div className="md: pt-5 ">
                 {isAdmin ? <AdminNavItems /> : <UserNavItems />}
                 <hr className="h-[0.1px] w-4/6 mx-auto my-7 bg-white" />

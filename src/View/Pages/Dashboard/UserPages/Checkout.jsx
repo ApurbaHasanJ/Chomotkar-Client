@@ -11,6 +11,7 @@ import { DateTime } from "luxon";
 import axios from "axios";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { CartContext } from "../../../Providers/CartProvider";
 
 const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const { handleAddToOrdersHistory } = useContext(OrdersHistoryContext);
@@ -27,6 +28,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [payNagad, setPayNagad] = useState(false);
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
   const navigate = useNavigate();
+  
+  const { handleRemoveCart } = useContext(CartContext);
 
   // console.log(coupons);
   // Assuming the user entered coupon code
@@ -180,9 +183,19 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
       // Redirect based on the payment method
       if (axiosData && axiosData.data.bkashURL) {
+        handleRemoveCart(
+          payCarts?._id,
+          payCarts?.color,
+          payCarts?.size
+        )
         // Redirect to the provided URL for online payment
         window.location.replace(axiosData?.data?.bkashURL);
       } else if (axiosData && axiosData.data?.insertedId) {
+        handleRemoveCart(
+          payCarts?._id,
+          payCarts?.color,
+          payCarts?.size
+        )
         // Redirect for cash on delivery
         // Adjust the URL as needed
         navigate("/order-received");
@@ -194,7 +207,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   };
 
   return (
-    <section className="my-container relative pt-12 ">
+    <section className="my-container relative lg:pt-12 ">
       <Helmet>
         <title>Checkout | Chomotkar</title>
       </Helmet>
@@ -212,16 +225,16 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
           <Loader />
         </div>
       ) : (
-        <div className="grid  bg-white shadow-md md:px-10 px-5 py-10 mx-3 lg:mx-0 rounded-lg my-7  lg:my-8 items-center">
+        <div className="grid  bg-white shadow-md  md:px-10 p-3 pb-10 md:mx-3 lg:mx-0 rounded-lg my-7  lg:my-8 items-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="lg:flex gap-7 relative">
+            className="lg:flex gap-7 relative md:text-base text-xs">
             {/* 1st col */}
             <div className="w-full">
               {/* 1st row */}
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Name</span>
+              <div className="grid mb-3">
+                <label className="flex items-center gap-1 font-medium text-slate-900 ">
+                  <span className="uppercase font-medium ">Name</span>
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
@@ -235,13 +248,13 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     pattern: /^[A-Za-z\s]+$/i,
                   })}
                   placeholder="Your name"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   aria-invalid={errors.name ? "true" : "false"}
                 />
               </div>
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Phone</span>
+              <div className="grid mb-3">
+                <label className="flex items-center gap-1 font-medium text-slate-900 ">
+                  <span className="uppercase font-medium ">Phone</span>
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
@@ -255,14 +268,14 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   })}
                   required
                   placeholder="Your phone"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
 
               {/* 2nd row */}
-              <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">Email</span>
+              <div className="grid mb-3">
+                <label className="flex items-center gap-1 mb-1 font-medium text-slate-900 ">
+                  <span className="uppercase font-medium">Email</span>
                   <span className="text-gray-600 text-xs">(optional)</span>
                 </label>
                 <input
@@ -273,12 +286,12 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   name="email"
                   {...register("email")}
                   placeholder="Your email"
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                 />
               </div>
-              <div className="grid mb-4 ">
-                <label className="flex items-center gap-1 justify-start text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
+              <div className="grid mb-3">
+                <label className="flex items-center gap-1 justify-start font-medium text-slate-900 ">
+                  <span className="uppercase font-medium ">
                     Location
                   </span>
                   <span className="text-red-600 text-xl">*</span>
@@ -288,7 +301,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   {...register("location")}
                   required
                   onChange={(e) => handleDeliveryCharge(e.target.value)}
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
+                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
                   <option value="">None</option>
                   <option value="insideDhaka">Inside Dhaka</option>
                   <option value="outsideDhaka">Outside Dhaka</option>
@@ -296,8 +309,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
               {/* 3rd row */}
               <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
+                <label className="flex items-center gap-1 font-medium text-slate-900 ">
+                  <span className="uppercase font-medium ">
                     Address
                   </span>
                   <span className="text-red-600 text-xl">*</span>
@@ -315,8 +328,8 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
 
               <div className="grid mb-4">
-                <label className="flex items-center gap-1 text-base font-medium text-slate-900 ">
-                  <span className="uppercase font-medium text-base">
+                <label className="flex items-center gap-1 font-medium text-slate-900 mb-1">
+                  <span className="uppercase font-medium ">
                     Order Note
                   </span>
                   <span className="text-gray-600 text-xs">(optional)</span>
@@ -331,10 +344,10 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               </div>
               {/* payment method */}
               <div>
-                <h2 className="text-gray-700 font-semibold text-2xl">
+                <h2 className="text-gray-700 font-semibold lg:text-2xl text-lg">
                   PAYMENT METHOD
                 </h2>
-                <div className="grid md:grid-cols-3 grid-cols-2 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
+                <div className="grid md:mx-0 mx-11 md:grid-cols-3 grid-cols-2 gap-8 border-t-2 border-gray-600 pt-3 mt-3">
                   {/* cash on delivery */}
                   <label
                     className="flex items-start gap-3"
@@ -408,13 +421,17 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
             {/* col 2 */}
             <div className="w-full my-4">
               {/* product photo with size and color */}
-              <div className="bg-slate-100 p-4">
+              <div className="bg-slate-100 p-4 text-sm">
                 <div className="flex items-center gap-4">
                   <img className="w-20" src={payCarts?.photos[0]?.img} alt="" />
                   <div className="flex flex-col ">
                     <div className="flex items-center gap-2">
                       <span>Size:</span>
                       <span className="uppercase">{payCarts?.size}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>Quantity:</span>
+                      <span className="uppercase">{payCarts?.quantity}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span>Color: </span>
@@ -425,13 +442,13 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     </div>
                   </div>
                 </div>
-                <h3>Name: {payCarts?.title}</h3>
+                <h3>Product: {payCarts?.title}</h3>
               </div>
               {/* product pricing details */}
-              <div className="p-4 bg-slate-100 my-4">
+              <div className="p-4 bg-slate-100 md:text-lg text-sm my-4">
                 <div className={`${payCarts}`}>
                   {/* price */}
-                  <div className="font-medium capitalize text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize  flex items-center justify-between">
                     <span className="">Price:</span>
                     {payCarts?.newPrice ? (
                       <div className="flex justify-start items-start gap-2">
@@ -448,12 +465,12 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                       </span>
                     )}
                   </div>
-                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400  flex items-center justify-between">
                     <span className="">Quantity:</span>
                     <span>{payCarts?.quantity}</span>
                   </div>
                   {/* sub total */}
-                  <div className="font-medium capitalize text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize  flex items-center justify-between">
                     <span className="">Sub Total:</span>
                     {payCarts?.newPrice ? (
                       <div className="flex whitespace-nowrap justify-start items-start ml-4 gap-2">
@@ -474,21 +491,21 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                       </span>
                     )}
                   </div>
-                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400  flex items-center justify-between">
                     <span className="">Discount Percentage:</span>
                     <span>-{discountedPercentage || 0}%</span>
                   </div>
-                  <div className="font-medium capitalize pb-2 text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize pb-2  flex items-center justify-between">
                     <span className="">Discounted Price:</span>
                     <span>{discountedPrice}</span>
                   </div>
-                  <div className="font-medium capitalize pb-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                  <div className="font-medium capitalize pb-2 border-b border-gray-400  flex items-center justify-between">
                     <span className="">Delivery Charge</span>
                     <span>+{deliveryCharge}</span>
                   </div>
                 </div>
 
-                <div className="font-medium capitalize py-2 border-b border-gray-400 text-lg flex items-center justify-between">
+                <div className="font-medium capitalize py-2 border-b border-gray-400  flex items-center justify-between">
                   <span className="">Total Amount:</span>
                   <span className="underline underline-offset-4">
                     Tk.
@@ -503,7 +520,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
               {/* Coupon code input */}
               <div className="flex justify-end gap-4 w-full">
                 <input
-                  className="hover:shadow-md border uppercase border-[#75934e] placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
+                  className="hover:shadow-md text-sm border uppercase border-[#75934e] placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  w-full max-w-xs"
                   type="text"
                   name="couponCode"
                   value={enteredCouponCode}
@@ -515,7 +532,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                 <button
                   type="button"
                   onClick={() => handleApplyCoupon()}
-                  className="border-[#75934e]  border-2 px-5 py-3 text-xs text-white hover:text-[#75934e] transition-all duration-1000 bg-[#75934e] hover:bg-white">
+                  className="border-[#75934e]  border-2 md:px-5 px-3 md:py-3 text-white hover:text-[#75934e] transition-all duration-1000 bg-[#75934e] hover:bg-white">
                   APPLY COUPON
                 </button>
               </div>

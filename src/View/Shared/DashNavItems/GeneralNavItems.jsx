@@ -12,7 +12,7 @@ const GeneralNavItems = () => {
 
   return (
     <nav className="w-full font-g-mono">
-      <ul className="flex flex-col justify-start items-start md:gap-6  gap-3">
+      <ul className="flex flex-col justify-center items-start ml-3 md:gap-6  gap-3">
         <li>
           <NavLink
             to="/"
@@ -21,8 +21,8 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <FaHome className="w-14 h-6 md:mx-0 mx-auto" title="HOME" />
-            <span className="text-base font-semibold  block whitespace-nowrap">
+            <FaHome className="md:text-2xl text-lg md:mx-0 mx-auto" title="HOME" />
+            <span className="md:text-base text-xs font-semibold  block whitespace-nowrap">
               HOME
             </span>
           </NavLink>
@@ -37,8 +37,8 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <MdShoppingBag className="w-14 h-7 md:mx-0 mx-auto" title="SHOP" />
-            <span className="text-base font-semibold  block whitespace-nowrap">
+            <MdShoppingBag className="md:text-2xl text-lg md:mx-0 mx-auto" title="SHOP" />
+            <span className="md:text-base text-xs font-semibold  block whitespace-nowrap">
               SHOP
             </span>
           </NavLink>
@@ -51,8 +51,8 @@ const GeneralNavItems = () => {
                 ? "dashActive flex items-center justify-start gap-4"
                 : "dashDefault flex items-center justify-start gap-4"
             }>
-            <MdEmail className="w-14 h-7 md:mx-0 mx-auto" title="CONTACT" />
-            <span className="text-base font-semibold  block whitespace-nowrap">
+            <MdEmail className="md:text-2xl text-lg md:mx-0 mx-auto" title="CONTACT" />
+            <span className="md:text-base text-xs font-semibold  block whitespace-nowrap">
               CONTACT US
             </span>
           </NavLink>
@@ -66,10 +66,10 @@ const GeneralNavItems = () => {
                 : "dashDefault flex items-center justify-start gap-4"
             }>
             <FaInfoCircle
-              className="w-14 h-6 md:mx-0 mx-auto"
+              className="md:text-2xl text-lg md:mx-0 mx-auto"
               title="About Us"
             />
-            <span className="text-base font-semibold  block whitespace-nowrap">
+            <span className="md:text-base text-xs font-semibold  block whitespace-nowrap">
               ABOUT US
             </span>
           </NavLink>

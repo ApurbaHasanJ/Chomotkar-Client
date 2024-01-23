@@ -117,7 +117,7 @@ const AddReview = () => {
 
       <div className=" w-full">
         <div
-          className="my-container py-10 my-20 w-full shadow-xl"
+          className="my-container py-10 my-10 w-full shadow-xl"
           style={{
             backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
           }}>
@@ -143,7 +143,7 @@ const AddReview = () => {
             )}
           </div>
           <div className="   my-7 mt-0 lg:my-16 items-center">
-            <div className=" px-10 mx-3 lg:mx-0 rounded-lg mt-10">
+            <div className="  md:px-10 px-2 pb-10 md:mx-3 lg:mx-0 rounded-lg mt-10">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div
                   onMouseEnter={handleMouseEnter}

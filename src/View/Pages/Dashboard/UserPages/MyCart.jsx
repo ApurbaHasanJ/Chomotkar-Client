@@ -6,9 +6,13 @@ import { CartContext } from "../../../Providers/CartProvider";
 import Checkout from "./Checkout";
 import toast from "react-hot-toast";
 import useCarts from "../../../Hooks/useCarts";
+import Carts from "../../../Shared/Cart/Carts";
+import { SideCartContext } from "../../../Providers/SideCartProvider";
 
 const MyCart = () => {
   const { totalQuantity } = useContext(CartContext);
+
+  const { setSideCart } = useContext(SideCartContext);
   // const [products] = useProducts();
   const { filteredCarts, handleDeleteItem } = useCarts();
   const [payCarts, setPayCarts] = useState({});
@@ -51,16 +55,16 @@ const MyCart = () => {
               title={"Wanna Add More?"}
               subtitle={"---My Cart!---"}
             />
-            <div className="mt-20 my-container">
-              <div className="md:flex grid items-center justify-between font-g-mono">
-                <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold  whitespace-nowrap">
+            <div className="md:mt-20 md:mb-20 mt-10 mb-10 my-container">
+              <div className="md:flex grid md:text-2xl items-center md:justify-between font-g-mono">
+                <h2 className=" md:mb-3 uppercase  font-semibold  whitespace-nowrap">
                   Total Products: {totalQuantity}
                 </h2>
-                <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold  whitespace-nowrap">
+                <h2 className=" mb-3 uppercase  font-semibold  whitespace-nowrap">
                   total price: TK.{totalPrice}
                 </h2>
               </div>
-              <div className="relative  overflow-x-auto shadow-md   rounded-lg">
+              <div className="relative hidden md:block overflow-x-auto shadow-md   rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right rounded-lg text-gray-500 ">
                   <thead className="text-xs  text-white uppercase bg-[#75934e] bg-opacity-60  ">
                     <tr>
@@ -274,6 +278,15 @@ const MyCart = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+              <div className="md:hidden block">
+                <Carts
+                  filteredCarts={filteredCarts}
+                  setPayCarts={setPayCarts}
+                  setSideCart={setSideCart}
+                  handleDeleteItem={handleDeleteItem}
+                  handleToggleModal={handleToggleModal}
+                />
               </div>
             </div>
           </>

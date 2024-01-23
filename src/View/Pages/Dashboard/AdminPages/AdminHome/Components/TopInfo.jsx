@@ -9,7 +9,7 @@ const TopInfo = () => {
   const [users] = useUsers();
   const [orders, ,] = useOrders();
   const completeOrders = orders.filter(
-    (order) => order.orderStatus === "confirmed" && order.paidStatus === true
+    (order) => order.orderStatus === "confirmed"
   );
 
   const totalRevenue = completeOrders.reduce(
@@ -36,10 +36,7 @@ const TopInfo = () => {
         </div>
       </div>
       <div className="from-[#FE4880] bg-gradient-to-r w-full md:py-9 py-7 md:px-7 drop-shadow-2xl flex  gap-4 justify-center items-center to-[#FECDE9]  rounded-lg">
-        <MdShoppingBasket
-          className="text-4xl md:text-5xl "
-          title="Products"
-        />
+        <MdShoppingBasket className="text-4xl md:text-5xl " title="Products" />
         <div>
           <h1 className="text-3xl ">{products?.length || "0000"}</h1>
           <p className="text-xl">Products</p>

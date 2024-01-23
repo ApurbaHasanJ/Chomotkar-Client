@@ -3,7 +3,7 @@ import NavItems from "./Navitems";
 import { RxCross2 } from "react-icons/rx";
 
 import Search from "./Search/Search";
-import UserDropdown from "./UserDropdown";
+import UserAccount from "./UserAccount";
 import { NavLink } from "react-router-dom";
 import Call from "./Call";
 import LogoName from "./LogoName";
@@ -46,7 +46,7 @@ const Navbar = () => {
                   }>
                   <WishCount />
                 </NavLink>
-                <UserDropdown />
+                <UserAccount />
               </div>
             </div>
           </div>
@@ -65,12 +65,12 @@ const Navbar = () => {
             <div className=" z-40   lg:hidden block">
               <div className="dropdown" onClick={handleShowNavbar}>
                 {showNavbar ? (
-                  <RxCross2 className="h-8 w-8 hover:text-[#75934e]" />
+                  <RxCross2 className="h-7 w-7 hover:text-[#75934e]" />
                 ) : (
                   <label tabIndex={0} className="btn btn-ghost lg:hidden">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8 hover:text-[#75934e]"
+                      className="h-7 w-7 hover:text-[#75934e]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor">
@@ -88,7 +88,7 @@ const Navbar = () => {
               <ul
                 className={`absolute ${
                   showNavbar ? "left-0" : "-left-96"
-                } transform duration-500 top-[58px] grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
+                } transform duration-500 top-[54px] grid justify-start items-start gap-3 z-40 font-semibold drop-shadow-2xl  p-4 rounded-br-lg bg-white text-black shadow-xl hover:shadow-2xl whitespace-nowrap`}>
                 <NavItems />
               </ul>
             </div>

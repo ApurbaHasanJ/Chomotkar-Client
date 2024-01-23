@@ -32,7 +32,7 @@ const SellingChart = () => {
   // console.log(orders);
 
   const filteredOrders = orders.filter(
-    (order) => order.paidStatus === true && order.orderStatus === "confirmed"
+    (order) => order.orderStatus === "confirmed"
   );
 
   // State to manage the selected month and year
@@ -97,10 +97,10 @@ const SellingChart = () => {
   };
 
   return (
-    <div className="mt-16 bg-white drop-shadow-2xl shadow-2xl p-10 rounded-2xl shadow-purple-200">
+    <div className="mt-16 bg-white drop-shadow-2xl shadow-2xl md:p-10  rounded-2xl shadow-purple-200">
       {/* Add dropdowns to select the month and year */}
       <select
-        className="mb-6 focus:ring-purple-400 focus:border-white"
+        className="mb-6 text-xs ml-3 mt-3 focus:ring-purple-400 focus:border-white"
         value={selectedMonth}
         onChange={handleMonthChange}>
         {months.map((month, index) => (
@@ -110,7 +110,7 @@ const SellingChart = () => {
         ))}
       </select>
       <select
-        className="mb-6 ml-4 focus:ring-purple-400 focus:border-white"
+        className="mb-6 text-xs ml-4 focus:ring-purple-400 focus:border-white"
         value={selectedYear}
         onChange={handleYearChange}>
         <option value="all">All Years</option>

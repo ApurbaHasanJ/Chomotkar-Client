@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
   console.log(product);
 
   return (
-    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[440px] h-[300px]  rounded-2xl border-[#75934e]">
+    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[420px] h-[260px]  rounded-2xl border-[#75934e]">
       <div className="relative overflow-hidden aspect-w-1 aspect-h-1">
         <Link
           to={`/quick-shop/${product?._id}`}

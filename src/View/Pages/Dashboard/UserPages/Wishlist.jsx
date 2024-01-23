@@ -9,9 +9,11 @@ import { WishlistContext } from "../../../Providers/WishlistProvider";
 import { CategoryContext } from "../../../Providers/CategoryProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Wishes from "../../../Shared/WishList/Wishes";
+import { SideWishlistContext } from "../../../Providers/SideWishListProvider";
 
 const Wishlist = () => {
-  // const { wishlist, removeFormWishlist } = useContext(WishlistContext);
+  const { setSideWishlist } = useContext(SideWishlistContext);
   const [, productsLoading] = useProducts();
   const { filteredWishlist } = useWishlist();
   const { removeFromWishlist } = useContext(WishlistContext);
@@ -48,12 +50,12 @@ const Wishlist = () => {
       />
 
       {/* table */}
-      <div className="my-container my-20">
-        <h2 className="md:text-2xl mb-3 uppercase text-xl font-semibold font-[Cinzel] whitespace-nowrap">
+      <div className="my-container md:mt-20 md:mb-20 mt-10 mb-10">
+        <h2 className="md:text-2xl mb-3 uppercase  font-semibold font-g-mono whitespace-nowrap">
           Total Products: {filteredWishlist?.length}
         </h2>
 
-        <div className="relative  overflow-x-auto shadow-md   rounded-lg">
+        <div className="relative md:block hidden overflow-x-auto shadow-md   rounded-lg">
           {productsLoading ? (
             <Loader />
           ) : (
@@ -168,6 +170,14 @@ const Wishlist = () => {
               </tbody>
             </table>
           )}
+        </div>
+        <div className="md:hidden block">
+          <Wishes
+            filteredWishlist={filteredWishlist}
+            setSideWishlist={setSideWishlist}
+            removeFromWishlist={removeFromWishlist}
+            updateCategory={updateCategory}
+          />
         </div>
       </div>
     </section>

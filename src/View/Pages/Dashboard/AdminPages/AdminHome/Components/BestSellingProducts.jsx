@@ -4,12 +4,12 @@ import useProducts from "../../../../../Hooks/useProducts";
 const BestSellingProducts = () => {
   const [orders, ,] = useOrders();
   const [products] = useProducts();
-//   console.log(orders);
-const filteredOrders = orders.filter(
-    (order) => order.paidStatus === true && order.orderStatus === "confirmed"
+  //   console.log(orders);
+  const filteredOrders = orders.filter(
+    (order) => order.orderStatus === "confirmed"
   );
 
-//   console.log(filteredOrders);
+  //   console.log(filteredOrders);
   // Create a map to store the quantity of each product
   const productQuantityMap = new Map();
 
@@ -48,7 +48,7 @@ const filteredOrders = orders.filter(
       quantity: topFive.find((top) => top.productId === product._id).quantity,
     }));
 
-//   console.log(matchedProducts);
+  //   console.log(matchedProducts);
   return (
     <div className="bg-white md:w-3/6 w-full h-fit shadow-2xl shadow-purple-200 drop-shadow-2xl rounded-xl p-10">
       <h2 className="text-purple-600 font-semibold text-2xl drop-shadow-2xl">
@@ -64,9 +64,9 @@ const filteredOrders = orders.filter(
             </div>
             <div className="grid ml-auto drop-shadow-2xl bg-purple-200 font-semibold p-2 rounded-xl">
               <span>
-                Price: {product?.newPrice ? product.newPrice : product.price}
+                Price: 
               </span>
-              <span>Quantity: {product?.quantity}</span>
+              <span>BDT. {product?.newPrice ? product.newPrice : product.price}</span>
             </div>
           </li>
         ))}
