@@ -39,6 +39,10 @@ const QuickShop = () => {
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleSelectSize = (size) => {

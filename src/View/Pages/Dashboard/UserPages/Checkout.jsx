@@ -207,7 +207,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   };
 
   return (
-    <section className="my-container relative lg:pt-12 ">
+    <section className=" relative lg:pt-12 ">
       <Helmet>
         <title>Checkout | Chomotkar</title>
       </Helmet>
@@ -221,11 +221,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
         className="text-rose-500 bg-rose-100 duration-500 rounded-lg hover:shadow-2xl drop-shadow-2xl md:text-5xl text-4xl ml-auto hover:bg-rose-100 p-1 md:p-2"
       />
       {loading ? (
-        <div className="max-h-screen">
+        <div className="h-screen flex justify-center items-center">
           <Loader />
         </div>
       ) : (
-        <div className="grid  bg-white shadow-md  md:px-10 p-3 pb-10 md:mx-3 lg:mx-0 rounded-lg my-7  lg:my-8 items-center">
+        <div className="grid  bg-white shadow-md  md:px-10 md:p-3 p-2 pb-10 md:mx-3 lg:mx-0 rounded-lg my-7  lg:my-8 items-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="lg:flex gap-7 relative md:text-base text-xs">
@@ -242,6 +242,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     payCarts?.userOrder?.cusName || user?.displayName || ""
                   }
                   type="text"
+                  required
                   name="name"
                   {...register("name", {
                     required: "Name is required",
@@ -319,6 +320,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   defaultValue={payCarts?.userOrder?.cusAdd || ""}
                   type="address"
                   name="address"
+                  required
                   {...register("address", {
                     required: "Name is required",
                   })}

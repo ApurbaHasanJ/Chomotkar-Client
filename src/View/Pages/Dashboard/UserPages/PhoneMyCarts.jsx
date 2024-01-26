@@ -1,6 +1,6 @@
 import { RxCross2 } from "react-icons/rx";
 import useCarts from "../../../Hooks/useCarts";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SideCartContext } from "../../../Providers/SideCartProvider";
 import Checkout from "./Checkout";
 import Carts from "../../../Shared/Cart/Carts";
@@ -16,11 +16,34 @@ const PhoneMyCarts = () => {
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
+    // Disable scroll restoration when navigating away from this component
+    const handleScrollRestoration = () => {
+      window.history.scrollRestoration = "manual";
+    };
+
+    // Add event listener for scroll restoration
+    window.addEventListener("beforeunload", handleScrollRestoration);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleScrollRestoration);
+    };
+  }, []);
+
   return (
     <>
       {toggleModal ? (
-        <div className="py-8 pb-20 overflow-scroll max-h-screen fixed top-[52px] z-[50] bg-[#F6F6F6]">
+        <div className="py-8 pb-20 overflow-scroll w-full max-h-screen fixed top-[52px] z-[50] bg-[#F6F6F6]">
           <Checkout handleToggleModal={handleToggleModal} payCarts={payCarts} />
         </div>
       ) : (
@@ -39,7 +62,13 @@ const PhoneMyCarts = () => {
                 className="text-2xl bg-[#75934e] bg-opacity-60 transition-all duration-1000 text-white rounded-md hover:text-rose-500"
               />
             </div>
-            <Carts filteredCarts={filteredCarts} setPayCarts={setPayCarts} setSideCart={setSideCart} handleDeleteItem={handleDeleteItem} handleToggleModal={handleToggleModal}/>
+            <Carts
+              filteredCarts={filteredCarts}
+              setPayCarts={setPayCarts}
+              setSideCart={setSideCart}
+              handleDeleteItem={handleDeleteItem}
+              handleToggleModal={handleToggleModal}
+            />
           </div>
         </div>
       )}

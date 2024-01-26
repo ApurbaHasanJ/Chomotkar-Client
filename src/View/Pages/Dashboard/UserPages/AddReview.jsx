@@ -117,7 +117,7 @@ const AddReview = () => {
 
       <div className=" w-full">
         <div
-          className="my-container py-10 my-10 w-full shadow-xl"
+          className="my-container md:text-base rounded-md text-xs md:pt-8 pt-5 my-10 w-full shadow-xl"
           style={{
             backgroundImage: `url('https://i.postimg.cc/tg8rPHSH/authentication.png')`,
           }}>
@@ -133,7 +133,7 @@ const AddReview = () => {
               starRatedColor="#75934e"
               required
               totalStars={5}
-              starDimension={"40px"}
+              starDimension={"35px"}
               starSpacing={"4px"}
             />
             {rating === 0 && (
@@ -235,8 +235,8 @@ const AddReview = () => {
                 </div>
 
                 <div className="grid justify-center mb-4">
-                  <label className="flex items-center text-center gap-1 text-base font-medium text-slate-900 ">
-                    <span className=" font-medium text-base">
+                  <label className="flex items-center text-center gap-1 font-medium text-slate-900 ">
+                    <span className=" font-medium md:text-base text-sm">
                       Upload you photo
                     </span>
                     <span className="text-gray-600 text-xs">(optional)</span>
@@ -244,7 +244,7 @@ const AddReview = () => {
                 </div>
                 {/* Your name */}
                 <div className="grid mb-4 ">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                  <label className="label justify-start font-medium text-slate-900 ">
                     <span className="label-text">
                       Please write here your name.
                     </span>
@@ -257,13 +257,13 @@ const AddReview = () => {
                     required
                     defaultValue={user?.displayName}
                     placeholder="Your Name"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                    className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
                 {/* Your name */}
-                <div className="grid mb-4 ">
-                  <label className="flex items-center text-center gap-1 text-base font-medium text-slate-900 ">
-                    <span className=" font-medium text-base">
+                <div className="grid mb-2 ">
+                  <label className="flex items-center text-center gap-1 font-medium text-slate-900 ">
+                    <span className=" font-medium ">
                       Please write here your email.
                     </span>
                     <span className="text-gray-600 text-xs">(optional)</span>
@@ -275,12 +275,12 @@ const AddReview = () => {
                     required
                     defaultValue={user?.email}
                     placeholder="Your Email"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                    className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
                 {/* Product name */}
-                <div className="grid mb-4 ">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                <div className="grid mb-2 ">
+                  <label className="label justify-start font-medium text-slate-900 ">
                     <span className="label-text">
                       Which product you liked most?
                     </span>
@@ -292,13 +292,13 @@ const AddReview = () => {
                     {...register("productName")}
                     required
                     placeholder="Godzilla X Kong T-Shirt"
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                    className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                   />
                 </div>
 
                 {/* suggestion for us */}
                 <div className="grid mb-4 ">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                  <label className="label justify-start font-medium text-slate-900 ">
                     <span className="label-text">
                       Do you have any suggestion for us?
                     </span>
@@ -308,7 +308,7 @@ const AddReview = () => {
                     id="suggestion"
                     name="suggestion"
                     {...register("suggestion")}
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                    className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
                     required
                     placeholder="Suggestion"
                   />
@@ -316,7 +316,7 @@ const AddReview = () => {
 
                 {/* Review details */}
                 <div className="grid mb-4 ">
-                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                  <label className="label justify-start font-medium text-slate-900 ">
                     <span className="label-text">
                       Kindly express your care in a short way.
                     </span>
@@ -327,7 +327,7 @@ const AddReview = () => {
                     {...register("reviewDetails")}
                     required
                     placeholder="Review in detail..."
-                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
+                    className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                     rows="8"
                   />
                 </div>
@@ -335,9 +335,9 @@ const AddReview = () => {
                 <div className="flex flex-col justify-start mt-7">
                   <button
                     type="submit"
-                    className="btn p-3 px-4 text-center duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f] flex items-center justify-center gap-2">
-                    <span className="text-xl font-semibold">Send Review</span>
-                    <MdRocketLaunch className="text-2xl " />
+                    className="btn md:p-3 py-2 md:text-xl text-base px-4 text-center duration-500 rounded-full border-none text-white bg-slate-500 hover:bg-[#47720f] flex items-center justify-center gap-2">
+                    <span className=" font-semibold">Send Review</span>
+                    <MdRocketLaunch className="md:text-2xl text-xl" />
                   </button>
                 </div>
               </form>

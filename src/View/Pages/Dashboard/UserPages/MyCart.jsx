@@ -40,6 +40,10 @@ const MyCart = () => {
     setToggleModal(!toggleModal);
     setSelectedSize({ id: "", size: "" });
     setSelectedColor({ id: "", color: "" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   // handle delete from cart

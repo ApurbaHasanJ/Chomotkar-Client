@@ -2,9 +2,28 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import useOrdersHistory from "../../Hooks/useOrdersHistory";
 import Loader from "../../Shared/Loader/Loader";
+import { useEffect } from "react";
 
 const OrderReceived = () => {
   const { orderedProducts, ordersLoading } = useOrdersHistory();
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
+    // Disable scroll restoration when navigating away from this component
+    const handleScrollRestoration = () => {
+      window.history.scrollRestoration = "manual";
+    };
+
+    // Add event listener for scroll restoration
+    window.addEventListener("beforeunload", handleScrollRestoration);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleScrollRestoration);
+    };
+  }, []);
 
   const currentOrder = orderedProducts[orderedProducts.length - 1];
   console.log(currentOrder);
@@ -14,7 +33,7 @@ const OrderReceived = () => {
         Thank You
       </h2>
       {ordersLoading ? (
-        <div className="h-32 flex justify-center items-center">
+        <div className="h-screen flex justify-center items-center">
           <Loader />
         </div>
       ) : (
