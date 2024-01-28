@@ -112,7 +112,11 @@ const OrderDetails = ({ orderDetails, refetch, setModal }) => {
             </div>
             <div className="">
               <span className="font-semibold">Phone: </span>
-              <span>+88{orderDetails?.cusPhone || "None"}</span>
+              <span>{orderDetails?.cusPhone || "None"}</span>
+            </div>
+            <div className="">
+              <span className="font-semibold">Receiver Phone: </span>
+              <span>{orderDetails?.cusReceiverPhone || "None"}</span>
             </div>
             <div className="">
               <span className="font-semibold">Email: </span>

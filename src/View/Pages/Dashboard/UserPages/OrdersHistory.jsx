@@ -1,15 +1,15 @@
-import { MdPendingActions } from "react-icons/md";
+// import { MdPendingActions } from "react-icons/md";
 import SectionTitle from "../../../Shared/SectionTitle";
-import Loader from "../../../Shared/Loader/Loader";
-import { FaShippingFast } from "react-icons/fa";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import { GiSkullCrossedBones } from "react-icons/gi";
-import { HiReceiptRefund } from "react-icons/hi";
+// import Loader from "../../../Shared/Loader/Loader";
+// import { FaShippingFast } from "react-icons/fa";
+// import { IoCheckmarkDoneCircle } from "react-icons/io5";
+// import { GiSkullCrossedBones } from "react-icons/gi";
+// import { HiReceiptRefund } from "react-icons/hi";
 import useOrdersHistory from "../../../Hooks/useOrdersHistory";
 import PhoneOrdersHistory from "./PhoneOrdersHistory";
 
 const OrdersHistory = () => {
-  const { orderedProducts, ordersLoading } = useOrdersHistory();
+  const { orderedProducts } = useOrdersHistory();
 
   const newOrdersFirst = orderedProducts.slice().reverse();
 
@@ -27,7 +27,8 @@ const OrdersHistory = () => {
             Total Orders: {newOrdersFirst?.length}
           </h2>
           <div className="relative w-full shadow-md ">
-            <div className="overflow-x-auto  md:block hidden w-full rounded-lg">
+            {/* table is hidden */}
+            {/* <div className="overflow-x-auto hidden w-full rounded-lg">
               {ordersLoading ? (
                 <div className="h-96 flex justify-center items-center">
                   <Loader />
@@ -174,8 +175,8 @@ const OrdersHistory = () => {
                   )}
                 </>
               )}
-            </div>
-            <div className="md:hidden block">
+            </div> */}
+            <div className="">
               <PhoneOrdersHistory />
             </div>
           </div>

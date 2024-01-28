@@ -1,5 +1,3 @@
-// import BestSellingProduct from "../Components/BestSellingProduct/BestSellingProduct";
-// import ConsumerFavor from "../Components/ConsumerFavor";
 import { Helmet } from "react-helmet-async";
 import GadgetsCollection from "../Components/GadgetsCollection/GadgetsCollection";
 import Gallery from "../Components/Gallery/Gallery";
@@ -19,10 +17,7 @@ const Home = () => {
         <title>Chomotkar</title>
       </Helmet>
       <Hero />
-      
-      {/* <ConsumerFavor /> */}
       <ShopByCategory />
-      {/* <BestSellingProduct /> */}
       <NewArrivalProducts />
       <SubBanner />
       <GadgetsCollection />

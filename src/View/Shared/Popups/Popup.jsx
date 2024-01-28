@@ -30,7 +30,7 @@ const Popup = () => {
     // bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500
     <>
       {showPopup && (
-        <div className="fixed bg-[#75934e] bg-opacity-60 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:p-8 p-2 py-4 md:max-w-sm max-w-xs w-full object-cover mx-auto shadow-md z-[100000] rounded-md transition-all duration-300 bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705569205/Chomotkar/Logo/green_mockup3_z6peqh.jpg')]">
+        <div className="fixed bg-[#75934e] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:p-8 p-2 py-4 md:max-w-sm max-w-xs w-full object-cover mx-auto shadow-md z-[100000] rounded-md transition-all duration-300 bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705569205/Chomotkar/Logo/green_mockup3_z6peqh.jpg')]">
           <span
             className="absolute top-0 right-2 text-white hover:text-rose-500 cursor-pointer text-3xl transition-all duration-300"
             onClick={closePopup}>

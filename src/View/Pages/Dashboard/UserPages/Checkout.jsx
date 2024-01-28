@@ -28,7 +28,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   const [payNagad, setPayNagad] = useState(false);
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
   const navigate = useNavigate();
-  
+
   const { handleRemoveCart } = useContext(CartContext);
 
   // console.log(coupons);
@@ -183,19 +183,11 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
       // Redirect based on the payment method
       if (axiosData && axiosData.data.bkashURL) {
-        handleRemoveCart(
-          payCarts?._id,
-          payCarts?.color,
-          payCarts?.size
-        )
+        handleRemoveCart(payCarts?._id, payCarts?.color, payCarts?.size);
         // Redirect to the provided URL for online payment
         window.location.replace(axiosData?.data?.bkashURL);
       } else if (axiosData && axiosData.data?.insertedId) {
-        handleRemoveCart(
-          payCarts?._id,
-          payCarts?.color,
-          payCarts?.size
-        )
+        handleRemoveCart(payCarts?._id, payCarts?.color, payCarts?.size);
         // Redirect for cash on delivery
         // Adjust the URL as needed
         navigate("/order-received");
@@ -242,17 +234,27 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                     payCarts?.userOrder?.cusName || user?.displayName || ""
                   }
                   type="text"
-                  required
                   name="name"
                   {...register("name", {
                     required: "Name is required",
-                    pattern: /^[A-Za-z\s]+$/i,
+                    pattern: {
+                      value: /^[A-Za-z\s]+$/i,
+                      message: "Invalid name format",
+                    },
                   })}
                   placeholder="Your name"
-                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className={`input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.name ? "border-red-500" : ""
+                  }`}
                   aria-invalid={errors.name ? "true" : "false"}
                 />
+                {errors.name && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.name.message}
+                  </span>
+                )}
               </div>
+              {/* default phone number */}
               <div className="grid mb-3">
                 <label className="flex items-center gap-1 font-medium text-slate-900 ">
                   <span className="uppercase font-medium ">Phone</span>
@@ -263,14 +265,51 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   type="tel"
                   name="phone"
                   {...register("phone", {
-                    required: true,
-                    // Regular expression for exactly 11 digits
-                    pattern: /^\d{11}$/,
+                    required: "Phone is required",
+                    pattern: {
+                      value: /^\d{11}$/,
+                      message: "Invalid phone number (exactly 11 digits)",
+                    },
                   })}
-                  required
                   placeholder="Your phone"
-                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className={`input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.phone ? "border-red-500" : ""
+                  }`}
+                  aria-invalid={errors.phone ? "true" : "false"}
                 />
+                {errors.phone && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.phone.message}
+                  </span>
+                )}
+              </div>
+              {/* Receiver Phone */}
+              <div className="grid mb-3">
+                <label className="flex items-center gap-1 mb-1 font-medium text-slate-900 ">
+                  <span className="uppercase font-medium">Receiver Phone</span>
+                  <span className="text-gray-600 text-xs">(optional)</span>
+                </label>
+                <input
+                  defaultValue={payCarts?.userOrder?.cusPhone || ""}
+                  type="tel"
+                  name="phone"
+                  {...register("receiverPhone", {
+                    pattern: {
+                      value: /^\d{11}$/,
+                      message: "Invalid phone number (exactly 11 digits)",
+                    },
+                  })}
+                  placeholder="Your phone"
+                  className={`input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.receiverPhone ? "border-red-500" : ""
+                  }`}
+                  aria-invalid={errors.receiverPhone ? "true" : "false"}
+                />
+                {errors.receiverPhone && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.receiverPhone.message}
+                  </span>
+                )}
               </div>
 
               {/* 2nd row */}
@@ -285,55 +324,79 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
                   }
                   type="email"
                   name="email"
-                  {...register("email")}
+                  {...register("email", {
+                    pattern: {
+                      value:
+                        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
+                      message: "Invalid email address format",
+                    },
+                  })}
                   placeholder="Your email"
-                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className={`input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
+                {errors.email && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.email.message}
+                  </span>
+                )}
               </div>
               <div className="grid mb-3">
                 <label className="flex items-center gap-1 justify-start font-medium text-slate-900 ">
-                  <span className="uppercase font-medium ">
-                    Location
-                  </span>
+                  <span className="uppercase font-medium ">Location</span>
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <select
                   defaultValue={payCarts?.userOrder?.cusLocation || ""}
-                  {...register("location")}
-                  required
+                  {...register("location", {
+                    required: "Location is required",
+                  })}
                   onChange={(e) => handleDeliveryCharge(e.target.value)}
-                  className="input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  ">
+                  className={`input md:text-base text-xs hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.location ? "border-red-500" : ""
+                  }`}
+                  aria-invalid={errors.location ? "true" : "false"}>
                   <option value="">None</option>
                   <option value="insideDhaka">Inside Dhaka</option>
                   <option value="outsideDhaka">Outside Dhaka</option>
                 </select>
+                {errors.location && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.location.message}
+                  </span>
+                )}
               </div>
-              {/* 3rd row */}
+
               <div className="grid mb-4">
                 <label className="flex items-center gap-1 font-medium text-slate-900 ">
-                  <span className="uppercase font-medium ">
-                    Address
-                  </span>
+                  <span className="uppercase font-medium ">Address</span>
                   <span className="text-red-600 text-xl">*</span>
                 </label>
                 <input
                   defaultValue={payCarts?.userOrder?.cusAdd || ""}
                   type="address"
                   name="address"
-                  required
                   {...register("address", {
-                    required: "Name is required",
+                    required: "Address is required",
                   })}
                   placeholder="Type your full address..."
-                  className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] "
+                  className={`input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f] ${
+                    errors.address ? "border-red-500" : ""
+                  }`}
+                  aria-invalid={errors.address ? "true" : "false"}
                 />
+                {errors.address && (
+                  <span role="alert" className="text-red-500 text-xs">
+                    {errors.address.message}
+                  </span>
+                )}
               </div>
 
               <div className="grid mb-4">
                 <label className="flex items-center gap-1 font-medium text-slate-900 mb-1">
-                  <span className="uppercase font-medium ">
-                    Order Note
-                  </span>
+                  <span className="uppercase font-medium ">Order Note</span>
                   <span className="text-gray-600 text-xs">(optional)</span>
                 </label>
                 <input

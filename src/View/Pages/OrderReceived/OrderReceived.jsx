@@ -120,6 +120,11 @@ const OrderReceived = () => {
               <div>Order Item: {currentOrder?.product?.title}</div>
               <div>Name: {currentOrder?.userOrder?.cusName}</div>
               <div> Phone: +88{currentOrder?.userOrder?.cusPhone}</div>
+              {currentOrder?.userOrder?.cusReceiverPhone && (
+                <div>
+                  Receiver Phone: +88{currentOrder?.userOrder?.cusReceiverPhone}
+                </div>
+              )}
               <div> Email: {currentOrder?.userOrder?.cusEmail || "None"}</div>
               <hr className="my-2 mx-5 border-b text-gray-800" />
               <div>Address: {currentOrder?.userOrder?.cusAdd || "None"}</div>

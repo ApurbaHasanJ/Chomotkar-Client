@@ -20,7 +20,7 @@ const Footer = () => {
     });
   }, [controls]);
   return (
-    <section className="bg-[#222222] md:text-base text-sm bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705510546/Chomotkar/Logo/Website-Green-Banner-2_pbo2rk.jpg')] text-black md:pt-16 pt-8">
+    <section className="bg-[#75934e] md:text-base text-sm bg-[url('https://res.cloudinary.com/dezmmga9k/image/upload/v1705510546/Chomotkar/Logo/Website-Green-Banner-2_pbo2rk.jpg')] text-black md:pt-16 pt-8">
       <div className="my-container  flex lg:flex-row flex-col w-full justify-between gap-3 gap-y-10">
         {/* 1 card */}
         <div className="lg:w-4/12 w-full ">
