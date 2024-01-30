@@ -14,11 +14,11 @@ const UserTopInfo = () => {
   const { carts } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
   const { user } = useContext(AuthContext);
-  console.log(reviews);
+  // console.log(reviews);
   const findReviews = reviews.filter(
     (review) => review?.reviewerEmail === user?.email
   );
-  console.log(findReviews);
+  // console.log(findReviews);
 
   return (
     <div className="grid gap-5 lg:grid-cols-4 grid-cols-2 justify-center text-white mt-6 items-center">

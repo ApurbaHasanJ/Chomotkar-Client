@@ -14,17 +14,17 @@ const UserInfo = () => {
   const [edit, setEdit] = useState(false);
   //   get current user
   const currentUser = users.find((u) => u?.email === user?.email);
-  console.log(currentUser?._id);
+  // console.log(currentUser?._id);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(users);
+  // console.log(users);
 
-  console.log(user);
+  // console.log(user);
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const onSubmit = (data) => {
     const { name, email, phone, address } = data;
@@ -33,7 +33,7 @@ const UserInfo = () => {
     axiosSecure
       .patch(`/users/info/${currentUser?._id}`, updatedInfo)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.modifiedCount > 0) {
           toast.success("Your info has been updated");
           setEdit(false);

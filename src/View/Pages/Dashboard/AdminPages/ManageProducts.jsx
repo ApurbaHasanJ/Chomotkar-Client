@@ -19,7 +19,7 @@ const ManageProducts = () => {
     setModal(!modal);
     refetch();
   };
-  console.log(products);
+  // console.log(products);
 
   const handleDeleteProduct = (deleteId, photos) => {
     Swal.fire({
@@ -55,7 +55,7 @@ const ManageProducts = () => {
             });
           }
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           // Handle errors and possibly show a notification
           Swal.fire({
             position: "top-end",

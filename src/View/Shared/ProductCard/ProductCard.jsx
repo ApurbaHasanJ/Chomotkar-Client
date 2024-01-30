@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
     setShowModal(!showModal);
   };
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[420px] h-[260px]  rounded-2xl border-[#75934e]">

@@ -56,7 +56,7 @@ const ManageOrders = () => {
             orderStatus: status,
           })
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             if (res.data.modifiedCount) {
               refetch();
               setOrderId("");
@@ -70,7 +70,7 @@ const ManageOrders = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       }
     });

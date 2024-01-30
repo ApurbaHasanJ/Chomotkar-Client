@@ -35,7 +35,7 @@ const SignUp = () => {
         userProfile(name)
           .then(() => {
             const loggedUser = userCredential.user;
-            console.log("loggedUser", loggedUser);
+            // console.log("loggedUser", loggedUser);
             const userData = {
               name: loggedUser?.displayName,
               email: loggedUser?.email,
@@ -66,7 +66,7 @@ const SignUp = () => {
               });
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             Swal.fire({
               icon: "error",
               title: "Error updating profile",
@@ -75,7 +75,7 @@ const SignUp = () => {
           });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
 
         let errorMessage = "An error occurred. Please try again.";
 

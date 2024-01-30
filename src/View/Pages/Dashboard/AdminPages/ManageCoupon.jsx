@@ -16,7 +16,7 @@ const ManageCoupon = () => {
     reset,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+  // console.log(errors);
   const onSubmit = (data) => {
     const { code, discount } = data;
     const discountPercentage = parseInt(discount);
@@ -30,7 +30,7 @@ const ManageCoupon = () => {
     axiosSecure
       .post("/coupons", couponCodes) // Use axiosSecure.post for creating a new coupon
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           reset();
           refetch();
@@ -44,7 +44,7 @@ const ManageCoupon = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         Swal.fire({
           position: "top-end",
           icon: "error",
@@ -70,7 +70,7 @@ const ManageCoupon = () => {
         axiosSecure
           .delete(`/coupons/${id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.acknowledged) {
               refetch();
               Swal.fire({
@@ -83,7 +83,7 @@ const ManageCoupon = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             // Handle errors and possibly show a notification
             Swal.fire({
               position: "top-end",

@@ -13,7 +13,7 @@ const {selectedCategory, updateCategory}= useContext(CategoryContext)
     }
     return acc;
   }, {});
-  //   console.log(categoryCounts);
+  //   // console.log(categoryCounts);
 
   //    how many categories
   const categories = Array.from(

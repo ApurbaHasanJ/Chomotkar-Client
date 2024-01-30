@@ -11,7 +11,7 @@ import ProductCard from "../../../../Shared/ProductCard/ProductCard";
 
 const BestSellingProduct = () => {
   const [products] = useProducts();
-  console.log(products);
+  // console.log(products);
 
   return (
     <section className="md:mt-32 mt-20 my-container">

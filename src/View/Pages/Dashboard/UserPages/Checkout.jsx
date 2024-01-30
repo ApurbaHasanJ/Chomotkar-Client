@@ -35,7 +35,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
   // Assuming the user entered coupon code
   const [enteredCouponCode, setEnteredCouponCode] = useState("");
 
-  console.log(payCarts);
+  // console.log(payCarts);
 
   const {
     register,

@@ -14,7 +14,7 @@ const PhoneWishlist = () => {
   const { updateCategory } = useContext(CategoryContext);
 
   const { filteredWishlist } = useWishlist();
-  console.log(filteredWishlist);
+  // console.log(filteredWishlist);
 
   return (
     <>

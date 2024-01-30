@@ -16,7 +16,7 @@ const ManageReviews = () => {
   const [review, setReview] = useState({});
 
   const [axiosSecure] = useAxiosSecure();
-  console.log(reviews);
+  // console.log(reviews);
 
   const handleViewFullDetails = (review) => {
     setReview(review);
@@ -39,7 +39,7 @@ const ManageReviews = () => {
             add: decision,
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.modifiedCount) {
               refetch();
               Swal.fire({
@@ -52,7 +52,7 @@ const ManageReviews = () => {
             }
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
           });
       }
     });
@@ -73,7 +73,7 @@ const ManageReviews = () => {
         axiosSecure
           .delete(`/reviews/${review?._id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.acknowledged) {
               refetch();
               Swal.fire({
@@ -86,7 +86,7 @@ const ManageReviews = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       }
     });

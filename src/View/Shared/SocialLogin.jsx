@@ -47,7 +47,7 @@ const SocialLogin = () => {
             navigate(from, { replace: true });
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             Swal.fire({
               icon: "error",
               title: "Error login user",
@@ -56,7 +56,7 @@ const SocialLogin = () => {
           });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         Swal.fire({
           icon: "error",
           title: "Error login user",
@@ -71,7 +71,7 @@ const SocialLogin = () => {
   //     continueWithFacebook()
   //       .then((result) => {
   //         const loggedUser = result.user;
-  //         console.log(loggedUser);
+  //         // console.log(loggedUser);
   //         Swal.fire({
   //           position: "top-end",
   //           icon: "success",
@@ -81,7 +81,7 @@ const SocialLogin = () => {
   //         });
   //       })
   //       .catch((error) => {
-  //         console.log(error);
+  //         // console.log(error);
   //         Swal.fire({
   //           icon: "error",
   //           title: "Error login user",

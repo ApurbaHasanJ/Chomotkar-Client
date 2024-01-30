@@ -12,7 +12,7 @@ export const UploadPhotos = async (file, folderName) => {
       formData
     );
 
-    console.log(data);
+    // console.log(data);
 
     return { img: data?.secure_url, publicId: data?.public_id };
   } catch (error) {

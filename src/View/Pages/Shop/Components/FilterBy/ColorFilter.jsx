@@ -16,7 +16,7 @@ const ColorFilter = () => {
 
   // how many colors
   const colors = Array.from(new Set(products.map((product) => product.color)));
-  //   console.log(colors);
+  //   // console.log(colors);
 
   const handleSelectColor = (color) => {
     updateColor(selectedColor === color ? null : color);

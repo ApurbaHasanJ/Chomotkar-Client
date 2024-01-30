@@ -16,11 +16,11 @@ const AddProducts = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     // photos url here
     let photoUrls = [];
-    console.log(photoUrls);
+    // console.log(photoUrls);
 
     const {
       photos,
@@ -50,7 +50,7 @@ const AddProducts = () => {
         photoUrls.push(data);
       }
 
-      console.log(photoUrls);
+      // console.log(photoUrls);
 
       // Get the current date and time of the server
       const currentServerDateTime = DateTime.utc();
@@ -94,7 +94,7 @@ const AddProducts = () => {
           })
           .then((res) => res.data)
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data?.insertedId) {
               setLoading(false);
               reset();
@@ -109,7 +109,7 @@ const AddProducts = () => {
           })
           .catch((err) => {
             setLoading(false);
-            console.log(err);
+            // console.log(err);
             Swal.fire({
               position: "top-end",
               icon: "error",

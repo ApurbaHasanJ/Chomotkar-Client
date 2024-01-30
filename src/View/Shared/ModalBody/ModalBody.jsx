@@ -7,7 +7,7 @@ const ModalBody = ({ demos, banner, category }) => {
     setDemo(demo);
   };
 
-  console.log(banner);
+  // console.log(banner);
   return (
     <div className="  flex md:flex-row flex-col justify-between gap-10">
       <div className=" mx-auto w-full min-w-[250px] max-w-screen-md drop-shadow-2xl md:mr-20 mt-3 justify-center items-center">

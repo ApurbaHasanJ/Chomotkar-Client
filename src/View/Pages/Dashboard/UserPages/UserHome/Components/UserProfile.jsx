@@ -14,7 +14,7 @@ const UserProfile = () => {
   const [modal, setModal] = useState(false);
   const { user, userProfile, refreshUserProfile } = useContext(AuthContext);
   const [img, setImg] = useState("");
-  console.log(user);
+  // console.log(user);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   // profile photo update modal
   const handleToggleModal = () => {
-    console.log("Toggle Modal Clicked");
+    // console.log("Toggle Modal Clicked");
     setModal(!modal);
   };
 
@@ -35,7 +35,7 @@ const UserProfile = () => {
   };
 
   const onCrop = (view) => {
-    console.log(view);
+    // console.log(view);
     setImg(view);
   };
 
@@ -45,7 +45,7 @@ const UserProfile = () => {
       // console.log(data);
 
       if (data.img && user) {
-        console.log(data);
+        // console.log(data);
         try {
           await userProfile(user.displayName, data.img);
           refreshUserProfile();
@@ -54,7 +54,7 @@ const UserProfile = () => {
 
           setModal(false);
         } catch (error) {
-          console.log(error);
+          // console.log(error);
           Swal.fire({
             icon: "error",
             title: "Error updating profile",

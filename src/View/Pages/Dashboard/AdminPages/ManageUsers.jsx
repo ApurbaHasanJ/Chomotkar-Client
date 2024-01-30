@@ -29,7 +29,7 @@ const ManageUsers = () => {
             role: role,
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.modifiedCount) {
               setUserId("");
               refetch();
@@ -43,7 +43,7 @@ const ManageUsers = () => {
             }
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
           });
       }
     });
@@ -77,7 +77,7 @@ const ManageUsers = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       }
     });

@@ -21,7 +21,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
         });
       })
       .catch((err) => {
-        console.log(err.message);
+        // console.log(err.message);
         Swal.fire({
           icon: "error",
           title: "Error logout user",

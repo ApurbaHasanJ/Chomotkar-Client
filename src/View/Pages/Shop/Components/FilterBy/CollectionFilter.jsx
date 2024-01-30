@@ -5,8 +5,8 @@ const CollectionFilter = () => {
   const [products] = useProducts();
   const { selectedCollection, handleSelectCollection } = useContext(CollectionContext);
 
-  console.log();
-console.log(selectedCollection);
+  // console.log();
+// console.log(selectedCollection);
 
   //   how many items of each collection
   const collectionCounts = products.reduce((acc, product) => {
@@ -15,13 +15,13 @@ console.log(selectedCollection);
     }
     return acc;
   }, {});
-    console.log(collectionCounts);
+    // console.log(collectionCounts);
 
   //    how many collections
   const collections = Array.from(
     new Set(products.map((product) => product.category))
   );
-  console.log(collections);
+  // console.log(collections);
 
   const handleCollection = (category) => {
     handleSelectCollection(selectedCollection === category ? null : category);

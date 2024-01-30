@@ -9,7 +9,7 @@ const OrderDetails = ({ orderDetails, refetch, setModal }) => {
   const [axiosSecure] = useAxiosSecure();
 
   const handleRefundPayment = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You want to refund this payment?",
@@ -25,7 +25,7 @@ const OrderDetails = ({ orderDetails, refetch, setModal }) => {
         axiosSecure
           .get(`/bkash/payment/refund/${id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.modifiedCount) {
               setLoading(false);
               setModal(false);
@@ -40,13 +40,13 @@ const OrderDetails = ({ orderDetails, refetch, setModal }) => {
             }
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
           });
       }
     });
   };
 
-  console.log(orderDetails);
+  // console.log(orderDetails);
   return (
     <>
       {loading ? (

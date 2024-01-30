@@ -26,13 +26,13 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
   // previous price
   const previousPrice = updateProduct.price;
 
-  console.log(previousPrice);
+  // console.log(previousPrice);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     // photos url here
     let photoUrls = [];
-    console.log(photoUrls);
+    // console.log(photoUrls);
 
     const {
       photos,
@@ -45,7 +45,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
       sizes,
       description,
     } = data;
-    console.log(photos);
+    // console.log(photos);
 
     // Remove string from price
     const price = parseInt(productPrice);
@@ -55,7 +55,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
 
     try {
       setLoading(true);
-      console.log("updating");
+      // console.log("updating");
 
       if (photos) {
         for (let i = 0; i < photos.length; i++) {
@@ -63,11 +63,11 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           photoUrls.push(data);
         }
 
-        console.log(photoUrls);
+        // console.log(photoUrls);
       }
 
       if (photoUrls.length > 0 || photos.length === 0) {
-        console.log("updating database");
+        // console.log("updating database");
         const productData = {
           photos:
             updateProduct && updateProduct.photos
@@ -93,7 +93,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           })
           .then((res) => res.data)
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data?.modifiedCount) {
               setLoading(false);
               handleToggleModal(!modal);
@@ -108,7 +108,7 @@ const UpdateProduct = ({ productId, modal, handleToggleModal }) => {
           })
           .catch((err) => {
             setLoading(false);
-            console.log(err);
+            // console.log(err);
             Swal.fire({
               position: "top-end",
               icon: "error",

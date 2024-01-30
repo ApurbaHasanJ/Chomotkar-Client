@@ -12,7 +12,7 @@ const PhoneMyCarts = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const { filteredCarts, handleDeleteItem } = useCarts();
 
-  console.log(filteredCarts);
+  // console.log(filteredCarts);
 
   const handleToggleModal = () => {
     setToggleModal(!toggleModal);

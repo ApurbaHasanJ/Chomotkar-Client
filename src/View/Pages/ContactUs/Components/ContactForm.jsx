@@ -10,11 +10,11 @@ const ContactForm = () => {
     // formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    // console.log("Captcha value:", value);
   }
 
   return (

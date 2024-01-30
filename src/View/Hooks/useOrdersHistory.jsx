@@ -43,7 +43,7 @@ const useOrdersHistory = () => {
     })
     .filter(Boolean);
 
-  console.log(orderedProducts);
+  // console.log(orderedProducts);
 
   if (error) {
     return { error: "An error has occurred: " + error.message };

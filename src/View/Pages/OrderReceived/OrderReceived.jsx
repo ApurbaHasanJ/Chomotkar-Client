@@ -26,7 +26,7 @@ const OrderReceived = () => {
   }, []);
 
   const currentOrder = orderedProducts[orderedProducts.length - 1];
-  console.log(currentOrder);
+  // console.log(currentOrder);
   return (
     <div className="my-container md:text-base text-sm md:mt-10 mt-6 mb-16">
       <h2 className="uppercase text-center font-semibold md:text-4xl text-2xl">

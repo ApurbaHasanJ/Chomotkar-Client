@@ -19,7 +19,7 @@ const AddReview = () => {
   const [img, setImg] = useState("");
   const [reviewerPhoto, setReviewerPhoto] = useState("");
 
-  console.log(rating);
+  // console.log(rating);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -31,7 +31,7 @@ const AddReview = () => {
 
   // profile photo update modal
   const handleToggleModal = () => {
-    console.log("Toggle Modal Clicked");
+    // console.log("Toggle Modal Clicked");
     setModal(!modal);
   };
 
@@ -40,7 +40,7 @@ const AddReview = () => {
   };
 
   const onCrop = (view) => {
-    console.log(view);
+    // console.log(view);
     setImg(view);
   };
 
@@ -81,7 +81,7 @@ const AddReview = () => {
       reviewDetails,
       createdAt: new Date(),
     };
-    console.log(reviewData);
+    // console.log(reviewData);
     if (rating > 0) {
       fetch("https://chomotkar-server-iota.vercel.app/reviews", {
         method: "POST",
@@ -92,7 +92,7 @@ const AddReview = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setRating(0);
           setReviewerPhoto("");
           reset();

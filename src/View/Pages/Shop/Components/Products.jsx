@@ -25,7 +25,7 @@ const Products = () => {
 
   // take category context-------------------
   const { selectedCategory } = useContext(CategoryContext);
-  console.log(products);
+  // console.log(products);
 
   // take selectedCollection context
   const { selectedCollection } = useContext(CollectionContext);
@@ -40,7 +40,7 @@ const Products = () => {
     return collectionMatch && categoryMatch;
   });
 
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   // console.log(params);
 

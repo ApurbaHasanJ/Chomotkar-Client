@@ -29,18 +29,18 @@ const Login = () => {
 
   // On change re captcha
   //   const onChange = (value) => {
-  //     console.log("Captcha value", value);
+  //     // console.log("Captcha value", value);
   //     setDisabled(!disabled);
   //   };
 
   // login controls
   const onSubmit = (data) => {
     const { email, password } = data;
-    console.log(email, password);
+    // console.log(email, password);
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -51,7 +51,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setLoading(false);
         Swal.fire({
           icon: "error",

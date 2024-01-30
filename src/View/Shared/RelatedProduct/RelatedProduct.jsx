@@ -13,7 +13,7 @@ const RelatedProduct = () => {
   const { selectedCategory } = useContext(CategoryContext);
   const [products] = useProducts();
 
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   // total filter
   const filteredProducts = products.filter((product) => {
@@ -21,7 +21,7 @@ const RelatedProduct = () => {
       !selectedCategory || product.subCategory === selectedCategory;
     return categoryMatch;
   });
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
   return (
     <div>
       <SectionTitle title={"Related Products"} subtitle={"---Order Now!---"} />
