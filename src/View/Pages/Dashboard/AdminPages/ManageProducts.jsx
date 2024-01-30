@@ -19,6 +19,7 @@ const ManageProducts = () => {
     setModal(!modal);
     refetch();
   };
+  console.log(products);
 
   const handleDeleteProduct = (deleteId, photos) => {
     Swal.fire({

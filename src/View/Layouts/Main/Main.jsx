@@ -45,7 +45,6 @@ const Main = () => {
       ) : (
         <>
           <Navbar />
-
           {isLoginOrRegister || (!visitedBefore && <Popup />)}
           <Outlet />
           <div className="border bg-[#75934e] shadow-xl p-3 fixed z-[49] right-0 top-1/2 transform -translate-y-1/2">
