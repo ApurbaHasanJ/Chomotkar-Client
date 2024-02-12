@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
-import useProducts from "../../../Hooks/useProducts";
-import SectionTitle from "../../SectionTitle";
+import useProducts from "../../Hooks/useProducts";
+import SectionTitle from "../SectionTitle";
 import { useContext, useEffect, useState } from "react";
 import { FaBagShopping, FaCartPlus } from "react-icons/fa6";
 import Magnifier from "react-magnifier";
 
-import { CartContext } from "../../../Providers/CartProvider";
-import Checkout from "../../../Pages/Dashboard/UserPages/Checkout";
+import { CartContext } from "../../Providers/CartProvider";
+import Checkout from "../../Pages/Dashboard/UserPages/Checkout";
 
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import { RxCross2 } from "react-icons/rx";
-import RelatedProduct from "../../RelatedProduct/RelatedProduct";
+import RelatedProduct from "../RelatedProduct/RelatedProduct";
 
 const QuickShop = () => {
   const params = useParams();

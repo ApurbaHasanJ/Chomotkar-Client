@@ -10,7 +10,7 @@ import ManageProducts from "../Pages/Dashboard/AdminPages/ManageProducts";
 import ManageUsers from "../Pages/Dashboard/AdminPages/ManageUsers";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Wishlist from "../Pages/Dashboard/UserPages/Wishlist";
-import QuickShop from "../Shared/UploadCloudinary/QuickShop/QuickShop";
+import QuickShop from "../Shared/QuickShop/QuickShop";
 import UserHome from "../Pages/Dashboard/UserPages/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/UserPages/PaymentHistory";
 import AddReview from "../Pages/Dashboard/UserPages/AddReview";
