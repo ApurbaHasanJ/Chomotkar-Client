@@ -46,7 +46,7 @@ const SocialLogin = () => {
             });
             navigate(from, { replace: true });
           })
-          .catch((error) => {
+          .catch(() => {
             // console.log(error);
             Swal.fire({
               icon: "error",
@@ -55,7 +55,7 @@ const SocialLogin = () => {
             });
           });
       })
-      .catch((error) => {
+      .catch(() => {
         // console.log(error);
         Swal.fire({
           icon: "error",

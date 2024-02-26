@@ -1,10 +1,13 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import useProducts from "../../../../Hooks/useProducts";
 import { CategoryContext } from "../../../../Providers/CategoryProvider";
+import { CollectionContext } from "../../../../Providers/CollectionProvider";
 
 const CategoryFilter = () => {
   const [products] = useProducts();
-const {selectedCategory, updateCategory}= useContext(CategoryContext)
+  const { selectedCategory, updateCategory } = useContext(CategoryContext);
+
+  const { handleSelectCollection } = useContext(CollectionContext);
 
   //   how many items of each color
   const categoryCounts = products.reduce((acc, product) => {
@@ -15,13 +18,32 @@ const {selectedCategory, updateCategory}= useContext(CategoryContext)
   }, {});
   //   // console.log(categoryCounts);
 
+  //    how many collections
+  const collections = Array.from(
+    new Set(products.map((product) => product.category))
+  );
+
   //    how many categories
   const categories = Array.from(
     new Set(products.map((product) => product.subCategory))
   );
 
   const handleSelectCategory = (category) => {
-    updateCategory(selectedCategory=== category ? null : category);
+    // Update selected category
+    updateCategory(selectedCategory === category ? null : category);
+
+    // Update selected collection based on category
+    const filteredCollection = collections.find((col) => {
+      return products.some(
+        (product) =>
+          product.category === col && product.subCategory === category
+      );
+    });
+    window.scrollTo({
+      top: 0,
+      // behavior: "smooth",
+    });
+    handleSelectCollection(filteredCollection);
   };
 
   return (

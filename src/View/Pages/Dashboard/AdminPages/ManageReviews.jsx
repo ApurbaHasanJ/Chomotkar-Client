@@ -51,7 +51,7 @@ const ManageReviews = () => {
               });
             }
           })
-          .catch((error) => {
+          .catch(() => {
             // console.log(error);
           });
       }
@@ -85,7 +85,7 @@ const ManageReviews = () => {
               });
             }
           })
-          .catch((err) => {
+          .catch(() => {
             // console.log(err);
           });
       }

@@ -65,7 +65,7 @@ const SignUp = () => {
                 }
               });
           })
-          .catch((error) => {
+          .catch(() => {
             // console.log(error);
             Swal.fire({
               icon: "error",

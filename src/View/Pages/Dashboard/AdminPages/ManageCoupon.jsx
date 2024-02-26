@@ -14,7 +14,6 @@ const ManageCoupon = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
   } = useForm();
   // console.log(errors);
   const onSubmit = (data) => {

@@ -189,7 +189,7 @@ const NavItems = () => {
         className="relative hover:text-[#47720f]">
         <div className="flex items-center gap-1 hover:text-[#47720f]">
           <NavLink
-            to="/collection/gadgetItems"
+            to="/collection/gadgets"
             onClick={() => {
               handleCollection("gadgets"), handleSelectCategory("");
             }}

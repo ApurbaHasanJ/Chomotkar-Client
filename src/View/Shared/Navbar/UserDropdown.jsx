@@ -20,7 +20,7 @@ const UserDropdown = ({ handleToggleDropDown }) => {
           timer: 1500,
         });
       })
-      .catch((err) => {
+      .catch(() => {
         // console.log(err.message);
         Swal.fire({
           icon: "error",

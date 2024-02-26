@@ -46,7 +46,7 @@ const MyCart = () => {
     });
   };
 
-  // handle delete from cart
+  // console.log(filteredCarts);
 
   return (
     <>
@@ -121,7 +121,7 @@ const MyCart = () => {
                             {cart?.title}
                           </span>
                         </th>
-                        <th
+                        <td
                           scope="row"
                           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                           <div className="grid items-start">
@@ -155,7 +155,7 @@ const MyCart = () => {
                               </div>
                             ))}
                           </div>
-                        </th>
+                        </td>
                         <td scope="row" className="px-6 py-4">
                           <select
                             name="selectedSize"

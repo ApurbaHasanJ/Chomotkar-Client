@@ -69,7 +69,7 @@ const ManageOrders = () => {
               });
             }
           })
-          .catch((err) => {
+          .catch(() => {
             // console.log(err);
           });
       }

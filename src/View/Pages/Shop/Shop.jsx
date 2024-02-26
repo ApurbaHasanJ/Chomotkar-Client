@@ -29,7 +29,7 @@ const Shop = () => {
       <Helmet>
         <title>Collection | Chomotkar</title>
       </Helmet>
-      <div className="flex md:gap-4 md:mt-32 my-20 my-container relative overflow-visible">
+      <div className="flex md:gap-4 my-20 my-container relative overflow-visible">
         <Filter />
         <Products />
       </div>

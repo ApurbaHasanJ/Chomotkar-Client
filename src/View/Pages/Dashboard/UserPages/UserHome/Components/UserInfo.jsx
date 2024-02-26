@@ -40,8 +40,8 @@ const UserInfo = () => {
           refetch();
         }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
+        // console.error(error);
         toast.error("Failed to update your info. Please try again.");
       });
   };

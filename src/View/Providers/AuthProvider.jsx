@@ -99,7 +99,7 @@ const AuthProvider = ({ children }) => {
           // Assuming the user profile update was successful
           setLoading(false);
         })
-        .catch((error) => {
+        .catch(() => {
           // console.log(error);
           setLoading(false);
         });

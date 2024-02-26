@@ -7,7 +7,7 @@ const Filter = ({ toggleFilters, handleToggleFilters }) => {
   // console.log(toggleFilters);
   return (
     <div className="md:w-[20%] w-64 md:sticky md:top-10 absolute -top-10">
-      <div className=" md:block hidden overflow-visible  sticky top-5 max-h-[600px] overflow-y-scroll ">
+      <div className=" md:block hidden overflow-visible sticky top-14 max-h-[600px] overflow-y-scroll ">
         <button className="text-2xl flex items-center gap-4 font-bold underline underline-offset-4">
           <span className="whitespace-nowrap">FILTER BY</span>
           <FaFilter />

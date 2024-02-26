@@ -4,7 +4,6 @@ import SectionTitle from "../../../Shared/SectionTitle";
 // swiper js
 import "swiper/css";
 import "swiper/css/pagination";
-import { useParams } from "react-router-dom";
 import ProductCard from "../../../Shared/ProductCard/ProductCard";
 import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../../../Providers/CategoryProvider";
@@ -18,8 +17,6 @@ const Products = () => {
   }, []);
 
   const [products] = useProducts();
-  // takes params:-------------
-  const params = useParams().route;
 
   const [toggleFilters, setToggleFilters] = useState(false);
 
@@ -52,7 +49,7 @@ const Products = () => {
   return (
     <section className="md:w-[80%] ml-auto">
       <SectionTitle
-        title={`BEST ${params} PRODUCTS`}
+        title={`BEST ${selectedCollection} PRODUCTS`}
         subtitle={"Welcome to our shop!"}
       />
       {/* filter button */}

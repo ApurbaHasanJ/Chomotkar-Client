@@ -39,7 +39,7 @@ const OrderDetails = ({ orderDetails, refetch, setModal }) => {
               });
             }
           })
-          .catch((error) => {
+          .catch(() => {
             // console.log(error);
           });
       }
