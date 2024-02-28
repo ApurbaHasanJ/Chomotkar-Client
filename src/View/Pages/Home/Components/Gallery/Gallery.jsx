@@ -11,7 +11,7 @@ const Gallery = () => {
   return (
     <section className="my-container md:mt-32 mt-20 font-exo">
       <SectionTitle title={"Follow Us"} subtitle={"Our Gallery"} />
-      <div className="font-exo mt-10 grid md:grid-cols-4 grid-cols-2 gap-3  ">
+      <div className="font-exo mt-10 grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1 ">
         {/* Card 1 */}
         <div className="relative h-full object-cover border border-[#517521]  overflow-hidden row-span-2">
           <Link
@@ -38,7 +38,7 @@ const Gallery = () => {
             }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819845/Chomotkar/OurGallery/Screenshot_2024-01-09_225949_ywgtra.png"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709124474/Chomotkar/OurGallery/head-set_nqlxwb.jpg"
               alt="Headphone"
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-[#517521] px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
@@ -72,7 +72,7 @@ const Gallery = () => {
             }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704819014/Chomotkar/OurGallery/polo_vpsq0q.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709124475/Chomotkar/OurGallery/polo_yhtbom.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-[#517521] px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
@@ -89,7 +89,7 @@ const Gallery = () => {
             }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1704820442/Chomotkar/OurGallery/medium-shot-woman-holding-smartphone_1_ogalqx.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709124475/Chomotkar/OurGallery/lady-sari_iy47i1.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-[#517521] px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">
@@ -106,7 +106,7 @@ const Gallery = () => {
             }}>
             <img
               className="h-full object-cover scale-100 duration-500 transition-all overflow-hidden hover:scale-110"
-              src="https://i.ibb.co/ngNpJks/young-indian-woman-wearing-sari.jpg"
+              src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709126529/Chomotkar/OurGallery/white-sari_1_nyclvb.jpg"
               alt=""
             />
             <span className="whitespace-nowrap drop-shadow-2xl bg-[#517521] px-3 bg-opacity-25 absolute bottom-3 right-1/2 transform translate-x-1/2 text-white font-semibold lg:text-xl md:text-base text-sm">

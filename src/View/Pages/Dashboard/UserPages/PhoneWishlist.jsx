@@ -19,7 +19,7 @@ const PhoneWishlist = () => {
   return (
     <>
       <div
-        className={`fixed bg-white h-full max-w-[350px] pb-4 p-2 ${
+        className={`fixed bg-white h-full max-w-[350px] w-full pb-4 p-2 ${
           sideWishlist ? "right-0" : "-right-[1700px]"
         } transform duration-700 shadow-2xl top-0 z-[50]`}>
         <div className="relative z-[400]">

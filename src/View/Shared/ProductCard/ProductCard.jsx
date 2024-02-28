@@ -4,10 +4,12 @@ import { FiPlus } from "react-icons/fi";
 import { WishlistContext } from "../../Providers/WishlistProvider";
 import { Link } from "react-router-dom";
 import { CategoryContext } from "../../Providers/CategoryProvider";
+import { Blurhash } from "react-blurhash";
 
 const ProductCard = ({ product }) => {
   const { addToWishlist } = useContext(WishlistContext);
   const [showModal, setShowModal] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   // take category context-------------------
   const { updateCategory } = useContext(CategoryContext);
 
@@ -24,19 +26,35 @@ const ProductCard = ({ product }) => {
   // console.log(product);
 
   return (
-    <div className="border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[420px] h-[260px]  rounded-2xl border-[#75934e]">
+    <div
+      className={`${
+        product?.quantity === 0 && "bg-green-100"
+      } border-2 drop-shadow-lg flex flex-col justify-between overflow-hidden w-full md:h-[420px] h-[260px]  rounded-2xl border-[#75934e]`}>
       <div className="relative overflow-hidden aspect-w-1 aspect-h-1">
         <Link
-          to={`/quick-shop/${product?._id}`}
-          className="overflow-hidden block w-full h-full"
+          to={product?.quantity > 0 ? `/quick-shop/${product?._id}` : "#"}
+          className="overflow-hidden object-cover block w-full h-full"
           onClick={() => {
             updateCategory(product?.subCategory), handleToggleModal();
           }}>
+          {!imageLoaded && (
+            <Blurhash
+              hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+              width={400}
+              height={300}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+            />
+          )}
           <img
-            className="rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500"
+            className={`rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500 
+            ${imageLoaded ? "" : "hidden"}
+            `}
             loading="lazy"
             src={product?.photos[0]?.img}
             alt={product.title}
+            onLoad={() => setImageLoaded(!imageLoaded)}
           />
         </Link>
         {/* Add to Wishlist */}
@@ -66,15 +84,23 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
       {/* Quick shop button */}
-      <Link
-        to={`/quick-shop/${product?._id}`}
-        onClick={() => {
-          updateCategory(product?.subCategory), handleToggleModal();
-        }}
-        className="flex md:text-xs md:mx-10 mx-4 mb-3  text-[8px] font-medium  shadow-2xl  items-center justify-center gap-1 rounded-full  text-white bg-[#75934e] px-8 py-[6px] md:px-12 md:py-3 duration-500 hover:bg-[#47720f]">
-        <FiPlus />
-        <span className="uppercase ">QuickShop</span>
-      </Link>
+      <button type="button">
+        <Link
+          to={product?.quantity > 0 ? `/quick-shop/${product?._id}` : "#"}
+          onClick={() => {
+            updateCategory(product?.subCategory), handleToggleModal();
+          }}
+          className={`flex md:text-xs md:mx-10 mx-4 mb-3  text-[8px] font-medium  shadow-2xl  items-center justify-center gap-1 rounded-full  text-white ${
+            product?.quantity > 0
+              ? "bg-[#75934e] hover:bg-[#47720f]"
+              : "bg-gray-400 cursor-not-allowed"
+          } px-8 py-[6px] md:px-12 md:py-3 duration-500 `}>
+          <FiPlus />
+          <span className="uppercase ">
+            {product?.quantity > 0 ? "QuickShop" : "Sold Out"}
+          </span>
+        </Link>
+      </button>
     </div>
   );
 };

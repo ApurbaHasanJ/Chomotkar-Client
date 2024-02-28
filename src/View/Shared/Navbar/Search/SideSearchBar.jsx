@@ -11,7 +11,7 @@ const SideSearchBar = ({ handleSideSearchBar }) => {
   const filteredProducts = products.filter((item) => {
     return query.toLocaleLowerCase() === ""
       ? ""
-      : item?.title?.toLocaleLowerCase().includes(query);
+      : item.quantity > 0 && item?.title?.toLocaleLowerCase().includes(query);
   });
   return (
     <div className="relative z-[400]">

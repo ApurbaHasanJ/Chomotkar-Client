@@ -30,6 +30,7 @@ const AddProducts = () => {
       category,
       subCategory,
       colors,
+      productQuantity,
       sizes,
       description,
     } = data;
@@ -41,6 +42,8 @@ const AddProducts = () => {
 
     // Remove string from price
     const price = parseInt(productPrice);
+    // Remove string from quantity
+    const quantity = parseInt(productQuantity);
 
     try {
       setLoading(true);
@@ -80,6 +83,7 @@ const AddProducts = () => {
           price,
           colors: colorArray,
           category,
+          quantity,
           subCategory,
           sizes,
           description,
@@ -249,9 +253,27 @@ const AddProducts = () => {
                     className="input lowercase hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
                   />
                 </div>
+                
               </div>
-              {/* select sizes */}
-              <div className="grid mb-5">
+             <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {/* Product Quantity */}
+              <div className="grid mb-4 ">
+                  <label className="label justify-start text-base font-medium text-slate-900 ">
+                    <span className="label-text">Product Quantity</span>
+                    <span className="text-red-600 text-xl">*</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="productQuantity"
+                    {...register("productQuantity")}
+                    min={0}
+                    required
+                    placeholder="Product Quantity"
+                    className="input hover:shadow-md border rounded-lg p-3 border-slate-500 placeholder:focus:text-[#47720f] focus:border-white focus:ring-[#47720f]  "
+                  />
+                </div>
+               {/* select sizes */}
+               <div className="grid mb-5">
                 <label className="label justify-start text-base font-medium text-slate-900">
                   <span className="label-text">Fashion Product Sizes</span>
                 </label>
@@ -272,6 +294,7 @@ const AddProducts = () => {
                   ))}
                 </div>
               </div>
+             </div>
               {/* Recipe details */}
               <div className="grid mb-4">
                 <label className="label justify-start text-base font-medium text-slate-900 ">

@@ -213,7 +213,7 @@ const QuickShop = () => {
                         </div>
                       </div>
                     )}
-                    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:max-w-xl max-w-sm w-full">
+                    <div className="fixed top-1/2 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:max-w-xl max-w-sm w-full">
                       {measurement && (
                         <div className="relative mx-2">
                           <RxCross2

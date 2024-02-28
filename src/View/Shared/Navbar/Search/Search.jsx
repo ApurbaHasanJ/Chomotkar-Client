@@ -10,7 +10,7 @@ const Search = () => {
   const filteredProducts = products.filter((item) => {
     return query.toLocaleLowerCase() === ""
       ? ""
-      : item?.title?.toLocaleLowerCase().includes(query);
+      : item.quantity > 0 && item?.title?.toLocaleLowerCase().includes(query);
   });
 
   return (

@@ -170,7 +170,7 @@ const Checkout = ({ payCarts, modal, handleToggleModal }) => {
 
     try {
       const axiosData = await axios.post(
-        "https://chomotkar-server-iota.vercel.app/payment",
+        "http://localhost:5000/payment",
         {
           data,
         }

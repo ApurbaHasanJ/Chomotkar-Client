@@ -4,58 +4,66 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CollectionContext } from "../../../../Providers/CollectionProvider";
 import { CategoryContext } from "../../../../Providers/CategoryProvider";
 
 const categories = [
   {
     title: "men",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809691/Chomotkar/ShopByCategory/men_mhlpig.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117650/Chomotkar/ShopByCategory/men_nnwdvb.jpg",
     category: "men",
     subCategory: "",
+    blurhash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
   },
   {
     title: "women",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809692/Chomotkar/ShopByCategory/women_fmtlqs.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117651/Chomotkar/ShopByCategory/women_qcdc2p.jpg",
     category: "women",
     subCategory: "",
+    blurhash: "LKO2?U%2Tw=w]~RBVZRi};RPxuwH",
   },
   {
     title: "gadgets",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704808811/Chomotkar/ShopByCategory/modern-stationary-collection-arrangement_orpsab.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117462/Chomotkar/ShopByCategory/gadgets_zejky6.jpg",
     category: "gadgets",
     subCategory: "",
+    blurhash: "LGF5]%2Tw=w}7nWBofsmj[ofWrxu",
   },
   {
     title: "combo pack",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704809691/Chomotkar/ShopByCategory/combo_p02au2.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117650/Chomotkar/ShopByCategory/combo_s7an2s.jpg",
     category: "women",
     subCategory: "combo pack",
+    blurhash: "LKO2?U%2Tw=w]~RBVZRi};RPxuwH",
   },
   {
     title: "sari",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704814077/Chomotkar/ShopByCategory/beautiful-young-woman-wearing-sari_mtbwjt.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117461/Chomotkar/ShopByCategory/bow-sari_ll9ogm.jpg",
     category: "women",
     subCategory: "sari",
+    blurhash: "L6G@[y%2Tw=w]~RBVZRi};RPxuwH",
   },
   {
     title: "audio",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815624/Chomotkar/ShopByCategory/black-headphones-digital-device_caf4kq.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117131/Chomotkar/ShopByCategory/headphone_ioazf7.jpg",
     category: "gadgets",
     subCategory: "audio",
+    blurhash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
   },
   {
     title: "power bank",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815619/Chomotkar/ShopByCategory/2210.q803.009.S.m012.c12.mobile_phone_smartphone_charging_composition_tjyvoc.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117129/Chomotkar/ShopByCategory/powerbank_d6muuu.jpg",
     category: "gadgets",
     subCategory: "power bank",
+    blurhash: "LKO2?U%2Tw=w]~RBVZRi};RPxuwH",
   },
   {
     title: "mobile accessories",
-    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1704815620/Chomotkar/ShopByCategory/top-view-dvd-music-set_cbsi7h.jpg",
+    img: "https://res.cloudinary.com/dezmmga9k/image/upload/v1709117131/Chomotkar/ShopByCategory/earphone_rjdcdx.jpg",
     category: "gadgets",
     subCategory: "mobile accessories",
+    blurhash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
   },
 ];
 
@@ -63,6 +71,7 @@ const ShopByCategory = () => {
   const { handleSelectCollection } = useContext(CollectionContext);
   // take category context
   const { updateCategory } = useContext(CategoryContext);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <section className="mt-20 font-exo my-container">
@@ -104,10 +113,21 @@ const ShopByCategory = () => {
                     handleSelectCollection(category?.category),
                       updateCategory(category?.subCategory);
                   }}>
-                  <div className=" rounded-full transition-all p-[1px] overflow-hidden">
+                  <div className=" rounded-full object-cover transition-all p-[1px] overflow-hidden">
+                    {!imageLoaded && (
+                      <img
+                        className="w-full h-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521] "
+                        src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709136873/Chomotkar/ErrorPage/blur_tdjd7w.jpg"
+                        alt={category?.title}
+                      />
+                    )}
                     <img
-                      className="w-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521]"
+                      className={`w-full h-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521] ${
+                        imageLoaded ? "" : "hidden"
+                      }`}
                       src={category?.img}
+                      alt={category?.title}
+                      onLoad={() => setImageLoaded(!imageLoaded)} // Call handleImageLoad when the image is loaded
                     />
                   </div>
                   <p className="text-center text-slate-700 text-[10px] capitalize sm:text-base md:text-xl mt-3 font-semibold">

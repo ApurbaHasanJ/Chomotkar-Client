@@ -26,7 +26,8 @@ const OrderReceived = () => {
   }, []);
 
   const currentOrder = orderedProducts[orderedProducts.length - 1];
-  // console.log(currentOrder);
+
+  console.log(currentOrder);
   return (
     <div className="my-container md:text-base text-sm md:mt-10 mt-6 mb-16">
       <h2 className="uppercase text-center font-semibold md:text-4xl text-2xl">
@@ -59,12 +60,12 @@ const OrderReceived = () => {
                 </div>
                 <div className="flex gap-2">
                   <span>Size:</span>
-                  {currentOrder?.size ? (
+                  {currentOrder?.userOrder?.size === "" ? (
+                    "none"
+                  ) : (
                     <span className="uppercase">
                       {currentOrder?.userOrder?.size}
                     </span>
-                  ) : (
-                    "none"
                   )}
                 </div>
                 <div className="flex items-baseline gap-2">
