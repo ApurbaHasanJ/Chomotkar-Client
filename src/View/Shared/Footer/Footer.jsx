@@ -140,7 +140,6 @@ const Footer = () => {
                 </motion.div>
               </div>
             </Link>
-
             <Link
               className=" text-black  font-semibold  hover:underline"
               to="https://apurbahasanj.netlify.app/"
