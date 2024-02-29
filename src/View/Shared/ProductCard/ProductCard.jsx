@@ -20,9 +20,7 @@ const ProductCard = ({ product }) => {
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
-
-  // console.log(product);
-
+  
   return (
     <div
       className={`${
