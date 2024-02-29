@@ -4,12 +4,10 @@ import { FiPlus } from "react-icons/fi";
 import { WishlistContext } from "../../Providers/WishlistProvider";
 import { Link } from "react-router-dom";
 import { CategoryContext } from "../../Providers/CategoryProvider";
-import { Blurhash } from "react-blurhash";
 
 const ProductCard = ({ product }) => {
   const { addToWishlist } = useContext(WishlistContext);
   const [showModal, setShowModal] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   // take category context-------------------
   const { updateCategory } = useContext(CategoryContext);
 
@@ -37,25 +35,22 @@ const ProductCard = ({ product }) => {
           onClick={() => {
             updateCategory(product?.subCategory), handleToggleModal();
           }}>
-          {!imageLoaded && (
+          {/* {!imageLoaded && (
             <Blurhash
               hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
               width={400}
               height={300}
-              // resolutionX={32}
-              // resolutionY={32}
+              resolutionX={32}
+              resolutionY={32}
               punch={1}
             />
-          )}
-
+          )} */}
           <img
-            className={`rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500 
-            ${imageLoaded ? "" : "hidden"}
-            `}
+            className={`rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500 `}
             loading="lazy"
             src={product?.photos[0]?.img}
             alt={product.title}
-            onLoad={() => setImageLoaded(!imageLoaded)}
+            // onLoad={() => setImageLoaded(!imageLoaded)}
           />
         </Link>
         {/* Add to Wishlist */}
@@ -97,7 +92,7 @@ const ProductCard = ({ product }) => {
               : "bg-gray-400 cursor-not-allowed"
           } px-8 py-[6px] md:px-12 md:py-3 duration-500 `}>
           <FiPlus />
-          <span className="uppercase ">
+          <span className="uppercase whitespace-nowrap">
             {product?.quantity > 0 ? "QuickShop" : "Sold Out"}
           </span>
         </Link>

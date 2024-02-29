@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CollectionContext } from "../../../../Providers/CollectionProvider";
 import { CategoryContext } from "../../../../Providers/CategoryProvider";
 
@@ -71,7 +71,6 @@ const ShopByCategory = () => {
   const { handleSelectCollection } = useContext(CollectionContext);
   // take category context
   const { updateCategory } = useContext(CategoryContext);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <section className="mt-20 font-exo my-container">
@@ -114,20 +113,11 @@ const ShopByCategory = () => {
                       updateCategory(category?.subCategory);
                   }}>
                   <div className=" rounded-full object-cover transition-all p-[1px] overflow-hidden">
-                    {!imageLoaded && (
-                      <img
-                        className="w-full h-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521] "
-                        src="https://res.cloudinary.com/dezmmga9k/image/upload/v1709136873/Chomotkar/ErrorPage/blur_tdjd7w.jpg"
-                        alt={category?.title}
-                      />
-                    )}
                     <img
-                      className={`w-full h-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521] ${
-                        imageLoaded ? "" : "hidden"
-                      }`}
+                      className={`w-full h-full scale-100 duration-500 transition-all overflow-hidden hover:scale-110 rounded-full border border-[#517521]`}
                       src={category?.img}
                       alt={category?.title}
-                      onLoad={() => setImageLoaded(!imageLoaded)} // Call handleImageLoad when the image is loaded
+                      // onLoad={() => setImageLoaded(!imageLoaded)}
                     />
                   </div>
                   <p className="text-center text-slate-700 text-[10px] capitalize sm:text-base md:text-xl mt-3 font-semibold">

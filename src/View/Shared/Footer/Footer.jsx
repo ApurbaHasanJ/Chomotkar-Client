@@ -149,7 +149,7 @@ const Footer = () => {
               <p className="whitespace-nowrap">
                 Technical Support by{" "}
                 <span className="text-red-600 whitespace-nowrap">
-                  Apurba Hasan J
+                  CyberFlux Ltd.
                 </span>
               </p>
             </Link>
