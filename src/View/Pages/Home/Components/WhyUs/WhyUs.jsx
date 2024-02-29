@@ -16,7 +16,7 @@ const WhyUs = () => {
         title={"The Benefits of Choosing Us"}
         subtitle={"Beyond Fashion: What Sets Us Apart"}
       />
-      <div className="mt-10 grid md:grid-cols-4 grid-cols-2 gap-3 gap-y-6">
+      <div className="mt-10 grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-2 lg:gap-y-6">
         {/* high quality */}
         <div className="flex flex-col text-center justify-center gap-2  drop-shadow-2xl shadow-md items-center duration-500 p-3 py-4 font-mono border border-slate-400 hover:border-[#75934e] hover:text-[#75934e] text-slate-400">
           <MdHighQuality className="text-5xl" />

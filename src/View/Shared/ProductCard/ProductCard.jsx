@@ -42,11 +42,12 @@ const ProductCard = ({ product }) => {
               hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
               width={400}
               height={300}
-              resolutionX={32}
-              resolutionY={32}
+              // resolutionX={32}
+              // resolutionY={32}
               punch={1}
             />
           )}
+
           <img
             className={`rounded-xl object-cover w-full h-full hover:scale-110 transform duration-500 
             ${imageLoaded ? "" : "hidden"}
